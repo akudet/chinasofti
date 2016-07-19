@@ -38,7 +38,10 @@ public class CPDoIt {
 	class Producer implements Runnable {
 		String id;
 		BlockingQueue<Food> foods;
-		final String[] foodsTable = {"Apple", "Banana", "Coco", "Grape", "Tomato"};
+		final String[] foodsTable = {
+				"Apple", "Banana", "Coco", "Grape", "Tomato",
+				"Orange", "Milk", "Sugar", "Salt", "Rice"
+				};
 				
 		public Producer(String id, BlockingQueue<Food> foods) {
 			super();
@@ -52,8 +55,8 @@ public class CPDoIt {
 			String foodName = foodsTable[idx];
 			String foodType = "something can eat";
 			Food food =  new Food(foodName, foodType);
-			System.out.println(id + " : produced one food, get tired");
-			Thread.sleep(500);
+			System.out.println(id + " : produced " + foodName);
+			Thread.sleep(300);
 			return food;
 		}
 		
@@ -73,7 +76,7 @@ public class CPDoIt {
 	class Consumer implements Runnable {
 		String id;
 		BlockingQueue<Food> foods;
-		
+
 		public Consumer(String id, BlockingQueue<Food> foods) {
 			this.id = id;
 			this.foods = foods;
@@ -81,25 +84,22 @@ public class CPDoIt {
 
 		// consume food, take 300ms
 		private void consumeFoods(Food food) throws InterruptedException {
-			System.out.print(id + " : ");
-			System.out.println("eating " + food.getName());
+			System.out.println(id + " : eating " + food.getName());
 			Thread.sleep(300);
 		}
-		
+
 		@Override
 		public void run() {
-			
+
 			try {
 				while (true) {
-					consumeFoods(foods.take());
-					System.out.println("" + foods.size() + " left");
+					Food f = foods.take();
+					consumeFoods(f);
 				}
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				System.out.println(id + " : terminating");
 			}
 
-			
 		}
 		
 	}
