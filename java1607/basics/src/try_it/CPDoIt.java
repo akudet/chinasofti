@@ -59,13 +59,12 @@ public class CPDoIt {
 		
 		@Override
 		public void run() {
-			while(true) {
-				try {
+			try {
+				while(true) {
 					foods.put(produceFood());
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
+			} catch (InterruptedException e) {
+				System.out.println(id + " : terminating");
 			}
 		}
 		
@@ -90,15 +89,16 @@ public class CPDoIt {
 		@Override
 		public void run() {
 			
-			while (true) {
-				try {
+			try {
+				while (true) {
 					consumeFoods(foods.take());
 					System.out.println("" + foods.size() + " left");
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				System.out.println(id + " : terminating");
 			}
+
 			
 		}
 		
