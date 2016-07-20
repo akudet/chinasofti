@@ -42,8 +42,17 @@ public class InClass {
 	 * 用TreeSet存储人对象，按照人的年龄将对象排序存储。
 	 */
 	private static void test2() {
-		// TODO Auto-generated method stub
+		Person p1 = new Person("jtwu", 22);
+		Person p2 = new Person("mjg", 21);
+		Person p11 = new Person("jtwu", 25);
 		
+		TreeSet<Person> ts = new TreeSet<Person>();
+		ts.add(p11);
+		ts.add(p1);
+		ts.add(p2);
+		
+		System.out.println("TreeSet:");
+		print(ts);
 	}
 
 	/**
@@ -51,6 +60,23 @@ public class InClass {
 	 * 实例化相同信息的人对象，存入到集合中，相同信息的对象不能重复存入。
 	 */
 	private static void test1() {
+		Person p1 = new Person("jtwu", 22);
+		Person p2 = new Person("mjg", 21);
+		Person p11 = new Person("jtwu", 22);
+		
+		HashSet<Person> hs = new HashSet<Person>();
+		hs.add(p11);
+		hs.add(p1);
+		hs.add(p2);
+		
+		System.out.println("HashSet:");
+		print(hs);
 	}
 
+	private static void print(Collection<Person> c) {
+		for (Person p : c) {
+			System.out.println(p);
+		}
+	}
+	
 }

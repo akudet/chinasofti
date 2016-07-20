@@ -35,6 +35,10 @@ public class Person implements Comparable<Person>{
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + "]";
+	}
 	public int getAge() {
 		return age;
 	}
