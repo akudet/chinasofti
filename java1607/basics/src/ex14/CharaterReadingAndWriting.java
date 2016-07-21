@@ -2,6 +2,11 @@ package ex14;
 
 import java.io.*;
 
+/**
+ * copy contents from one file to anther file
+ * @author Administrator
+ *
+ */
 public class CharaterReadingAndWriting {
 	
 	public static void main(String[] args) {
@@ -9,19 +14,15 @@ public class CharaterReadingAndWriting {
 		FileWriter fw = null;
 		
 		try {
-			fr = new FileReader("D:\\fw.txt");
+			fr = new FileReader("D:\\fr.txt");
+			fw = new FileWriter("D:\\fw.txt");
+			
 			char[] cbuf = new char[1024];
 			int len = 0;
 			
 			while (-1 != (len = fr.read(cbuf))) {
 				System.out.println(cbuf);
-			}
-			
-			fw = new FileWriter("D:\\fw.txt", true);
-			String s = "";
-			for (int i = 0; i < 10; i++) {
-				s += i;
-				fw.write(s);
+				fw.write(cbuf, 0, len);
 			}
 			
 		} catch (FileNotFoundException e) {
