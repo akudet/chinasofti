@@ -1,4 +1,4 @@
-package ex_15;
+package ex13;
 
 public class Student implements Comparable<Student> {
 	@Override
