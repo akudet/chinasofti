@@ -8,18 +8,15 @@ import java.net.Socket;
 import java.nio.charset.Charset;
 import java.util.Scanner;
 
+import ex18.CharacterPipe;
+
 public class Server {
 
 	public static void main(String[] args) throws IOException {
 		ServerSocket ss = new ServerSocket(9999);
 		
 		Socket s = ss.accept();
-		Scanner scan = new Scanner(s.getInputStream());
-		scan.useDelimiter("");
-		while (scan.hasNext()) {
-			System.out.print(scan.next());
-		}
-		scan.close();
-		
+		new Thread(new CharacterPipe(s.getInputStream(), System.out)).start();
+		new Thread(new CharacterPipe(System.in, s.getOutputStream())).start();
 	}
 }
