@@ -1,4 +1,4 @@
-package inclass_15;
+package ex13;
 
 import java.io.*;
 import java.util.*;
@@ -19,7 +19,7 @@ public class InClass {
 	 * 读取文件信息，赋给学生对象，并将学生对象存储在集合中。
 	 */
 	private static void test5() {
-		final String PRO_PATH = "src/inclass_15/";
+		final String PRO_PATH = "src/ex13/";
 		
 		File students_f = new File(PRO_PATH + "students.properties");
 		

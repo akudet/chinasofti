@@ -1,4 +1,4 @@
-package list_ex;
+package ex12;
 
 public class User {
 	

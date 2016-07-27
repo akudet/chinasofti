@@ -1,4 +1,4 @@
-package list_ex;
+package ex12;
 
 import java.util.*;
 

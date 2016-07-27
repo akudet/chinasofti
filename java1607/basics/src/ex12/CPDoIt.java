@@ -1,4 +1,4 @@
-package try_it;
+package ex12;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;

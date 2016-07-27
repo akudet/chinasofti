@@ -7,14 +7,14 @@ public class StudentDemo {
 	public static void main(String... args) {
 		HashMap<Student, Integer> hm = new HashMap<Student, Integer>();
 		
-		hm.put(new Student("123", "jtwu", 22),  1);
-		hm.put(new Student("125", "narukami", 32), 4);
-		hm.put(new Student("124", "zaft", 22), 4);
+		hm.put(new Student(123, "jtwu", 22),  1);
+		hm.put(new Student(125, "narukami", 32), 4);
+		hm.put(new Student(124, "zaft", 22), 4);
 		
-		hm.put(new Student("222", "wataru", 111), 2);
+		hm.put(new Student(222, "wataru", 111), 2);
 		
-		Student s1 = new Student("123", "jtwu", 22);
-		Student s2 = new Student("124", "zaft", 22);
+		Student s1 = new Student(123, "jtwu", 22);
+		Student s2 = new Student(124, "zaft", 22);
 		
 		TreeSet<Student> ts = new TreeSet<Student>();
 		ts.add(s1);

@@ -1,4 +1,4 @@
-package inclass_15;
+package ex13;
 
 public class Person implements Comparable<Person>{
 	String name;
