@@ -15,7 +15,6 @@ public class CharacterPipe implements Runnable {
 			pr.println(sc.nextLine());
 			pr.flush();
 		}
-		System.out.println("hello");
 	}
 
 	public CharacterPipe(InputStream is, OutputStream os) {
