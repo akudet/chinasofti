@@ -1,22 +1,46 @@
+p {
+    font-size : 24px;
+    color : green;
+}
 
-      p {
-      font-size : 24px;
-      color : green;
-      }
+a:link {
+    text-decoration:overline;
+}
 
-      a:link {
-      text-decoration:overline;
-      }
+a:visited {
+    text-decoration:line-through;
+}
 
-      a:visited {
-      text-decoration:line-through;
-      }
+a:hover {
+    text-decoration:underline;
+}
 
-      a:hover {
-      text-decoration:underline;
-      }
+a:active {
+    font-size:24px;
+}
 
-      a:active {
-      font-size:24px;
-      }
+table, th, td {
+    border: 1px solid red;
+}
 
+table {
+    width:400px;
+    border-collapse:collapse;
+}
+
+th, td {
+    padding:5px;
+}
+
+th {
+    background-color:#9ACD32;
+    color:white;
+    text-align:left;
+}
+
+.odd {
+    background-color:white;
+}
+.even {
+    background-color:#FFFACD;
+}
