@@ -44,3 +44,14 @@ th {
 .even {
     background-color:#FFFACD;
 }
+
+#posrel {
+    position:relative;
+    left:10px;
+}
+
+#posabs {
+    position:absolute;
+    left:100px;
+}
+
