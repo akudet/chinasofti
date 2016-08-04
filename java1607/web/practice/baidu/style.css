@@ -1,0 +1,92 @@
+.clear {
+	clear: both;
+}
+
+.header ul {
+	float: right;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+
+.header ul a {
+	float: left;
+	font-size: 13px;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-left: 20px;
+}
+
+.header ul li {
+	display: inline;
+}
+
+.main {
+	text-align: center;
+}
+
+.logo {
+	margin-bottom: 20px;
+}
+
+.blank_box {
+	height: 200px;
+}
+
+#search_text {
+	width: 500px;
+	height: 24px;
+}
+
+#search_button {
+	height: 30px;
+}
+
+.main .search_box {
+	text-align: center;
+}
+
+.footer {
+	position: absolute;
+	left: 200px;
+	text-align: center;
+}
+
+.qrcode {
+	float: left;
+}
+
+#qrcode1 {
+	float: left;
+}
+
+#qrcode1-img {
+	float: left;
+}
+
+#qrcode1-text {
+	font-size: 12px;
+	margin: 0px 8px;
+	float: left;
+}
+
+#qrcode2 {
+	float: left;
+}
+
+#qrcode2-img {
+	float: left;
+}
+
+#qrcode2-text {
+	font-size: 12px;
+	margin: 0px 8px;
+	float: left;
+}
+
+.cpright {
+	float: left;
+}
+
+.cpright div p a {
+	margin-left: 60px;
+}
