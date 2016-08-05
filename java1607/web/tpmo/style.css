@@ -2,13 +2,15 @@
 @import url(welcome_card.css);
 @import url(cards.css);
 @import url(banner.css);
+@import url(info_nav.css);
+@import url(info_desc.css);
 
 body {
   background-image:url(images/page-bg.jpg);
   background-size:auto;
   background-repeat:no-repeat;
   background-position:top center;
-  background-attachement:fixed;
+  background-attachment:fixed;
 }
 
 #nav_container {
@@ -19,7 +21,7 @@ body {
 
 #main_container {
   float:left;
-  width:700px;
+  width:70%;
 }
 
 .welcome_card {
