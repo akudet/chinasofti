@@ -1,0 +1,30 @@
+.info_nav {
+  border-top:7px solid #75bd29;
+}
+
+.info_nav ul {
+  padding:15px 20px;
+}
+
+.info_nav ul li {
+  display:block;
+  font-size:14px;
+  text-align:left;
+  border-bottom:2px dotted #D7D2D2;
+  margin:0px 15px;
+  padding:10px 0px;
+}
+
+.info_nav_i {
+  color:black;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+
+.info_nav_i:hover{
+  color: #75BD29;
+}
+
+#info_nav_first {
+  color:#75BD29;
+}
