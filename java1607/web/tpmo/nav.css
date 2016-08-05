@@ -1,0 +1,91 @@
+.nav {
+  width: 310px;
+  height: 640px;
+  text-align:center;
+}
+
+.menu-container {
+  width: 310px;
+  height: 155px;
+  margin:12px;
+  position:relative;
+  text-transform:uppercase;
+}
+
+.menu {
+  color:white;
+}
+
+.menu:hover {
+  color:cyan;
+}
+
+.pic-menu {
+  width: 310px;
+  height: 155px;
+}
+
+.pic-menu img {
+  width:310px;
+  height:155px;
+}
+
+.pic-menu p {
+  position:absolute;
+  left: 20px;
+  bottom: 15px;
+  margin:0px;
+}
+
+.pic-menu a {
+  width:310px;
+  height:155px;
+}
+
+.icon-menu {
+  width: 150px;
+  height: 150px;
+  float: left;
+}
+
+#about-menu {
+  margin-right:10px;
+}
+
+#about-img {
+  width:150px;
+  height:150px;
+  background-image:url("images/about.png");
+}
+
+#about-img:hover {
+  width:150px;
+  height:150px;
+  background-image:url("images/about-hover.png");
+}
+
+#contract-img {
+  width:150px;
+  height:150px;
+  background-image:url("images/contract.png");
+}
+
+#contract-img:hover {
+  width:150px;
+  height:150px;
+  background-image:url("images/contract-hover.png");
+}
+
+.flip-menu:hover {
+  color:white;
+}
+
+.flip-menu .pic-info {
+  background-color:#cfb011;
+  position:absolute;
+  width:310px;
+  height:50px;
+  left:0px;
+  bottom:0px;
+  margin:0px;
+}
