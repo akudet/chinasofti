@@ -1,13 +1,13 @@
 .cards {
   width:100%;
-  margin:0px;
+  display:flex;
+  justify-content:space-between;
 }
 
 .card {
-  width:30%;
-  float:left;
+  width:calc(33% - 1em);
+  background-color:white;
   border-top:7px solid #10a4cd;
-  margin-right:20px;
 }
 
 .card-img img {
