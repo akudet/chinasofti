@@ -1,0 +1,31 @@
+@import url(nav.css);
+@import url(welcome_card.css);
+@import url(cards.css);
+@import url(banner.css);
+
+body {
+  background-image:url(images/page-bg.jpg);
+  background-size:auto;
+  background-repeat:no-repeat;
+  background-position:top center;
+  background-attachement:fixed;
+}
+
+#nav_container {
+  float:left;
+  margin-right:24px;
+  margin-bottom:80px;
+}
+
+#main_container {
+  float:left;
+  width:700px;
+}
+
+.welcome_card {
+}
+
+.cards {
+  margin:20px 0px;
+}
+
