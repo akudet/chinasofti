@@ -38,11 +38,8 @@ th {
     text-align:left;
 }
 
-.odd {
-    background-color:white;
-}
-.even {
-    background-color:#FFFACD;
+tr:nth-child(odd) {
+	background-color:black;
 }
 
 #posrel {
@@ -55,3 +52,24 @@ th {
     left:100px;
 }
 
+.box {
+  width: 72px;
+  height: 72px;
+  position:absolute;
+}
+
+#first {
+  background-color: red;
+  left: 12px;
+}
+
+#second {
+  background-color: blue;
+  z-index:1;
+  left: 24px;
+}
+
+#third {
+  background-color: green;
+  left: 36px;
+}
