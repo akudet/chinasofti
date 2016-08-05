@@ -1,7 +1,7 @@
 .banner {
   background:url(images/banner-bg-about-2.png) no-repeat center center;
   background-size:cover;
-  width:100%;
+  width:100% - 30px;
   height:215px;
   padding-left:30px;
   display:flex;
