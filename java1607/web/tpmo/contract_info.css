@@ -1,0 +1,56 @@
+.contract_info_card {
+  padding:30px 40px;
+  background-color:white;
+  border-top:5px solid #19beb6;
+}
+
+.contract_info_title {
+  border-left:4px solid #19beb6;
+  padding-left:20px;
+  margin-bottom:40px;
+}
+
+.contract_info_title h1 {
+  font-size:70px;
+  font-weight:bold;
+  margin-bottom:0px;
+}
+
+.contract_info_title h2 {
+  font-size:25px;
+  font-weight:bold;
+  color:#19beb6;
+  margin-top:0px;
+  text-transform:uppercase;
+}
+
+.contract_info_form {
+  padding:8px 30px;
+  width:50%;
+}
+
+.contract_info_form input {
+  width:100%;
+  height:43px;
+  padding:6px 12px;
+  margin-bottom:25px;
+  font-size:14px;
+  line-height:1.428;
+  color:#555;
+  background-color:#fff;
+  border:1px solid #ccc;
+}
+
+#submit {
+  width:115px;
+  height:40px;
+  padding:13px 38px;
+  background-color:#19beb6;
+  font-size:14px;
+  font-weight:normal;
+  color:#fff;
+}
+
+#submit:hover {
+  background-color:#109b94;
+}
