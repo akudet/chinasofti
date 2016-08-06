@@ -54,3 +54,46 @@
 #submit:hover {
   background-color:#109b94;
 }
+
+.contract_info_text {
+  width:40%;
+}
+
+.contract_info_text h1 {
+  padding:0 15px;
+  font-size:37px;
+  font-weight:bold;
+  line-height:30px;
+  margin-bottom:5px;
+}
+
+.contract_info_text h2 {
+  padding:0 15px;
+  font-size:15px;
+  font-weight:normal;
+}
+
+.contract_info_text p {
+  padding:0 15px;
+  margin-top:30px;
+  margin-bottom:25px;
+  font-size:15px;
+  line-height:25px;
+}
+
+.contract_info_text ul {
+  list-style:none;
+}
+
+.contract_info_text a {
+  font-size:14px;
+  font-style:italic;
+  font-weight:bold;
+  line-height:25px;
+  text-decoration:none;
+  color:#000;
+}
+
+.contract_info_text a:hover {
+  color:#19beb6;
+}
