@@ -24,9 +24,13 @@
   text-transform:uppercase;
 }
 
+.contract_info_details {
+  display:flex;
+}
+
 .contract_info_form {
   padding:8px 30px;
-  width:50%;
+  width:45%;
 }
 
 .contract_info_form input {
@@ -56,7 +60,7 @@
 }
 
 .contract_info_text {
-  width:40%;
+  width:45%;
 }
 
 .contract_info_text h1 {
