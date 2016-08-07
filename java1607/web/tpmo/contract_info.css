@@ -101,3 +101,35 @@
 .contract_info_text a:hover {
   color:#19beb6;
 }
+
+.contract_info_text .icon {
+  display:inline-block;
+  cursor:pointer;
+  width:35px;
+  height:35px;
+  margin:5px;
+}
+
+#share_icon {
+  background-color:#ff9934;
+}
+
+#share_icon:hover {
+  background-color:#e6801c;
+}
+
+#tweet_icon {
+  background-color:#1abfdf;
+}
+
+#tweet_icon:hover {
+  background-color:#0c98b3;
+}
+
+#facebook_icon {
+  background-color:#527ebf;
+}
+
+#facebook_icon:hover {
+  background-color:#2b538d;
+}
