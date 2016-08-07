@@ -64,13 +64,13 @@
   background-image:url("images/about-hover.png");
 }
 
-#contract-img {
+#contact-img {
   width:150px;
   height:150px;
   background-image:url("images/contract.png");
 }
 
-#contract-img:hover {
+#contact-img:hover {
   width:150px;
   height:150px;
   background-image:url("images/contract-hover.png");
