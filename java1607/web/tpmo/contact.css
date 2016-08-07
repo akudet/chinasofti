@@ -1,0 +1,22 @@
+@import url(nav.css);
+@import url(contact_info.css);
+
+
+body {
+  background-image:url(images/page-bg.jpg);
+  background-size:auto;
+  background-repeat:no-repeat;
+  background-position:top center;
+  background-attachment:fixed;
+}
+
+#nav_container {
+  float:left;
+  margin-right:24px;
+  margin-bottom:80px;
+}
+
+#contact_info_container {
+  float:left;
+  width:70%;
+}
