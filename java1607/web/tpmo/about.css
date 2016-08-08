@@ -31,3 +31,19 @@ body {
   margin:20px 0px;
 }
 
+.banner {
+  margin-bottom:30px;
+}
+
+.info_nav_desc_container {
+  display:flex;
+  justify-content:space-between;
+}
+
+.info_nav {
+  width:30%;
+}
+
+.info_desc_card {
+  width:60%;
+}
