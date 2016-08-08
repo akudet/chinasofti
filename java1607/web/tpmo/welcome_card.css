@@ -37,6 +37,7 @@
 }
 
 .welcome_text ul{
+  float:left;
   padding 10px 15px 30px;
   line-height:2;
   text-transform:uppercase;
@@ -48,4 +49,13 @@
   font-weight:bold;
   border:none;
   padding:10px 30px;
+}
+
+.welcome_container img {
+  float:right;
+  margin:45px 0px;
+}
+
+.clear {
+  clear:both;
 }
