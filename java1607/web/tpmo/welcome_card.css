@@ -11,8 +11,14 @@
 
 .welcome_container {
   position:relative;
-  width:55%;
   padding:70px 30px 60px 50px;
+}
+
+.welcome_info {
+  float:left;
+  width:55%;
+  padding:10px 15px 30px;
+  text-align:left;
 }
 
 .welcome_title {
@@ -20,25 +26,26 @@
 }
 
 .welcome_title h1 {
-  font-size:14px;
-  color:#a92446;
   margin:0 10px;
   font-size:24px;
+  color:#a92446;
 }
 
 .welcome_title h2 {
-  font-size:40px;
+  font-size:72px;
   margin:0 10px;
   font-weight:600px;
 }
 
 .welcome_text {
+  display:inline-block;
   padding-left:15px;
 }
 
 .welcome_text ul{
-  float:left;
-  padding 10px 15px 30px;
+  padding:10px 15px 30px;
+  margin-top:0px;
+  margin-bottom:10px;
   line-height:2;
   text-transform:uppercase;
 }
@@ -51,7 +58,7 @@
   padding:10px 30px;
 }
 
-.welcome_container img {
+.welcome_card img {
   float:right;
   margin:45px 0px;
 }
