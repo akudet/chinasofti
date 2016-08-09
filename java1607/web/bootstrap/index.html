@@ -1,27 +1,54 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>hello bootstrap</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
-<script src="js/jquery-1.8.3.js"></script>
-<script src="js/bootstrap.js"></script>
-<style>
-* {
-	/*		border:1px solid red;*/
-}
-</style>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>hello bootstrap</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+    <script src="js/jquery-1.8.3.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style>
+      * {
+      /*		border:1px solid red;*/
+      }
+    </style>
+  </head>
 
-<body>
-<div class="container">
-	<form>
-		<div class="form-group">
-			<input class="form-control" type="text" disabled>
-		</div>
-		<input class="form-control btm btn-success" value="submit" type="button">
-	</form>
-</div>
-</body>
+  <body>
+    <nav class="navbar navbar-inverse">
+
+      <div class="navbar-header">
+	<a class="navbar-brand" href="#">云盘 <small>Resource
+            Anywhere</small></a>
+      </div>
+      <div class="navbar-collapse">
+      <form class="navbar-form navbar-right">
+	<div class="form-group">
+	  <input type="text" class="form-control" placeholder="帐号">
+	</div>
+	<div class="form-group">
+	  <input type="password" class="form-control" placeholder="密码">
+	</div>
+	<div class="form-group">
+	  <input type="submit" class="btn btn-info" value="登录">
+	</div>
+	<div class="form-group">
+	  <button type="button" class="btn btn-success">注册</button>
+	</div>
+      </form>
+      </div>
+
+    </nav>
+    <div class="jumbotron" style="background-color:#306bac;color:#fff;margin-top:-20px;">
+      <div class="container">
+	<h1>欢迎来到云盘!</h1>
+	<p class="text-right">了不起的先进云中心！</p>
+	<p class="text-right">个人数据在线存储解决方案！</p>
+	<p class="text-right">
+
+	  <button type="button" class="btn btn-info btn-lg">了解更多</button>
+	</p>
+      </div>
+    </div>
+  </body>
