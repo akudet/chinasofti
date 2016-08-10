@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>validation</title>
+
+  <style>
+    input {
+      display:block;
+      padding:5px;
+      margin:10px;
+    }
+  </style>
+
+  <script>
+    var validate = function() {
+      id = document.getElementById("id").value;
+      passwd = document.getElementById("passwd").value;
+      sex = document.getElementById("sex").value;
+      name = document.getElementById("name").value;
+      age = document.getElementById("age").value;
+      
+      // some regexp used to test
+      var is_chinese = new RegExp("^([\\u4E00-\\u9FFF]+)$","g");
+
+
+      //a-z A-Z 0-9 _ is valid
+      var id_reg = /^([\w]{6,12})$/
+      if (!id_reg.test(id)) {
+        alert("only number or characters for id");
+      } else if (id.length > 12 || id.length < 6) {
+        alert("id need to be 6-12 long");
+      }
+
+      //6-12
+      if (passwd.length > 12 || passwd.length < 6) {
+        alert("passwd need to be 6-12 long");
+      }
+
+      //男 女
+      if (sex == "男" || sex=="女") {
+      } else {
+        alert("only male or female");
+      }
+      
+      // name length 2-5 chines character, only chinese
+      if (name.length < 2 || name.length > 5) {
+        alert("name shoulde be 2-5 long");
+      } else if (!is_chinese.test(name)) {
+        alert("only chinese charater is allowed");
+      }
+
+      // age 1-150
+      age = new Number(age);
+      if (age < 1 || age > 150) {
+        alert("age should between 1-150");
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <form>
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id">
+    <label for="passwd">PASSWORD:</label>
+    <input type="text" id="passwd" name="passwd">
+    <label for="sex">SEX:</label>
+    <input type="text" id="sex" name="sex">
+    <label for="name">NAME:</label>
+    <input type="text" id="name" name="name">
+    <label for="age">AGE:</label>
+    <input type="text" id="age" name="age">
+    <input type="button" value="check" onclick="validate();">
+  </form>
+</body>
+
+</html>
