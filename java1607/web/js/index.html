@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JS Adder</title>
+</head>
+  <script>
+    function add() {
+      var a = new Number(document.getElementById("num1").value);
+      var b = new Number(document.getElementById("num2").value);
+      var res = document.getElementById("result");
+      res.innerHTML = a + b;
+    }
+  </script>
+<body>
+  <input type="text" id="num1">
+  +
+  <input type="text" id="num2">
+  <button type="button" onclick="add();">=</button>
+  <span id="result"></span>
+</body>
+</html>
+
