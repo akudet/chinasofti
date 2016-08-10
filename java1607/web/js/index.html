@@ -1,23 +1,74 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>JS Adder</title>
-</head>
-  <script>
-    function add() {
-      var a = new Number(document.getElementById("num1").value);
-      var b = new Number(document.getElementById("num2").value);
-      var res = document.getElementById("result");
-      res.innerHTML = a + b;
-    }
-  </script>
-<body>
-  <input type="text" id="num1">
-  +
-  <input type="text" id="num2">
-  <button type="button" onclick="add();">=</button>
-  <span id="result"></span>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>JS Adder</title>
+    <style>
+      .calculator {
+      width:250px;
+      margin:auto;
+      }
+      #display {
+      width:100%;
+      height:48px;
+      text-align:right;
+      color:red;
+      }
+      button[type="button"] {
+      width:45px;
+      height:45px;
+      padding:5px;
+      margin:5px;
+      background-color:cyan;
+      border:0px;
+      }
+    </style>
+    <script>
+      var exp = "";
+      var evaluated = false;
+      var show = function(s) {
+      var display = document.getElementById("display");
+      display.innerHTML = s;
+      }
+      var enter = function(c) {
+      if (evaluated) {
+      exp="";
+      evaluated=false;
+      }
+      if (c == "=") {
+      exp = eval(exp).toString();
+      evaluated = true;
+      } else if (c == "c") {
+      exp = "";
+      } else {
+      exp += c;
+      }
+
+      show(exp);
+      }
+
+    </script>
+  </head>
+  <body>
+    <div class="calculator">
+      <div id="display"></div>
+      <button type="button" onclick="enter('7');">7</button>
+      <button type="button" onclick="enter('8');">8</button>
+      <button type="button" onclick="enter('9');">9</button>
+      <button type="button" onclick="enter('+');">+</button><br>
+      <button type="button" onclick="enter('4');">4</button>
+      <button type="button" onclick="enter('5');">5</button>
+      <button type="button" onclick="enter('6');">6</button>
+      <button type="button" onclick="enter('-');">-</button><br>
+      <button type="button" onclick="enter('1');">1</button>
+      <button type="button" onclick="enter('2');">2</button>
+      <button type="button" onclick="enter('3');">3</button>
+      <button type="button" onclick="enter('*');">*</button><br>
+      <button type="button" onclick="enter('0');">0</button>
+      <button type="button" onclick="enter('.');">.</button>
+      <button type="button" onclick="enter('c');">c</button>
+      <button type="button" onclick="enter('=');">=</button>
+    </div>
+  </body>
 </html>
 
