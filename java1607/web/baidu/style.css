@@ -26,6 +26,9 @@
 
 .logo {
 	margin-bottom: 20px;
+  position:relative;
+  top:-200px;
+  opacity:0;
 }
 
 .blank_box {
