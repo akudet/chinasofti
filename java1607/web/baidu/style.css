@@ -2,6 +2,13 @@
 	clear: both;
 }
 
+#banner-menu {
+  display:none;
+  position:absolute;
+  right:0px;
+  top:0px;
+}
+
 .header ul {
 	float: right;
 	margin-bottom: 0px;

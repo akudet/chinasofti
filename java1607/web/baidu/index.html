@@ -7,13 +7,26 @@
 
   <script type="text/javascript" src="../bootstrap/js/jquery.min.js"></script>
   <script type="text/javascript">
+
     $(document).ready(function() {
       $(".logo").animate({top:"0px", opacity:"1"}, 2000);
+
+      $("#more").mouseenter(function() {
+        $("#banner-menu").fadeIn("slow");
+      });
+
+      $("#banner-menu").mouseleave(function() {
+        $("#banner-menu").fadeOut("slow");
+      });
+
     });
   </script>
 
 </head>
 <body>
+  <div id="banner-menu">
+    <img src="banner-menu.png">
+  </div>
 	<div class="header">
 		<ul>
 			<li><a href="">糯米</a></li>
@@ -24,7 +37,7 @@
 			<li><a href="">贴吧</a></li>
 			<li><a href="">登录</a></li>
 			<li><a href="">设置</a></li>
-			<li><a href="">更多产品</a></li>
+			<li><a href="" id="more">更多产品</a></li>
 		</ul>
 		<div class="clear"></div>
 	</div>
