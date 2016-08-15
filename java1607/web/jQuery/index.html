@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="../bootstrap/js/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      $("#hide").click(function() {
+        $("p").hide();
+      });
+
+      $("#show").click(function() {
+        $("p").show();
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <button type="button" id="hide">HIDE</button>
+  <button type="button" id="show">SHOW</button>
+  <p>hello world</p>
+</body>
+</html>
