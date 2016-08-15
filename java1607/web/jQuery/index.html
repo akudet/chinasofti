@@ -14,12 +14,25 @@
         $("p").show();
       });
 
+      $("#toggle").click((function() {
+        var show = true;
+        return function() {
+          if (show) {
+            $("p").show();
+          } else {
+            $("p").hide();
+          }
+          show = !show;
+        };
+      }()));
+
     });
   </script>
 </head>
 <body>
   <button type="button" id="hide">HIDE</button>
   <button type="button" id="show">SHOW</button>
+  <button type="button" id="toggle">TOGGLE</button>
   <p>hello world</p>
 </body>
 </html>
