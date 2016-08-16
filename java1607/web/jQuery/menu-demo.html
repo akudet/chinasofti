@@ -5,8 +5,19 @@
   <link rel="stylesheet" type="text/css" href="menu.css">
   <script type="text/javascript" src="../bootstrap/js/jquery.min.js"></script>
   <script type="text/javascript" src="menu.js"></script>
+  <style>
+    #nav-top {
+      float:right;
+    }
+
+    #nav-left {
+      float:left;
+    }
+  </style>
 </head>
 <body>
+
+  <div id="nav-top">
   <ul class="horizontal-menu">
     <li>
       <a class="dropdown-toggle" href="#">Dropdown</a>
@@ -25,5 +36,28 @@
       </ul>
     </li>
   </ul>
+  </div>
+
+  <div id="nav-left">
+  <ul class="vertical-menu">
+    <li>
+      <a class="dropdown-toggle" href="#">Dropdown</a>
+      <ul class="dropdown-menu">
+        <li>Action</li>
+        <li>Another action</li>
+        <li>Something else here</li>
+      </ul>
+    </li>
+    <li>
+      <a class="dropdown-toggle" href="#">Dropdown</a>
+      <ul class="dropdown-menu">
+        <li>Action</li>
+        <li>Another action</li>
+        <li>Something else here</li>
+      </ul>
+    </li>
+  </ul>
+  </div>
+
 </body>
 </html>
