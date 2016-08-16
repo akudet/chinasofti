@@ -8,3 +8,11 @@
 
 // maybe a single dropdown menu is enough, by place it in diff
 // position in the document
+
+$(document).ready(function() {
+  $(".dropdown-menu").hide();
+  $(".dropdown-toggle").click(function() {
+    dropdownMenu = $(this).siblings(".dropdown-menu");
+    dropdownMenu.slideToggle();
+  });
+});
