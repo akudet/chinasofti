@@ -26,13 +26,52 @@
         };
       }()));
 
+      // change the img src to toSrc with animation
+      var animation = function(img, toSrc) {
+        img.fadeOut(1000, function() {
+          img.attr("src", toSrc);
+          img.fadeIn(1000);
+        });
+      };
+
+
+      var index = 0;
+      var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"];
+      var slideAnimation = function() {
+        index++;
+        index %= images.length;
+        animation($(".slide-animation img"), images[index]);
+        setTimeout(slideAnimation, 2000);
+      };
+
+      $("#animate").click(function() {
+        slideAnimation();
+      });
+
     });
   </script>
+
+  <style>
+    .slide-animation {
+      width:500px;
+      height:400px;
+      background-color:cyan;
+    }
+
+    .slide-animation img {
+      width:100%;
+      height:100%;
+    }
+  </style>
 </head>
 <body>
   <button type="button" id="hide">HIDE</button>
   <button type="button" id="show">SHOW</button>
   <button type="button" id="toggle">TOGGLE</button>
+  <button type="button" id="animate">ANIMATION</button>
   <p>hello world</p>
+  <div class="slide-animation">
+    <img src="1.jpg">
+  </div>
 </body>
 </html>
