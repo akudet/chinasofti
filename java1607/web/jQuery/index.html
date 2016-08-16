@@ -34,19 +34,40 @@
         });
       };
 
-
+      var stop = true;
       var index = 0;
       var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"];
-      var slideAnimation = function() {
+
+      // return next image src to show
+      var next = function() {
         index++;
         index %= images.length;
-        animation($(".slide-animation img"), images[index]);
-        setTimeout(slideAnimation, 2000);
+        return images[index];
+      }
+
+      var slideAnimation = function() {
+        animation($(".slide-animation img"), next);
+        if (!stop) {
+          setTimeout(slideAnimation, 2000);
+        }
       };
 
       $("#animate").click(function() {
+        stop = false;
         slideAnimation();
       });
+
+      $("#start").click(function() {
+        if (stop) {
+          stop = false;
+          slideAnimation();
+        }
+      });
+
+      $("#stop").click(function() {
+        stop = true;
+      });
+
 
     });
   </script>
@@ -73,5 +94,7 @@
   <div class="slide-animation">
     <img src="1.jpg">
   </div>
+  <button type="button" id="start">Start</button>
+  <button type="button" id="stop">Stop</button>
 </body>
 </html>
