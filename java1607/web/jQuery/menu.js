@@ -22,7 +22,7 @@ $(document).ready(function() {
     dropdownMenu.css("top", "0px");
     dropdownMenu.css("left", parent.outerWidth());
     dropdownMenu.slideToggle();
-    dropdownMenu.find(".dropdown-menu").hide();
+    parent.closest(".dropdown-menu").find(".dropdown-menu").not(dropdownMenu).hide();
   });
 
   $(".horizontal-menu .dropdown-toggle").click(function() {
@@ -31,7 +31,7 @@ $(document).ready(function() {
     dropdownMenu.css("top", parent.outerHeight());
     dropdownMenu.css("left", "0px");
     dropdownMenu.slideToggle();
-    dropdownMenu.find(".dropdown-menu").hide();
+    parent.closest(".dropdown-menu").find(".dropdown-menu").not(dropdownMenu).hide();
   });
 
 });
