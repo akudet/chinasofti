@@ -1,0 +1,19 @@
+.ani1 {
+  box-sizing:border-box;
+  width:120px;
+  height:120px;
+  border:1em solid;
+  border-radius:50%;
+  background-position:center;
+  background-size:100% 100%;
+  opacity:0.5;
+  transition:1s;
+  transition-timing-function:ease-in-out;
+}
+
+.ani1:hover {
+  opacity:1;
+  transform:rotate(360deg);
+  transition:1s;
+  transition-timing-function:ease-in-out;
+}
