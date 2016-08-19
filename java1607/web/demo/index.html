@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <link href="btn.css" type="text/css" rel="stylesheet">
   <script type="text/javascript" src="../bootstrap/js/jquery.min.js"></script>
-  <script type="text/javascript" src="ani1.js"></script>
+  <script type="text/javascript" src="btn.js"></script>
   <script type="text/javascript" src="monitor.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       var monitor = new Monitor("#monitor1");
       monitor.show("1.jpeg");
+      var btn1 = new btn("#btn1", "1.jpeg", "red", "1.jpeg", monitor);
     });
   </script>
 
@@ -29,5 +31,7 @@
 </head>
 <body>
   <div id="monitor1"></div>
+    <div id="btn1">
+    </div>
 </body>
 </html>
