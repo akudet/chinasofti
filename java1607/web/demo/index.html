@@ -3,20 +3,31 @@
 <head>
   <meta charset="utf-8">
   <script type="text/javascript" src="../bootstrap/js/jquery.min.js"></script>
+  <script type="text/javascript" src="ani1.js"></script>
+  <script type="text/javascript" src="monitor.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var monitor = new Monitor("#monitor1");
+      monitor.show("1.jpeg");
+    });
+  </script>
 
   <style>
-    .slide-animation {
-      width:500px;
+    .monitor {
+      width:200px;
       height:400px;
-      background-color:cyan;
+      background-size:100% 100%;
+      position:relative;
     }
 
-    .slide-animation img {
+    .mask {
       width:100%;
       height:100%;
+      background-color:white;
     }
   </style>
 </head>
 <body>
+  <div id="monitor1"></div>
 </body>
 </html>
