@@ -48,6 +48,18 @@ JOIN score ON
 SELECT s.Name FROM student s, score c1, score c2
 WHERE s.Id = c1.Stu_id AND c1.Stu_id = c2.Stu_id
   AND c1.C_name="计算机" AND c2.C_name="英语";
+/*equivalent one*/
+SELECT s.Name FROM student s
+WHERE
+  s.Id in (SELECT Stu_id FROM score WHERE C_name="计算机")
+  AND
+  s.Id in (SELECT Stu_id FROM score WHERE C_name="英语");
+/*wierd sol*/
+SELECT s.Name FROM student s, score c
+WHERE s.Id = c.Stu_id
+  AND (c.C_name="计算机" OR c.C_name="英语")
+GROUP BY s.Id
+HAVING COUNT(DISTINCT c.C_name) = 2;
 
 /*16.将计算机考试成绩按从高到低进行排序*/
 SELECT C_name, Grade FROM score
