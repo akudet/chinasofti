@@ -26,25 +26,92 @@
     <script>
       var exp = "";
       var evaluated = false;
+
+      // EXP := TERM (+ || -) EXP || TERM;
+      // TERM := NUM (* || /) TERM || NUM;
+      // NUM := FLOAT || DECIMAL
+      // OP := + - * /
+      var myeval = function(exp) {
+        var Num = function(num) {
+          var that = {};
+          that.eval = function() {
+            return new Number(num).valueOf();
+          };
+          return that;
+        };
+        
+        var Term = function(op, aa, bb) {
+          var that = {};
+          that.eval = function() {
+            a = aa.eval();
+            b = bb.eval();
+            switch(op) {
+              case '+' :
+                return a + b;
+              case '-' :
+                return a - b;
+              case '*' :
+                return a * b;
+              case '/' :
+                return a / b;
+            };
+          }
+          return that;
+        };
+
+        var readTerm = function(exp) {
+          var i = exp.search(/[*\/]/);
+
+          if (-1 != i) {
+            var left = exp.slice(0, i);
+            var right = exp.slice(i + 1);
+            return new Term(readTerm(left), readTerm(right));
+          } else {
+            return readNum(exp);
+          }
+
+        };
+
+        var readExp = function(exp) {
+          var i = exp.search(/[+-]/);
+          if (-1 != i) {
+            var left = exp.slice(0, i);
+            var right = exp.slice(i + 1);
+            return new Term(readTerm(left), readExp(right));
+          } else {
+            return readNum(exp);
+          }
+
+        };
+
+        var readNum = function(exp) {
+          return new Num(exp);
+        };
+
+        return readExp(exp);
+      };
+      
       var show = function(s) {
-      var display = document.getElementById("display");
-      display.innerHTML = s;
-      }
-      var enter = function(c) {
-      if (evaluated) {
-      exp="";
-      evaluated=false;
-      }
-      if (c == "=") {
-      exp = eval(exp).toString();
-      evaluated = true;
-      } else if (c == "c") {
-      exp = "";
-      } else {
-      exp += c;
+        var display = document.getElementById("display");
+        display.innerHTML = s;
       }
 
-      show(exp);
+      var enter = function(c) {
+        if (evaluated) {
+          exp="";
+          evaluated=false;
+        }
+        if (c == "=") {
+          alert(myeval(exp).eval());
+          exp = eval(exp).toString();
+          evaluated = true;
+        } else if (c == "c") {
+          exp = "";
+        } else {
+          exp += c;
+        }
+
+        show(exp);
       }
 
     </script>
@@ -66,7 +133,7 @@
       <button type="button" onclick="enter('*');">*</button><br>
       <button type="button" onclick="enter('0');">0</button>
       <button type="button" onclick="enter('.');">.</button>
-      <button type="button" onclick="enter('c');">c</button>
+      <button type="button" onclick="enter('/');">/</button>
       <button type="button" onclick="enter('=');">=</button>
     </div>
   </body>
