@@ -27,8 +27,8 @@
       var exp = "";
       var evaluated = false;
 
-      // EXP := TERM (+ || -) EXP || TERM;
-      // TERM := NUM (* || /) TERM || NUM;
+      // EXP := EXP (+ || -) TERM || TERM;
+      // TERM := TERM (* || /) NUM || NUM;
       // NUM := FLOAT || DECIMAL
       // OP := + - * /
       var myeval = function(exp) {
@@ -43,8 +43,10 @@
         var Term = function(op, aa, bb) {
           var that = {};
           that.eval = function() {
-            a = aa.eval();
-            b = bb.eval();
+            //a = aa.eval();
+            var a = aa.eval();
+            //b = bb.eval();
+            var b = bb.eval();
             switch(op) {
               case '+' :
                 return a + b;
@@ -56,16 +58,17 @@
                 return a / b;
             };
           }
+
           return that;
         };
 
         var readTerm = function(exp) {
-          var i = exp.search(/[*\/]/);
+          var i = Math.max(exp.lastIndexOf('*'), exp.lastIndexOf('\/'));
 
           if (-1 != i) {
             var left = exp.slice(0, i);
             var right = exp.slice(i + 1);
-            return new Term(readTerm(left), readTerm(right));
+            return new Term(exp[i], readTerm(left), readNum(right));
           } else {
             return readNum(exp);
           }
@@ -73,13 +76,14 @@
         };
 
         var readExp = function(exp) {
-          var i = exp.search(/[+-]/);
+          var i = Math.max(exp.lastIndexOf('+'), exp.lastIndexOf('-'));
+
           if (-1 != i) {
             var left = exp.slice(0, i);
             var right = exp.slice(i + 1);
-            return new Term(readTerm(left), readExp(right));
+            return new Term(exp[i], readExp(left), readTerm(right));
           } else {
-            return readNum(exp);
+            return readTerm(exp);
           }
 
         };
@@ -88,7 +92,7 @@
           return new Num(exp);
         };
 
-        return readExp(exp);
+        return readExp(exp).eval();
       };
       
       var show = function(s) {
@@ -102,7 +106,7 @@
           evaluated=false;
         }
         if (c == "=") {
-          alert(myeval(exp).eval());
+          alert(myeval(exp));
           exp = eval(exp).toString();
           evaluated = true;
         } else if (c == "c") {
