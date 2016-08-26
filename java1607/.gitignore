@@ -3,3 +3,4 @@
 
 # Java Project
 bin
+*.class
