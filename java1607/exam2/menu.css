@@ -1,0 +1,17 @@
+/* menu is a list and it's item is in li*/
+
+.dropdown-menu {
+  list-style:none;
+  padding:0px;
+  position:absolute;
+}
+
+/* all menu item */
+.dropdown-menu > li {
+  padding:5px;
+  position:relative;
+}
+
+.dropdown-menu > li:hover {
+  background-color:cyan;
+}
