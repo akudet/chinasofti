@@ -9,7 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'succ.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,18 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-    <% String err_msg = (String) request.getAttribute("err_msg"); %>
-    <% if (err_msg != null) { %>
-    	<%= err_msg %>
-    <% } %>
-    <form action="LoginServlet" method="post">
-    	用户名：<input type="text" name="username">
-    	密码：<input type="password" name="password">
-    	<input type="submit" value="post">
-    </form>
-    <a href="UsersServlet">Users</a>
+    	登录成功 <br>
   </body>
 </html>
