@@ -1,5 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,jtwu.servlet.User" pageEncoding="UTF-8"%>
 <%
+Collection<User> users = (Collection<User>) request.getAttribute("users"); 
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
@@ -9,7 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'users.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,15 +20,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-    This is my JSP page. <br>
-    <form action="FirstServlet" method="post">
-    	用户名：<input type="text" name="username">
-    	密码：<input type="password" name="password">
-    	<input type="submit" value="post">
-    </form>
-    <a href="UsersServlet">Users</a>
+  <table>
+  	<tr>
+  		<th>用户名</th>
+  		<th>密码</th>
+  	</tr>
+    <% for (User user : users) { %>
+    <tr>
+    	<td><%= user.getName() %></td>
+    	<td><%= user.getPass() %></td>
+    </tr>
+    <% } %>
+  </table>
+
   </body>
 </html>
