@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jtwu.model.User;
+
 public class UsersServlet extends HttpServlet {
 	Collection<User> users;
 

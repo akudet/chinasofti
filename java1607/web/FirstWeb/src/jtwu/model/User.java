@@ -1,4 +1,4 @@
-package jtwu.servlet;
+package jtwu.model;
 
 public class User {
 

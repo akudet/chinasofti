@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,jtwu.servlet.User" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,jtwu.model.*" pageEncoding="UTF-8"%>
 <%
 Collection<User> users = (Collection<User>) request.getAttribute("users"); 
 String path = request.getContextPath();
