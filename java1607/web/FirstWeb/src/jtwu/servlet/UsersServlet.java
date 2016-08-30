@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jtwu.model.User;
+import jtwu.model.UserData;
 
 public class UsersServlet extends HttpServlet {
 	Collection<User> users;
@@ -37,11 +39,10 @@ public class UsersServlet extends HttpServlet {
 		super.init();
 		users = new ArrayList<User>();
 		
-		users.add(new User("jtwu", "jtwu"));
-		users.add(new User("suzu", "jtwu"));
-		users.add(new User("kyo", "jtwu"));
-		users.add(new User("izumi", "jtwu"));
-		users.add(new User("saya", "jtwu"));
+		Map<String, User> userss = UserData.createUsers();
+		for (String name : userss.keySet()) {
+			users.add(userss.get(name));
+		}
 	}
 
 	

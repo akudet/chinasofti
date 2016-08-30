@@ -28,11 +28,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<tr>
   		<th>用户名</th>
   		<th>密码</th>
+  		<th>状态</th>
   	</tr>
     <% for (User user : users) { %>
     <tr>
     	<td><%= user.getName() %></td>
     	<td><%= user.getPass() %></td>
+    	<td><%= user.getStatus() %></td>
     </tr>
     <% } %>
   </table>
