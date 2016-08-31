@@ -45,4 +45,24 @@ public class UserDao {
 		}
 		return user;
 	}
+	
+	// add a user, 0 for sucess
+	public int add(User user) {
+		Connection conn = DBConnection.getConnection();
+		int res = 0;
+		
+		try {
+			
+			res = conn.prepareStatement(user.toValues()).executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if (res == 1) {
+			return 0;
+		}
+		return 1;
+	}
 }

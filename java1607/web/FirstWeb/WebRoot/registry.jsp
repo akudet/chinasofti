@@ -9,7 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'registry.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,33 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-    <% String err_msg = (String) request.getAttribute("err_msg"); %>
-    <% if (err_msg != null) { %>
-    	<%= err_msg %>
-    <% } %>
-    <script>
-    	var validate = function() {
-    		var form = document.forms[0];
-    		var name = form.username.value;
-    		var pass = form.password.value;
-    		if (!name) {
-    			alert("empty name");
-    		}
-    		if (!pass) {
-    			alert("empty pass");
-    		}
-    		return false;
-    	};
-    </script>
-    <form action="LoginServlet" method="post" onsubmit="validate();">
+        <form action="RegistryServlet" method="post" onsubmit="validate();">
     	用户名：<input type="text" name="username">
     	密码：<input type="password" name="password">
-    	<input type="submit" value="post">
+    	<input type="submit" value="注册">
     </form>
-    <a href="UsersServlet">Users</a>
-    <a href="registry.jsp">Registry</a>
   </body>
 </html>
