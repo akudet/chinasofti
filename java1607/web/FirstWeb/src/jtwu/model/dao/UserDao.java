@@ -112,4 +112,22 @@ public class UserDao {
 		}
 		return 1;
 	}
+
+	public User findUserById(int id) {
+		User user = null;
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE id = ?");
+			stmt.setInt(1, id);
+			ResultSet results = stmt.executeQuery();
+			if (results.next()) {
+				user = new User(results.getInt("id"), results.getString("name"), results.getString("pass"), results.getInt("status"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	}
 }

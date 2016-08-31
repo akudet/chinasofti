@@ -2,8 +2,6 @@ package jtwu.controller.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import jtwu.controller.service.UserService;
 import jtwu.model.User;
 
-public class UpdateUserServlet extends HttpServlet {
+public class UserEditServlet extends HttpServlet {
 
 	/**
-	 * The doPost method of the servlet. <br>
+	 * The doGet method of the servlet. <br>
 	 *
-	 * This method is called when a form has its tag value method equals to post.
+	 * This method is called when a form has its tag value method equals to get.
 	 * 
 	 * @param request the request send by the client to the server
 	 * @param response the response send by the server to the client
@@ -29,20 +27,11 @@ public class UpdateUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		UserService userService = new UserService();
-		
 		int id = Integer.parseInt(request.getParameter("id"));
-		String username = request.getParameter("username");
-		String userpass = request.getParameter("userpass");
-		int status = Integer.parseInt(request.getParameter("status"));
-		
 		User user = userService.findUserById(id);
-
-		user.setName(username);
-		user.setPass(userpass);
-		user.setStatus(status);
-		userService.updateUser(user);
 		
-		response.sendRedirect("/FirstWeb/admin");
+		request.setAttribute("user", user);
+		request.getRequestDispatcher("/admin/users/edit.jsp").forward(request, response);
 	}
 
 }

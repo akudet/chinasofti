@@ -51,4 +51,8 @@ public class UserService {
 	public int updateUser(User user) {
 		return dao.updateUser(user);
 	}
+	
+	public User findUserById(int id) {
+		return dao.findUserById(id);
+	}
 }
