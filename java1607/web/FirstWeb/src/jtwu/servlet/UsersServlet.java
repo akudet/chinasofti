@@ -37,12 +37,7 @@ public class UsersServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		users = new ArrayList<User>();
-		
-		Map<String, User> userss = UserData.createUsers();
-		for (String name : userss.keySet()) {
-			users.add(userss.get(name));
-		}
+		users = UserData.createUsers();
 	}
 
 	

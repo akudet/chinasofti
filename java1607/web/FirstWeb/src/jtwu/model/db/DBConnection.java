@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import jtwu.model.UserData;
+
 
 public class DBConnection {
 	
@@ -23,7 +25,6 @@ public class DBConnection {
 	}
 
 	public static void main(String[] args) {
-		Connection conn = DBConnection.getConnection();
-		System.out.println(DBConnection.getConnection());
+		UserData.addUserDataToDB();
 	}
 }
