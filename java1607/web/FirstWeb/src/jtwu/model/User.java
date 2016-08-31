@@ -1,5 +1,8 @@
 package jtwu.model;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 // user model depends on the underline database representation
 // i am not sure whether this is good
 public class User {
@@ -27,6 +30,10 @@ public class User {
 				"'" + pass + "'," +
 				status +
 				")";
+	}
+	
+	public void saveToDB(Connection conn) throws SQLException {
+		conn.prepareStatement(toValues()).execute();
 	}
 	
 	public static String createStatement() {

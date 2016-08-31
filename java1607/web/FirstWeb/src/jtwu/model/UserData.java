@@ -32,7 +32,7 @@ public class UserData {
 			
 			List<User> users = createUsers();
 			for (User user : users) {
-				conn.prepareStatement(user.toValues()).execute();
+				user.saveToDB(conn);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
