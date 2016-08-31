@@ -1,5 +1,10 @@
 package jtwu.model.dao;
 
+import java.sql.*;
+
+import jtwu.model.User;
+import jtwu.model.db.DBConnection;
+
 // i kind of understand how this may use(seems good usage for me
 // I try to think dao as a way to represent the User mode in database
 // so the User model may be a subset, or so projection of the actual
@@ -21,4 +26,23 @@ package jtwu.model.dao;
 // which is better.
 public class UserDao {
 
+	// return one user by name, null if not found
+	public static User findUserByName(String name) {
+		Connection conn = DBConnection.getConnection();
+		User user = null;
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE name = ?");
+			stmt.setString(1, name);
+			ResultSet results = stmt.executeQuery();
+			if (results.next()) {
+				user = new User(results.getString("name"), results.getString("pass"), results.getInt("status"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	}
 }

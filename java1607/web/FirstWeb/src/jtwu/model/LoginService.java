@@ -3,6 +3,8 @@ package jtwu.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import jtwu.model.dao.UserDao;
+
 public class LoginService {
 	
 	/*
@@ -11,9 +13,10 @@ public class LoginService {
 	 * you can get the err msg by getErrMsg(errCode)
 	 */
 	public int login(String username, String userpass) {
-		Map<String, User> users = UserData.createUsers();
-		if (users.containsKey(username)) {
-			User user = users.get(username);
+		User user = UserDao.findUserByName(username);
+		if (null == user) {
+			return ERR_NAME_OR_PASS;
+		} else {
 			int status = user.getStatus();
 			System.out.println(status);
 			if (status == User.AUTH_SUCC) {
@@ -29,8 +32,6 @@ public class LoginService {
 					return ERR_AUTH_REJECT;
 				}
 			}
-		} else {
-			return ERR_NAME_OR_PASS;
 		}
 		
 		// not reach here
