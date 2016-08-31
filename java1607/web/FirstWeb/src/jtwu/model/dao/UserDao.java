@@ -1,6 +1,7 @@
 package jtwu.model.dao;
 
 import java.sql.*;
+import java.util.*;
 
 import jtwu.model.User;
 import jtwu.model.db.DBConnection;
@@ -25,6 +26,31 @@ import jtwu.model.db.DBConnection;
 // this is the projection and representation problem, which I don't know 
 // which is better.
 public class UserDao {
+	Connection conn;
+	
+	public UserDao() {
+		conn = DBConnection.getConnection();
+	}
+	
+	// the same with a little modification ?
+	public Collection<User> getUsers() {
+		Collection<User> users = new ArrayList<User>();
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users");
+			ResultSet results = stmt.executeQuery();
+			while (results.next()) {
+				// the access is still raw
+				users.add(new User(results.getString("name"), results.getString("pass"), results.getInt("status")));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return users;
+	}
 
 	// return one user by name, null if not found
 	public static User findUserByName(String name) {
