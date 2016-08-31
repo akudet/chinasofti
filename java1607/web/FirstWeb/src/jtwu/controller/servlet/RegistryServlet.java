@@ -1,4 +1,4 @@
-package jtwu.servlet;
+package jtwu.controller.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jtwu.controller.service.RegistryService;
 import jtwu.model.User;
-import jtwu.model.service.RegistryService;
 
 public class RegistryServlet extends HttpServlet {
 

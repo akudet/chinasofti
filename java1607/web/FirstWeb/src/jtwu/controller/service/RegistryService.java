@@ -1,4 +1,4 @@
-package jtwu.model.service;
+package jtwu.controller.service;
 
 import jtwu.model.User;
 import jtwu.model.dao.UserDao;

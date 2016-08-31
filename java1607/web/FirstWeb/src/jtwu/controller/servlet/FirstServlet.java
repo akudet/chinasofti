@@ -1,4 +1,4 @@
-package jtwu.servlet;
+package jtwu.controller.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;

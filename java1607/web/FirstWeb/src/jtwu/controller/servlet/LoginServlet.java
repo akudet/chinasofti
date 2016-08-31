@@ -1,22 +1,19 @@
-package jtwu.servlet;
+package jtwu.controller.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jtwu.model.LoginService;
 import jtwu.model.User;
-import jtwu.model.UserData;
-import jtwu.model.service.UsersService;
 
-public class UsersServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -28,13 +25,21 @@ public class UsersServlet extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		UsersService usersService = new UsersService();
-		Collection<User> users = usersService.getUsers();
-		request.setAttribute("users", users);
-		request.getRequestDispatcher("users.jsp").forward(request, response);
+		LoginService service = new LoginService();
+		String username = request.getParameter("username");
+		String userpass = request.getParameter("password");
+		int res = service.login(username, userpass);
+		System.out.println(username + userpass);
+		if (res == LoginService.AUTH_SUCC) {
+			request.getRequestDispatcher("succ.jsp").forward(request, response);
+		} else {
+			request.setAttribute("err_msg", service.getErrMsg(res));
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+		
 	}
 
 }
