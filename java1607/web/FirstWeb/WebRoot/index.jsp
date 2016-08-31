@@ -46,5 +46,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </form>
     <a href="UsersServlet">Users</a>
     <a href="registry.jsp">Registry</a>
+    <a href="UpdateUserServlet">Update</a>
   </body>
 </html>

@@ -28,6 +28,27 @@ import jtwu.model.db.DBConnection;
 public class UserDao {
 	Connection conn;
 	
+	public int updateUser(User user) {
+		int res = 0;
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement("UPDATE users SET name = ? , pass = ? WHERE id = ?");
+			
+			stmt.setString(1, user.getName());
+			stmt.setString(2, user.getPass());
+			stmt.setInt(3, user.getId());
+			
+			res = stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+		
+	}
+	
 	public UserDao() {
 		conn = DBConnection.getConnection();
 	}
@@ -41,7 +62,7 @@ public class UserDao {
 			ResultSet results = stmt.executeQuery();
 			while (results.next()) {
 				// the access is still raw
-				users.add(new User(results.getString("name"), results.getString("pass"), results.getInt("status")));
+				users.add(new User(results.getInt("id"), results.getString("name"), results.getString("pass"), results.getInt("status")));
 			}
 			
 		} catch (SQLException e) {
@@ -62,7 +83,7 @@ public class UserDao {
 			stmt.setString(1, name);
 			ResultSet results = stmt.executeQuery();
 			if (results.next()) {
-				user = new User(results.getString("name"), results.getString("pass"), results.getInt("status"));
+				user = new User(results.getInt("id"), results.getString("name"), results.getString("pass"), results.getInt("status"));
 			}
 			
 		} catch (SQLException e) {
