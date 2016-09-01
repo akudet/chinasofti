@@ -32,11 +32,12 @@ public class UserDao {
 		int res = 0;
 		
 		try {
-			PreparedStatement stmt = conn.prepareStatement("UPDATE users SET name = ? , pass = ? WHERE id = ?");
+			PreparedStatement stmt = conn.prepareStatement("UPDATE users SET name = ? , pass = ?, status = ? WHERE id = ?");
 			
 			stmt.setString(1, user.getName());
 			stmt.setString(2, user.getPass());
-			stmt.setInt(3, user.getId());
+			stmt.setInt(3, user.getStatus());
+			stmt.setInt(4, user.getId());
 			
 			res = stmt.executeUpdate();
 			

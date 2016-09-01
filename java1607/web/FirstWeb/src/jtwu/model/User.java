@@ -98,4 +98,8 @@ public class User {
 	public String getStatusDescription() {
 		return STATUS_DESCRIPTIONS[status];
 	}
+	
+	public static String getStatusDescription(int status) {
+		return STATUS_DESCRIPTIONS[status];
+	}
 }
