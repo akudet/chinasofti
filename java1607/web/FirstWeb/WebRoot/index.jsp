@@ -45,6 +45,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<input type="submit" value="post">
     </form>
     <a href="users">Users</a>
-    <a href="users/new.jsp">Registry</a>
+    <a href="registry.jsp">Registry</a>
   </body>
 </html>

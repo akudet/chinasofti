@@ -54,16 +54,6 @@ public class UsersServlet extends HttpServlet {
 			doDelete(request, response);
 			return;
 		}
-		
-		RegistryService regService = new RegistryService();
-		String username = request.getParameter("username");
-		String userpass = request.getParameter("userpass");
-		if (regService.registry(username, userpass) == RegistryService.REGISTRY_SUCC) {
-			doGet(request, response);
-		} else {
-			request.setAttribute("err_msg", "注册失败");
-			request.getRequestDispatcher("registry.jsp").forward(request, response);
-		}
 	}
 
 	@Override

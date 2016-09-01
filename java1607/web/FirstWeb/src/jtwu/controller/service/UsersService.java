@@ -44,8 +44,8 @@ public class UsersService {
 		this.dao = new UserDao();
 	}
 
-	public void add(User user) {
-		dao.add(user);
+	public int add(User user) {
+		return dao.add(user);
 	}
 
 	// static is better ? they never use static
