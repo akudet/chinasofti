@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		LoginService service = new LoginService();
 		String username = request.getParameter("username");
 		String userpass = request.getParameter("password");

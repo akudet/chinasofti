@@ -24,7 +24,7 @@ public class RegistryServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		RegistryService regService = new RegistryService();
 		String username = request.getParameter("username");
 		String userpass = request.getParameter("userpass");
