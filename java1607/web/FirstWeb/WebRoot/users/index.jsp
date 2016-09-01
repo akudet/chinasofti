@@ -42,6 +42,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				<input type="hidden" name="id" value="<%= user.getId() %>">
   				<input type="submit" value="修改">
   			</form>
+  			<form action="users" method="post">
+  				<input type="hidden" name="delete">
+  				<input type="hidden" name="id" value="<%= user.getId() %>">
+  				<input type="submit" value="删除">
+  			</form>
   		</td>
       </tr>
     <% } %>

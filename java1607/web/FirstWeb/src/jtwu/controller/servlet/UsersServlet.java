@@ -49,6 +49,12 @@ public class UsersServlet extends HttpServlet {
 			return;
 		}
 		
+		String delete = request.getParameter("delete");
+		if (null != delete) {
+			doDelete(request, response);
+			return;
+		}
+		
 		RegistryService regService = new RegistryService();
 		String username = request.getParameter("username");
 		String userpass = request.getParameter("userpass");
@@ -63,20 +69,33 @@ public class UsersServlet extends HttpServlet {
 	@Override
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UsersService userService = new UsersService();
+		UsersService usersService = new UsersService();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		String username = request.getParameter("username");
 		String userpass = request.getParameter("userpass");
 		int status = Integer.parseInt(request.getParameter("status"));
 		
-		User user = userService.findUserById(id);
+		User user = usersService.findUserById(id);
 
 		user.setName(username);
 		user.setPass(userpass);
 		user.setStatus(status);
-		userService.updateUser(user);
+		usersService.updateUser(user);
 		
+		doGet(request, response);
+	}
+
+	@Override
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		UsersService usersService = new UsersService();
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		User user = usersService.findUserById(id);
+
+		usersService.deleteUser(user);
 		doGet(request, response);
 	}
 

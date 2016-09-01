@@ -44,6 +44,9 @@ public class UsersService {
 		this.dao = new UserDao();
 	}
 
+	public void add(User user) {
+		dao.add(user);
+	}
 
 	// static is better ? they never use static
 	public User findUserByName(String name) {
@@ -52,6 +55,10 @@ public class UsersService {
 	
 	public int updateUser(User user) {
 		return dao.updateUser(user);
+	}
+	
+	public int deleteUser(User user) {
+		return dao.deleteUser(user);
 	}
 	
 	public User findUserById(int id) {

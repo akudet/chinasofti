@@ -130,4 +130,21 @@ public class UserDao {
 		}
 		return user;
 	}
+
+	public int deleteUser(User user) {
+		int res = 0;
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(String.format("DELETE FROM users WHERE id = %d;", user.getId()));
+			
+			res = stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+		
+	}
 }
