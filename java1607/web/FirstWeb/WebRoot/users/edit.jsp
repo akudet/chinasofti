@@ -39,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<input type="password" name="userpass" value="<%= user.getPass() %>">
     		<select name="status">
     			<option selected value="<%= User.AUTH_SUCC %>"><%= User.getStatusDescription(User.AUTH_SUCC) %></option>
-    			<option value="<%= User.ERR_AUTH_REJECT %>"><%= User.getStatusDescription(User.ERR_AUTH_REJECT) %></option>
-    			<option value="<%= User.ERR_PENDING_AUTH %>"><%= User.getStatusDescription(User.ERR_PENDING_AUTH) %></option>
+    			<option value="<%= User.AUTH_REJECT %>"><%= User.getStatusDescription(User.AUTH_REJECT) %></option>
+    			<option value="<%= User.AUTH_PENDING %>"><%= User.getStatusDescription(User.AUTH_PENDING) %></option>
     		</select>
     		<input type="submit" value="修改">
     	</form>

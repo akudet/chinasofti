@@ -16,9 +16,9 @@ public class User {
 	//状态为0，表示正在等待审核，登录失败
 	//状态为1，表示审核通过，登录成功
 	//状态为2，表示审核被拒绝，登录失败
-	public static int ERR_PENDING_AUTH = 0;
+	public static int AUTH_PENDING = 0;
 	public static int AUTH_SUCC = 1;
-	public static int ERR_AUTH_REJECT = 2;
+	public static int AUTH_REJECT = 2;
 	
 	int id;
 	String name;

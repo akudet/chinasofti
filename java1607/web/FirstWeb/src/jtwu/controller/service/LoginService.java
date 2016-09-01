@@ -16,7 +16,7 @@ public class LoginService {
 	public int login(String username, String userpass) {
 		User user = UserDao.findUserByName(username);
 		if (null == user) {
-			return ERR_NAME_OR_PASS;
+			return ERR_WRONG_NAME_OR_PASS;
 		} else {
 			int status = user.getStatus();
 			System.out.println(status);
@@ -24,12 +24,12 @@ public class LoginService {
 				if (user.getPass().equals(userpass)) {
 					return AUTH_SUCC;
 				} else {
-					return ERR_NAME_OR_PASS;
+					return ERR_WRONG_NAME_OR_PASS;
 				}
 			} else {
-				if (status == User.ERR_PENDING_AUTH) {
+				if (status == User.AUTH_PENDING) {
 					return ERR_PENDING_AUTH;
-				} else if (status == User.ERR_AUTH_REJECT) {
+				} else if (status == User.AUTH_REJECT) {
 					return ERR_AUTH_REJECT;
 				}
 			}
@@ -47,7 +47,7 @@ public class LoginService {
 	public static int AUTH_SUCC = 1;
 	public static int ERR_PENDING_AUTH = 0;
 	public static int ERR_AUTH_REJECT = 2;
-	public static int ERR_NAME_OR_PASS = 3;
+	public static int ERR_WRONG_NAME_OR_PASS = 3;
 	private static Map<Integer, String> ERR_MSG;
 
 	static {
@@ -55,7 +55,7 @@ public class LoginService {
 		ERR_MSG.put(AUTH_SUCC, "登录成功");
 		ERR_MSG.put(ERR_PENDING_AUTH, "登录失败，等待审核");
 		ERR_MSG.put(ERR_AUTH_REJECT, "登录失败，审核被拒绝");
-		ERR_MSG.put(ERR_NAME_OR_PASS, "登录失败，用户名或密码出错");
+		ERR_MSG.put(ERR_WRONG_NAME_OR_PASS, "登录失败，用户名或密码出错");
 	}
 
 	/**
