@@ -7,8 +7,11 @@ import java.sql.SQLException;
 // i am not sure whether this is good
 public class User {
 
-	// rep invar
-	// status : 1, 2, 3
+	private static final String[] STATUS_DESCRIPTIONS = {
+		"等待审核",
+		"审核通过",
+		"审核拒绝"
+	};
 	
 	//状态为0，表示正在等待审核，登录失败
 	//状态为1，表示审核通过，登录成功
@@ -90,5 +93,9 @@ public class User {
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+	
+	public String getStatusDescription() {
+		return STATUS_DESCRIPTIONS[status];
 	}
 }

@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
         <td><%= user.getName() %></td>
         <td><%= user.getPass() %></td>
-        <td><%= user.getStatus() %></td>
+        <td><%= user.getStatusDescription() %></td>
         <td>
         	<form action="users/edit.jsp" method="post">
   				<input type="hidden" name="id" value="<%= user.getId() %>">
