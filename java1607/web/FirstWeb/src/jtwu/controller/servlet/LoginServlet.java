@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jtwu.model.LoginService;
+import jtwu.controller.service.LoginService;
 import jtwu.model.User;
 
 public class LoginServlet extends HttpServlet {

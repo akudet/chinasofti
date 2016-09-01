@@ -1,8 +1,9 @@
-package jtwu.model;
+package jtwu.controller.service;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import jtwu.model.User;
 import jtwu.model.dao.UserDao;
 
 public class LoginService {
