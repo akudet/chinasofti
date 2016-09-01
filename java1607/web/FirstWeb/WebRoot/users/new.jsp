@@ -1,6 +1,6 @@
-<%@ page language="java" import="java.util.*, jtwu.model.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*, jtwu.controller.service.*" pageEncoding="UTF-8"%>
 <%
-Collection<User> users = (Collection<User>) request.getAttribute("users");
+
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'admin.jsp' starting page</title>
+    <title>My JSP 'registry.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,15 +24,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<!-- generate a list of users with an edit link on it -->
-  	<% if (null != users) { %>
-  		<% for (User user : users) { %>
-  			<%= user.getName() %>
-  			<form action="<%= path + "/admin/UserEditServlet" %>" method="post">
-  				<input type="hidden" name="id" value="<%= user.getId() %>">
-  				<input type="submit" value="修改">
-  			</form>
-	  	<% } %>
-  	<% } %>
+        <form action="users" method="post">
+    	用户名：<input type="text" name="username">
+    	密码：<input type="password" name="userpass">
+    	<input type="submit" value="注册">
+    </form>
   </body>
 </html>

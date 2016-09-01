@@ -1,6 +1,9 @@
-<%@ page language="java" import="java.util.*, jtwu.model.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*, jtwu.model.*, jtwu.controller.service.*" pageEncoding="UTF-8"%>
 <%
-User user = (User) request.getAttribute("user");
+	UsersService userService = new UsersService();
+int id = Integer.parseInt(request.getParameter("id"));
+User user = userService.findUserById(id);
+
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
@@ -27,10 +30,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<!-- show a page allow user to modifiy a particular user -->
     <% if (user != null) { %>
     	<%= user.getName() %>
-    	<form action="UpdateUserServlet" method="post">
+    	<form action="users" method="post">
+    		<!-- simulate a put request -->
+    		<input type="hidden" name="put">
+    		
     		<input type="hidden" name="id" value="<%= user.getId() %>">
     	    <input type="text" name="username" value="<%= user.getName() %>">
-    		<input type="password" name="userpass">
+    		<input type="password" name="userpass" value="<%= user.getPass() %>">
     		<input type="number" name="status" value="<%= user.getStatus() %>">
     		<input type="submit" value="修改">
     	</form>

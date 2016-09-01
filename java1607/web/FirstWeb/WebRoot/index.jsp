@@ -44,8 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	密码：<input type="password" name="password">
     	<input type="submit" value="post">
     </form>
-    <a href="UsersServlet">Users</a>
-    <a href="registry.jsp">Registry</a>
-    <a href="admin">Admin</a>
+    <a href="users">Users</a>
+    <a href="users/new.jsp">Registry</a>
   </body>
 </html>
