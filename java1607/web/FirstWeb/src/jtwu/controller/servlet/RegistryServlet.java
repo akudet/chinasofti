@@ -12,6 +12,12 @@ import jtwu.controller.service.RegistryService;
 
 public class RegistryServlet extends HttpServlet {
 
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("registry.jsp").forward(request, response);
+	}
+
 	/**
 	 * The doPost method of the servlet. <br>
 	 *

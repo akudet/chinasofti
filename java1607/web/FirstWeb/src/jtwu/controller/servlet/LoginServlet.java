@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jtwu.controller.service.CookiesService;
 import jtwu.controller.service.LoginService;
 import jtwu.model.User;
 
@@ -34,12 +35,26 @@ public class LoginServlet extends HttpServlet {
 		int res = service.login(username, userpass);
 		System.out.println(username + userpass);
 		if (res == LoginService.AUTH_SUCC) {
+			CookiesService cs = new CookiesService(request.getCookies());
+			cs.setCachedUser(10);
+			cs.addCookiesToResponse(response);
 			request.getRequestDispatcher("succ.jsp").forward(request, response);
 		} else {
 			request.setAttribute("err_msg", service.getErrMsg(res));
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		CookiesService cs = new CookiesService(request.getCookies());
+		if (cs.isCachedUser()) {
+			request.getRequestDispatcher("succ.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
 	}
 
 }

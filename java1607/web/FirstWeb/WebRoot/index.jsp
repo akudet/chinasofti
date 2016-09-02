@@ -21,30 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <% String err_msg = (String) request.getAttribute("err_msg"); %>
-    <% if (err_msg != null) { %>
-    	<%= err_msg %>
-    <% } %>
-    <script>
-    	var validate = function() {
-    		var form = document.forms[0];
-    		var name = form.username.value;
-    		var pass = form.password.value;
-    		if (!name) {
-    			alert("empty name");
-    		}
-    		if (!pass) {
-    			alert("empty pass");
-    		}
-    		return false;
-    	};
-    </script>
-    <form action="LoginServlet" method="post" onsubmit="validate();">
-    	用户名：<input type="text" name="username">
-    	密码：<input type="password" name="password">
-    	<input type="submit" value="post">
-    </form>
-    <a href="users">Users</a>
-    <a href="registry.jsp">Registry</a>
+    <a href="LoginServlet">Login</a>
+    <a href="RegistryServlet">Registry</a>
   </body>
 </html>
