@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(username + userpass);
 		if (res == LoginService.AUTH_SUCC) {
 			CookiesService cs = new CookiesService(request.getCookies());
-			cs.setCachedUser(10);
+			cs.grantUser(10);
 			cs.addCookiesToResponse(response);
 			request.getRequestDispatcher("succ.jsp").forward(request, response);
 		} else {

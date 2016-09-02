@@ -26,7 +26,7 @@ public class CookiesService {
 		return cookies.containsKey("cachedUser");
 	}
 
-	public void setCachedUser(int expiry) {
+	public void grantUser(int expiry) {
 		Cookie cookie = new Cookie("cachedUser", "true");
 		cookie.setMaxAge(expiry);
 		cookies.put("cachedUser", cookie);
