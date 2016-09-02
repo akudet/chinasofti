@@ -31,6 +31,13 @@ public class CookiesService {
 		cookie.setMaxAge(expiry);
 		cookies.put("cachedUser", cookie);
 	}
+	
+	public void invalidUser() {
+		if (cookies.containsKey("cachedUser")) {
+			Cookie cookie = cookies.get("cachedUser");
+			cookie.setMaxAge(0);
+		}
+	}
 
 	public void addCookiesToResponse(HttpServletResponse response) {
 		for (Entry<String, Cookie> entry : cookies.entrySet()) {
