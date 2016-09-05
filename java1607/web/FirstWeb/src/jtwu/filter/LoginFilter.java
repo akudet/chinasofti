@@ -35,7 +35,8 @@ public class LoginFilter implements Filter {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			request.setAttribute("err_msg", "You need to login to accss this page");
-			response.sendRedirect(LoginServlet.SERVLET_URL);
+			//response.sendRedirect(request.getContextPath() + LoginServlet.SERVLET_URL);
+			request.getRequestDispatcher(LoginServlet.SERVLET_URL).forward(request, response);
 		} else {
 			arg2.doFilter(arg0, arg1);
 		}

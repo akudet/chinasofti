@@ -49,7 +49,7 @@
 
   <servlet-mapping>
   	<servlet-name>UsersServlet</servlet-name>
-  	<url-pattern>/users</url-pattern>
+  	<url-pattern>/UsersServlet</url-pattern>
   </servlet-mapping>
     <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>

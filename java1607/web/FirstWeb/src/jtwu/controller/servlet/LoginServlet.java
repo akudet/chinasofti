@@ -10,9 +10,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jtwu.controller.service.CookiesService;
 import jtwu.controller.service.LoginService;
+import jtwu.controller.service.UsersService;
 import jtwu.model.User;
 
 public class LoginServlet extends HttpServlet {
@@ -46,18 +48,25 @@ public class LoginServlet extends HttpServlet {
 			}
 			sc.setAttribute("count", count);
 			
-			request.getRequestDispatcher(UsersServlet.CONTENT_URL + "succ.jsp").forward(request, response);
+			HttpSession session = request.getSession();
+			session.setAttribute("user", new UsersService().findUserByName(username));
 		} else {
 			request.setAttribute("err_msg", service.getErrMsg(res));
-			request.getRequestDispatcher(UsersServlet.CONTENT_URL + "login.jsp").forward(request, response);
 		}
-		
+		doGet(request, response);
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher(UsersServlet.CONTENT_URL + "login.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			request.setAttribute("user", user);
+			request.getRequestDispatcher(UsersServlet.CONTENT_URL + "user.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher(UsersServlet.CONTENT_URL + "login.jsp").forward(request, response);
+		}
 	}
 
 }

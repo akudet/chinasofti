@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jtwu.controller.service.CookiesService;
 
@@ -24,11 +25,12 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CookiesService cs = new CookiesService(request.getCookies());
-		cs.invalidUser();
-		cs.addCookiesToResponse(response);
+		HttpSession session = request.getSession();
+		session.removeAttribute("user");
 		
-		response.sendRedirect("LoginServlet");
+		//I don't why redirect and dispatcher using a different url path
+		response.sendRedirect(request.getContextPath() + LoginServlet.SERVLET_URL);
+		//request.getRequestDispatcher(LoginServlet.SERVLET_URL).forward(request, response);
 	}
 
 }

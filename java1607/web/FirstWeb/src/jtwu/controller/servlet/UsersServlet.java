@@ -19,6 +19,7 @@ import jtwu.model.UserData;
 
 public class UsersServlet extends HttpServlet {
 	
+	public static final String SERVLET_URL = "UsersServlet";
 	public static final String CONTENT_URL = "users/";
 
 	/**
