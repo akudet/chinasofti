@@ -19,8 +19,11 @@ import jtwu.model.UserData;
 
 public class UsersServlet extends HttpServlet {
 	
+	//users template url with respect to the context root
+	//tmpl should only used by dispatcher
+	public static final String TMPL_URL = "/tmpl/users/";
 	public static final String SERVLET_URL = "UsersServlet";
-	public static final String CONTENT_URL = "users/";
+	public static final String CONTENT_URL = TMPL_URL;
 
 	/**
 	 * The doGet method of the servlet. <br>
