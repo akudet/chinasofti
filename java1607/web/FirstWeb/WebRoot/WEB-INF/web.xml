@@ -5,6 +5,10 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name></display-name>
+  
+  <listener>
+  	<listener-class>jtwu.listener.CountListener</listener-class>
+  </listener>
 
   <servlet>
     <description>a ReSTful service</description>

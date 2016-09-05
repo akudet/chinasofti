@@ -42,10 +42,8 @@ public class LoginServlet extends HttpServlet {
 			
 			ServletContext sc = getServletContext();
 			Integer count = (Integer) sc.getAttribute("count");
-			if (null != count) {
+			if (null != count) {//through it's should not be wrong unless sb do it wrong
 				count++;
-			} else {
-				count = 1;
 			}
 			sc.setAttribute("count", count);
 			
