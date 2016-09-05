@@ -36,10 +36,6 @@ public class LoginServlet extends HttpServlet {
 		int res = service.login(username, userpass);
 		System.out.println(username + userpass);
 		if (res == LoginService.AUTH_SUCC) {
-			CookiesService cs = new CookiesService(request.getCookies());
-			cs.grantUser(10);
-			cs.addCookiesToResponse(response);
-			
 			ServletContext sc = getServletContext();
 			Integer count = (Integer) sc.getAttribute("count");
 			if (null != count) {//through it's should not be wrong unless sb do it wrong
@@ -58,12 +54,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CookiesService cs = new CookiesService(request.getCookies());
-		if (cs.isCachedUser()) {
-			request.getRequestDispatcher("succ.jsp").forward(request, response);
-		} else {
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		}
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
 }
