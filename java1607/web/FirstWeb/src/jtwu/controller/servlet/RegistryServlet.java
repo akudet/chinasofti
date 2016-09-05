@@ -15,7 +15,7 @@ public class RegistryServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("registry.jsp").forward(request, response);
+		request.getRequestDispatcher(UsersServlet.CONTENT_URL + "registry.jsp").forward(request, response);
 	}
 
 	/**
@@ -34,11 +34,12 @@ public class RegistryServlet extends HttpServlet {
 		RegistryService regService = new RegistryService();
 		String username = request.getParameter("username");
 		String userpass = request.getParameter("userpass");
+		System.out.println(UsersServlet.CONTENT_URL);
 		if (regService.registry(username, userpass) == RegistryService.REGISTRY_SUCC) {
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			response.sendRedirect("LoginServlet");
 		} else {
 			request.setAttribute("err_msg", "注册失败");
-			request.getRequestDispatcher("registry.jsp").forward(request, response);
+			request.getRequestDispatcher(UsersServlet.CONTENT_URL + "registry.jsp").forward(request, response);
 		}
 	}
 

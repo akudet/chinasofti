@@ -43,10 +43,10 @@ public class LoginServlet extends HttpServlet {
 			}
 			sc.setAttribute("count", count);
 			
-			request.getRequestDispatcher("succ.jsp").forward(request, response);
+			request.getRequestDispatcher(UsersServlet.CONTENT_URL + "succ.jsp").forward(request, response);
 		} else {
 			request.setAttribute("err_msg", service.getErrMsg(res));
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher(UsersServlet.CONTENT_URL + "login.jsp").forward(request, response);
 		}
 		
 	}
@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+		request.getRequestDispatcher(UsersServlet.CONTENT_URL + "login.jsp").forward(request, response);
 	}
 
 }
