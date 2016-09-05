@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  		<p>你是第<%= application.getAttribute("count").toString() %> 访问者。</p>
     	<a href="users">Users</a>
     	<a href="LogoutServlet">登出</a>
   </body>

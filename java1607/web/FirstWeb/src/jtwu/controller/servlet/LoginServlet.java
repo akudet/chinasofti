@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +39,16 @@ public class LoginServlet extends HttpServlet {
 			CookiesService cs = new CookiesService(request.getCookies());
 			cs.grantUser(10);
 			cs.addCookiesToResponse(response);
+			
+			ServletContext sc = getServletContext();
+			Integer count = (Integer) sc.getAttribute("count");
+			if (null != count) {
+				count++;
+			} else {
+				count = 1;
+			}
+			sc.setAttribute("count", count);
+			
 			request.getRequestDispatcher("succ.jsp").forward(request, response);
 		} else {
 			request.setAttribute("err_msg", service.getErrMsg(res));
