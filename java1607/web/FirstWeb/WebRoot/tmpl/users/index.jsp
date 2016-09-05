@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*, jtwu.model.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*, jtwu.model.*, jtwu.controller.servlet.*" pageEncoding="UTF-8"%>
 <%
 Collection<User> users = (Collection<User>) request.getAttribute("users");
 String path = request.getContextPath();
@@ -38,11 +38,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <td><%= user.getPass() %></td>
         <td><%= user.getStatusDescription() %></td>
         <td>
-        	<form action="users/edit.jsp" method="post">
+        	<form action="<%= path + UsersServlet.SERVLET_URL %>" method="get">
+        		<input type="hidden" name="edit">
   				<input type="hidden" name="id" value="<%= user.getId() %>">
   				<input type="submit" value="修改">
   			</form>
-  			<form action="users" method="post">
+  			<form action="<%= path + UsersServlet.SERVLET_URL %>" method="post">
   				<input type="hidden" name="delete">
   				<input type="hidden" name="id" value="<%= user.getId() %>">
   				<input type="submit" value="删除">

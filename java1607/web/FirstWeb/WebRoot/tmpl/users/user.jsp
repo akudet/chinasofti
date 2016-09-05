@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*, jtwu.model.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*, jtwu.model.*, jtwu.controller.servlet.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -27,7 +27,7 @@ User user = (User) request.getAttribute("user");
   <body>
   	<h2>欢迎<%= user.getName() %></h2>
   		<p>你是第<%= application.getAttribute("count").toString() %> 访问者。</p>
-    	<a href="UsersServlet">Users</a>
-    	<a href="LogoutServlet">登出</a>
+    	<a href="<%= path + UsersServlet.SERVLET_URL %>">Users</a>
+    	<a href="<%= path + LogoutServlet.SERVLET_URL %>">登出</a>
   </body>
 </html>

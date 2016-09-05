@@ -22,7 +22,7 @@ public class UsersServlet extends HttpServlet {
 	//users template url with respect to the context root
 	//tmpl should only used by dispatcher
 	public static final String TMPL_URL = "/tmpl/users/";
-	public static final String SERVLET_URL = "UsersServlet";
+	public static final String SERVLET_URL = "/users";
 	public static final String CONTENT_URL = TMPL_URL;
 
 	/**
@@ -38,10 +38,19 @@ public class UsersServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		UsersService usersService = new UsersService();
-		Collection<User> users = usersService.getUsers();
-		request.setAttribute("users", users);
-		request.getRequestDispatcher(CONTENT_URL + "index.jsp").forward(request, response);
+		String edit = request.getParameter("edit");
+		if (edit != null) {
+			UsersService userService = new UsersService();
+			int id = Integer.parseInt(request.getParameter("id"));
+			User user = userService.findUserById(id);
+			request.setAttribute("user", user);
+			request.getRequestDispatcher(CONTENT_URL + "edit.jsp").forward(request, response);
+		} else {
+			UsersService usersService = new UsersService();
+			Collection<User> users = usersService.getUsers();
+			request.setAttribute("users", users);
+			request.getRequestDispatcher(CONTENT_URL + "index.jsp").forward(request, response);
+		}
 	}
 
 	@Override

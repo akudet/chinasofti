@@ -1,8 +1,7 @@
-<%@ page language="java" import="java.util.*, jtwu.model.*, jtwu.controller.service.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*, jtwu.model.*, jtwu.controller.service.*, jtwu.controller.servlet.*" pageEncoding="UTF-8"%>
 <%
-	UsersService userService = new UsersService();
-int id = Integer.parseInt(request.getParameter("id"));
-User user = userService.findUserById(id);
+
+User user = (User) request.getAttribute("user");
 
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -30,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<!-- show a page allow user to modifiy a particular user -->
     <% if (user != null) { %>
     	<%= user.getName() %>
-    	<form action="users" method="post">
+    	<form action="<%= path + UsersServlet.SERVLET_URL %>" method="post">
     		<!-- simulate a put request -->
     		<input type="hidden" name="put">
     		

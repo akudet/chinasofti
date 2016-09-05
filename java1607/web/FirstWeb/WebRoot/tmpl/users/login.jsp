@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*, jtwu.controller.servlet.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <% if (err_msg != null) { %>
     	<%= err_msg %>
     <% } %>
-	<form action="LoginServlet" method="post" onsubmit="validate();">
+	<form action="<%= path + LoginServlet.SERVLET_URL %>" method="post" onsubmit="validate();">
     	用户名：<input type="text" name="username">
     	密码：<input type="password" name="password">
     	<input type="submit" value="post">

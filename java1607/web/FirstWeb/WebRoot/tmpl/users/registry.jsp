@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*, jtwu.controller.service.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*, jtwu.controller.service.*, jtwu.controller.servlet.*" pageEncoding="UTF-8"%>
 <%
 
 String path = request.getContextPath();
@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-        <form action="RegistryServlet" method="post">
+        <form action="<%= path + RegistryServlet.SERVLET_URL %>" method="post">
     	用户名：<input type="text" name="username">
     	密码：<input type="password" name="userpass">
     	<input type="submit" value="注册">

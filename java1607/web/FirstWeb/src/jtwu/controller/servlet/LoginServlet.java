@@ -20,7 +20,7 @@ import jtwu.model.User;
 public class LoginServlet extends HttpServlet {
 	
 	// this should be consistent with web.xml file
-	public static final String SERVLET_URL = "/LoginServlet";
+	public static final String SERVLET_URL = "/users/login";
 
 	/**
 	 * The doGet method of the servlet. <br>

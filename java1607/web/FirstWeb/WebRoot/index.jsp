@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <a href="LoginServlet">Login</a>
-    <a href="RegistryServlet">Registry</a>
+    <a href="users/login">Login</a>
+    <a href="users/registry">Registry</a>
   </body>
 </html>

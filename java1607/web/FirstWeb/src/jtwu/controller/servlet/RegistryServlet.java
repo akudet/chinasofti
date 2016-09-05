@@ -12,6 +12,8 @@ import jtwu.controller.service.RegistryService;
 
 public class RegistryServlet extends HttpServlet {
 
+	public static final String SERVLET_URL = "/users/registry";
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -13,6 +13,8 @@ import jtwu.controller.service.CookiesService;
 
 public class LogoutServlet extends HttpServlet {
 
+	public static final String SERVLET_URL = "/users/logout";
+	
 	/**
 	 * The doGet method of the servlet. <br>
 	 *
