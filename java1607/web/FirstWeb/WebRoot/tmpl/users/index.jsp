@@ -4,7 +4,7 @@ Collection<User> users = (Collection<User>) request.getAttribute("users");
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+
   <body>
   	<!-- generate a list of users with an edit link on it -->
   	<table>
@@ -51,6 +51,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</td>
       </tr>
     <% } %>
+    <c:forEach items="${users}" var="user">
+    	<tr>
+    		<td>${user.name}</td>
+    		<td>${user.pass}</td>
+    		<td>${user.statusDescription}</td>
+			<td>
+        	<form action="<%= path + UsersServlet.SERVLET_URL %>" method="get">
+        		<input type="hidden" name="edit">
+  				<input type="hidden" name="id" value="${user.id}">
+  				<input type="submit" value="修改">
+  			</form>
+  			<form action="<%= path + UsersServlet.SERVLET_URL %>" method="post">
+  				<input type="hidden" name="delete">
+  				<input type="hidden" name="id" value="${user.id}">
+  				<input type="submit" value="删除">
+  			</form>
+  		</td>
+    	</tr>
+    </c:forEach>
   	</table>
   </body>
 </html>
