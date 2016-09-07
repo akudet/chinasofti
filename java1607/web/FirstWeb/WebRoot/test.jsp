@@ -21,11 +21,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 	<script src="test.js"></script>
+	<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+	<script>
+		var sendJSAJAX = function () {
+			//alert("sendJSAJAX");
+			var xmlhttp = new XMLHttpRequest();
+			
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4) {
+					if (xmlhttp.status == 200) {
+						//alert("got it");
+						document.getElementById("container").innerHTML = xmlhttp.responseText;
+					}
+				}
+			};
+			
+			xmlhttp.open("GET", "index.jsp", true);
+			xmlhttp.send();
+
+		};
+		
+		var sendAJAX = function() {
+			//alert("sendjQueryAJAX()");
+			$.get("index.jsp").done(function(res){
+				$("#container").html(res);
+			});
+		};
+		
+	</script>
+	
   </head>
   
   <body ng-app="testApp" ng-controller="TestController">
  <input type="text" ng-model="name">
     
     <p>{{name}}</p>
+    <div id="container">click the button below</div>
+    <button onclick="sendJSAJAX()">JSAJAX</button>
+    <button onclick="sendAJAX()">jQueryAJAX</button>
   </body>
 </html>
