@@ -53,17 +53,17 @@ public class ValidateServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
+		UsersService us = new UsersService();
+		Boolean exists = us.existsUser(request.getParameter("name"));
+		
+		response.setContentType("text/xml;");
+
 		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
+		out.println("<?xml version='1.0' encoding='utf-8' ?>");
+		out.println("<RESPONSE>");
+		out.print("<EXISTS>" + exists);
+		out.println("</EXISTS>");
+		out.println("</RESPONSE>");
 		out.flush();
 		out.close();
 	}

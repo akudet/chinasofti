@@ -54,9 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var sendAJAX = function() {
 			//alert("sendjQueryAJAX()");
 			var name = $("#name").val();
-			$.get("users/exists?name=" + name).done(function(res){
+			$.post("users/exists", {"name":name}).done(function(res){
 				var exists = res.getElementsByTagName("EXISTS")[0].innerHTML;
-				//alert(xmlhttp.responseText);
+				//alert(res);
 				if (exists == "true") {
 					$("#container").html("user name already exists");
 				} else {
