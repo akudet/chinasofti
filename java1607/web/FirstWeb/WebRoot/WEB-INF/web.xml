@@ -9,7 +9,7 @@
   <listener>
   	<listener-class>jtwu.listener.CountListener</listener-class>
   </listener>
-
+<!--
 <filter>
 	<filter-name>TimeFilter</filter-name>
 	<filter-class>jtwu.filter.TimeFilter</filter-class>
@@ -37,7 +37,7 @@
 	<filter-name>LoginFilter</filter-name>
 	<url-pattern>/users/*</url-pattern>
 </filter-mapping>
-
+-->
   <servlet>
     <description>a ReSTful service</description>
     <display-name>This is the display name of my J2EE component</display-name>
