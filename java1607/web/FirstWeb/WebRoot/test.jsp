@@ -31,20 +31,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if (xmlhttp.readyState == 4) {
 					if (xmlhttp.status == 200) {
 						//alert("got it");
-						document.getElementById("container").innerHTML = xmlhttp.responseText;
+						var xml = xmlhttp.responseXML;
+						var exists = xml.getElementsByTagName("EXISTS")[0].innerHTML;
+						//alert(xmlhttp.responseText);
+						if (exists == "true") {
+							document.getElementById("container").innerHTML = "user name already exists";
+						} else {
+							document.getElementById("container").innerHTML = "user name is ok to use";
+						}
+						
 					}
 				}
 			};
 			
-			xmlhttp.open("GET", "index.jsp", true);
+			var name = $("#name").val();
+			//alert(name);
+			xmlhttp.open("GET", "users/exists?name=" + name, true);
 			xmlhttp.send();
 
 		};
 		
 		var sendAJAX = function() {
 			//alert("sendjQueryAJAX()");
-			$.get("index.jsp").done(function(res){
-				$("#container").html(res);
+			var name = $("#name").val();
+			$.get("users/exists?name=" + name).done(function(res){
+				var exists = res.getElementsByTagName("EXISTS")[0].innerHTML;
+				//alert(xmlhttp.responseText);
+				if (exists == "true") {
+					$("#container").html("user name already exists");
+				} else {
+					$("#container").html("user name is ok to use");
+				}
 			});
 		};
 		
@@ -53,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body ng-app="testApp" ng-controller="TestController">
- <input type="text" ng-model="name">
+ <input id="name" type="text" ng-model="name">
     
     <p>{{name}}</p>
     <div id="container">click the button below</div>

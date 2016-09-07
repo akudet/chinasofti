@@ -53,6 +53,11 @@ public class UsersService {
 		return dao.findUserByName(name);
 	}
 	
+	// return true if exists a user named name
+	public boolean existsUser(String name) {
+		return (null != findUserByName(name));
+	}
+	
 	public int updateUser(User user) {
 		return dao.updateUser(user);
 	}
