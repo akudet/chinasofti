@@ -32,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	    <th>状态</th>
   	    <th>编辑</th>
   	  </tr>
+  	  <%--
     <% for (User user : users) { %>
       <tr>
         <td><%= user.getName() %></td>
@@ -51,6 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</td>
       </tr>
     <% } %>
+     --%>
     <c:forEach items="${users}" var="user">
     	<tr>
     		<td>${user.name}</td>

@@ -38,7 +38,7 @@ public class RegistryServlet extends HttpServlet {
 		String userpass = request.getParameter("userpass");
 		System.out.println(UsersServlet.CONTENT_URL);
 		if (regService.registry(username, userpass) == RegistryService.REGISTRY_SUCC) {
-			response.sendRedirect("LoginServlet");
+			response.sendRedirect("login");
 		} else {
 			request.setAttribute("err_msg", "注册失败");
 			request.getRequestDispatcher(UsersServlet.CONTENT_URL + "registry.jsp").forward(request, response);
