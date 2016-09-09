@@ -12,7 +12,7 @@ import tp4.model.vo.RoomType;
 public class RoomTypeDao {
 
 	Connection con = DBConnection.getConnection();
-	public ArrayList<RoomType> findRoomTypeById(int roomNo) {
+	public ArrayList<RoomType> findAllRoomType() {
 		String sql = "select * from roon_type";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -27,7 +27,9 @@ public class RoomTypeDao {
 						rs.getInt("isHourRoom"),
 						rs.getFloat("hourRoomPrice"),
 						rs.getString("comment"));
+				list.add(roomType);
 			}
+			return list;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

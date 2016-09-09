@@ -13,7 +13,8 @@ public class RoomDao {
 
 	
 	Connection con = DBConnection.getConnection();
-	public ArrayList<Room> findRoomById(String id) {
+	//查询房间信息
+	public ArrayList<Room> findAllRoom() {
 		
 		String sql = "select * from room";
 		try {
@@ -36,15 +37,17 @@ public class RoomDao {
 		return null;
 	}
 	
-	//
+	
+	//删除房间信息
 	public int deleteRoombById(String id) {
+		
 		return 0;
 	}
-	
+	//修改房间信息
 	public int updateRoom(Room room) {
 		return 0;
 	}
-	
+	//添加房间信息
 	public int addRoom(Room room) {
 		
 		return 0;
