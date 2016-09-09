@@ -1,7 +1,7 @@
 package tp4.model.vo;
 /**
  * 
- * @author chris
+ * @author 马厦林
  *
  */
 public class User {

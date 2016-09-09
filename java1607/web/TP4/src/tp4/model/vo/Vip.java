@@ -1,16 +1,21 @@
 package tp4.model.vo;
 /**
  * 
- * @author Chris
+ * @author 马厦林
  *
  */
 public class Vip {
 	protected int vipNumber;
-	protected String cusInformation;
+	protected CusInfo cusInformation;
 	public Vip() {
 	
 	}
-	public Vip(int vipNumber, String cusInformation) {
+	@Override
+	public String toString() {
+		return "Vip [vipNumber=" + vipNumber + ", cusInformation="
+				+ cusInformation + "]";
+	}
+	public Vip(int vipNumber, CusInfo cusInformation) {
 		super();
 		this.vipNumber = vipNumber;
 		this.cusInformation = cusInformation;
@@ -21,15 +26,13 @@ public class Vip {
 	public void setVipNumber(int vipNumber) {
 		this.vipNumber = vipNumber;
 	}
-	public String getCusInformation() {
+	public CusInfo getCusInformation() {
 		return cusInformation;
 	}
-	public void setCusInformation(String cusInformation) {
+	public void setCusInformation(CusInfo cusInformation) {
 		this.cusInformation = cusInformation;
 	}
-	@Override
-	public String toString() {
-		return "VipDao [vipNumber=" + vipNumber + ", cusInformation="
-				+ cusInformation + "]";
-	}
+
+	
+	
 }
