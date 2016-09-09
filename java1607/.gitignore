@@ -1,9 +1,16 @@
 # Workspace
 .metadata
+.settings
 
 # Java Project
 bin
 *.class
+.project
+.classpath
+.mymetadata
 
 # Subversion Repo
 .svn
+
+# Tomcat
+classes
