@@ -12,7 +12,7 @@ public class UserDaoTest {
 	public static void main(String[] args) {
 		UserDao dao = new UserDao();
 		
-		System.out.println(dao.seekAll());
+		System.out.println(dao.findAll());
 	
 	}
 }

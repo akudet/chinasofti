@@ -21,7 +21,7 @@ public class UserDao {
 	ResultSet res = null;
 
 	// 添加数据
-	public int insertUser(User user) {
+	public int add(User user) {
 		con = DBConnection.getConnection();
 		String sql = "insert into vip values(?,?)";
 
@@ -51,7 +51,7 @@ public class UserDao {
 	}
 
 	// 查询数据
-	public ArrayList<User> seekAll() {
+	public ArrayList<User> findAll() {
 		con = DBConnection.getConnection();
 		String sql = "select * from user";
 		try {
@@ -98,7 +98,7 @@ public class UserDao {
 			return 0;
 		}
 //单查询
-		public User select(String userId){
+		public User findById(String userId){
 			con = DBConnection.getConnection();
 			String sql="select * from user where userid";
 			try {

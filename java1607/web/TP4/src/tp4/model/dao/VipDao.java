@@ -22,7 +22,7 @@ public class VipDao {
 	ResultSet res = null;
 	
 //	添加数据
-	public int insertVip(Vip vip){
+	public int add(Vip vip){
 		con = DBConnection.getConnection();
 		String sql = "insert into vip values(?,?)";
 		try {
@@ -47,7 +47,7 @@ public class VipDao {
 
 
 //查询数据
-	public ArrayList<Vip> seekAll(){
+	public ArrayList<Vip> findAll(){
 		
 		con = DBConnection.getConnection();
 		String sql = "select * from vip";
@@ -94,7 +94,7 @@ public class VipDao {
 		
 	}
 
-	public Vip select(String vipNumber) {
+	public Vip findById(String vipNumber) {
 	
 		con = DBConnection.getConnection();
 		
