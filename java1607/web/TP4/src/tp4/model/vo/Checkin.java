@@ -1,5 +1,10 @@
 package tp4.model.vo;
 
+/**
+ *
+ * @author 田霞光
+ *
+ */
 public class Checkin {
 
 	public Checkin(String checkin_id, Room room, CusInfo cus_info_id,

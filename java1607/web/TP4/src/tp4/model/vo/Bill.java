@@ -1,5 +1,10 @@
 package tp4.model.vo;
 
+/**
+ *
+ * @author 田霞光
+ *
+ */
 public class Bill {
 	public Bill(float bill_amount, String comment) {
 		super();

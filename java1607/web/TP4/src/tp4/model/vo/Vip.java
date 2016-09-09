@@ -1,7 +1,8 @@
 package tp4.model.vo;
+
 /**
- * 
- * @author 马厦林
+ *
+ * @author 马厦伟
  *
  */
 public class Vip {

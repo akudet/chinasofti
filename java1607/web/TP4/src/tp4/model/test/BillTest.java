@@ -1,9 +1,15 @@
-package tp4.model.dao;
+package tp4.model.test;
 
 import java.util.ArrayList;
 
+import tp4.model.dao.BillDao;
 import tp4.model.vo.Bill;
 
+/**
+ *
+ * @author 田霞光
+ *
+ */
 public class BillTest {
 	public static void main(String[] args) {
 		

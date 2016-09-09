@@ -17,6 +17,11 @@ import tp4.model.vo.Checkin;
 import tp4.model.vo.CusInfo;
 import tp4.model.vo.Room;
 
+/**
+*
+* @author 田霞光
+*
+*/
 public class CheckinDao {
 	//checkin表的添加
 	public int addCheckin(Checkin checkin) {

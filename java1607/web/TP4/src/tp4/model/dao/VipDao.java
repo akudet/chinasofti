@@ -13,7 +13,7 @@ import tp4.model.vo.Vip;
 
 /**
  * 
- * @author 马厦林
+ * @author 马厦伟
  *
  */
 public class VipDao {

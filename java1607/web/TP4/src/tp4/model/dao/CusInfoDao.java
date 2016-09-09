@@ -1,7 +1,5 @@
 package tp4.model.dao;
-/**
- * 作者：项双江
- */
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +9,11 @@ import java.util.ArrayList;
 import tp4.model.db.DBConnection;
 import tp4.model.vo.CusInfo;
 
+/**
+ *
+ * @author 项双江
+ *
+ */
 public class CusInfoDao {
 	Connection con = null;
 	PreparedStatement pre = null;

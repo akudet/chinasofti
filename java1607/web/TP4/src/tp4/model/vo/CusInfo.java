@@ -1,6 +1,9 @@
 package tp4.model.vo;
+
 /**
- * 作者：项双江
+ *
+ * @author 项双江
+ *
  */
 public class CusInfo {
 	protected String cusInfoId;

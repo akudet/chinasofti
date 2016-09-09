@@ -1,5 +1,10 @@
 package tp4.model.vo;
 
+/**
+ *
+ * @author 张科林
+ *
+ */
 public class Room {
 	protected String roomId;
 	protected RoomType roomTypeNo;

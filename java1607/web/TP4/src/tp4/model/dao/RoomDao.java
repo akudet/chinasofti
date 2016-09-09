@@ -10,6 +10,11 @@ import tp4.model.db.DBConnection;
 import tp4.model.vo.Bill;
 import tp4.model.vo.Room;
 
+/**
+ *
+ * @author 张科林
+ *
+ */
 public class RoomDao {
 
 	

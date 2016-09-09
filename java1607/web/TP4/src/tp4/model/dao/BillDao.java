@@ -1,4 +1,5 @@
 package tp4.model.dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +13,11 @@ import java.util.Date;
 import tp4.model.db.DBConnection;
 import tp4.model.vo.Bill;
 
-
-
+/**
+*
+* @author 田霞光
+*
+*/
 public class BillDao {
 	
 	//bill表的添加

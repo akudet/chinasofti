@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import tp4.model.db.DBConnection;
 import tp4.model.vo.RoomType;
 
+/**
+ *
+ * @author 张科林
+ *
+ */
 public class RoomTypeDao {
 
 	Connection con = DBConnection.getConnection();

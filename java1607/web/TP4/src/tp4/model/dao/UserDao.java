@@ -11,8 +11,8 @@ import tp4.model.db.DBConnection;
 import tp4.model.vo.User;
 
 /**
- * 
- * @author 马厦林
+ *
+ * @author 马厦伟
  *
  */
 public class UserDao {
