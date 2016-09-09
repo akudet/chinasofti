@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import tp4.model.db.DBConnection;
+import tp4.model.vo.Bill;
 import tp4.model.vo.Room;
 
 public class RoomDao {
 
 	
 	Connection con = DBConnection.getConnection();
-	//查询房间信息
+	//
 	public ArrayList<Room> findAllRoom() {
 		
 		String sql = "select * from room";
@@ -38,16 +39,55 @@ public class RoomDao {
 	}
 	
 	
-	//删除房间信息
-	public int deleteRoombById(String id) {
+	//
+	public Room findRoomById(String roomid){
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pre = null;
+		ResultSet res =null;
+		String sql="select * from room where room_id=?";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setString(1, roomid);
+		    res = pre.executeQuery();
+			if(res.next())
+			{
+				Room room = new Room(res.getString("room_id"), 
+						res.getString("floor"), 
+						res.getString("phone"), 
+						res.getInt("status"), 
+						res.getString("comment")); 
+				return room;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 		
+	}
+
+	//删除房间
+	public int deleteRoombById(String roomId) {
+		String sql = "delete from room_type where room_id =?"; 
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,roomId);
+			int flag = ps.executeUpdate();
+			if(flag>0){
+				return 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
-	//修改房间信息
+	//
 	public int updateRoom(Room room) {
 		return 0;
 	}
-	//添加房间信息
+	//
 	public int addRoom(Room room) {
 		
 		return 0;

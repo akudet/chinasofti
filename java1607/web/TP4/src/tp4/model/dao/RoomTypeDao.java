@@ -13,7 +13,7 @@ public class RoomTypeDao {
 
 	Connection con = DBConnection.getConnection();
 	public ArrayList<RoomType> findAllRoomType() {
-		String sql = "select * from roon_type";
+		String sql = "select * from room_type";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -41,6 +41,8 @@ public class RoomTypeDao {
 	
 	// 0 
 	public int updateRoomType(RoomType roomtype) {
-		return -1;
+		String sql = "delete from room_type where room_type_no=?"; 
+		
+		return 1;
 	}
 }
