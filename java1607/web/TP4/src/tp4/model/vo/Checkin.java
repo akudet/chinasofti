@@ -11,13 +11,13 @@ public class Checkin {
 			String checkin_time, String checkin_type, float price,
 			int num_of_days, float deposit) {
 		super();
-		this.checkin_id = checkin_id;
+		this.checkinId = checkin_id;
 		this.room = room;
-		this.cus_info_id = cus_info_id;
-		this.checkin_time = checkin_time;
-		this.checkin_type = checkin_type;
+		this.cusInfo = cus_info_id;
+		this.checkinTime = checkin_time;
+		this.checkinType = checkin_type;
 		this.price = price;
-		this.num_of_days = num_of_days;
+		this.numOfDays = num_of_days;
 		this.deposit = deposit;
 	}
 	public Checkin() {
@@ -25,44 +25,20 @@ public class Checkin {
 	}
 	
 
-	protected String checkin_id;
+	protected String checkinId;
 	 protected Room room;
-	protected CusInfo cus_info_id;
-	protected String checkin_time;
-    protected String checkin_type;
+	protected CusInfo cusInfo;
+	protected String checkinTime;
+    protected String checkinType;
     protected float price;
-    protected int num_of_days;
+    protected int numOfDays;
     protected float deposit;
-   
-	public String getCheckin_id() {
-		return checkin_id;
-	}
-	public void setCheckin_id(String checkin_id) {
-		this.checkin_id = checkin_id;
-	}
-	public String getCheckin_time() {
-		return checkin_time;
-	}
-	public void setCheckin_time(String checkin_time) {
-		this.checkin_time = checkin_time;
-	}
-	public String getCheckin_type() {
-		return checkin_type;
-	}
-	public void setCheckin_type(String checkin_type) {
-		this.checkin_type = checkin_type;
-	}
+
 	public float getPrice() {
 		return price;
 	}
 	public void setPrice(float price) {
 		this.price = price;
-	}
-	public int getNum_of_days() {
-		return num_of_days;
-	}
-	public void setNum_of_days(int num_of_days) {
-		this.num_of_days = num_of_days;
 	}
 	public float getDeposit() {
 		return deposit;
@@ -76,11 +52,35 @@ public class Checkin {
 	public void setRoom(Room room) {
 		this.room = room;
 	}
-	public CusInfo getCus_info_id() {
-		return cus_info_id;
+	public String getCheckinId() {
+		return checkinId;
 	}
-	public void setCus_info_id(CusInfo cus_info_id) {
-		this.cus_info_id = cus_info_id;
+	public void setCheckinId(String checkinId) {
+		this.checkinId = checkinId;
+	}
+	public CusInfo getCusInfo() {
+		return cusInfo;
+	}
+	public void setCusInfo(CusInfo cusInfo) {
+		this.cusInfo = cusInfo;
+	}
+	public String getCheckinTime() {
+		return checkinTime;
+	}
+	public void setCheckinTime(String checkinTime) {
+		this.checkinTime = checkinTime;
+	}
+	public String getCheckinType() {
+		return checkinType;
+	}
+	public void setCheckinType(String checkinType) {
+		this.checkinType = checkinType;
+	}
+	public int getNumOfDays() {
+		return numOfDays;
+	}
+	public void setNumOfDays(int numOfDays) {
+		this.numOfDays = numOfDays;
 	}
 	
 }

@@ -25,7 +25,7 @@ import tp4.model.vo.Room;
 public class CheckinDao {
 	//checkin表的添加
 	public int addCheckin(Checkin checkin) {
-		    String cus_info_id = checkin.getCus_info_id().getCusInfoId();
+		    String cus_info_id = checkin.getCusInfo().getCusInfoId();
 		    String room_id = checkin.getRoom().getRoomId();
 			Connection con = DBConnection.getConnection();
 			String sql="insert into checkin values(?,?,?,?,?,?,?,?)";
@@ -43,9 +43,9 @@ public class CheckinDao {
 					pre.setString(2, room_id);
 					pre.setString(3, cus_info_id);
 					pre.setString(4, now1);
-					pre.setString(5,checkin.getCheckin_type());
+					pre.setString(5,checkin.getCheckinType());
 					pre.setFloat(6, checkin.getPrice());
-					pre.setInt(7, checkin.getNum_of_days());
+					pre.setInt(7, checkin.getNumOfDays());
 					pre.setFloat(8, checkin.getDeposit());
 					int i = pre.executeUpdate();
 					if(i>0)
@@ -142,14 +142,14 @@ public class CheckinDao {
 			PreparedStatement pre = null;
 			try {
 				pre =con.prepareStatement(sql);
-				pre.setString(1, checkin.getCheckin_id());
+				pre.setString(1, checkin.getCheckinId());
 				pre.setString(2,checkin.getRoom().getRoomId());
 				
-				pre.setString(4, checkin.getCus_info_id().getCusInfoId());
-				pre.setString(5, checkin.getCheckin_time());
-				pre.setString(6, checkin.getCheckin_type());
+				pre.setString(4, checkin.getCusInfo().getCusInfoId());
+				pre.setString(5, checkin.getCheckinTime());
+				pre.setString(6, checkin.getCheckinType());
 				pre.setFloat(3, checkin.getPrice());
-				pre.setInt(7, checkin.getNum_of_days());
+				pre.setInt(7, checkin.getNumOfDays());
 				pre.setFloat(8, checkin.getDeposit());
 				int i = pre.executeUpdate();
 				if(i>0)

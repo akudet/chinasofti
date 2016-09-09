@@ -34,7 +34,7 @@ public class BillDao {
 		try {
 			pre=con.prepareStatement(sql);
 			pre.setString(1,"out"+now);
-			pre.setFloat(2,bill.getBill_amount());
+			pre.setFloat(2,bill.getBillAmount());
 			pre.setString(3, now1);
 			pre.setString(4, bill.getComment());
 			int i = pre.executeUpdate();
@@ -79,8 +79,8 @@ public class BillDao {
 		PreparedStatement pre = null;
 		try {
 			pre =con.prepareStatement(sql);
-			pre.setString(1, bill.getBill_id());
-			pre.setFloat(2,bill.getBill_amount());
+			pre.setString(1, bill.getBillId());
+			pre.setFloat(2,bill.getBillAmount());
 			pre.setString(3, bill.getComment());
 			
 			int i = pre.executeUpdate();

@@ -117,7 +117,6 @@ public class CusInfo {
 		this.phone = phone;
 		this.addresss = addresss;
 		this.sex = sex;
-		this.cusType = cusType;
 		this.comment = comment;
 	}
 

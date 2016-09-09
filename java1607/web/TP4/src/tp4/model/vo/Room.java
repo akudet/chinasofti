@@ -7,7 +7,7 @@ package tp4.model.vo;
  */
 public class Room {
 	protected String roomId;
-	protected RoomType roomTypeNo;
+	protected RoomType roomType;
 	protected String floor;
 	protected String phone;
 	protected int status;
@@ -20,11 +20,11 @@ public class Room {
 	public void setRoomId(String roomId) {
 		this.roomId = roomId;
 	}
-	public RoomType getRoomTypeNo() {
-		return roomTypeNo;
+	public RoomType getRoomType() {
+		return roomType;
 	}
-	public void setRoomTypeNo(RoomType roomTypeNo) {
-		this.roomTypeNo = roomTypeNo;
+	public void setRoomType(RoomType roomType) {
+		this.roomType = roomType;
 	}
 	public String getFloor() {
 		return floor;
