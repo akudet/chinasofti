@@ -20,7 +20,7 @@ public class RoomDao {
 	
 	Connection con = DBConnection.getConnection();
 	//
-	public ArrayList<Room> findAllRoom() {
+	public ArrayList<Room> findAll() {
 		
 		String sql = "select * from room";
 		try {
@@ -45,7 +45,7 @@ public class RoomDao {
 	
 	
 	//
-	public Room findRoomById(String roomid){
+	public Room findById(String roomid){
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res =null;
@@ -72,7 +72,7 @@ public class RoomDao {
 	}
 
 	//删除房间
-	public int deleteRoombById(String roomId) {
+	public int deleteById(String roomId) {
 		String sql = "delete from room_type where room_id =?"; 
 		
 		try {
@@ -89,11 +89,11 @@ public class RoomDao {
 		return 0;
 	}
 	//
-	public int updateRoom(Room room) {
+	public int update(Room room) {
 		return 0;
 	}
 	//
-	public int addRoom(Room room) {
+	public int add(Room room) {
 		
 		return 0;
 	}

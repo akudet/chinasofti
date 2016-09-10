@@ -20,7 +20,7 @@ public class CusTypeDao {
 	ResultSet res;
 
 	// 全查询
-	public ArrayList<CusType> queryAllCusType() {
+	public ArrayList<CusType> findAll() {
 		con = DBConnection.getConnection();
 		String sql = "select * from cus_type";
 		try {
@@ -44,7 +44,7 @@ public class CusTypeDao {
 	}
 	
 	//单查询
-	public CusType queryCusTypeById(int cusTypeNo) {
+	public CusType findById(int cusTypeNo) {
 		con = DBConnection.getConnection();
 		String sql = "select * from cus_type where cus_type_no = ?";
 		try {
@@ -66,7 +66,7 @@ public class CusTypeDao {
 	}
 	
 	//增加
-	public int insertCusType(CusType cusType){
+	public int add(CusType cusType){
 		con = DBConnection.getConnection();
 		String sql = "insert into cus_type values(?,?,?)";
 		try {
@@ -88,7 +88,7 @@ public class CusTypeDao {
 	}
 	
 	//删除
-	public int deleteCusType(int cusTypeNo){
+	public int deleteById(int cusTypeNo){
 		con = DBConnection.getConnection();
 		String sql = "delete from cus_type where cus_type_no = ?";
 		try {
@@ -109,7 +109,7 @@ public class CusTypeDao {
 	}
 	
 	//修改
-	public boolean updateCusType(int cusTypeNo,String cusTypeDesc,int discount){
+	public boolean update(int cusTypeNo,String cusTypeDesc,int discount){
 		con = DBConnection.getConnection();
 		String sql = "update cus_type set cus_type_no = ?,cus_type_desc = ?,discount = ? where cus_type_no = ?";
 		try {

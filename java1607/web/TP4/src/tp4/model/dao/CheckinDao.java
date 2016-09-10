@@ -24,7 +24,7 @@ import tp4.model.vo.Room;
 */
 public class CheckinDao {
 	//checkin表的添加
-	public int addCheckin(Checkin checkin) {
+	public int add(Checkin checkin) {
 		    String cus_info_id = checkin.getCusInfo().getCusInfoId();
 		    String room_id = checkin.getRoom().getRoomId();
 			Connection con = DBConnection.getConnection();
@@ -60,7 +60,7 @@ public class CheckinDao {
 		}
 	//checkin表的删除
 	
-		public int deletecheckinById(String checkinid) {
+		public int deleteById(String checkinid) {
 
 			Connection con = DBConnection.getConnection();
 			String sql = "delete from checkin where checkin_id = ?";
@@ -80,7 +80,7 @@ public class CheckinDao {
 			return 0;
 		}
 		//checkin表的全查询
-		public ArrayList<Checkin> FincheckinAll() {
+		public ArrayList<Checkin> findAll() {
 
 			Connection con = DBConnection.getConnection();
 			PreparedStatement pre = null;
@@ -93,8 +93,8 @@ public class CheckinDao {
 				while (res.next()) {
 					CusInfoDao dao = new CusInfoDao();
 					RoomDao dao1 = new RoomDao();
-					CusInfo cusinfo = dao.queryCusInfoByID(res.getString("cus_info_id"));
-					Room room = dao1.findRoomById(res.getString("room_id"));
+					CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
+					Room room = dao1.findById(res.getString("room_id"));
 					Checkin user = new Checkin(res.getString("checkin_id"),room,cusinfo,res.getString("checkin_time"),res.getString("checkin_type"),res.getFloat("price"),res.getInt("num_of_days"),res.getFloat("deposit"));
 					list.add(user);
 				}
@@ -108,7 +108,7 @@ public class CheckinDao {
 			return null;
 		} 
 		//checkin表单查询
-		public Checkin findBillById(String checkin){
+		public Checkin findById(String checkin){
 			Connection con = DBConnection.getConnection();
 			PreparedStatement pre = null;
 			ResultSet res =null;
@@ -121,8 +121,8 @@ public class CheckinDao {
 				{
 					CusInfoDao dao = new CusInfoDao();
 					RoomDao dao1 = new RoomDao();
-					CusInfo cusinfo = dao.queryCusInfoByID(res.getString("cus_info_id"));
-					Room room = dao1.findRoomById(res.getString("room_id"));
+					CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
+					Room room = dao1.findById(res.getString("room_id"));
 					Checkin user = new Checkin(res.getString("checkin_id"),room,cusinfo,res.getString("checkin_time"),res.getString("checkin_type"),res.getFloat("price"),res.getInt("num_of_days"),res.getFloat("deposit"));
 					
 					return user;
@@ -135,7 +135,7 @@ public class CheckinDao {
 			
 		}
 		//checkin修改
-		public int updateCheckin(Checkin checkin)
+		public int update(Checkin checkin)
 		{
 			Connection con = DBConnection.getConnection();
 			String sql ="update checkin set checkin_id=?, room_id=?,cus_info_id=？,checkin_time=?,checkin_type=?,price=?,num_of_days=?,deposit=? where checkin_id= ? ";

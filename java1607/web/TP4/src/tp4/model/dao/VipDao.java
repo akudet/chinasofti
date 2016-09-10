@@ -57,7 +57,7 @@ public class VipDao {
 			ArrayList<Vip> list = new ArrayList<Vip>();
 			while(res.next()){
 				CusInfoDao dao = new CusInfoDao();
-				CusInfo cusInfo = dao.queryCusInfoByID(res.getString("cus_info_id"));
+				CusInfo cusInfo = dao.findById(res.getString("cus_info_id"));
 				Vip vip = new Vip(res.getInt("vip_no"),cusInfo);
 				list.add(vip);
 			}
@@ -71,7 +71,7 @@ public class VipDao {
 		return null;
 	}
 //	删除数据
-	public Vip delete(int vipNumber){
+	public Vip deleteById(int vipNumber){
 		con=DBConnection.getConnection();
 		String sql = "select * from vip where vip_no= ?";
 		try {
@@ -80,7 +80,7 @@ public class VipDao {
 			res=pre.executeQuery();
 			if(res.next()){
 				CusInfoDao dao = new CusInfoDao();
-				CusInfo cusInfo= dao.queryCusInfoByID(res.getString("cus_info_id"));
+				CusInfo cusInfo= dao.findById(res.getString("cus_info_id"));
 				Vip vip = new Vip(res.getInt("vip_no"),cusInfo);
 				
 			}

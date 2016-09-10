@@ -17,7 +17,7 @@ import tp4.model.vo.RoomType;
 public class RoomTypeDao {
 
 	Connection con = DBConnection.getConnection();
-	public ArrayList<RoomType> findAllRoomType() {
+	public ArrayList<RoomType> findAll() {
 		String sql = "select * from room_type";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -45,7 +45,7 @@ public class RoomTypeDao {
 	}
 	
 	// 0 
-	public int updateRoomType(RoomType roomtype) {
+	public int update(RoomType roomtype) {
 		String sql = "delete from room_type where room_type_no=?"; 
 		
 		return 1;

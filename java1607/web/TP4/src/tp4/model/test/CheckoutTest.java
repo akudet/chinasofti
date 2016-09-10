@@ -19,16 +19,16 @@ public class CheckoutTest {
 	  String comment = "qwqwqw"; 
 	  Checkout checkout1 = new Checkout(amount,comment);
 	  String checkout_id="2c465c0680c64b36bdaf941f6a02ceb4";
-	  System.out.println(dao.Inserservlet(checkout1));
-	  System.out.println(dao.deleteCheckoutById(checkout_id));
-	  ArrayList<Checkout> checkout = dao.FinCheckoutAll();
+	  System.out.println(dao.add(checkout1));
+	  System.out.println(dao.deleteById(checkout_id));
+	  ArrayList<Checkout> checkout = dao.findAll();
 	 
 	  for (Checkout list : checkout) {
 		  System.out.println(list.toString());
 		
 	  }
 	  String bill_id1 = "out20160909021507";
-	  System.out.println(dao.findCheckoutById(bill_id1));
+	  System.out.println(dao.findById(bill_id1));
 	  
 }
 	

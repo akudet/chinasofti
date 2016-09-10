@@ -77,7 +77,7 @@ public class UserDao {
 	}
 	// 删除数据
 
-		public int delete(String userid) {
+		public int deleteById(String userid) {
 			con = DBConnection.getConnection();
 			String sql = "delete from user where userid = ?";
 

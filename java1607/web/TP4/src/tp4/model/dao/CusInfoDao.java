@@ -19,7 +19,7 @@ public class CusInfoDao {
 	PreparedStatement pre = null;
 	ResultSet res = null;
 	// 全查询
-	public ArrayList<CusInfo> queryAllCusInfo() {
+	public ArrayList<CusInfo> findAll() {
 		con = DBConnection.getConnection();
 		String sql = "select * from cus_info";
 		try {
@@ -35,7 +35,7 @@ public class CusInfoDao {
 						res.getString("phone"), res.getString("address"),
 						res.getString("sex"), res.getString("comment"));
 				CusTypeDao dao = new CusTypeDao();
-				cusInfo.setCusType(dao.queryCusTypeById(cusTypeNo));
+				cusInfo.setCusType(dao.findById(cusTypeNo));
 				list.add(cusInfo);
 			}
 
@@ -49,7 +49,7 @@ public class CusInfoDao {
 	}
 	
 	//单查询
-	public CusInfo queryCusInfoByID(String cusInfoId){
+	public CusInfo findById(String cusInfoId){
 		con = DBConnection.getConnection();
 		String sql = "select * from cus_info where cus_info_id = ?";
 		try {
@@ -65,7 +65,7 @@ public class CusInfoDao {
 						res.getString("phone"), res.getString("address"),
 						res.getString("sex"), res.getString("comment"));
 				CusTypeDao dao = new CusTypeDao();
-				cusInfo.setCusType(dao.queryCusTypeById(cusTypeNo));
+				cusInfo.setCusType(dao.findById(cusTypeNo));
 				return cusInfo;
 			}
 		} catch (SQLException e) {
@@ -78,7 +78,7 @@ public class CusInfoDao {
 	}
 	
 	//增加
-	public int insertCusInfo(CusInfo cusInfo,int cusTypeNo){
+	public int add(CusInfo cusInfo,int cusTypeNo){
 		con = DBConnection.getConnection();
 		String sql = "insert into cus_info values(?,?,?,?,?,?,?,?,?)";
 		try {
@@ -106,7 +106,7 @@ public class CusInfoDao {
 	}
 	
 	//删除
-	public int deleteCusInfo(String cusInfoId){
+	public int deleteById(String cusInfoId){
 		con = DBConnection.getConnection();
 		String sql = "delete from cus_info where cus_info_id = ?";
 		try {
@@ -126,7 +126,7 @@ public class CusInfoDao {
 	}
 	
 	//修改
-	public boolean updateCusInfo(CusInfo cusInfo,int cusTypeNo){
+	public boolean update(CusInfo cusInfo,int cusTypeNo){
 		con = DBConnection.getConnection();
 		String sql = "update cus_info set cus_info_id = ?,cert_type = ?,cert_number = ?,name = ?,phone = ?,address = ?,sex = ?,cus_type_no = ?,comment = ? where cus_info_id = ?";
 		try {

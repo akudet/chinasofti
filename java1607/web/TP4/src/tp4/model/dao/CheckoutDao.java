@@ -21,7 +21,7 @@ import tp4.model.vo.Checkout;
 public class CheckoutDao {
 	
 	//checkout表的添加
-	public int Inserservlet(Checkout checkout)
+	public int add(Checkout checkout)
 	{
 		Connection con = DBConnection.getConnection();
 		String sql="insert into checkout values(?,?,?,?,NULL)";
@@ -52,7 +52,7 @@ public class CheckoutDao {
 	}
 	
 	//checkout表的删除，根据checkout_id
-	public int deleteCheckoutById(String checkoutId) {
+	public int deleteById(String checkoutId) {
 
 		Connection con = DBConnection.getConnection();
 		String sql = "delete from checkout where checkout_id = ?";
@@ -72,7 +72,7 @@ public class CheckoutDao {
 		return 0;
 	}
 	//checkout表的修改
-	public int updateCheckout(Checkout checkout)
+	public int update(Checkout checkout)
 	{
 		Connection con = DBConnection.getConnection();
 		String sql ="update person set checkout_amount=?,comment=? where checkout_id= ? ";
@@ -95,7 +95,7 @@ public class CheckoutDao {
 		return 0;
 	}
 	//checkout表的全查询
-	public ArrayList<Checkout> FinCheckoutAll() {
+	public ArrayList<Checkout> findAll() {
 
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
@@ -121,7 +121,7 @@ public class CheckoutDao {
 	} 
 	
 	//checkout表根据id查询 0 
-	public Checkout findCheckoutById(String checkoutid){
+	public Checkout findById(String checkoutid){
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res =null;
