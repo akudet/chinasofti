@@ -11,20 +11,20 @@ import java.util.Date;
 
 
 import tp4.model.db.DBConnection;
-import tp4.model.vo.Bill;
+import tp4.model.vo.Checkout;
 
 /**
 *
 * @author 田霞光
 *
 */
-public class BillDao {
+public class CheckoutDao {
 	
-	//bill表的添加
-	public int Inserservlet(Bill bill)
+	//checkout表的添加
+	public int Inserservlet(Checkout checkout)
 	{
 		Connection con = DBConnection.getConnection();
-		String sql="insert into bill values(?,?,?,?)";
+		String sql="insert into checkout values(?,?,?,?,NULL)";
 		Date date =new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -34,9 +34,9 @@ public class BillDao {
 		try {
 			pre=con.prepareStatement(sql);
 			pre.setString(1,"out"+now);
-			pre.setFloat(2,bill.getBillAmount());
+			pre.setFloat(2,checkout.getCheckoutAmount());
 			pre.setString(3, now1);
-			pre.setString(4, bill.getComment());
+			pre.setString(4, checkout.getComment());
 			int i = pre.executeUpdate();
 			if(i>0)
 			{
@@ -51,15 +51,15 @@ public class BillDao {
 		
 	}
 	
-	//bill表的删除，根据bill_id
-	public int deleteBillById(String billId) {
+	//checkout表的删除，根据checkout_id
+	public int deleteCheckoutById(String checkoutId) {
 
 		Connection con = DBConnection.getConnection();
-		String sql = "delete from bill where bill_id = ?";
+		String sql = "delete from checkout where checkout_id = ?";
 		PreparedStatement pre = null;
 		try {
 			pre =  con.prepareStatement(sql);
-			pre.setString(1, billId);
+			pre.setString(1, checkoutId);
 			int i = pre.executeUpdate();
 			if (i > 0) {
 				return i;
@@ -71,17 +71,17 @@ public class BillDao {
 
 		return 0;
 	}
-	//bill表的修改
-	public int updateBill(Bill bill)
+	//checkout表的修改
+	public int updateCheckout(Checkout checkout)
 	{
 		Connection con = DBConnection.getConnection();
-		String sql ="update person set bill_amount=?,comment=? where bill_id= ? ";
+		String sql ="update person set checkout_amount=?,comment=? where checkout_id= ? ";
 		PreparedStatement pre = null;
 		try {
 			pre =con.prepareStatement(sql);
-			pre.setString(1, bill.getBillId());
-			pre.setFloat(2,bill.getBillAmount());
-			pre.setString(3, bill.getComment());
+			pre.setString(1, checkout.getCheckoutId());
+			pre.setFloat(2,checkout.getCheckoutAmount());
+			pre.setString(3, checkout.getComment());
 			
 			int i = pre.executeUpdate();
 			if(i>0)
@@ -94,20 +94,20 @@ public class BillDao {
 		}
 		return 0;
 	}
-	//bill表的全查询
-	public ArrayList<Bill> FinBillAll() {
+	//checkout表的全查询
+	public ArrayList<Checkout> FinCheckoutAll() {
 
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
-		String sql = "select * from bill";
+		String sql = "select * from checkout";
 		try {
 			 pre = con.prepareStatement(sql);
 			 res = pre.executeQuery();
-			ArrayList<Bill> list = new ArrayList<Bill>();
+			ArrayList<Checkout> list = new ArrayList<Checkout>();
 			while (res.next()) {
 				
-				Bill user = new Bill(res.getString("bill_id"),res.getFloat("bill_amount"),res.getString("bill_time"),res.getString("comment"));
+				Checkout user = new Checkout(res.getString("checkout_id"),res.getFloat("checkout_amount"),res.getString("checkout_time"),res.getString("comment"));
 				list.add(user);
 			}
 
@@ -120,20 +120,20 @@ public class BillDao {
 		return null;
 	} 
 	
-	//bill表根据id查询 0 
-	public Bill findBillById(String billid){
+	//checkout表根据id查询 0 
+	public Checkout findCheckoutById(String checkoutid){
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res =null;
-		String sql="select * from bill where bill_id=?";
+		String sql="select * from checkout where checkout_id=?";
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setString(1, billid);
+			pre.setString(1, checkoutid);
 		    res = pre.executeQuery();
 			if(res.next())
 			{
-				Bill bill = new Bill(res.getString("bill_id"),res.getFloat("bill_amount"),res.getString("bill_time"),res.getString("comment"));
-				return bill;
+				Checkout checkout = new Checkout(res.getString("checkout_id"),res.getFloat("checkout_amount"),res.getString("checkout_time"),res.getString("comment"));
+				return checkout;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

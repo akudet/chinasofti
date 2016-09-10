@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import tp4.model.db.DBConnection;
-import tp4.model.vo.Bill;
+import tp4.model.vo.Checkout;
 import tp4.model.vo.Room;
 
 /**
