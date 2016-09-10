@@ -1,9 +1,9 @@
-## ¾Æµê¹ÜÀíÏµÍ³
+## é…’åº—ç®¡ç†ç³»ç»Ÿ
 
-### ÍÅ¶Ó³ÉÔ±
-* ÏîË«½­(Shuangjiang Xiang)
-* ÕÅ¿ÆÁÖ(Kelin Zhang)
-* ·¶ÖĞĞË(Zhongxing Fan)
-* ÂíÏÃÎ°(Xiawei Ma)
-* Î×½ğÍ©(Jintong Wu)
-* ÌïÏ¼¹â(Xiaguang Tian)
+### å›¢é˜Ÿæˆå‘˜
+* é¡¹åŒæ±Ÿ(Shuangjiang Xiang)
+* å¼ ç§‘æ—(Kelin Zhang)
+* èŒƒä¸­å…´(Zhongxing Fan)
+* é©¬å¦ä¼Ÿ(Xiawei Ma)
+* å·«é‡‘æ¡(Jintong Wu)
+* ç”°éœå…‰(Xiaguang Tian)
