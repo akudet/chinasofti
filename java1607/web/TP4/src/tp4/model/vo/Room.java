@@ -1,9 +1,9 @@
 package tp4.model.vo;
 
 /**
- *
+ * 
  * @author 张科林
- *
+ * 
  */
 public class Room {
 	protected String roomId;
@@ -12,46 +12,9 @@ public class Room {
 	protected String phone;
 	protected int status;
 	protected String comment;
-	
-	
-	public String getRoomId() {
-		return roomId;
-	}
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
-	}
-	public RoomType getRoomType() {
-		return roomType;
-	}
-	public void setRoomType(RoomType roomType) {
-		this.roomType = roomType;
-	}
-	public String getFloor() {
-		return floor;
-	}
-	public void setFloor(String floor) {
-		this.floor = floor;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	public Room(String roomId, String floor, String phone,
-			int status, String comment) {
+
+	public Room(String roomId, String floor, String phone, int status,
+			String comment) {
 		super();
 		this.roomId = roomId;
 		this.floor = floor;
@@ -59,9 +22,53 @@ public class Room {
 		this.status = status;
 		this.comment = comment;
 	}
-	
-	
 
-	
-	
+	public String getComment() {
+		return comment;
+	}
+
+	public String getFloor() {
+		return floor;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public String getRoomId() {
+		return roomId;
+	}
+
+	public RoomType getRoomType() {
+		return roomType;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public void setFloor(String floor) {
+		this.floor = floor;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setRoomId(String roomId) {
+		this.roomId = roomId;
+	}
+
+	public void setRoomType(RoomType roomType) {
+		this.roomType = roomType;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 }

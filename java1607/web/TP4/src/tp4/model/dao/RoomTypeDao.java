@@ -10,28 +10,25 @@ import tp4.model.db.DBConnection;
 import tp4.model.vo.RoomType;
 
 /**
- *
+ * 
  * @author 张科林
- *
+ * 
  */
 public class RoomTypeDao {
 
 	Connection con = DBConnection.getConnection();
+
 	public ArrayList<RoomType> findAll() {
 		String sql = "select * from room_type";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			ArrayList<RoomType> list = new ArrayList<RoomType>();
-			while(rs.next()){
-				RoomType roomType = new RoomType(
-						rs.getInt("room_type_no"),
-						rs.getString("room_type_desc"),
-						rs.getInt("beds"),
-						rs.getFloat("price"),
-						rs.getInt("isHourRoom"),
-						rs.getFloat("hourRoomPrice"),
-						rs.getString("comment"));
+			while (rs.next()) {
+				RoomType roomType = new RoomType(rs.getInt("room_type_no"),
+						rs.getString("room_type_desc"), rs.getInt("beds"),
+						rs.getFloat("price"), rs.getInt("isHourRoom"),
+						rs.getFloat("hourRoomPrice"), rs.getString("comment"));
 				list.add(roomType);
 			}
 			return list;
@@ -39,15 +36,15 @@ public class RoomTypeDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
-	
+
 	}
-	
-	// 0 
+
+	// 0
 	public int update(RoomType roomtype) {
-		String sql = "delete from room_type where room_type_no=?"; 
-		
+		String sql = "delete from room_type where room_type_no=?";
+
 		return 1;
 	}
 }
