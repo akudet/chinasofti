@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.UUID;
 
 import tp4.model.db.DBConnection;
@@ -23,7 +24,7 @@ public class UserDao {
 	// 添加数据
 	public int add(User user) {
 		con = DBConnection.getConnection();
-		String sql = "insert into vip values(?,?)";
+		String sql = "insert into user values(?,?,?,?)";
 
 		try {
 			pre = con.prepareStatement(sql);
@@ -46,6 +47,35 @@ public class UserDao {
 		} finally {
 			DBConnection.close(con, pre);
 		}
+		return 0;
+	}
+	
+	public int addAll(Collection<User> users) {
+		for (User user : users) {
+			if (0 != add(user)) {
+				return -1;
+			}
+		}
+		return 0;
+	}
+
+	public int deleteAll() {
+		con = DBConnection.getConnection();
+		String sql = "delete from user";
+
+		try {
+			pre = con.prepareStatement(sql);
+			int i = pre.executeUpdate();
+			if (i > 0) {
+				return i;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(con, pre);
+		}
+
 		return 0;
 	}
 
@@ -101,7 +131,7 @@ public class UserDao {
 	// 单查询
 	public User findById(String userId) {
 		con = DBConnection.getConnection();
-		String sql = "select * from user where userid";
+		String sql = "select * from user where userid=?";
 		try {
 			pre = con.prepareStatement(sql);
 			pre.setString(1, userId);
