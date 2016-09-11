@@ -10,36 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50096
 File Encoding         : 65001
 
-Date: 2016-09-09 15:03:28
+Date: 2016-09-11 09:05:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
--- ----------------------------
--- Table structure for `bill`
--- ----------------------------
-DROP TABLE IF EXISTS `bill`;
-CREATE TABLE `bill` (
-  `bill_id` varchar(255) NOT NULL,
-  `bill_amount` float NOT NULL,
-  `bill_time` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
-  `comment` text,
-  PRIMARY KEY  (`bill_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of bill
--- ----------------------------
-INSERT INTO `bill` VALUES ('58f7f74818f94c64ba5350a5d8eae0ed', '883.79', '2016-09-09 02:59:51', 'bkirzx1k693h9bayq0wcztk');
-INSERT INTO `bill` VALUES ('6b94bc7005d04dbea9e5e26483fc0e01', '168.741', '2016-09-09 02:59:51', 'uvvxv1g0q3jxmtqc3wbljxixawxpudmc91y503jw2b1llhm');
-INSERT INTO `bill` VALUES ('89d2aac01c4740b3ab67d2d8133822cc', '803.181', '2016-09-09 02:59:51', 'ihq711moegqtolmoosa4eswi8l0bt79os2gbgfd78rm3g7l4uh');
-INSERT INTO `bill` VALUES ('8a922c251f7d40509e5d9a35bc95211a', '411.845', '2016-09-09 02:59:51', 'fme8ucnoptftuyewe1vh176h6kbi1gmhuxz9ulmjoubka4');
-INSERT INTO `bill` VALUES ('916e12cadfd7465297514155331e24d5', '863.967', '2016-09-09 02:59:51', 'rtfvsvpw5ltoa24iagiqlgma6npqx0wvbr2j1or7');
-INSERT INTO `bill` VALUES ('a812d39eca054c2abbeafffee215d195', '651.143', '2016-09-09 02:59:51', 'm7l5o3l6qfe7iltn8b1ysn6u6joox9w4hs59out3xy76n25b8qe');
-INSERT INTO `bill` VALUES ('beb463d6a5f64adc825ee7bac1a03892', '245.747', '2016-09-09 02:59:51', 'vshoyc40ci8n24gn4iw5ucok7dony1jb6ygfua2dq1wucv79');
-INSERT INTO `bill` VALUES ('c0275913e2024501b6a9f999a685a256', '216.487', '2016-09-09 02:59:51', 'ryjtsrfxzqkquptgg7zeap8zqan5gvuq678');
-INSERT INTO `bill` VALUES ('c02b93bc45674c4093aa8ed3000dffb9', '438.887', '2016-09-09 02:59:51', '4o0ci8uu2hccjjlaxkjxi');
-INSERT INTO `bill` VALUES ('d8ae5f95da8a43579953163f09e971cc', '958.899', '2016-09-09 02:59:51', 'c7utbpb1sog74bx3pur0pj3nf1pc0io1p51l219m4f1c07p3ksdf');
-
 -- ----------------------------
 -- Table structure for `checkin`
 -- ----------------------------
@@ -63,6 +37,29 @@ CREATE TABLE `checkin` (
 -- ----------------------------
 -- Records of checkin
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `checkout`
+-- ----------------------------
+DROP TABLE IF EXISTS `checkout`;
+CREATE TABLE `checkout` (
+  `checkout_id` varchar(32) NOT NULL default '',
+  `checkout_amount` float default NULL,
+  `checkout_time` timestamp NULL default NULL on update CURRENT_TIMESTAMP,
+  `comment` text,
+  `checkin_id` varchar(32) default NULL,
+  PRIMARY KEY  (`checkout_id`),
+  KEY `fk_checkin_id` (`checkin_id`),
+  CONSTRAINT `fk_checkin_id` FOREIGN KEY (`checkin_id`) REFERENCES `checkin` (`checkin_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of checkout
+-- ----------------------------
+INSERT INTO `checkout` VALUES ('out20160911022035', '120', '2016-09-11 02:20:35', 'qwqwqw', null);
+INSERT INTO `checkout` VALUES ('out20160911023652', '120', '2016-09-11 02:36:52', 'qwqwqw', null);
+INSERT INTO `checkout` VALUES ('out20160911023702', '120', '2016-09-11 02:37:02', 'qwqwqw', null);
+INSERT INTO `checkout` VALUES ('out20160911042022', '120', '2016-09-11 04:20:22', 'qwqwqw', null);
 
 -- ----------------------------
 -- Table structure for `cus_info`
@@ -131,6 +128,7 @@ CREATE TABLE `reservation` (
   `reservation_time` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
   `comment` text,
   `room_id` varchar(64) default NULL,
+  `status` int(11) NOT NULL,
   PRIMARY KEY  (`reservation_id`),
   KEY `reservation_ibfk_1` (`room_id`),
   CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -215,21 +213,13 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('0f9fbb6ddc9045faac961a27a99cbbe1', '4nnjjc5kph', 'ukq0fy55ava4', '0');
-INSERT INTO `user` VALUES ('4060c82b6117436fb243dbf1cd178a13', 'pzqlyna', 'zfkfp1ifkql', '0');
-INSERT INTO `user` VALUES ('40b794f395b14644ad3676aeb94ec1a1', 'f2u3exb1g', 'eznsvwf', '0');
-INSERT INTO `user` VALUES ('45aae83ffe3f4c52b0a19f4cfeaffda3', 'v09bzqkn', '17iwm750i2obg', '0');
-INSERT INTO `user` VALUES ('5dba266bdb634f4080b8eeb8e40d4a86', 'lglbzizj', 'orpeyywd9', '0');
-INSERT INTO `user` VALUES ('5ea83770ba574b6a80c7bfe167dc529f', 'mo3g7eyx', 'ix0k4ezbw2', '0');
-INSERT INTO `user` VALUES ('5fe75904a62c4791bba650f0266e73c3', 'lob0mm6', 'fguehe4r3', '0');
-INSERT INTO `user` VALUES ('6c6a4b0f817845a0a3a930172b19dd07', 'cyfruz', 'b3xd0x51vs5', '0');
-INSERT INTO `user` VALUES ('877743f0fb774ecb8db660dba05ac102', '8m1sk', '2q7rit7i7t', '0');
-INSERT INTO `user` VALUES ('8cabafb5bc2e49108760c9517e68bb93', '85othnhowc', 'kdzzj9tn1xc9mo', '0');
-INSERT INTO `user` VALUES ('c4e7d97838834014acca2ab6ce234fd4', '88i02cz', 'roa7zjr399f0db', '0');
-INSERT INTO `user` VALUES ('e591d9b15478439e96d4c26ba1634137', 's27j6g', 'ckwlzeibmm9u', '0');
-INSERT INTO `user` VALUES ('e61948c884c047b2aaed6b5bfa0057e2', 'djbcf6', 'zspp6fsfgc93dq', '0');
-INSERT INTO `user` VALUES ('e8766a54d5734a6781dd9007446e9409', '67wzv', 'gd0yxglsvjd', '0');
-INSERT INTO `user` VALUES ('ee6b97dd57c14dc7909279881b30bd15', 'wzwa09b', 'dvvr96', '0');
+INSERT INTO `user` VALUES ('1000', 'jtwu', 'jtwu', '0');
+INSERT INTO `user` VALUES ('1001', 'xsj', 'xsj', '0');
+INSERT INTO `user` VALUES ('1002', 'zkl', 'zkl', '0');
+INSERT INTO `user` VALUES ('1003', 'fxz', 'fxz', '0');
+INSERT INTO `user` VALUES ('1004', 'mxw', 'mxw', '0');
+INSERT INTO `user` VALUES ('1005', 'wjt', 'wjt', '0');
+INSERT INTO `user` VALUES ('1006', 'jtwu', 'jtwu', '0');
 
 -- ----------------------------
 -- Table structure for `vip`
