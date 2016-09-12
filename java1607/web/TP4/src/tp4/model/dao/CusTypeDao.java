@@ -108,8 +108,12 @@ public class CusTypeDao {
 		return null;
 	}
 
+	public int update(CusType cusType) {
+		return update(cusType.getCusTypeNo(), cusType.getCusTypeDesc(), cusType.getDiscount());
+	}
+	
 	// 修改
-	public boolean update(int cusTypeNo, String cusTypeDesc, int discount) {
+	public int update(int cusTypeNo, String cusTypeDesc, int discount) {
 		con = DBConnection.getConnection();
 		String sql = "update cus_type set cus_type_no = ?,cus_type_desc = ?,discount = ? where cus_type_no = ?";
 		try {
@@ -120,7 +124,7 @@ public class CusTypeDao {
 			pre.setInt(4, cusTypeNo);
 			int i = pre.executeUpdate();
 			if (i > 0) {
-				return true;
+				return 0;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -128,6 +132,6 @@ public class CusTypeDao {
 		} finally {
 			DBConnection.close(con, pre);
 		}
-		return false;
+		return -1;
 	}
 }

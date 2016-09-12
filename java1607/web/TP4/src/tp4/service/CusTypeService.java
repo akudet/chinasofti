@@ -2,6 +2,7 @@ package tp4.service;
 
 import java.util.*;
 
+import tp4.model.dao.CusTypeDao;
 import tp4.model.vo.CusType;
 
 /**
@@ -12,20 +13,46 @@ import tp4.model.vo.CusType;
 public class CusTypeService {
 
 	// 参考 2.10 客户类型折扣
+	CusTypeDao cusTypeDao = new CusTypeDao();
 
+	// 添加客户类型
 	public int add(int cusTypeNo, String cusTypeDesc, int discount) {
-		return -1;
+		if (discount > 1 && discount <= 10) {
+			CusType cusType = new CusType(cusTypeNo, cusTypeDesc, discount);
+
+			return cusTypeDao.add(cusType);
+		}
+		return 1;
 	}
 
+	// 删除客户类型
 	public int deleteById(int cusTypeNo) {
-		return -1;
+
+		return cusTypeDao.deleteById(cusTypeNo);
 	}
 
+	// 查看所有的客户类型
 	public List<CusType> findAll() {
-		return null;
+
+		return cusTypeDao.findAll();
 	}
 
-	public int updateById(int cusTypeNo, int discount) {
+	// 查看单个客户类型
+	public CusType findById(int cusTypeNo) {
+
+		return cusTypeDao.findById(cusTypeNo);
+	}
+
+	// 修改客户类型
+	public int updateById(int cusTypeNo, String cusTypeDesc, int discount) {
+		if (discount >= 1 && discount <= 10) {
+			CusType cusType = cusTypeDao.findById(cusTypeNo);
+			cusType.setCusTypeNo(cusTypeNo);
+			cusType.setCusTypeDesc(cusTypeDesc);
+			cusType.setDiscount(discount);
+
+			return cusTypeDao.update(cusType);
+		}
 		return -1;
 	}
 }

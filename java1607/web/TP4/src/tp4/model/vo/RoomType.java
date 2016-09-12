@@ -26,6 +26,16 @@ public class RoomType {
 		this.hourRoomPrice = hourRoomPrice;
 		this.comment = comment;
 	}
+	
+	
+
+
+
+	public RoomType() {
+		super();
+	}
+
+
 
 	public int getBeds() {
 		return beds;

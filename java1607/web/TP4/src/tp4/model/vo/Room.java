@@ -1,5 +1,7 @@
 package tp4.model.vo;
 
+import java.util.UUID;
+
 /**
  * 
  * @author 张科林
@@ -12,6 +14,16 @@ public class Room {
 	protected String phone;
 	protected int status;
 	protected String comment;
+	
+	
+	public Room(String floor, String phone, int status, String comment) {
+		super();
+		this.roomId = UUID.randomUUID().toString().replace("-", "");
+		this.floor = floor;
+		this.phone = phone;
+		this.status = status;
+		this.comment = comment;
+	}
 
 	public Room(String roomId, String floor, String phone, int status,
 			String comment) {

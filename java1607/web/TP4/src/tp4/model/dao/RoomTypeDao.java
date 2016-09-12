@@ -34,6 +34,7 @@ public class RoomTypeDao {
 			int flag = ps.executeUpdate();
 			if (flag > 0) {
 				return 0;
+				//0代表成功
 			}
 
 		} catch (SQLException e) {
@@ -44,7 +45,7 @@ public class RoomTypeDao {
 	}
 
 	// 修改房间类型
-	public int delete(RoomType roomType) {
+	public int update(RoomType roomType) {
 		String sql = "update room_type set room_type_desc=?,beds=?,price=?,isHourRoom=?,hourRoomPrice=?,comment=? where room_type_no=?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -55,6 +56,12 @@ public class RoomTypeDao {
 			ps.setFloat(5, roomType.getIsHourRoom());
 			ps.setString(6, roomType.getComment());
 			ps.setInt(7, roomType.getRoomTypeNo());
+			
+			int flag = ps.executeUpdate();
+			if(flag>0){
+				return 0;
+				//0代表成功
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -110,14 +117,15 @@ public class RoomTypeDao {
 	}
 
 	// 删除房间类型
-	public int update(String roomTypeNo) {
+	public int delete(int roomTypeNo) {
 		String sql = "delete from room_type where room_type_no=?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, roomTypeNo);
+			ps.setInt(1, roomTypeNo);
 			int flag = ps.executeUpdate();
 			if (flag > 0) {
 				return 0;
+				//0代表成功
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
