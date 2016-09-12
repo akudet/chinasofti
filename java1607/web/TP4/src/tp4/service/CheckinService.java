@@ -2,6 +2,11 @@ package tp4.service;
 
 import tp4.model.vo.Checkin;
 
+/**
+ * 
+ * @author 田霞光
+ * 
+ */
 public class CheckinService {
 
 	// 参考 2.3 开设房间

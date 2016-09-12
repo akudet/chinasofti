@@ -7,6 +7,11 @@ import tp4.model.vo.Checkin;
 import tp4.model.vo.Checkout;
 import tp4.model.vo.Room;
 
+/**
+ * 
+ * @author 项双江
+ * 
+ */
 public class CheckoutService {
 	// 参考 2.4 客户结账, 2.6 营业查询
 

@@ -4,6 +4,11 @@ import java.util.List;
 
 import tp4.model.vo.RoomType;
 
+/**
+ * 
+ * @author 张科林
+ * 
+ */
 public class RoomTypeService {
 
 	// 参考 2.8 房间类型管理

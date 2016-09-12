@@ -4,6 +4,11 @@ import java.util.*;
 
 import tp4.model.vo.CusType;
 
+/**
+ * 
+ * @author 张科林
+ * 
+ */
 public class CusTypeService {
 
 	// 参考 2.10 客户类型折扣

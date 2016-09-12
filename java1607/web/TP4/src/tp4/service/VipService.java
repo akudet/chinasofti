@@ -4,6 +4,11 @@ import java.util.*;
 
 import tp4.model.vo.Vip;
 
+/**
+ * 
+ * @author 马厦伟
+ * 
+ */
 public class VipService {
 
 	//参考 2.7 会员管理

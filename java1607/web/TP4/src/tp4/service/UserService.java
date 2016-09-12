@@ -4,6 +4,11 @@ import java.util.*;
 
 import tp4.model.vo.User;
 
+/**
+ * 
+ * @author 马厦伟
+ * 
+ */
 public class UserService {
 	
 	// 参考 2.11 操作员管理
