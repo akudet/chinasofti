@@ -87,6 +87,7 @@ public class CusInfoDao {
 				cusInfo.setCusType(dao.findById(cusTypeNo));
 				list.add(cusInfo);
 			}
+			return list;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

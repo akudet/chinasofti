@@ -18,6 +18,52 @@ public class RoomTypeDao {
 
 	Connection con = DBConnection.getConnection();
 
+	// 添加房间类型
+	public int add(RoomType roomType) {
+		String sql = "insert into room_type values(?,?,?,?,?,?,?)";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, roomType.getRoomTypeNo());
+			ps.setString(2, roomType.getRoomTypedesc());
+			ps.setInt(3, roomType.getBeds());
+			ps.setFloat(4, roomType.getPrice());
+			ps.setInt(5, roomType.getIsHourRoom());
+			ps.setFloat(6, roomType.getHourRoomPrice());
+			ps.setString(7, roomType.getComment());
+
+			int flag = ps.executeUpdate();
+			if (flag > 0) {
+				return 0;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 1;
+	}
+
+	// 修改房间类型
+	public int delete(RoomType roomType) {
+		String sql = "update room_type set room_type_desc=?,beds=?,price=?,isHourRoom=?,hourRoomPrice=?,comment=? where room_type_no=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, roomType.getRoomTypedesc());
+			ps.setInt(2, roomType.getBeds());
+			ps.setFloat(3, roomType.getPrice());
+			ps.setInt(4, roomType.getIsHourRoom());
+			ps.setFloat(5, roomType.getIsHourRoom());
+			ps.setString(6, roomType.getComment());
+			ps.setInt(7, roomType.getRoomTypeNo());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 1;
+	}
+
+	// 查询所有房间类型
 	public ArrayList<RoomType> findAll() {
 		String sql = "select * from room_type";
 		try {
@@ -41,9 +87,42 @@ public class RoomTypeDao {
 
 	}
 
-	// 0
-	public int update(RoomType roomtype) {
+	// 查询单个房间类型
+	public RoomType findById(int roomTypeNo) {
+		String sql = "select * from room_type where room_type_no=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				RoomType roomType = new RoomType(rs.getInt("room_type_no"),
+						rs.getString("room_type_desc"), rs.getInt("beds"),
+						rs.getFloat("price"), rs.getInt("isHourRoom"),
+						rs.getFloat("hourRoomPrice"), rs.getString("comment"));
+				return roomType;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	// 删除房间类型
+	public int update(String roomTypeNo) {
 		String sql = "delete from room_type where room_type_no=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, roomTypeNo);
+			int flag = ps.executeUpdate();
+			if (flag > 0) {
+				return 0;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return 1;
 	}

@@ -39,7 +39,7 @@ public class RoomType {
 		return hourRoomPrice;
 	}
 
-	public int getIsHourroom() {
+	public int getIsHourRoom() {
 		return isHourRoom;
 	}
 
@@ -67,7 +67,7 @@ public class RoomType {
 		this.hourRoomPrice = hourRoomPrice;
 	}
 
-	public void setIsHourroom(int isHourRoom) {
+	public void setIsHourRoom(int isHourRoom) {
 		this.isHourRoom = isHourRoom;
 	}
 
