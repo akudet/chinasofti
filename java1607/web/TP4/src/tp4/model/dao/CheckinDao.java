@@ -37,7 +37,7 @@ public class CheckinDao {
 
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setString(1, now1);
+			pre.setString(1, "in"+now);
 			pre.setString(2, room_id);
 			pre.setString(3, cus_info_id);
 			pre.setString(4, now1);
@@ -110,6 +110,33 @@ public class CheckinDao {
 		return null;
 	}
 
+	public Checkin findByRoomId(String roomId) {
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pre = null;
+		ResultSet res = null;
+		String sql = "select * from checkin where room_id=? order by checkin_time desc";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setString(1, roomId);
+			res = pre.executeQuery();
+			if (res.next()) {
+				CusInfoDao dao = new CusInfoDao();
+				RoomDao dao1 = new RoomDao();
+				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
+				Room room = dao1.findById(res.getString("room_id"));
+				Checkin user = new Checkin(res.getString("checkin_id"), room,
+						cusinfo, res.getString("checkin_time"),
+						res.getString("checkin_type"), res.getFloat("price"),
+						res.getInt("num_of_days"), res.getFloat("deposit"));
+
+				return user;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	// checkin表单查询
 	public Checkin findById(String checkin) {
 		Connection con = DBConnection.getConnection();
