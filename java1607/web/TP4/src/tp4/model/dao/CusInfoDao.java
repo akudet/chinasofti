@@ -128,7 +128,7 @@ public class CusInfoDao {
 	}
 
 	// 修改
-	public boolean update(CusInfo cusInfo, int cusTypeNo) {
+	public int update(CusInfo cusInfo, int cusTypeNo) {
 		con = DBConnection.getConnection();
 		String sql = "update cus_info set cus_info_id = ?,cert_type = ?,cert_number = ?,name = ?,phone = ?,address = ?,sex = ?,cus_type_no = ?,comment = ? where cus_info_id = ?";
 		try {
@@ -145,7 +145,7 @@ public class CusInfoDao {
 			pre.setString(1, cusInfo.getCusInfoId());
 			int i = pre.executeUpdate();
 			if (i > 0) {
-				return true;
+				return 0;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -153,6 +153,6 @@ public class CusInfoDao {
 		} finally {
 			DBConnection.close(con, pre);
 		}
-		return false;
+		return 1;
 	}
 }

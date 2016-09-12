@@ -34,6 +34,20 @@ public class CusInfo {
 		this.comment = comment;
 	}
 
+
+
+	public CusInfo(String certType, String certNumber, String name,
+			String phone, String addresss, String sex, String comment) {
+		super();
+		this.certType = certType;
+		this.certNumber = certNumber;
+		this.name = name;
+		this.phone = phone;
+		this.addresss = addresss;
+		this.sex = sex;
+		this.comment = comment;
+	}
+
 	public String getAddresss() {
 		return addresss;
 	}

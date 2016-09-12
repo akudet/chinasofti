@@ -14,8 +14,11 @@ public class Room {
 	protected String phone;
 	protected int status;
 	protected String comment;
-	
-	
+
+	public Room() {
+		super();
+	}
+
 	public Room(String floor, String phone, int status, String comment) {
 		super();
 		this.roomId = UUID.randomUUID().toString().replace("-", "");

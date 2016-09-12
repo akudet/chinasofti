@@ -12,6 +12,11 @@ public class Vip {
 	public Vip() {
 
 	}
+	
+	public Vip(int vipNumber) {
+		super();
+		this.vipNumber = vipNumber;
+	}
 
 	public Vip(int vipNumber, CusInfo cusInformation) {
 		super();

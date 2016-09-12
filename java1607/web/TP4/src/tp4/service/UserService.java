@@ -2,6 +2,7 @@ package tp4.service;
 
 import java.util.*;
 
+import tp4.model.dao.UserDao;
 import tp4.model.vo.User;
 
 /**
@@ -12,25 +13,29 @@ import tp4.model.vo.User;
 public class UserService {
 	
 	// 参考 2.11 操作员管理
-
+	
+	private UserDao dao;
 	public int add(String username, String userpass, int privilege) {
-		return -1;
+		User user = new User(username,userpass,privilege);
+		return dao.add(user);
 	}
 
 	public int deleteById(String userId) {
-		return -1;
+		
+		return dao.deleteById(userId);
 	}
 
 	public List<User> findAll() {
-		return null;
+		return dao.findAll();
 	}
 
-	public User findByUsername() {
-		return null;
+	public User findByName(String username) {
+		return dao.findByName(username);
 	}
 
 	public int updateById(String userId, String userName, String userPass,
 			int privilege) {
-		return -1;
+		User user = new User(userId,userName,userPass,privilege);
+		return dao.update(user);
 	}
 }

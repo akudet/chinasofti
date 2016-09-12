@@ -46,7 +46,7 @@ public class VipDao {
 	}
 
 	// 删除数据
-	public Vip deleteById(int vipNumber) {
+	public int deleteById(int vipNumber) {
 		con = DBConnection.getConnection();
 		String sql = "select * from vip where vip_no= ?";
 		try {
@@ -64,7 +64,7 @@ public class VipDao {
 			e.printStackTrace();
 		}
 
-		return null;
+		return 0;
 
 	}
 

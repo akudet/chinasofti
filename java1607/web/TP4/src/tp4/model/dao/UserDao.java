@@ -21,6 +21,7 @@ public class UserDao {
 	PreparedStatement pre = null;
 	ResultSet res = null;
 
+	
 	// 添加数据
 	public int add(User user) {
 		con = DBConnection.getConnection();
@@ -79,13 +80,13 @@ public class UserDao {
 		return 0;
 	}
 
-	public int deleteById(String userid) {
+	public int deleteById(String userId) {
 		con = DBConnection.getConnection();
 		String sql = "delete from user where userid = ?";
 
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setString(1, userid);
+			pre.setString(1, userId);
 			int i = pre.executeUpdate();
 			if (i > 0) {
 				return i;
@@ -99,6 +100,8 @@ public class UserDao {
 
 		return 0;
 	}
+	
+	
 
 	// 查询数据
 	public ArrayList<User> findAll() {
@@ -138,7 +141,7 @@ public class UserDao {
 			res = pre.executeQuery();
 			if (res.next()) {
 				User user = new User(res.getString("userid"),
-						res.getString("userpass"), res.getString("userpass"),
+						res.getString("username"), res.getString("userpass"),
 						res.getInt("privilege"));
 				return user;
 			}
@@ -150,7 +153,28 @@ public class UserDao {
 		}
 		return null;
 	}
-
+	
+	public User findByName(String userName) {
+		con = DBConnection.getConnection();
+		String sql = "select * from user where username=?";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setString(1, userName);
+			res = pre.executeQuery();
+			if (res.next()) {
+				User user = new User(res.getString("userid"),
+						res.getString("username"), res.getString("userpass"),
+						res.getInt("privilege"));
+				return user;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(con, pre, res);
+		}
+		return null;
+	}
 	// 修改
 	public int update(User user) {
 		con = DBConnection.getConnection();

@@ -23,6 +23,13 @@ public class User {
 		this.privilege = privilege;
 	}
 
+	public User(String userName, String userPass, int privilege) {
+		super();
+		this.userName = userName;
+		this.userPass = userPass;
+		this.privilege = privilege;
+	}
+
 	public int getPrivilege() {
 		return privilege;
 	}
