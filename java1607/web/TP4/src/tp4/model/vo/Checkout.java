@@ -10,7 +10,7 @@ public class Checkout {
 	protected float checkoutAmount;
 	protected String checkoutTime;
 	protected String comment;
-
+	protected Checkin checkin;
 	public Checkout() {
 		super();
 	}
@@ -28,6 +28,24 @@ public class Checkout {
 		this.checkoutAmount = checkoutAmount;
 		this.checkoutTime = checkoutTime;
 		this.comment = comment;
+	}
+	
+	public Checkout(String checkoutId, float checkoutAmount,
+			String checkoutTime, String comment, Checkin checkin) {
+		super();
+		this.checkoutId = checkoutId;
+		this.checkoutAmount = checkoutAmount;
+		this.checkoutTime = checkoutTime;
+		this.comment = comment;
+		this.checkin = checkin;
+	}
+
+	public Checkin getCheckin() {
+		return checkin;
+	}
+
+	public void setCheckin(Checkin checkin) {
+		this.checkin = checkin;
 	}
 
 	public float getCheckoutAmount() {
