@@ -13,9 +13,10 @@ import tp4.model.db.DBConnection;
 /**
  * 
  * @author 范中兴
- *
+ * 
  */
 public class Reservation {
+
 	protected String reservationId;
 	protected String name;
 	protected String phone;
@@ -23,83 +24,86 @@ public class Reservation {
 	protected String reserveTime;
 	protected String reservationTime;
 	protected String comment;
+
 	public Reservation() {
 
 	}
 
-	public Reservation(String reservationId, String name, String phone, String arriveTime,String reserveTime,String reservationTime,String comment) {
+	public Reservation(String reservationId, String name, String phone,
+			String arriveTime, String reserveTime, String reservationTime,
+			String comment) {
 		super();
 		this.reservationId = reservationId;
 		this.name = name;
 		this.phone = phone;
 		this.arriveTime = arriveTime;
-		this.reserveTime=reserveTime;
-		this.reservationTime=reservationTime;
-		this.comment=comment;
-	}
-
-	
-
-	public String getReservationId() {
-		return reservationId;
-	}
-
-	public void setReservationId(String reservationId) {
-		this.reservationId = reservationId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
+		this.reserveTime = reserveTime;
+		this.reservationTime = reservationTime;
+		this.comment = comment;
 	}
 
 	public String getArriveTime() {
 		return arriveTime;
 	}
 
-	public void setArriveTime(String arriveTime) {
-		this.arriveTime = arriveTime;
+	public String getComment() {
+		return comment;
 	}
 
-	public String getReserveTime() {
-		return reserveTime;
+	public String getName() {
+		return name;
 	}
 
-	public void setReserveTime(String reserveTime) {
-		this.reserveTime = reserveTime;
+	public String getPhone() {
+		return phone;
+	}
+
+	public String getReservationId() {
+		return reservationId;
 	}
 
 	public String getReservationTime() {
 		return reservationTime;
 	}
 
-	public void setReservationTime(String reservationTime) {
-		this.reservationTime = reservationTime;
+	public String getReserveTime() {
+		return reserveTime;
 	}
 
-	public String getComment() {
-		return comment;
+	public void setArriveTime(String arriveTime) {
+		this.arriveTime = arriveTime;
 	}
 
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setReservationId(String reservationId) {
+		this.reservationId = reservationId;
+	}
+
+	public void setReservationTime(String reservationTime) {
+		this.reservationTime = reservationTime;
+	}
+
+	public void setReserveTime(String reserveTime) {
+		this.reserveTime = reserveTime;
+	}
+
 	@Override
 	public String toString() {
 		return "UserDao [reservationId=" + reservationId + ", name=" + name
-				+ ", phone=" + phone + ", arriveTime=" + arriveTime + ",reserveTime="+reserveTime+",reservationTime="+reservationTime+",comment="+comment+"]";
+				+ ", phone=" + phone + ", arriveTime=" + arriveTime
+				+ ",reserveTime=" + reserveTime + ",reservationTime="
+				+ reservationTime + ",comment=" + comment + "]";
 	}
 
 }

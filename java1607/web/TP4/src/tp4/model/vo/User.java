@@ -1,11 +1,14 @@
 package tp4.model.vo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * 
  * @author 马厦伟
  * 
  */
-public class User {
+public class User extends VirtualObject {
 	protected String userId;
 	protected String userName;
 	protected String userPass;
@@ -15,16 +18,16 @@ public class User {
 
 	}
 
-	public User(String userId, String userName, String userPass, int privilege) {
+	public User(String userName, String userPass, int privilege) {
 		super();
-		this.userId = userId;
 		this.userName = userName;
 		this.userPass = userPass;
 		this.privilege = privilege;
 	}
 
-	public User(String userName, String userPass, int privilege) {
+	public User(String userId, String userName, String userPass, int privilege) {
 		super();
+		this.userId = userId;
 		this.userName = userName;
 		this.userPass = userPass;
 		this.privilege = privilege;
@@ -44,6 +47,14 @@ public class User {
 
 	public String getUserPass() {
 		return userPass;
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		userId = rs.getString("user_id");
+		userName = rs.getString("username");
+		userPass = rs.getString("userpass");
+		privilege = rs.getInt("privilege");
 	}
 
 	public void setPrivilege(int privilege) {

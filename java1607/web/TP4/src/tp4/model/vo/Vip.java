@@ -1,21 +1,19 @@
 package tp4.model.vo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * 
  * @author 马厦伟
  * 
  */
-public class Vip {
+public class Vip extends VirtualObject {
 	protected int vipNo;
 	protected CusInfo cusInfo;
 
 	public Vip() {
 
-	}
-
-	public Vip(int vipNumber) {
-		super();
-		this.vipNo = vipNumber;
 	}
 
 	public Vip(int vipNumber, CusInfo cusInformation) {
@@ -54,6 +52,11 @@ public class Vip {
 
 	public int getVipNo() {
 		return vipNo;
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		vipNo = rs.getInt("vip_no");
 	}
 
 	public void setCusInfo(CusInfo cusInformation) {

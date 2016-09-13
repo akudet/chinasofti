@@ -1,11 +1,14 @@
 package tp4.model.vo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * 
  * @author 张科林
  * 
  */
-public class RoomType {
+public class RoomType extends VirtualObject {
 
 	protected int roomTypeNo;
 	protected String roomTypeDesc;
@@ -14,6 +17,10 @@ public class RoomType {
 	protected int isHourRoom;
 	protected Float hourRoomPrice;
 	protected String comment;
+
+	public RoomType() {
+		super();
+	}
 
 	public RoomType(int roomTypeNo, String roomTypeDesc, int beds, Float price,
 			int isHourRoom, Float hourRoomPrice, String comment) {
@@ -26,16 +33,6 @@ public class RoomType {
 		this.hourRoomPrice = hourRoomPrice;
 		this.comment = comment;
 	}
-	
-	
-
-
-
-	public RoomType() {
-		super();
-	}
-
-
 
 	public int getBeds() {
 		return beds;
@@ -63,6 +60,17 @@ public class RoomType {
 
 	public int getRoomTypeNo() {
 		return roomTypeNo;
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		this.beds = rs.getInt("beds");
+		this.comment = rs.getString("comment");
+		this.hourRoomPrice = rs.getFloat("hourRoomPrice");
+		this.isHourRoom = rs.getInt("isHourRoom");
+		this.price = rs.getFloat("price");
+		this.roomTypeDesc = rs.getString("room_type_desc");
+		this.roomTypeNo = rs.getInt("room_type_no");
 	}
 
 	public void setBeds(int beds) {

@@ -1,5 +1,7 @@
 package tp4.model.vo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.UUID;
 
 /**
@@ -7,19 +9,18 @@ import java.util.UUID;
  * @author 张科林
  * 
  */
-public class Room {
+public class Room extends VirtualObject {
+
 	protected String roomId;
 	protected RoomType roomType;
 	protected String floor;
 	protected String phone;
 	protected int status;
 	protected String comment;
-	
-	//0位可用   1位停用
+
+	// 0位可用 1位停用
 	public static final int ROOM_INUSE = 0;
 	public static final int ROOM_FREE = 1;
-	
-	
 
 	public Room() {
 		super();
@@ -64,8 +65,25 @@ public class Room {
 		return roomType;
 	}
 
+	public String getRoomTypeDesc() {
+		return roomType.getRoomTypeDesc();
+	}
+
+	public int getRoomTypeNo() {
+		return roomType.getRoomTypeNo();
+	}
+
 	public int getStatus() {
 		return status;
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		this.comment = rs.getString("comment");
+		this.floor = rs.getString("floor");
+		this.phone = rs.getString("phone");
+		this.roomId = rs.getString("room_id");
+		this.status = rs.getInt("status");
 	}
 
 	public void setComment(String comment) {
