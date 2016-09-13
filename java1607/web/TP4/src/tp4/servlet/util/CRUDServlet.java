@@ -19,9 +19,7 @@ public class CRUDServlet extends HttpServlet {
 			getEdit(req, resp);
 		} else if (pathInfo.equals("/new")) {
 			getNew(req, resp);
-		}
-		
-		if (req.getParameter("GET") != null) {
+		} else if (req.getParameter("GET") != null) {
 			doGet(req, resp);
 		} else if (req.getParameter("POST") != null) {
 			doPost(req, resp);
@@ -34,10 +32,10 @@ public class CRUDServlet extends HttpServlet {
 		}
 	}
 	
-	public void getNew(HttpServletRequest req, HttpServletResponse resp) {
+	public void getNew(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	}
 
-	public void getEdit(HttpServletRequest req, HttpServletResponse resp) {
+	public void getEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	}
 	
 

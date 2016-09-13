@@ -12,7 +12,9 @@ import tp4.servlet.util.CRUDServlet;
 
 public class RoomTypeServlet extends CRUDServlet {
 
-	public static String SERVLET_URL = "/admin/room_type";
+
+	public static final String SERVLET_URL = "/admin/room_type";
+	public static final String TEMPLATE_URL = "/tmpl/" + SERVLET_URL;
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
@@ -67,15 +69,17 @@ public class RoomTypeServlet extends CRUDServlet {
 	}
 
 	@Override
-	public void getEdit(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		super.getEdit(req, resp);
+	public void getEdit(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
+				.forward(req, resp);
 	}
 
 	@Override
-	public void getNew(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		super.getNew(req, resp);
+	public void getNew(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
+				.forward(req, resp);
 	}
 
 }
