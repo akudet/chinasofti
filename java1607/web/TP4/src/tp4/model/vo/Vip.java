@@ -6,44 +6,67 @@ package tp4.model.vo;
  * 
  */
 public class Vip {
-	protected int vipNumber;
-	protected CusInfo cusInformation;
+	protected int vipNo;
+	protected CusInfo cusInfo;
 
 	public Vip() {
 
 	}
-	
+
 	public Vip(int vipNumber) {
 		super();
-		this.vipNumber = vipNumber;
+		this.vipNo = vipNumber;
 	}
 
 	public Vip(int vipNumber, CusInfo cusInformation) {
 		super();
-		this.vipNumber = vipNumber;
-		this.cusInformation = cusInformation;
+		this.vipNo = vipNumber;
+		this.cusInfo = cusInformation;
 	}
 
-	public CusInfo getCusInformation() {
-		return cusInformation;
+	public String getAddress() {
+		return cusInfo.getAddresss();
 	}
 
-	public int getVipNumber() {
-		return vipNumber;
+	public String getCertNo() {
+		return cusInfo.getCertNumber();
 	}
 
-	public void setCusInformation(CusInfo cusInformation) {
-		this.cusInformation = cusInformation;
+	public String getComment() {
+		return cusInfo.getComment();
 	}
 
-	public void setVipNumber(int vipNumber) {
-		this.vipNumber = vipNumber;
+	public CusInfo getCusInfo() {
+		return cusInfo;
+	}
+
+	public String getName() {
+		return cusInfo.getName();
+	}
+
+	public String getPhone() {
+		return cusInfo.getPhone();
+	}
+
+	public String getSex() {
+		return cusInfo.getSex();
+	}
+
+	public int getVipNo() {
+		return vipNo;
+	}
+
+	public void setCusInfo(CusInfo cusInformation) {
+		this.cusInfo = cusInformation;
+	}
+
+	public void setVipNo(int vipNumber) {
+		this.vipNo = vipNumber;
 	}
 
 	@Override
 	public String toString() {
-		return "Vip [vipNumber=" + vipNumber + ", cusInformation="
-				+ cusInformation + "]";
+		return "Vip [vipNumber=" + vipNo + ", cusInformation=" + cusInfo + "]";
 	}
 
 }

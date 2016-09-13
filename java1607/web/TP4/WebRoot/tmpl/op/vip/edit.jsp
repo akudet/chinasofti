@@ -1,17 +1,17 @@
-<%@ page language="java" import="java.util.*, tp4.model.vo.*,tp4.model.dao.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="tp4.servlet.op.*"%>
+
 <%
-Vip vip = new VipDao().findById("1000");
-CusInfo vipInfo = vip.getCusInformation();
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!DOCTYPE HTML>
 <html>
   <head>
-    <base href="<%=basePath%>">
     
-    <title>My JSP 'edit.jsp' starting page</title>
+    <title>${vip.name}</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,12 +25,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	会员编号：<%= vip.getVipNumber() %>
-	会员姓名：<%= vipInfo.getName() %>
-	性别：<%= vipInfo.getSex() %>
-	证件编号：<%= vipInfo.getCertNumber() %>
-	联系电话：<%= vipInfo.getPhone() %>
-	详细地址：<%= vipInfo.getAddresss() %>
-	备注：<%= vipInfo.getComment() %>
+  	<form action="<%=path + VipServlet.SERVLET_URL%>" method="POST">
+		<input type="hidden" name="PUT">
+		会员编号：<input type="number" name="vipNo" value="${vip.vipNo}" disable><br>
+		会员姓名：<input type="text" name="name" value="${vip.name }"><br>
+		会员性别：<input type="text" name="sex" value="${vip.sex}"><br>
+		证件编号：<input type="text" name="certNo" value="${vip.certNo}"><br>
+		联系电话:<input type="text" name="phone" value="${vip.phone}"><br>
+		详细地址：<input type="text" name="address" value="${vip.address}"><br>
+		备注：<input type="text" name="comment" value="${vip.comment}"><br>
+		<input type="submit" value="修改">
+	</form>
   </body>
 </html>

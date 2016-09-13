@@ -142,7 +142,7 @@ public class CusInfoDao {
 			pre.setString(7, cusInfo.getSex());
 			pre.setInt(8, cusTypeNo);
 			pre.setString(9, cusInfo.getComment());
-			pre.setString(1, cusInfo.getCusInfoId());
+			pre.setString(10, cusInfo.getCusInfoId());
 			int i = pre.executeUpdate();
 			if (i > 0) {
 				return 0;

@@ -1,5 +1,7 @@
 package tp4.model.vo;
 
+import java.util.UUID;
+
 /**
  * 
  * @author 项双江
@@ -39,6 +41,7 @@ public class CusInfo {
 	public CusInfo(String certType, String certNumber, String name,
 			String phone, String addresss, String sex, String comment) {
 		super();
+		this.cusInfoId = UUID.randomUUID().toString().replace("-", "");
 		this.certType = certType;
 		this.certNumber = certNumber;
 		this.name = name;

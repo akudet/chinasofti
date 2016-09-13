@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tp4.model.dao.VipDao;
 import tp4.service.VipService;
 import tp4.servlet.util.CRUDServlet;
 
@@ -21,6 +22,9 @@ public class VipServlet extends CRUDServlet {
 	@Override
 	public void getEdit(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		VipDao dao = new VipDao();
+		System.out.println(req.getParameter("vipNo"));
+		req.setAttribute("vip", dao.findById(req.getParameter("vipNo")));
 		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
 				.forward(req, resp);
 	}
@@ -44,7 +48,8 @@ public class VipServlet extends CRUDServlet {
 	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println("hello");
+		VipDao dao = new VipDao();
+		req.setAttribute("vips", dao.findAll());
 		req.getRequestDispatcher(TEMPLATE_URL + "/index.jsp")
 		.forward(req, resp);
 	}
@@ -70,7 +75,29 @@ public class VipServlet extends CRUDServlet {
 				req.getParameter("phone"),
 				req.getParameter("address"),
 				req.getParameter("comment"));
-		
+		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
+	}
+
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		VipService service = new VipService();
+		req.setCharacterEncoding("utf-8");
+		service.updateById(Integer.parseInt(req.getParameter("vipNo")),
+				req.getParameter("name"),
+				req.getParameter("sex"),
+				req.getParameter("certNo"),
+				req.getParameter("phone"),
+				req.getParameter("address"),
+				req.getParameter("comment"));
+		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
+	}
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		new VipDao().deleteById(Integer.parseInt(req.getParameter("vipNo")));
+		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
 	}
 
 }

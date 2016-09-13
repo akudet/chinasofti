@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 
+ * @author 巫金桐
+ *
+ */
 public class CRUDServlet extends HttpServlet {
 
 	@Override
@@ -15,18 +20,22 @@ public class CRUDServlet extends HttpServlet {
 
 		System.out.println(req.getPathInfo());
 		String pathInfo = req.getPathInfo();
-		if (pathInfo.equals("/edit")) {
+		if (null == pathInfo || pathInfo.equals("/")) {
+			if (req.getParameter("GET") != null) {
+				doGet(req, resp);
+			} else if (req.getParameter("POST") != null) {
+				doPost(req, resp);
+			} else if (req.getParameter("PUT") != null) {
+				doPut(req, resp);
+			} else if (req.getParameter("DELETE") != null) {
+				doDelete(req, resp);
+			} else {
+				super.service(req, resp);
+			}
+		} else if (pathInfo.equals("/edit")) {
 			getEdit(req, resp);
 		} else if (pathInfo.equals("/new")) {
 			getNew(req, resp);
-		} else if (req.getParameter("GET") != null) {
-			doGet(req, resp);
-		} else if (req.getParameter("POST") != null) {
-			doPost(req, resp);
-		} else if (req.getParameter("PUT") != null) {
-			doPut(req, resp);
-		} else if (req.getParameter("DELETE") != null) {
-			doDelete(req, resp);
 		} else {
 			super.service(req, resp);
 		}

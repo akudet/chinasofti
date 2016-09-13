@@ -23,14 +23,14 @@ public class VipDao {
 
 	// 添加数据
 	public int add(Vip vip) {
+		new CusInfoDao().add(vip.getCusInfo(), vip.getCusInfo().getCusType().getCusTypeNo());
 		con = DBConnection.getConnection();
 		String sql = "insert into vip values(?,?)";
 		try {
 			pre = con.prepareStatement(sql);
-			String udi = UUID.randomUUID().toString();
 
-			pre.setInt(1, vip.getVipNumber());
-			pre.setString(2, vip.getCusInformation().getCusInfoId());
+			pre.setInt(1, vip.getVipNo());
+			pre.setString(2, vip.getCusInfo().getCusInfoId());
 
 			int i = pre.executeUpdate();
 			if (i > 0) {
@@ -40,7 +40,7 @@ public class VipDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			DBConnection.close(con, pre, res);
+			DBConnection.close(con, pre);
 		}
 		return 0;
 	}
@@ -55,8 +55,10 @@ public class VipDao {
 			res = pre.executeQuery();
 			if (res.next()) {
 				CusInfoDao dao = new CusInfoDao();
-				CusInfo cusInfo = dao.findById(res.getString("cus_info_id"));
-				Vip vip = new Vip(res.getInt("vip_no"), cusInfo);
+				pre = con.prepareStatement("delete from vip where vip_no=?");
+				pre.setInt(1, vipNumber);
+				pre.executeUpdate();
+				dao.deleteById(res.getString("cus_info_id"));
 
 			}
 		} catch (SQLException e) {
@@ -105,6 +107,8 @@ public class VipDao {
 			res = pre.executeQuery();
 			if (res.next()) {
 				Vip vip = new Vip();
+				vip.setVipNo(res.getInt("vip_no"));
+				vip.setCusInfo(new CusInfoDao().findById(res.getString("cus_info_id")));
 				return vip;
 			}
 
@@ -124,8 +128,8 @@ public class VipDao {
 		String sql = "update vip set cus_info_id where vip_no = ?";
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setInt(1, vipNumber.getVipNumber());
-			pre.setString(2, vipNumber.getCusInformation().getCusInfoId());
+			pre.setInt(1, vipNumber.getVipNo());
+			pre.setString(2, vipNumber.getCusInfo().getCusInfoId());
 
 			int i = pre.executeUpdate();
 			if (i > 0) {

@@ -20,15 +20,17 @@ public class VipService {
 	//参考 2.7 会员管理
 	
 	private VipDao mVipDao = new VipDao();
+	private CusInfoDao mCusInfoDao = new CusInfoDao();
 	
 	public int add(int vipNumber, String name, String sex, String certNumber,
 			String phone, String address, String comment) {
-		CusInfo user = new CusInfo( "身份证", certNumber,
+		CusInfo user = new CusInfo("身份证", certNumber,
 				name, phone,address,sex,comment);
 		CusTypeDao dao = new CusTypeDao();
 		CusType cusType = dao.findById(1);
 		user.setCusType(cusType);
-		
+		System.out.println("123123123");
+		System.out.println(user);
 		
 		Vip vip = new Vip(vipNumber,user);
 		
@@ -50,7 +52,7 @@ public class VipService {
 		List<Vip> mVip = mVipDao.findAll();
 		List<Vip> results = new ArrayList<Vip>();
 		for(Vip vip : mVip){
-			if(vip.getCusInformation().getName().equals(name)){
+			if(vip.getCusInfo().getName().equals(name)){
 				results.add(vip);
 			}
 		}if (results.size() == 0) {
@@ -62,11 +64,15 @@ public class VipService {
 	// 根据提供的信息对信息进行修改
 	public int updateById(int vipNumber, String name, String sex,
 			String certNumber, String phone, String address, String comment) {
-		Vip vip = new Vip();
-	    CusInfo mCusInfo = vip.getCusInformation();
-	    CusInfoDao mCusInfoDao = new CusInfoDao();
-	    CusType mCusType = new CusType();
-		return mCusInfoDao.update(mCusInfo,mCusType.getCusTypeNo());
+		Vip vip = mVipDao.findById("" + vipNumber);
+	    CusInfo cusInfo = vip.getCusInfo();
+	    cusInfo.setName(name);
+	    cusInfo.setSex(sex);
+	    cusInfo.setCertNumber(certNumber);
+	    cusInfo.setPhone(phone);
+	    cusInfo.setAddresss(address);
+	    cusInfo.setComment(comment);
+		return mCusInfoDao.update(cusInfo,cusInfo.getCusType().getCusTypeNo());
 
 	}
 }
