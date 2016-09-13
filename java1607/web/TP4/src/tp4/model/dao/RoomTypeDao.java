@@ -24,7 +24,7 @@ public class RoomTypeDao {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, roomType.getRoomTypeNo());
-			ps.setString(2, roomType.getRoomTypedesc());
+			ps.setString(2, roomType.getRoomTypeDesc());
 			ps.setInt(3, roomType.getBeds());
 			ps.setFloat(4, roomType.getPrice());
 			ps.setInt(5, roomType.getIsHourRoom());
@@ -49,7 +49,7 @@ public class RoomTypeDao {
 		String sql = "update room_type set room_type_desc=?,beds=?,price=?,isHourRoom=?,hourRoomPrice=?,comment=? where room_type_no=?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, roomType.getRoomTypedesc());
+			ps.setString(1, roomType.getRoomTypeDesc());
 			ps.setInt(2, roomType.getBeds());
 			ps.setFloat(3, roomType.getPrice());
 			ps.setInt(4, roomType.getIsHourRoom());
@@ -99,6 +99,7 @@ public class RoomTypeDao {
 		String sql = "select * from room_type where room_type_no=?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, roomTypeNo);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				RoomType roomType = new RoomType(rs.getInt("room_type_no"),

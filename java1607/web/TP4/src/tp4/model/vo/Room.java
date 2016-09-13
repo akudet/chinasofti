@@ -14,6 +14,12 @@ public class Room {
 	protected String phone;
 	protected int status;
 	protected String comment;
+	
+	//0位可用   1位停用
+	public static final int ROOM_INUSE = 0;
+	public static final int ROOM_FREE = 1;
+	
+	
 
 	public Room() {
 		super();

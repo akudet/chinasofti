@@ -47,7 +47,7 @@ public class RoomTypeService {
 		int isHourRoom_t = isHourRoom ? 1 : 0;
 		RoomType roomType = roomTypeDao.findById(roomTypeNo);
 		roomType.setRoomTypeNo(roomTypeNo);
-		roomType.setRoomTypedesc(roomTypeDesc);
+		roomType.setRoomTypeDesc(roomTypeDesc);
 		roomType.setBeds(beds);
 		roomType.setPrice(price);
 		roomType.setIsHourRoom(isHourRoom_t);

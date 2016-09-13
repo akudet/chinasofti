@@ -57,7 +57,7 @@ public class RoomType {
 		return price;
 	}
 
-	public String getRoomTypedesc() {
+	public String getRoomTypeDesc() {
 		return roomTypeDesc;
 	}
 
@@ -85,7 +85,7 @@ public class RoomType {
 		this.price = price;
 	}
 
-	public void setRoomTypedesc(String roomTypeDesc) {
+	public void setRoomTypeDesc(String roomTypeDesc) {
 		this.roomTypeDesc = roomTypeDesc;
 	}
 
