@@ -1,4 +1,4 @@
-package tp4.servlet.amin;
+package tp4.servlet.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import tp4.servlet.util.CRUDServlet;
 
-public class UserServlet extends CRUDServlet {
+public class CusTypeServlet extends CRUDServlet {
 
-	public static final String SERVLET_URL = "/admin/user";
+	public static final String SERVLET_URL = "/admin/cus_type";
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
 
 	@Override
@@ -69,12 +69,11 @@ public class UserServlet extends CRUDServlet {
 
 	@Override
 	public void getEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp").forward(req,resp);
+		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp").forward(req, resp);
 	}
 
 	@Override
 	public void getNew(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("12312");
 		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp").forward(req, resp);
 	}
 

@@ -1,4 +1,4 @@
-package tp4.servlet.amin;
+package tp4.servlet.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import tp4.servlet.util.CRUDServlet;
 
-public class CusTypeServlet extends CRUDServlet {
+public class RoomServlet extends CRUDServlet {
 
-	public static final String SERVLET_URL = "/admin/cus_type";
+	public static final String SERVLET_URL = "/admin/room";
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
 
 	@Override

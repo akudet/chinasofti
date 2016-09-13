@@ -1,4 +1,4 @@
-package tp4.servlet.amin;
+package tp4.servlet.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
