@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tp4.service.VipService;
 import tp4.servlet.util.CRUDServlet;
 
 public class VipServlet extends CRUDServlet {
 
+	//参考 2.7 会员管理
+	
 	public static final String SERVLET_URL = "/op/vip";
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
 	
@@ -41,7 +44,8 @@ public class VipServlet extends CRUDServlet {
 	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + "index.jsp")
+		System.out.println("hello");
+		req.getRequestDispatcher(TEMPLATE_URL + "/index.jsp")
 		.forward(req, resp);
 	}
 
@@ -55,22 +59,18 @@ public class VipServlet extends CRUDServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		VipService service = new VipService();
+		service.add(
+				Integer.parseInt(req.getParameter("vipNo")),
+				req.getParameter("name"),
+				req.getParameter("sex"),
+				req.getParameter("certNo"),
+				req.getParameter("phone"),
+				req.getParameter("address"),
+				req.getParameter("comment"));
+		
 	}
 
 }
