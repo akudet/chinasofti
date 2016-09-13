@@ -139,9 +139,32 @@ public class ReservationDao {
 
 	// 删除数据
 	// 单查询
+	public Reservation findByNameAndPhone(String name, String phone) {
+		con = DBConnection.getConnection();
+		String sql = "select * from reservation where name=?,phone=?";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setString(1, name);
+			pre.setString(2, phone);
+			res = pre.executeQuery();
+			if (res.next()) {
+				Reservation reservation = new Reservation(res.getString("reservationId"),
+						res.getString("name"), res.getString("phone"),
+						res.getString("arriveTime"),res.getString("reserveTime"),res.getString("reservationTime"),
+						res.getString("comment"));
+				return reservation;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(con, pre, res);
+		}
+		return null;
+	}
 	public Reservation findById(String reservationId) {
 		con = DBConnection.getConnection();
-		String sql = "select * from reservation where reservationId=?";
+		String sql = "select * from reservation where reservationId=? ";
 		try {
 			pre = con.prepareStatement(sql);
 			pre.setString(1, reservationId);
@@ -161,7 +184,6 @@ public class ReservationDao {
 		}
 		return null;
 	}
-
 	// 修改
 	public int update(Reservation reservation) {
 		con = DBConnection.getConnection();
