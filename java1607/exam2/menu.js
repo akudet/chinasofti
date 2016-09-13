@@ -11,6 +11,12 @@
 
 $(document).ready(function() {
   $(".dropdown-menu").hide();
+  
+  $(".dropdown-menu").each(function() {
+	  var menu = $(this);
+	  var menu_container = $(this).parent();
+	  menu.css("top", menu_container.height());
+  });
 
   //a dropdown toggle is sth when clicked it will cause the
   //dropdown menu to slide up or down depend the menu status
@@ -18,9 +24,6 @@ $(document).ready(function() {
   //and their parent need to be positioned
   $(".dropdown-toggle").click(function() {
     dropdownMenu = $(this).next(".dropdown-menu");
-    parent = $(this).parent();
-    dropdownMenu.css("top", parent.outerHeight());
-    dropdownMenu.css("left", "0px");
     dropdownMenu.slideToggle();
   });
 
