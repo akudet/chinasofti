@@ -110,6 +110,7 @@ public class CheckinDao {
 		return null;
 	}
 
+	//checkin表根据roomId查询
 	public Checkin findByRoomId(String roomId) {
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;

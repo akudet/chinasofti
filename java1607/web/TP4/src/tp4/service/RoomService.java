@@ -33,7 +33,7 @@ public class RoomService {
 		mRoomDao = new RoomDao();
 		mRoomTypeDao = new RoomTypeDao();
 	}
-
+	//添加
 	public int add(String roomId, int roomTypeNo, String floor, String phone,
 			int status, String comment) {
 		Room room = new Room(roomId, floor, phone, status, comment);
@@ -47,6 +47,7 @@ public class RoomService {
 	}
 
 	// 返回 ERR_ROOM_INUSE 表示房间被占用, 0 表示成功
+	//删除
 	public int deleteById(String roomId) {
 		// TODO : thread safety
 		Room room = mRoomDao.findById(roomId);
@@ -56,7 +57,7 @@ public class RoomService {
 		}
 		return mRoomDao.deleteById(roomId);
 	}
-
+	//查找
 	public List<Room> findByType(int roomTypeNo) {
 		// TODO : performance issue
 		List<Room> rooms = mRoomDao.findAll();
@@ -71,7 +72,7 @@ public class RoomService {
 		}
 		return results;
 	}
-
+	//修改
 	public int updateById(String roomId, int roomTypeId, String floor,
 			String phone, int status, String comment) {
 		Room room = mRoomDao.findById(roomId);

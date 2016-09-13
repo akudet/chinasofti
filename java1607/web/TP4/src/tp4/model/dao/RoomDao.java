@@ -44,6 +44,13 @@ public class RoomDao {
 
 		return 1;
 	}
+	//删除所有
+	public int deleteAll(){
+		String sql = "delete from room";
+	
+		
+		return 0;
+	}
 
 	// 删除房间
 	public int deleteById(String roomId) {

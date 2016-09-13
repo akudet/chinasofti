@@ -206,6 +206,8 @@ public class CheckoutDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			DBConnection.close(con, pre, res);
 		}
 		return null;
 	}
@@ -240,6 +242,8 @@ public class CheckoutDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			DBConnection.close(con, pre, res);
 		}
 		return null;
 	}
