@@ -19,8 +19,19 @@ public class Room extends VirtualObject {
 	protected String comment;
 
 	// 0位可用 1位停用
-	public static final int ROOM_INUSE = 0;
-	public static final int ROOM_FREE = 1;
+	public static final int ROOM_STATUS_INUSE;
+	public static final int ROOM_STATUS_FREE;
+	public static final int ROOM_STATUS_RESERVED;
+	
+	static {
+		ROOM_STATUS_INUSE = regMsg("占用");
+		ROOM_STATUS_FREE = regMsg("空闲");
+		ROOM_STATUS_RESERVED = regMsg("保留");
+	}
+	
+	public String getStatusDesc() {
+		return getMsg(status);
+	}
 
 	public Room() {
 		super();

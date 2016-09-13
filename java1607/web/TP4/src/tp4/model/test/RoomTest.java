@@ -5,24 +5,54 @@ import tp4.model.vo.Room;
 import tp4.model.vo.RoomType;
 
 public class RoomTest {
-	//添加方法测试
-	public void addText(){
+	public static void main(String[] args) {
+		RoomTest rt = new RoomTest();
+		rt.getStatusDescTest();
+	}
+
+	// 添加方法测试
+	public void addTest() {
 		RoomDao dao = new RoomDao();
 		Room room = new Room("fas", "fds", "s", 2, "dfs");
 		RoomType roomType = new RoomType(2, "双人房", 2, 16.8f, 2, 52.0f, "还不错");
 		room.setRoomType(roomType);
-		dao.add(room);	
+		dao.add(room);
 	}
-	//删除方法测试
-	public void deleteTest(){
-		String roomId ="fas";
+
+	// 删除方法测试
+	public void deleteTest() {
+		String roomId = "fas";
 		RoomDao dao = new RoomDao();
 		dao.deleteById(roomId);
 	}
-	//修改测试方法
-	public void updateTest(){
+
+	public void getStatusDescTest() {
+		Room room1 = new Room("fas", "fds", "s", Room.ROOM_STATUS_INUSE, "dfs");
+		Room room2 = new Room("fas", "fds", "s", Room.ROOM_STATUS_FREE, "dfs");
+		Room room3 = new Room("fas", "fds", "s", Room.ROOM_STATUS_RESERVED, "dfs");
+		System.out.println(room1.getStatusDesc());
+		System.out.println(room2.getStatusDesc());
+		System.out.println(room3.getStatusDesc());
+	}
+
+	public void queryAllTest() {
 		RoomDao dao = new RoomDao();
-		Room room =new Room();
+		System.out.println(dao.findAll());
+	}
+
+	// 查询单个的测试方法
+	public void queryTest() {
+		RoomDao dao = new RoomDao();
+		String roomid = "f8cb8ee4457f4081923aeaa1c890e398";
+		Room a = dao.findById(roomid);
+		System.out.println(a.getRoomId() + '\n' + a.getComment() + a.getFloor()
+				+ a.getPhone() + a.getRoomType().getBeds() + a.getStatus());
+	}
+
+	// 修改测试方法
+	public void updateTest() {
+		RoomDao dao = new RoomDao();
+		Room room = new Room();
 		RoomType roomType = new RoomType(2, "双人房", 2, 16.8f, 2, 52.0f, "还不错");
 		room.setRoomId("f8cb8ee4457f4081923aeaa1c890e398");
 		room.setRoomType(roomType);
@@ -33,19 +63,4 @@ public class RoomTest {
 
 		dao.update(room);
 	}
-	//查询单个的测试方法
-	public void queryTest(){
-		RoomDao dao = new RoomDao();
-		String roomid = "f8cb8ee4457f4081923aeaa1c890e398";
-		Room a = dao.findById(roomid);
-		System.out.println(a.getRoomId()+'\n'+a.getComment()+a.getFloor()+a.getPhone()+a.getRoomType().getBeds()+a.getStatus());
-	}
-	public void queryAllTest(){
-		RoomDao dao = new RoomDao();
-		System.out.println(dao.findAll());
-	}
-public static void main(String[] args) {
-	RoomTest rt = new RoomTest();
-	rt. queryAllTest();
-}
 }
