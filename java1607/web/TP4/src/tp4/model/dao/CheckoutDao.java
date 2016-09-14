@@ -89,6 +89,7 @@ public class CheckoutDao {
 						res.getFloat("checkout_amount"),
 						res.getString("checkout_time"),
 						res.getString("comment"));
+				user.setCheckin(new CheckinDao().findById(res.getString("checkin_id")));
 				list.add(user);
 			}
 

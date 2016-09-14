@@ -18,6 +18,22 @@ public class Checkout extends VirtualObject {
 	public Checkout() {
 		super();
 	}
+	
+	public String getRoomTypeDesc() {
+		return checkin.getRoomTypeDesc();
+	}
+	
+	public String getRoomId() {
+		return checkin.getRoomId();
+	}
+	
+	public String getCheckinType() {
+		return checkin.getCheckinType();
+	}
+	
+	public String getName() {
+		return checkin.getName();
+	}
 
 	public Checkout(float checkouAmount, String comment) {
 		super();

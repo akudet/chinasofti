@@ -2,6 +2,7 @@ package tp4.service;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -86,6 +87,37 @@ public class CheckoutService {
 			List<Integer> roomTypeNos) {
 		CheckoutDao dao = new CheckoutDao();
 		return dao.find(start, end, checkType, roomTypeNos);
+	}
+	
+	public ArrayList<Checkout> find(String start, String end, String checkinType,
+			String[] roomTypeNos) {
+		System.out.println("FIND : " + start + end + checkinType + roomTypeNos);
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Date s_start = null;
+		Date e_end = null;
+		try {
+			s_start = df.parse(start);
+			e_end = df.parse(start);
+		} catch (ParseException e) {
+		}
+		
+		if (null == s_start || null == e_end) {
+			return null;
+		}
+		
+		int c_checkinType = Integer.parseInt(checkinType);
+		List<Integer> r_roomTypeNos = parseInt(roomTypeNos);
+		
+		return find(s_start, e_end, c_checkinType, r_roomTypeNos);
+		
+	}
+
+	private List<Integer> parseInt(String[] roomTypeNos) {
+		List<Integer> res = new ArrayList<Integer>();
+		for (String roomTypeNo : roomTypeNos) {
+			res.add(Integer.parseInt(roomTypeNo));
+		}
+		return res;
 	}
 
 	public List<Checkout> find(int checkType,
