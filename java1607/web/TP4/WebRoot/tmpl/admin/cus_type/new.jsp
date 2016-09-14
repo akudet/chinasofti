@@ -1,16 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-  RoomTypeServlet
-    <base href="<%=basePath%>">
     
-    <title>My JSP 'new.jsp' starting page</title>
+    <title>添加客户折扣信息</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,6 +18,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <form action="${pageContext.request.contextPath }/TP4/admin/cus_type/new" method="post">
+    <input type="hidden" name="POST">
+              客户类型编号：<input type="text"name="cusTypeNo"><br> 
+              客户类型：<input type="text" name="cusTypeDesc"><br>
+              折扣类型：<input type="text" name="discount"><br>
+    </form>
   </body>
 </html>

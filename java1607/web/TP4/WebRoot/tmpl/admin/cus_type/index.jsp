@@ -1,6 +1,7 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,tp4.servlet.admin.*" pageEncoding="UTF-8"%>
+
 <%
-List<CusType> 
+
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
@@ -10,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>查找所有顾客折扣类型</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -22,8 +23,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+ 
   <body>
-    This is my JSP page. <br>
+  <form action="${pageContext.request.contextPath }/TP4/admin/cus_type/index"   method="get">
+   <table>
+		<tr>
+			<th>客户类型编号</th>
+			<th>客户类型</th>
+			<th>打折比例</th>
+			
+		</tr>
+		<c:forEach items="${CusTypes}" var="CusType">
+			<tr>
+				<td>${CusType.cusTypeNo}</td>
+				<td>${CusType.cusTypeDesc}</td>
+				<td>${discount}</td>
+				
+				<td>
+					<a href="<%= path + CusTypeServlet.SERVLET_URL + "/edit?cusTypeNo=" %>${CusType.cusTypeNo}">修改</a>
+					<a href="<%= path + CusTypeServlet.SERVLET_URL + "?DELETE=&&cusTypeNo=" %>${CusType.cusTypeNo}">删除</a>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<a href="<%= path + CusTypeServlet.SERVLET_URL + "/new" %>">添加</a>
+   
+   </form>  
+    
+    
+    
   </body>
 </html>

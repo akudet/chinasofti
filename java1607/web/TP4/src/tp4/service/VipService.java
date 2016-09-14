@@ -70,7 +70,7 @@ public class VipService {
 	    cusInfo.setSex(sex);
 	    cusInfo.setCertNumber(certNumber);
 	    cusInfo.setPhone(phone);
-	    cusInfo.setAddresss(address);
+	    cusInfo.setAddress(address);
 	    cusInfo.setComment(comment);
 		return mCusInfoDao.update(cusInfo,cusInfo.getCusType().getCusTypeNo());
 

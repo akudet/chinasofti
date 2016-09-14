@@ -2,12 +2,16 @@ package tp4.servlet.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tp4.model.vo.CusType;
+import tp4.service.CusTypeService;
+import tp4.service.UserService;
 import tp4.servlet.util.CRUDServlet;
 
 public class CusTypeServlet extends CRUDServlet {
@@ -25,39 +29,32 @@ public class CusTypeServlet extends CRUDServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		CusTypeService CTService= new CusTypeService();
+		List<CusType> list=CTService.findAll();
+		request.setAttribute("list",list );
+		request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+    request.setCharacterEncoding("UTF-8");
+		
+		int cusTypeNo = Integer.parseInt(request.getParameter("cusTypeNo"));
+		String cusTypeDesc = request.getParameter("cusTypeDesc");
+		int discount =Integer.parseInt(request.getParameter("discount"));
+		
+		CusTypeService CTService = new CusTypeService();
+		int flag = CTService.add(cusTypeNo, cusTypeDesc, discount);
+		if (flag > 0) {
+			request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp")
+					.forward(request, response);
+		} else {
+			request.setAttribute("list", "请添加数据");
+			request.getRequestDispatcher(TEMPLATE_URL+"/new.jsp").forward(request,
+					response);
+		}
 	}
 
 	@Override

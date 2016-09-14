@@ -10,6 +10,7 @@ import java.util.UUID;
 import tp4.model.db.DBConnection;
 import tp4.model.vo.CusInfo;
 import tp4.model.vo.Vip;
+import tp4.model.vo.Checkin;
 
 /**
  * 
@@ -121,6 +122,28 @@ public class VipDao {
 		return null;
 	}
 
+	//通过客户Id查找
+	public int findByCusInfoId(String cusInfoId){
+		con = DBConnection.getConnection();
+		String sql = "select vip_no from vip where cus_info_id = ?";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setString(1, cusInfoId);
+			res = pre.executeQuery();
+			if (res.next()) {
+				Vip vip = new Vip();
+				vip.setVipNo(res.getInt("vip_no"));
+				return vip.getVipNo();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(con, pre, res);
+		}
+		return 0;
+	}
+		
 	// 修改
 
 	public int update(Vip vipNumber) {
