@@ -47,13 +47,13 @@ public class CheckinDao {
 			pre.setFloat(8, checkin.getDeposit());
 			int i = pre.executeUpdate();
 			if (i > 0) {
-				return 1;
+				return 0;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return 0;
+		return -1;
 	}
 
 	// checkin表的删除

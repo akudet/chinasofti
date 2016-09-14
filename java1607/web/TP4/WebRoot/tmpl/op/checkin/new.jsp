@@ -23,6 +23,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <form action="/TP4/op/checkin/" method="POST">
+    	<input type="hidden" name="POST"/>
+    	入住单号:<input type="text" name="checinId"/><br>
+		房间类型:<input type="text" name="roomTypeDesc"/><br>
+		房间号:<input type="text" name="roomId"/><br>
+		客户类型:<input type="text" name="cusTypeNo"/><br>
+		客户名称:<input type="text" name="name"/><br>
+		会员编号:<input type="text" name="vipNo"/><br>
+		性别:<input type="text" name="sex"/><br>
+		证件类型:<input type="text" name="certType"/><br>
+		证件编号:<input type="text" name="certNumber"/><br>
+		地址信息:<input type="text" name="address"/><br>
+		备注:<input type="text" name="comment"/><br>
+		入住时间:<input type="text" name="checkinTime"/><br>
+		计费方式:<input type="text" name="checkinType"/><br>
+		单价:<input type="text" name="price"/><br>
+		预住天数:<input type="text" name="numOfDays"/><br>
+		押金:<input type="text" name="deposit"/><br>
+		<input type="submit" value="提交"/>
+    </form>
   </body>
 </html>

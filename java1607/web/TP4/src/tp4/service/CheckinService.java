@@ -4,10 +4,11 @@ import java.util.UUID;
 
 import tp4.model.dao.CheckinDao;
 import tp4.model.dao.CusInfoDao;
-
+import tp4.model.dao.CusTypeDao;
+import tp4.model.dao.RoomDao;
 import tp4.model.vo.Checkin;
 import tp4.model.vo.CusInfo;
-
+import tp4.model.vo.CusType;
 import tp4.model.vo.Room;
 
 /**
@@ -25,13 +26,27 @@ public class CheckinService {
 		return dao.add(in);	
 	}
 	
+	public int checkin(CusInfo cusInfo, String roomId, String s_checkinType, String s_numOfDays, String s_deposit) {
+		Room room = new RoomDao().findById(roomId);
+	
+		int numOfDays = Integer.parseInt(s_numOfDays);
+		Checkin checkin = new Checkin();
+		checkin.setCusInfo(cusInfo);
+		checkin.setRoom(room);
+		if (s_checkinType.equals("标准")) {
+			
+		} else {
+
+		}
+		return -1;
+	}
+	
 	public int checkin(Room room, CusInfo cusInfo ,String checkin_time,String checkin_type,float price,int num_of_days) {
 	
 		Checkin checkin = new Checkin();
 		CheckinDao dao = new CheckinDao();
 		String uuid = UUID.randomUUID().toString().replace("-", "");
 		checkin.setCheckinId(uuid);
-		checkin.setCheckinTime(checkin_time);
 		checkin.setCheckinType(checkin_type);
 		checkin.setCusInfo(cusInfo);
 		checkin.setRoom(room);
@@ -40,7 +55,7 @@ public class CheckinService {
 		return dao.add(checkin);	
  
 }
-
+	//续住
 	public int renew(String checkinId, int days, int deposit) {
 		CheckinDao dao = new CheckinDao();
 		Checkin checkin = new Checkin();
@@ -70,13 +85,12 @@ public class CheckinService {
 	public int updateCusInfo(String checkinId, String certNumber,
 			String address, String comment) {
 		
-		CusInfoDao dao = new CusInfoDao();
-		CusInfo cusinfo = new CusInfo();
-		cusinfo = dao.findById(checkinId);
-		cusinfo.setAddresss(address);
+		CheckinDao dao = new CheckinDao();
+		CusInfo cusinfo = dao.findById(checkinId).getCusInfo();
+		cusinfo.setAddress(address);
 		cusinfo.setCertNumber(certNumber);
 		cusinfo.setComment(comment);
-		return dao.update(cusinfo, cusinfo.getCusType().getCusTypeNo());
+		return new CusInfoDao().update(cusinfo, cusinfo.getCusType().getCusTypeNo());
 		
 	}
 }

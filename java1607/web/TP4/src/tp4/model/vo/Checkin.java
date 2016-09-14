@@ -69,16 +69,6 @@ public class Checkin extends VirtualObject {
 		return room;
 	}
 
-	@Override
-	public void map(ResultSet rs) throws SQLException {
-		checkinId = rs.getString("checkin_id");
-		checkinTime = rs.getString("checkin_time");
-		checkinType = rs.getString("checkin_type");
-		price = rs.getFloat("price");
-		numOfDays = rs.getInt("num_of_days");
-		deposit = rs.getFloat("deposit");
-	}
-
 	public void setCheckinId(String checkinId) {
 		this.checkinId = checkinId;
 	}
@@ -111,4 +101,50 @@ public class Checkin extends VirtualObject {
 		this.room = room;
 	}
 
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		checkinId=rs.getString("checkin_id"); 
+		checkinTime=rs.getString("checkin_time");
+		checkinType=rs.getString("checkin_type");
+		price=rs.getFloat("price");
+		numOfDays=rs.getInt("num_of_days");
+		deposit=rs.getFloat("deposit");
+	}
+	
+	public String getRoomId(){
+		return room.getRoomId();
+	}
+	
+	public String getRoomTypeDesc(){
+		return room.getRoomTypeDesc();
+	}
+	
+	public String getName(){
+		return cusInfo.getName();
+	}
+	
+	public String getCusTypeDesc(){
+		return cusInfo.getCusType().getCusTypeDesc();
+	}
+	
+	public String getSex(){
+		return cusInfo.getSex();
+	}
+	
+	public String getCertType(){
+		return cusInfo.getCertType();
+	}
+	
+	public String getCertNumber(){
+		return cusInfo.getCertNumber();
+	}
+	
+	public String getAddress(){
+		return cusInfo.getAddress();
+	}
+	
+	public String getComment(){
+		return cusInfo.getComment();
+	}
+	
 }
