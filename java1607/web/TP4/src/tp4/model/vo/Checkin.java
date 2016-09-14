@@ -1,15 +1,17 @@
 package tp4.model.vo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * 
  * @author 田霞光
  * 
  */
-public class Checkin {
+public class Checkin extends VirtualObject {
 
 	protected String checkinId;
 	protected Room room;
-
 	protected CusInfo cusInfo;
 	protected String checkinTime;
 	protected String checkinType;
@@ -65,6 +67,16 @@ public class Checkin {
 
 	public Room getRoom() {
 		return room;
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		checkinId = rs.getString("checkin_id");
+		checkinTime = rs.getString("checkin_time");
+		checkinType = rs.getString("checkin_type");
+		price = rs.getFloat("price");
+		numOfDays = rs.getInt("num_of_days");
+		deposit = rs.getFloat("deposit");
 	}
 
 	public void setCheckinId(String checkinId) {

@@ -20,6 +20,7 @@ public class User extends VirtualObject {
 
 	public User(String userName, String userPass, int privilege) {
 		super();
+		this.userId = randomId();
 		this.userName = userName;
 		this.userPass = userPass;
 		this.privilege = privilege;

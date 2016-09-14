@@ -1,11 +1,15 @@
 package tp4.model.vo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * 
  * @author 田霞光
  * 
  */
-public class Checkout {
+public class Checkout extends VirtualObject {
+	
 	protected String checkoutId;
 	protected float checkoutAmount;
 	protected String checkoutTime;
@@ -85,6 +89,15 @@ public class Checkout {
 		return "Checkout [checkoutId=" + checkoutId + ", checkoutAmount="
 				+ checkoutAmount + ", checkoutTime=" + checkoutTime
 				+ ", comment=" + comment + "]";
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		checkoutId=rs.getString("checkout_id");
+		checkoutAmount=rs.getFloat("checkout_amount");
+		checkoutTime=rs.getString("checkout_time");
+		comment=rs.getString("comment");
+		
 	}
 
 }

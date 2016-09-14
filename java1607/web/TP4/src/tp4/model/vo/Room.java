@@ -22,15 +22,11 @@ public class Room extends VirtualObject {
 	public static final int ROOM_STATUS_INUSE;
 	public static final int ROOM_STATUS_FREE;
 	public static final int ROOM_STATUS_RESERVED;
-	
+
 	static {
 		ROOM_STATUS_INUSE = regMsg("占用");
 		ROOM_STATUS_FREE = regMsg("空闲");
 		ROOM_STATUS_RESERVED = regMsg("保留");
-	}
-	
-	public String getStatusDesc() {
-		return getMsg(status);
 	}
 
 	public Room() {
@@ -86,6 +82,10 @@ public class Room extends VirtualObject {
 
 	public int getStatus() {
 		return status;
+	}
+
+	public String getStatusDesc() {
+		return getMsg(status);
 	}
 
 	@Override

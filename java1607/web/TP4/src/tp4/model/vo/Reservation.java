@@ -15,7 +15,7 @@ import tp4.model.db.DBConnection;
  * @author 范中兴
  * 
  */
-public class Reservation {
+public class Reservation extends VirtualObject {
 
 	protected String reservationId;
 	protected String name;
@@ -68,6 +68,18 @@ public class Reservation {
 
 	public String getReserveTime() {
 		return reserveTime;
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		reservationId = rs.getString("reservationId");
+		name = rs.getString("name");
+		phone = rs.getString("phone");
+		arriveTime = rs.getString("arriveTime");
+		reserveTime = rs.getString("reserveTime");
+		reservationTime = rs.getString("reservationTime");
+		comment = rs.getString("comment");
+
 	}
 
 	public void setArriveTime(String arriveTime) {

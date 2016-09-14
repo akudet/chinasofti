@@ -1,11 +1,14 @@
 package tp4.model.vo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * 
  * @author 项双江
  * 
  */
-public class CusType {
+public class CusType extends VirtualObject {
 	protected int cusTypeNo;
 	protected String cusTypeDesc;
 	protected int discount;
@@ -31,6 +34,14 @@ public class CusType {
 
 	public int getDiscount() {
 		return discount;
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		cusTypeNo = rs.getInt("cus_type_no");
+		cusTypeDesc = rs.getString("cus_type_desc");
+		discount = rs.getInt("discount");
+
 	}
 
 	public void setCusTypeDesc(String cusTypeDesc) {

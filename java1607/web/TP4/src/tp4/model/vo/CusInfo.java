@@ -1,5 +1,7 @@
 package tp4.model.vo;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.UUID;
 
 /**
@@ -7,7 +9,7 @@ import java.util.UUID;
  * @author 项双江
  * 
  */
-public class CusInfo {
+public class CusInfo extends VirtualObject {
 	protected String cusInfoId;
 	protected String certType;
 	protected String certNumber;
@@ -22,11 +24,10 @@ public class CusInfo {
 		super();
 	}
 
-	public CusInfo(String cusInfoId, String certType, String certNumber,
-			String name, String phone, String addresss, String sex,
-			String comment) {
+	public CusInfo(String certType, String certNumber, String name,
+			String phone, String addresss, String sex, String comment) {
 		super();
-		this.cusInfoId = cusInfoId;
+		this.cusInfoId = UUID.randomUUID().toString().replace("-", "");
 		this.certType = certType;
 		this.certNumber = certNumber;
 		this.name = name;
@@ -36,12 +37,11 @@ public class CusInfo {
 		this.comment = comment;
 	}
 
-
-
-	public CusInfo(String certType, String certNumber, String name,
-			String phone, String addresss, String sex, String comment) {
+	public CusInfo(String cusInfoId, String certType, String certNumber,
+			String name, String phone, String addresss, String sex,
+			String comment) {
 		super();
-		this.cusInfoId = UUID.randomUUID().toString().replace("-", "");
+		this.cusInfoId = cusInfoId;
 		this.certType = certType;
 		this.certNumber = certNumber;
 		this.name = name;
@@ -85,6 +85,19 @@ public class CusInfo {
 
 	public String getSex() {
 		return sex;
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		cusInfoId = rs.getString("cus_info_id");
+		certType = rs.getString("cert_type");
+		certNumber = rs.getString("cert_number");
+		name = rs.getString("name");
+		phone = rs.getString("phone");
+		addresss = rs.getString("address");
+		sex = rs.getString("sex");
+		comment = rs.getString("comment");
+
 	}
 
 	public void setAddresss(String addresss) {
