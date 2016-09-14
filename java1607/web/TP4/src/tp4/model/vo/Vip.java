@@ -23,7 +23,7 @@ public class Vip extends VirtualObject {
 	}
 
 	public String getAddress() {
-		return cusInfo.getAddresss();
+		return cusInfo.getAddress();
 	}
 
 	public String getCertNo() {

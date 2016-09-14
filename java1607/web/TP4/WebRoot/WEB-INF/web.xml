@@ -57,11 +57,44 @@
 		<servlet-name>VipServlet</servlet-name>
 		<servlet-class>tp4.servlet.op.VipServlet</servlet-class>
 	</servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CheckinServlet</servlet-name>
+    <servlet-class>tp4.servlet.op.CheckinServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CheckoutServlet</servlet-name>
+    <servlet-class>tp4.servlet.op.CheckoutServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ReservationServlet</servlet-name>
+    <servlet-class>tp4.servlet.op.ReservationServlet</servlet-class>
+  </servlet>
+
+
+
 
 	<servlet-mapping>
 		<servlet-name>VipServlet</servlet-name>
 		<url-pattern>/op/vip/*</url-pattern>
 	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckinServlet</servlet-name>
+    <url-pattern>/op/checkin/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckoutServlet</servlet-name>
+    <url-pattern>/op/checkout/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ReservationServlet</servlet-name>
+    <url-pattern>/op/reservation/*</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>

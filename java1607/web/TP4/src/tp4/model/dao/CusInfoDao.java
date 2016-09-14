@@ -30,7 +30,7 @@ public class CusInfoDao {
 			pre.setString(3, cusInfo.getCertNumber());
 			pre.setString(4, cusInfo.getName());
 			pre.setString(5, cusInfo.getPhone());
-			pre.setString(6, cusInfo.getAddresss());
+			pre.setString(6, cusInfo.getAddress());
 			pre.setString(7, cusInfo.getSex());
 			pre.setInt(8, cusTypeNo);
 			pre.setString(9, cusInfo.getComment());
@@ -138,7 +138,7 @@ public class CusInfoDao {
 			pre.setString(3, cusInfo.getCertNumber());
 			pre.setString(4, cusInfo.getName());
 			pre.setString(5, cusInfo.getPhone());
-			pre.setString(6, cusInfo.getAddresss());
+			pre.setString(6, cusInfo.getAddress());
 			pre.setString(7, cusInfo.getSex());
 			pre.setInt(8, cusTypeNo);
 			pre.setString(9, cusInfo.getComment());

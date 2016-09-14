@@ -15,7 +15,7 @@ public class CusInfo extends VirtualObject {
 	protected String certNumber;
 	protected String name;
 	protected String phone;
-	protected String addresss;
+	protected String address;
 	protected String sex;
 	protected CusType cusType;
 	protected String comment;
@@ -25,20 +25,20 @@ public class CusInfo extends VirtualObject {
 	}
 
 	public CusInfo(String certType, String certNumber, String name,
-			String phone, String addresss, String sex, String comment) {
+			String phone, String address, String sex, String comment) {
 		super();
 		this.cusInfoId = UUID.randomUUID().toString().replace("-", "");
 		this.certType = certType;
 		this.certNumber = certNumber;
 		this.name = name;
 		this.phone = phone;
-		this.addresss = addresss;
+		this.address = address;
 		this.sex = sex;
 		this.comment = comment;
 	}
 
 	public CusInfo(String cusInfoId, String certType, String certNumber,
-			String name, String phone, String addresss, String sex,
+			String name, String phone, String address, String sex,
 			String comment) {
 		super();
 		this.cusInfoId = cusInfoId;
@@ -46,13 +46,13 @@ public class CusInfo extends VirtualObject {
 		this.certNumber = certNumber;
 		this.name = name;
 		this.phone = phone;
-		this.addresss = addresss;
+		this.address = address;
 		this.sex = sex;
 		this.comment = comment;
 	}
 
-	public String getAddresss() {
-		return addresss;
+	public String getAddress() {
+		return address;
 	}
 
 	public String getCertNumber() {
@@ -94,14 +94,14 @@ public class CusInfo extends VirtualObject {
 		certNumber = rs.getString("cert_number");
 		name = rs.getString("name");
 		phone = rs.getString("phone");
-		addresss = rs.getString("address");
+		address = rs.getString("address");
 		sex = rs.getString("sex");
 		comment = rs.getString("comment");
 
 	}
 
-	public void setAddresss(String addresss) {
-		this.addresss = addresss;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public void setCertNumber(String certNumber) {
