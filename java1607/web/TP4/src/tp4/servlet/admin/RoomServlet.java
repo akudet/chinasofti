@@ -32,8 +32,8 @@ public class RoomServlet extends CRUDServlet {
 			throws ServletException, IOException {
 		int roomTypeNo = 0;
 		RoomService rs = new RoomService();
-		List<Room> list = rs.findByType(roomTypeNo);
-		request.setAttribute("list", list);
+		List<Room> rooms = rs.findByType(roomTypeNo);
+		request.setAttribute("rooms", rooms);
 		request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(request, response);
 	}
 

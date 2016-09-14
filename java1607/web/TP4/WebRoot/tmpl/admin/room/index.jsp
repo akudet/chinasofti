@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*,tp4.servlet.admin.*" pageEncoding="UTF-8"%>
+<%--@作者：项双江 --%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -29,15 +30,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<th>房间号</th><th>房间类型</th><th>楼层</th>
   		<th>电话</th><th>状态</th><th>备注</th><th>操作</th>
   		</tr>
-  		<c:forEach items="${requestScope.list }" var="list">
+  		<c:forEach items="${requestScope.rooms }" var="rooms">
   		<tr>
-  		<td>${list.roomId }</td>
-  		<td>${list.roomType.roomTypeDesc }</td>
-  		<td>${list.floor }</td>
-  		<td>${list.phone }</td>
-  		<td>${list.status }</td>
-  		<td>${list.comment }</td>
-  		<td><a href="<%= path + RoomServlet.SERVLET_URL%>/edit?roomId=${list.roomId}" onclick="a()">修改</a> <a>删除</a></td>
+  		<td>${rooms.roomId }</td>
+  		<td>${rooms.roomType.roomTypeDesc }</td>
+  		<td>${rooms.floor }</td>
+  		<td>${rooms.phone }</td>
+  		<td>${rooms.status }</td>
+  		<td>${rooms.comment }</td>
+  		<td><a href="<%= path + RoomServlet.SERVLET_URL%>/edit?roomId=${rooms.roomId}">修改</a> <a>删除</a></td>
   		</tr>
   		</c:forEach>
   	</table>

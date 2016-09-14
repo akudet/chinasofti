@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*,tp4.model.vo.*" pageEncoding="UTF-8"%>
+<%--@作者：项双江 --%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
