@@ -25,11 +25,11 @@ public class ReservationDao {
 	// 添加数据
 	public int add(Reservation reservation) {
 		con = DBConnection.getConnection();
-		String sql = "insert into reservation values(?,?,?,?)";
+		String sql = "insert into reservation values(?,?,?,?,?,?,?)";
 
 		try {
 			pre = con.prepareStatement(sql);
-			String udi = UUID.randomUUID().toString();
+			
             
 			pre.setString(1, reservation.getReservationId());
 			pre.setString(2, reservation.getName());
@@ -114,12 +114,12 @@ public class ReservationDao {
 			res = pre.executeQuery();
 			ArrayList<Reservation> list = new ArrayList<Reservation>();
 			while (res.next()) {
-				Reservation reservation = new Reservation(res.getString("reservationId"),
+				Reservation reservation = new Reservation(res.getString("reservation_id"),
 						res.getString("name"), 
 						res.getString("phone"),
-						res.getString("arriveTime"),
-						res.getString("reserveTime"),
-						res.getString("reservationTime"),
+						res.getString("arrive_time"),
+						res.getString("reserve_time"),
+						res.getString("reservation_time"),
 						res.getString("comment"));
 				        
 
@@ -193,6 +193,7 @@ public class ReservationDao {
 			pre.setString(1, reservation.getReservationId());
 			pre.setString(2, reservation.getName());
 			pre.setString(3, reservation.getPhone());
+			
 			pre.setString(4, reservation.getArriveTime());
 			pre.setString(4, reservation.getReserveTime());
 			pre.setString(4, reservation.getReservationTime());

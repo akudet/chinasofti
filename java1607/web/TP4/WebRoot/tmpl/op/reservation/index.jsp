@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,tp4.servlet.op.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,10 +19,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   </head>
   
   <body>
-    This is my JSP page. <br>
+   <table width="700" height="50" border="1" align="center">
+   <tr>
+   <th>ID</th> 
+   <th>名字</th>
+   <th>电话</th> 
+   <th>到达时间</th> 
+   <th>延长时间</th>
+   <th>预订时间</th>
+   <th>备注</th>
+   </tr>
+   
+   <c:forEach items="${requestScope.users }" var="user">
+   	<tr>
+		<td>${user.reservationId}</td>
+		<td>${user.name }</td>
+		<td>${user.phone }</td>
+		<td>${user.arriveTime }</td>
+		<td>${user.reserveTime }</td>
+		<td>${user.reservationTime }</td>
+		<td>${user.comment }</td>
+
+   </td>
+   </c:forEach>
+   
   </body>
 </html>

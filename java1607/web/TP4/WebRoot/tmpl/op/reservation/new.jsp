@@ -23,6 +23,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    
+    <form action="/TP4/op/reservation/" method="post"  align="center" >
+    	I&nbsp;&nbsp;D:<input type="text" name="reservationId"  onblur="regavalidate()"><br>
+    	姓&nbsp;&nbsp;名:<input type="text" name="name"  onblur="regavalidate()"><br>
+    	电&nbsp;&nbsp;话:<input type="text" name="phone"  ><br>
+    	房间类型:<input type="text" name="roomTypeDesc"  ><br>
+		到达时间:<input type="text" name="arriveTime"><br>
+    	延长时间:<input type="text" name="reserveTime"><br>
+    	预订时间:<input type="text" name="reservationTime"><br>
+    	备&nbsp;&nbsp;注:<input type="text" name="comment"><br>
+    	<input type="submit" value="添加"><br>
+ 
+		
+    </form>
   </body>
 </html>

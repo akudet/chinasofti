@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,tp4.model.vo.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,6 +23,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+  		<%Reservation rt = (Reservation)request.getAttribute("user"); %>
+       <form action="/TP4/op/reservation/" method="post"  align="center" >
+       	<input type="hidden" name="PUT">
+    	I&nbsp;&nbsp;D:<input type="text" name="reservationId" value="${rt.reservationId}" onblur="regavalidate()"><br>
+    	姓&nbsp;&nbsp;名:<input type="text" name="name"  value="${rt.name}"onblur="regavalidate()"><br>
+    	电&nbsp;&nbsp;话:<input type="text" name="phone" value="${rt.phone}" ><br>
+		到达时间:<input type="text" name="arriveTime" value="${rt.arriveTime}"><br>
+    	延长时间:<input type="text" name="reserveTime" value="${rt.reserveTime}"><br>
+    	预订时间:<input type="text" name="reservationTime" value="${rt.reservationTime}"><br>
+    	备&nbsp;&nbsp;注:<input type="text" name="comment" value="${rt.comment}"><br>
+    	<input type="submit" value="修改"><br>
+ 
+		
+    </form>
   </body>
 </html>

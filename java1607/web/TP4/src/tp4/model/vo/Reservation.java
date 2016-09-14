@@ -24,6 +24,7 @@ public class Reservation extends VirtualObject {
 	protected String reserveTime;
 	protected String reservationTime;
 	protected String comment;
+	protected Room room;
 
 	public Reservation() {
 
@@ -70,18 +71,6 @@ public class Reservation extends VirtualObject {
 		return reserveTime;
 	}
 
-	@Override
-	public void map(ResultSet rs) throws SQLException {
-		reservationId = rs.getString("reservationId");
-		name = rs.getString("name");
-		phone = rs.getString("phone");
-		arriveTime = rs.getString("arriveTime");
-		reserveTime = rs.getString("reserveTime");
-		reservationTime = rs.getString("reservationTime");
-		comment = rs.getString("comment");
-
-	}
-
 	public void setArriveTime(String arriveTime) {
 		this.arriveTime = arriveTime;
 	}
@@ -116,6 +105,18 @@ public class Reservation extends VirtualObject {
 				+ ", phone=" + phone + ", arriveTime=" + arriveTime
 				+ ",reserveTime=" + reserveTime + ",reservationTime="
 				+ reservationTime + ",comment=" + comment + "]";
+	}
+
+	@Override
+	public void map(ResultSet rs) throws SQLException {
+		reservationId=rs.getString("reservation_id");
+		name=rs.getString("name");
+		phone=rs.getString("phone");
+		arriveTime=rs.getString("arrive_time");
+		reserveTime=rs.getString("reserve_time");
+		reservationTime=rs.getString("reservation_time");
+		comment=rs.getString("comment");
+		
 	}
 
 }
