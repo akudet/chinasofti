@@ -21,7 +21,6 @@ public class UserDao {
 	PreparedStatement pre = null;
 	ResultSet res = null;
 
-	
 	// 添加数据
 	public int add(User user) {
 		con = DBConnection.getConnection();
@@ -29,7 +28,6 @@ public class UserDao {
 
 		try {
 			pre = con.prepareStatement(sql);
-			String udi = UUID.randomUUID().toString();
 
 			pre.setString(1, user.getUserId());
 			pre.setString(2, user.getUserName());
@@ -50,7 +48,7 @@ public class UserDao {
 		}
 		return 0;
 	}
-	
+
 	public int addAll(Collection<User> users) {
 		for (User user : users) {
 			if (0 != add(user)) {
@@ -100,8 +98,6 @@ public class UserDao {
 
 		return 0;
 	}
-	
-	
 
 	// 查询数据
 	public ArrayList<User> findAll() {
@@ -153,7 +149,7 @@ public class UserDao {
 		}
 		return null;
 	}
-	
+
 	public User findByName(String userName) {
 		con = DBConnection.getConnection();
 		String sql = "select * from user where username=?";
@@ -175,6 +171,7 @@ public class UserDao {
 		}
 		return null;
 	}
+
 	// 修改
 	public int update(User user) {
 		con = DBConnection.getConnection();
@@ -195,7 +192,7 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			DBConnection.close(con, pre, res);
+			DBConnection.close(con, pre);
 		}
 		return 0;
 	}

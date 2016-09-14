@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,tp4.model.vo.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,6 +23,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+  	<%User user = (User)request.getAttribute("user"); %>
+    	<div align="center">
+    	<form method="post" action="/TP4/admin/user/">
+    	<input type="hidden" name="PUT">
+    		I&nbsp;&nbsp;D:<input type="text" name="userId" value="${user.userId } " /><br>
+    		名&nbsp;字:<input type="text" name="userName"  value="${user.userName }" /><br>
+    		密&nbsp;码:<input type="text" name="userPass"  value="${user.userPass } " /><br>
+    		特&nbsp;权:<input type="text" name="privilege"  value="${user.privilege }" /><br>
+    		
+    		<input type="submit" value="修改"/><br>
+    	</form>
+    	</div>
   </body>
 </html>

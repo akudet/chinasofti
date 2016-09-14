@@ -14,7 +14,7 @@ public class UserService {
 	
 	// 参考 2.11 操作员管理
 	
-	private UserDao dao;
+	private UserDao dao = new UserDao();
 	public int add(String username, String userpass, int privilege) {
 		User user = new User(username,userpass,privilege);
 		return dao.add(user);
@@ -33,9 +33,17 @@ public class UserService {
 		return dao.findByName(username);
 	}
 
+	public static final int ERR_USER_NOT_FOUND = 1;
+	
 	public int updateById(String userId, String userName, String userPass,
 			int privilege) {
-		User user = new User(userId,userName,userPass,privilege);
+		User user = dao.findById(userId);
+		if (null == user) {
+			return ERR_USER_NOT_FOUND;
+		}
+		user.setUserName(userName);
+		user.setUserPass(userPass);
+		user.setPrivilege(privilege);
 		return dao.update(user);
 	}
 }

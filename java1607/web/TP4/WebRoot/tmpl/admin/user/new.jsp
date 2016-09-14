@@ -21,8 +21,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
+   <script type="text/javascript">
+  	function reg(){
+  		var name = document.getElementById('name').value;
+  		var pass = document.getElementById('pass').value;
+  		
+  		if (name.length==0) {
+			alert("账号不能为空");
+			return false;
+		}else if (pass.length==0){
+			alert("密码不能为空");
+			return false;
+			}else{
+				form.submit();
+			}
+  	}
+  	
+  	function changpass(){
+  		var pass1 = document.getElementById('pass').value;
+  		var pass2 = document.getElementById('pass1').value;
+  		
+  		if(pass1===pass2){
+  			document.getElementById('sp').innerHTML = "输入一致";
+  		}else{
+  			document.getElementById('sp').innerHTML = "输入不一致";
+  		}
+  	}
+  
+  	
+  	
+
+  </script>
   
   <body>
-    This is my JSP page. <br>
+  	${requestScope.list}
+    <form action="/TP4/admin/user/" method="post" onsubmit="reg()" align="center" >
+    	姓&nbsp;&nbsp;名:<input type="text" name="username" id="name" onblur="regavalidate()"><span id="sp"></span><br>
+    	密&nbsp;&nbsp;码:<input type="password" name="userpass" id="pass" ><span id="sp"></span><br>
+    	确认密码:<input type="password" name="userpass" id="pass1" onblur="changpass()"><br>
+    	特&nbsp;&nbsp;权:<input type="text" name="privilege"><br>
+    	<input type="submit" value="添加"><br>
+    
+    </form>
   </body>
 </html>
