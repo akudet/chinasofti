@@ -22,6 +22,11 @@ import tp4.service.RoomService;
 import tp4.service.UserService;
 import tp4.servlet.CRUDServlet;
 
+/**
+ * 
+ * @author 马厦伟
+ * 
+ */
 public class UserServlet extends CRUDServlet {
 
 	public static final String SERVLET_URL = "/admin/user";

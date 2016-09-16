@@ -15,6 +15,11 @@ import tp4.model.vo.RoomType;
 import tp4.service.ReservationService;
 import tp4.servlet.CRUDServlet;
 
+/**
+ * 
+ * @author 马厦伟
+ * 
+ */
 public class ReservationServlet extends CRUDServlet {
 	
 	public static final String SERVLET_URL = "/op/reservation";

@@ -21,6 +21,11 @@ import tp4.model.vo.Room;
 import tp4.service.CheckinService;
 import tp4.servlet.CRUDServlet;
 
+/**
+ * 
+ * @author 项双江
+ * 
+ */
 public class CheckinServlet extends CRUDServlet {
 	
 	public static final String SERVLET_URL = "/op/checkin";

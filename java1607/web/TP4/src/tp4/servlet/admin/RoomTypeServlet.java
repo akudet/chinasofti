@@ -15,6 +15,11 @@ import tp4.model.vo.RoomType;
 import tp4.service.RoomTypeService;
 import tp4.servlet.CRUDServlet;
 
+/**
+ * 
+ * @author 田霞光
+ * 
+ */
 public class RoomTypeServlet extends CRUDServlet {
 
 	public static final String SERVLET_URL = "/admin/room_type";

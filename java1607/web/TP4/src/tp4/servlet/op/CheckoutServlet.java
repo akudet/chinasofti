@@ -14,6 +14,11 @@ import tp4.model.vo.Checkout;
 import tp4.service.CheckoutService;
 import tp4.servlet.CRUDServlet;
 
+/**
+ * 
+ * @author 巫金桐
+ * 
+ */
 public class CheckoutServlet extends CRUDServlet {
 	
 	public static final String SERVLET_URL = "/op/checkout";

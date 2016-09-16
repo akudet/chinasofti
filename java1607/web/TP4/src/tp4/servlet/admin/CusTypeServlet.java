@@ -14,6 +14,11 @@ import tp4.service.CusTypeService;
 import tp4.service.UserService;
 import tp4.servlet.CRUDServlet;
 
+/**
+ * 
+ * @author 范中兴
+ * 
+ */
 public class CusTypeServlet extends CRUDServlet {
 
 	public static final String SERVLET_URL = "/admin/cus_type";

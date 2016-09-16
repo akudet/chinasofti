@@ -12,6 +12,11 @@ import tp4.model.dao.VipDao;
 import tp4.service.VipService;
 import tp4.servlet.CRUDServlet;
 
+/**
+ * 
+ * @author 巫金桐
+ * 
+ */
 public class VipServlet extends CRUDServlet {
 
 	//参考 2.7 会员管理

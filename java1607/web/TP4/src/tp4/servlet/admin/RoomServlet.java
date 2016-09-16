@@ -15,6 +15,11 @@ import tp4.model.vo.Room;
 import tp4.service.RoomService;
 import tp4.servlet.CRUDServlet;
 
+/**
+ * 
+ * @author 项双江
+ * 
+ */
 public class RoomServlet extends CRUDServlet {
 
 	public static final String SERVLET_URL = "/admin/room";
