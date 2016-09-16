@@ -2,13 +2,13 @@ package tp4.model.dao;
 
 import java.util.List;
 
-public interface Dao<T> {
+public abstract class DAO<T> {
 
 	public abstract int add(T t);
 
 	public abstract int deleteAll();
 
-	public abstract int deleteById();
+	public abstract int deleteById(String id);
 
 	public abstract List<T> findAll();
 

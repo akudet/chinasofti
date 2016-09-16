@@ -3,6 +3,8 @@ package tp4.model.vo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import tp4.model.dao.ChargeTypeDao;
+
 /**
  * 
  * @author 田霞光
@@ -14,7 +16,7 @@ public class Checkin extends VirtualObject {
 	protected Room room;
 	protected CusInfo cusInfo;
 	protected String checkinTime;
-	protected String checkinType;
+	protected ChargeType chargeType;
 	protected float price;
 	protected int numOfDays;
 	protected float deposit;
@@ -31,10 +33,26 @@ public class Checkin extends VirtualObject {
 		this.room = room;
 		this.cusInfo = cus_info_id;
 		this.checkinTime = checkin_time;
-		this.checkinType = checkin_type;
+		this.chargeType = new ChargeTypeDao().findById(checkin_type);
 		this.price = price;
 		this.numOfDays = num_of_days;
 		this.deposit = deposit;
+	}
+
+	public String getAddress(){
+		return cusInfo.getAddress();
+	}
+
+	public String getCertNumber(){
+		return cusInfo.getCertNumber();
+	}
+
+	public String getCertType(){
+		return cusInfo.getCertType();
+	}
+
+	public ChargeType getChargeType() {
+		return chargeType;
 	}
 
 	public String getCheckinId() {
@@ -46,15 +64,27 @@ public class Checkin extends VirtualObject {
 	}
 
 	public String getCheckinType() {
-		return checkinType;
+		return chargeType.getChargeTypeDesc();
+	}
+
+	public String getComment(){
+		return cusInfo.getComment();
 	}
 
 	public CusInfo getCusInfo() {
 		return cusInfo;
 	}
 
+	public String getCusTypeDesc(){
+		return cusInfo.getCusType().getCusTypeDesc();
+	}
+
 	public float getDeposit() {
 		return deposit;
+	}
+
+	public String getName(){
+		return cusInfo.getName();
 	}
 
 	public int getNumOfDays() {
@@ -69,82 +99,62 @@ public class Checkin extends VirtualObject {
 		return room;
 	}
 
-	public void setCheckinId(String checkinId) {
-		this.checkinId = checkinId;
+	public String getRoomId(){
+		return room.getRoomId();
 	}
 
-	public void setCheckinTime(String checkinTime) {
-		this.checkinTime = checkinTime;
+	public String getRoomTypeDesc(){
+		return room.getRoomTypeDesc();
 	}
 
-	public void setCheckinType(String checkinType) {
-		this.checkinType = checkinType;
-	}
-
-	public void setCusInfo(CusInfo cusInfo) {
-		this.cusInfo = cusInfo;
-	}
-
-	public void setDeposit(float deposit) {
-		this.deposit = deposit;
-	}
-
-	public void setNumOfDays(int numOfDays) {
-		this.numOfDays = numOfDays;
-	}
-
-	public void setPrice(float price) {
-		this.price = price;
-	}
-
-	public void setRoom(Room room) {
-		this.room = room;
+	public String getSex(){
+		return cusInfo.getSex();
 	}
 
 	@Override
 	public void map(ResultSet rs) throws SQLException {
 		checkinId=rs.getString("checkin_id"); 
 		checkinTime=rs.getString("checkin_time");
-		checkinType=rs.getString("checkin_type");
+		chargeType=new ChargeTypeDao().findById(rs.getString("checkin_type"));
 		price=rs.getFloat("price");
 		numOfDays=rs.getInt("num_of_days");
 		deposit=rs.getFloat("deposit");
 	}
 	
-	public String getRoomId(){
-		return room.getRoomId();
+	public void setChargeType(ChargeType chargeType) {
+		this.chargeType = chargeType;
 	}
 	
-	public String getRoomTypeDesc(){
-		return room.getRoomTypeDesc();
+	public void setCheckinId(String checkinId) {
+		this.checkinId = checkinId;
 	}
 	
-	public String getName(){
-		return cusInfo.getName();
+	public void setCheckinTime(String checkinTime) {
+		this.checkinTime = checkinTime;
 	}
 	
-	public String getCusTypeDesc(){
-		return cusInfo.getCusType().getCusTypeDesc();
+	public void setCheckinType(String checkinType) {
+		this.chargeType = new ChargeTypeDao().findById(checkinType);
 	}
 	
-	public String getSex(){
-		return cusInfo.getSex();
+	public void setCusInfo(CusInfo cusInfo) {
+		this.cusInfo = cusInfo;
 	}
 	
-	public String getCertType(){
-		return cusInfo.getCertType();
+	public void setDeposit(float deposit) {
+		this.deposit = deposit;
 	}
 	
-	public String getCertNumber(){
-		return cusInfo.getCertNumber();
+	public void setNumOfDays(int numOfDays) {
+		this.numOfDays = numOfDays;
 	}
 	
-	public String getAddress(){
-		return cusInfo.getAddress();
+	public void setPrice(float price) {
+		this.price = price;
 	}
 	
-	public String getComment(){
-		return cusInfo.getComment();
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 	
 }

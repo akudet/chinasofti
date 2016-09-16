@@ -17,10 +17,18 @@ import tp4.model.vo.Room;
 /**
  * 
  * @author 项双江
+ * @author 巫金桐
  * 
  */
 public class CheckoutService {
 	// 参考 2.4 客户结账, 2.6 营业查询
+	
+	private final CheckoutDao mCheckoutDao;
+
+	public CheckoutService() {
+		super();
+		this.mCheckoutDao = new CheckoutDao();
+	}
 
 	/**
 	 * 办理结帐
@@ -78,38 +86,29 @@ public class CheckoutService {
 		return -1;
 	}
 
-	public List<Checkout> find() {
+	public List<Checkout> findAll() {
 		CheckoutDao dao = new CheckoutDao();
 		return dao.findAll();
 	}
-
-	public ArrayList<Checkout> find(Date start, Date end, int checkType,
-			List<Integer> roomTypeNos) {
-		CheckoutDao dao = new CheckoutDao();
-		return dao.find(start, end, checkType, roomTypeNos);
-	}
 	
-	public ArrayList<Checkout> find(String start, String end, String checkinType,
+	public ArrayList<Checkout> findByRoom(String start, String end, String checkinType,
 			String[] roomTypeNos) {
 		System.out.println("FIND : " + start + end + checkinType + roomTypeNos);
+		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		Date s_start = null;
-		Date e_end = null;
+		Date s_start = new Date();
+		Date e_end = new Date();
 		try {
 			s_start = df.parse(start);
 			e_end = df.parse(start);
 		} catch (ParseException e) {
-		}
-		
-		if (null == s_start || null == e_end) {
 			return null;
 		}
 		
 		int c_checkinType = Integer.parseInt(checkinType);
 		List<Integer> r_roomTypeNos = parseInt(roomTypeNos);
 		
-		return find(s_start, e_end, c_checkinType, r_roomTypeNos);
-		
+		return mCheckoutDao.find(s_start, e_end, c_checkinType, r_roomTypeNos);
 	}
 
 	private List<Integer> parseInt(String[] roomTypeNos) {
@@ -120,26 +119,10 @@ public class CheckoutService {
 		return res;
 	}
 
-	public List<Checkout> find(int checkType,
-			List<Integer> roomTypeNos) {
-		Date start = new Date();
-		Date end = new Date();
-		return find(start, end, checkType, roomTypeNos);
-	}
-
-	public List<Checkout> find(String name, String roomId, String status,
-			String cusTypeDesc) {
+	public List<Checkout> findByCus(String name, String roomId, String status,
+			String cusTypeNo) {
 		CheckoutDao dao = new CheckoutDao();
-		return dao.find(name, roomId, status, cusTypeDesc);
+		return dao.find(name, roomId, status, cusTypeNo);
 	}
 
-	public List<Checkout> findInProcess(String name, String roomId,
-			String cusTypeDesc) {
-		return null;
-	}
-
-	public List<Checkout> findProcessed(String name, String roomId,
-			String cusTypeDesc) {
-		return null;
-	}
 }

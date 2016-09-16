@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import tp4.model.dao.ChargeTypeDao;
 import tp4.model.dao.CheckinDao;
+import tp4.model.dao.RoomStatusDao;
 import tp4.model.vo.Checkout;
 import tp4.service.CheckoutService;
+import tp4.service.CusTypeService;
+import tp4.service.RoomTypeService;
 import tp4.servlet.CRUDServlet;
 
 /**
@@ -35,25 +39,34 @@ public class CheckoutServlet extends CRUDServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		CheckoutService cks = new CheckoutService();
+		RoomTypeService rts = new RoomTypeService();
+		CusTypeService cts = new CusTypeService();
+		
 		List<Checkout> checkouts;
 		
 		if (null != request.getParameter("byRoom")) {
-			checkouts = cks.find(
+			checkouts = cks.findByRoom(
 					request.getParameter("start"),
 					request.getParameter("end"),
-					request.getParameter("checkinType"),
+					request.getParameter("chargeType"),
 					request.getParameterValues("roomTypeNos"));
 		} else if (null != request.getParameter("byCus")) {
-			checkouts = cks.find();
+			checkouts = cks.findAll();
 		} else {
-			checkouts = cks.find();
+			checkouts = cks.findAll();
 		}
 		
 		
 		String path = request.getContextPath();
 		request.setAttribute("editUrl", path + SERVLET_URL + "/edit?checkoutId=");
 		request.setAttribute("deleteUrl", path + SERVLET_URL + "?DELETE=&&checkoutId=");
+		
 		request.setAttribute("checkouts", checkouts);
+		request.setAttribute("roomTypes", rts.findAll());
+		request.setAttribute("cusTypes", cts.findAll());
+		request.setAttribute("chargeTypes", new ChargeTypeDao().findAll());
+		request.setAttribute("roomStatuss", new RoomStatusDao().findAll());
+		
 		request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(request, response);
 	}
 

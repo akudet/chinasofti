@@ -18,6 +18,7 @@ public class CRUDServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
+		req.setCharacterEncoding("utf-8");
 		System.out.println(req.getPathInfo());
 		String pathInfo = req.getPathInfo();
 		if (null == pathInfo || pathInfo.equals("/")) {
