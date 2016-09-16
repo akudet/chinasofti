@@ -1,4 +1,4 @@
-package tp4.servlet.util;
+package tp4.servlet;
 
 import java.io.IOException;
 

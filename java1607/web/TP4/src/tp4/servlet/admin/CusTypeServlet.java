@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import tp4.model.vo.CusType;
 import tp4.service.CusTypeService;
 import tp4.service.UserService;
-import tp4.servlet.util.CRUDServlet;
+import tp4.servlet.CRUDServlet;
 
 public class CusTypeServlet extends CRUDServlet {
 

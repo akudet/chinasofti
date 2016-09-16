@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import tp4.model.dao.VipDao;
 import tp4.service.VipService;
-import tp4.servlet.util.CRUDServlet;
+import tp4.servlet.CRUDServlet;
 
 public class VipServlet extends CRUDServlet {
 

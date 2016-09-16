@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import tp4.model.vo.RoomType;
 import tp4.service.RoomTypeService;
-import tp4.servlet.util.CRUDServlet;
+import tp4.servlet.CRUDServlet;
 
 public class RoomTypeServlet extends CRUDServlet {
 

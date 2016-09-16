@@ -13,7 +13,7 @@ import tp4.model.dao.ReservationDao;
 import tp4.model.vo.Reservation;
 import tp4.model.vo.RoomType;
 import tp4.service.ReservationService;
-import tp4.servlet.util.CRUDServlet;
+import tp4.servlet.CRUDServlet;
 
 public class ReservationServlet extends CRUDServlet {
 	

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import tp4.model.dao.CheckinDao;
 import tp4.model.vo.Checkout;
 import tp4.service.CheckoutService;
-import tp4.servlet.util.CRUDServlet;
+import tp4.servlet.CRUDServlet;
 
 public class CheckoutServlet extends CRUDServlet {
 	

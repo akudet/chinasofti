@@ -19,7 +19,7 @@ import tp4.model.vo.CusInfo;
 import tp4.model.vo.CusType;
 import tp4.model.vo.Room;
 import tp4.service.CheckinService;
-import tp4.servlet.util.CRUDServlet;
+import tp4.servlet.CRUDServlet;
 
 public class CheckinServlet extends CRUDServlet {
 	

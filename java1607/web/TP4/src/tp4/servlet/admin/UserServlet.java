@@ -20,7 +20,7 @@ import tp4.model.vo.Room;
 import tp4.model.vo.User;
 import tp4.service.RoomService;
 import tp4.service.UserService;
-import tp4.servlet.util.CRUDServlet;
+import tp4.servlet.CRUDServlet;
 
 public class UserServlet extends CRUDServlet {
 

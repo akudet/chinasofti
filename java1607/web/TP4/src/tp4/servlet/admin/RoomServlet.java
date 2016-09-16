@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import tp4.model.dao.RoomDao;
 import tp4.model.vo.Room;
 import tp4.service.RoomService;
-import tp4.servlet.util.CRUDServlet;
+import tp4.servlet.CRUDServlet;
 
 public class RoomServlet extends CRUDServlet {
 
