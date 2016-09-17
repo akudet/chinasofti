@@ -3,6 +3,7 @@ package tp4.servlet.op;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,8 +42,11 @@ public class CheckinServlet extends CRUDServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CheckinDao cd = new CheckinDao();
-		ArrayList<Checkin> checkins = cd.findAll();
+		CheckinService cis = new CheckinService();
+		List<Checkin> checkins = cis.findAll();
+		String path = request.getContextPath();
+		request.setAttribute("editUrl", path + SERVLET_URL + "/edit?checkinId=");
+		request.setAttribute("checkoutUrl", path + CheckoutServlet.SERVLET_URL + "/new?checkinId=");
 		request.setAttribute("checkins", checkins);
 		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
 				request, response);
@@ -55,7 +59,7 @@ public class CheckinServlet extends CRUDServlet {
 
 		CusInfo cusInfo = new CusInfoDao().findAll().get(1);
 
-		int i = service.checkin(cusInfo, request.getParameter("roomId"),
+		int i = service.checkin(request.getParameter("roomId") ,cusInfo,
 				request.getParameter("checkinType"),
 				request.getParameter("num_of_days"),
 				request.getParameter("deposit"));
@@ -79,6 +83,9 @@ public class CheckinServlet extends CRUDServlet {
 	public void getEdit(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		CheckinService cis = new CheckinService();
+		Checkin checkin = cis.findById(request.getParameter("checkinId"));
+		request.setAttribute("checkin", checkin);
 		request.getRequestDispatcher(
 				TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
 				response);

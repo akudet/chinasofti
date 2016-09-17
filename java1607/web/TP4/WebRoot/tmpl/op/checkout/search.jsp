@@ -1,8 +1,8 @@
 <%@page pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    <form action="${servletUrl}" action="GET">
-    	<input type="hidden" name="byRoom">
-    	<input type="date" name="start">
+<form action="${servletUrl}" action="GET">
+	<input type="hidden" name="byRoom">
+	<input type="date" name="start">
     	<input type="date" name="end">
     	<select name="chargeType">
     		<option value="-1">全部</option>
@@ -19,11 +19,6 @@
     	<input type="hidden" name="byCus">
     	<input type="text" name="name">
     	<input type="text" name="roomId">
-    	<select name="status">
-    	    <c:forEach items="${roomStatuss}" var="roomStatus">
-    			<option value="${roomStatus.roomStatusNo}">${roomStatus.roomStatusDesc}</option>
-    		</c:forEach>
-    	</select>
     	<select name="cusTypeNo">
     		<c:forEach items="${cusTypes}" var="cusType">
     			<option value="${cusType.cusTypeNo}">${cusType.cusTypeDesc}</option>

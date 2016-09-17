@@ -1,5 +1,6 @@
 package tp4.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import tp4.model.dao.CheckinDao;
@@ -18,32 +19,26 @@ import tp4.model.vo.Room;
  */
 public class CheckinService {
 
+	private CheckinDao mCheckinDao;
+
 	// 参考 2.3 开设房间
 
+	public CheckinService() {
+		super();
+		this.mCheckinDao = new CheckinDao();
+	}
+
+	public Checkin findById(String checkinId) {
+		return mCheckinDao.findById(checkinId);
+	}
+	
+	public List<Checkin> findAll() {
+		return mCheckinDao.findAll();
+	}
+	
 	// 办理入住
-	public int checkin(Checkin in) {
-		CheckinDao dao = new CheckinDao();
-		return dao.add(in);
-	}
-
-	public int checkin(CusInfo cusInfo, String roomId, String s_checkinType,
-			String s_numOfDays, String s_deposit) {
-		Room room = new RoomDao().findById(roomId);
-
-		int numOfDays = Integer.parseInt(s_numOfDays);
-		Checkin checkin = new Checkin();
-		checkin.setCusInfo(cusInfo);
-		checkin.setRoom(room);
-		if (s_checkinType.equals("标准")) {
-
-		} else {
-
-		}
-		return -1;
-	}
-
-	public int checkin(Room room, CusInfo cusInfo, String checkin_time,
-			String checkin_type, float price, int num_of_days) {
+	public int checkin(String roomId, CusInfo cusInfo,
+			String checkin_type, String price, String num_of_days) {
 
 		Checkin checkin = new Checkin();
 		CheckinDao dao = new CheckinDao();
@@ -51,9 +46,9 @@ public class CheckinService {
 		checkin.setCheckinId(uuid);
 		checkin.setCheckinType(checkin_type);
 		checkin.setCusInfo(cusInfo);
-		checkin.setRoom(room);
-		checkin.setNumOfDays(num_of_days);
-		checkin.setPrice(price);
+		checkin.setRoom(new RoomDao().findById(roomId));
+		checkin.setNumOfDays(Integer.parseInt(num_of_days));
+		checkin.setPrice(Float.parseFloat(price));
 		return dao.add(checkin);
 
 	}

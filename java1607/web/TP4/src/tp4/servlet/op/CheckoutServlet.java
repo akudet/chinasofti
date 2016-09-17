@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import tp4.model.dao.ChargeTypeDao;
 import tp4.model.dao.CheckinDao;
 import tp4.model.dao.RoomStatusDao;
+import tp4.model.vo.Checkin;
 import tp4.model.vo.Checkout;
+import tp4.service.CheckinService;
 import tp4.service.CheckoutService;
 import tp4.service.CusTypeService;
 import tp4.service.RoomTypeService;
@@ -52,7 +54,7 @@ public class CheckoutServlet extends CRUDServlet {
 		} else if (null != request.getParameter("byCus")) {
 			checkouts = cks.findByCus(request.getParameter("name"),
 					request.getParameter("roomId"),
-					request.getParameter("status"),
+					"0",
 					request.getParameter("cusTypeNo"));
 		} else {
 			checkouts = cks.findAll();
@@ -111,9 +113,18 @@ public class CheckoutServlet extends CRUDServlet {
 	@Override
 	public void getNew(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("checkin", new CheckinDao().findAll().get(1));
-		request.getRequestDispatcher(
-				TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
-				response);
+		CheckinService cis = new CheckinService();
+		Checkin checkin = cis.findById(request.getParameter("checkinId"));
+		
+		if (null == checkin) {
+			request.getRequestDispatcher(CheckinServlet.SERVLET_URL).forward(request, response);
+		} else {
+			request.setAttribute("checkin", checkin);
+			request.getRequestDispatcher(
+					TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
+					response);
+		}
+		
+
 	}
 }
