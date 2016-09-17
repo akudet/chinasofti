@@ -24,7 +24,7 @@ public class RoomDao {
 		String sql = "insert into room values(?,?,?,?,?,?)";
 		try {
 			int roomTypeNo = room.getRoomType().getRoomTypeNo();
-			
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, room.getRoomId());
 			ps.setInt(2, roomTypeNo);
@@ -35,7 +35,7 @@ public class RoomDao {
 			int flag = ps.executeUpdate();
 			if (flag > 0) {
 				return 0;
-				//0代表成功
+				// 0代表成功
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -44,11 +44,11 @@ public class RoomDao {
 
 		return 1;
 	}
-	//删除所有
-	public int deleteAll(){
+
+	// 删除所有
+	public int deleteAll() {
 		String sql = "delete from room";
-	
-		
+
 		return 0;
 	}
 
@@ -62,7 +62,7 @@ public class RoomDao {
 			int flag = ps.executeUpdate();
 			if (flag > 0) {
 				return 0;
-				//0代表成功
+				// 0代表成功
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -138,7 +138,7 @@ public class RoomDao {
 			int flag = ps.executeUpdate();
 			if (flag > 0) {
 				return 0;
-				//0代表成功
+				// 0代表成功
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

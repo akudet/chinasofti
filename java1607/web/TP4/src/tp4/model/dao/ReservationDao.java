@@ -15,7 +15,7 @@ import tp4.model.vo.User;
 /**
  * 
  * @author 范中兴
- *
+ * 
  */
 public class ReservationDao {
 	Connection con = null;
@@ -29,8 +29,7 @@ public class ReservationDao {
 
 		try {
 			pre = con.prepareStatement(sql);
-			
-            
+
 			pre.setString(1, reservation.getReservationId());
 			pre.setString(2, reservation.getName());
 			pre.setString(3, reservation.getPhone());
@@ -38,7 +37,7 @@ public class ReservationDao {
 			pre.setString(5, reservation.getReserveTime());
 			pre.setString(6, reservation.getReservationTime());
 			pre.setString(7, reservation.getComment());
-			
+
 			int i = pre.executeUpdate();
 
 			if (i > 0) {
@@ -53,8 +52,7 @@ public class ReservationDao {
 		}
 		return 0;
 	}
-	
-	
+
 	public int addAll(Collection<Reservation> reservations) {
 		for (Reservation reservation : reservations) {
 			if (0 != add(reservation)) {
@@ -114,14 +112,12 @@ public class ReservationDao {
 			res = pre.executeQuery();
 			ArrayList<Reservation> list = new ArrayList<Reservation>();
 			while (res.next()) {
-				Reservation reservation = new Reservation(res.getString("reservation_id"),
-						res.getString("name"), 
-						res.getString("phone"),
-						res.getString("arrive_time"),
+				Reservation reservation = new Reservation(
+						res.getString("reservation_id"), res.getString("name"),
+						res.getString("phone"), res.getString("arrive_time"),
 						res.getString("reserve_time"),
 						res.getString("reservation_time"),
 						res.getString("comment"));
-				        
 
 				list.add(reservation);
 			}
@@ -137,6 +133,31 @@ public class ReservationDao {
 
 	}
 
+	public Reservation findById(String reservationId) {
+		con = DBConnection.getConnection();
+		String sql = "select * from reservation where reservationId=? ";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setString(1, reservationId);
+			res = pre.executeQuery();
+			if (res.next()) {
+				Reservation reservation = new Reservation(
+						res.getString("reservationId"), res.getString("name"),
+						res.getString("phone"), res.getString("arriveTime"),
+						res.getString("reserveTime"),
+						res.getString("reservationTime"),
+						res.getString("comment"));
+				return reservation;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(con, pre, res);
+		}
+		return null;
+	}
+
 	// 删除数据
 	// 单查询
 	public Reservation findByNameAndPhone(String name, String phone) {
@@ -148,9 +169,11 @@ public class ReservationDao {
 			pre.setString(2, phone);
 			res = pre.executeQuery();
 			if (res.next()) {
-				Reservation reservation = new Reservation(res.getString("reservationId"),
-						res.getString("name"), res.getString("phone"),
-						res.getString("arriveTime"),res.getString("reserveTime"),res.getString("reservationTime"),
+				Reservation reservation = new Reservation(
+						res.getString("reservationId"), res.getString("name"),
+						res.getString("phone"), res.getString("arriveTime"),
+						res.getString("reserveTime"),
+						res.getString("reservationTime"),
 						res.getString("comment"));
 				return reservation;
 			}
@@ -162,28 +185,7 @@ public class ReservationDao {
 		}
 		return null;
 	}
-	public Reservation findById(String reservationId) {
-		con = DBConnection.getConnection();
-		String sql = "select * from reservation where reservationId=? ";
-		try {
-			pre = con.prepareStatement(sql);
-			pre.setString(1, reservationId);
-			res = pre.executeQuery();
-			if (res.next()) {
-				Reservation reservation = new Reservation(res.getString("reservationId"),
-						res.getString("name"), res.getString("phone"),
-						res.getString("arriveTime"),res.getString("reserveTime"),res.getString("reservationTime"),
-						res.getString("comment"));
-				return reservation;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			DBConnection.close(con, pre, res);
-		}
-		return null;
-	}
+
 	// 修改
 	public int update(Reservation reservation) {
 		con = DBConnection.getConnection();
@@ -193,7 +195,7 @@ public class ReservationDao {
 			pre.setString(1, reservation.getReservationId());
 			pre.setString(2, reservation.getName());
 			pre.setString(3, reservation.getPhone());
-			
+
 			pre.setString(4, reservation.getArriveTime());
 			pre.setString(4, reservation.getReserveTime());
 			pre.setString(4, reservation.getReservationTime());
@@ -211,5 +213,5 @@ public class ReservationDao {
 		}
 		return 0;
 	}
-		
+
 }

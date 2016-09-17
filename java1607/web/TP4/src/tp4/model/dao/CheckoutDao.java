@@ -164,14 +164,13 @@ public class CheckoutDao {
 		//生成查询sql; 0表示全部，1表示标准，2表示钟点房
 		private String getSql(Date start, Date end, int checkType, List<Integer> roomTypeNos){
 			SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-			String checkTypeCond = "";
-			if (checkType == 1) {
-				checkTypeCond = "checkin_type like '标准'";
-			} else if (checkType == 2) {
-				checkTypeCond = "checkin_type like '钟点房'";
+			String checkTypeCond = "checkin_type like '%'";
+			if (checkType == 0) {
+				checkTypeCond = "checkin_type like '0'";
+			} else if (checkType == 1) {
+				checkTypeCond = "checkin_type like '1'";
 			}
 			String roomTypeCond = "";
-			if (roomTypeNos.size() > 0) {
 				StringBuilder sb = new StringBuilder();
 				sb.append("room_type_no in (");
 				for (Integer roomTypeNo : roomTypeNos) {
@@ -179,16 +178,16 @@ public class CheckoutDao {
 				}
 				sb.append("-1)");
 				roomTypeCond = sb.toString();
-			}
 			String dateCond = " date(checkout_time) between '" + fm.format(start) + "' AND '" + fm.format(end) + "'";
 			String sql = "select * from checkout, checkin, room where checkout.checkin_id = checkin.checkin_id and checkin.room_id = room.room_id and " + checkTypeCond + " and " + roomTypeCond + " and " + dateCond;
 			return sql;
 		}
-	public ArrayList<Checkout> find(Date start, Date end, int checkType, List<Integer> roomTypeNos){
+	public ArrayList<Checkout> findByRoom(Date start, Date end, int checkType, List<Integer> roomTypeNos){
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
 		String sql = getSql(start, end, checkType, roomTypeNos);
+		System.out.println(sql);
 		ArrayList<Checkout> list = new ArrayList<Checkout>();
 		try {
 			pre = con.prepareStatement(sql);
@@ -215,19 +214,18 @@ public class CheckoutDao {
 	// checkType 0 全部 1 标准 2 钟点房
 	
 	// checkout表根据客户姓名、客户类型、房间号和当前状态查询
-	public ArrayList<Checkout> find(String name, String roomId, String status,
-			String cusTypeDesc){
+	public ArrayList<Checkout> findByCus(String name, String roomId, String status,
+			int cusTypeNo){
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
 		ArrayList<Checkout> list = new ArrayList<Checkout>();
-		String sql = "select * from checkout,cus_info,cus_type,room where cus_info.name = ? and room.room_id=? and room.status=? and cus_type_desc = ?";
+		String sql = "select * from checkout, checkin, cus_info where checkout.checkin_id = checkin.checkin_id and checkin.cus_info_id = cus_info.cus_info_id and cus_info.name = ? and checkin.room_id=? and cus_info.cus_type_no = ?";
 		try {
 			pre = con.prepareStatement(sql);
 			pre.setString(1, name);
 			pre.setString(2, roomId);
-			pre.setString(3, status);
-			pre.setString(4, cusTypeDesc);
+			pre.setInt(3, cusTypeNo);
 			res = pre.executeQuery();
 			while(res.next()){
 				Checkout co = new Checkout(res.getString("checkout_id"),

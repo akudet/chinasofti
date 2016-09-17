@@ -27,13 +27,13 @@ import tp4.servlet.CRUDServlet;
  * 
  */
 public class CheckinServlet extends CRUDServlet {
-	
+
 	public static final String SERVLET_URL = "/op/checkin";
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
 
 	@Override
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doDelete(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doDelete(request, response);
 	}
@@ -44,7 +44,8 @@ public class CheckinServlet extends CRUDServlet {
 		CheckinDao cd = new CheckinDao();
 		ArrayList<Checkin> checkins = cd.findAll();
 		request.setAttribute("checkins", checkins);
-		request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(request, response);
+		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
+				request, response);
 	}
 
 	@Override
@@ -53,14 +54,12 @@ public class CheckinServlet extends CRUDServlet {
 		CheckinService service = new CheckinService();
 
 		CusInfo cusInfo = new CusInfoDao().findAll().get(1);
-		
-		int i = service.checkin(
-				cusInfo,
-				request.getParameter("roomId"),
+
+		int i = service.checkin(cusInfo, request.getParameter("roomId"),
 				request.getParameter("checkinType"),
 				request.getParameter("num_of_days"),
 				request.getParameter("deposit"));
-		if (i==0) {
+		if (i == 0) {
 			request.setAttribute("msg", "订房成功！");
 			this.doGet(request, response);
 		} else {
@@ -70,21 +69,27 @@ public class CheckinServlet extends CRUDServlet {
 	}
 
 	@Override
-	protected void doPut(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPut(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doPut(request, response);
 	}
 
 	@Override
-	public void getEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher(TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request, response);
+	public void getEdit(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.getRequestDispatcher(
+				TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
+				response);
 	}
 
 	@Override
-	public void getNew(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request, response);
+	public void getNew(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher(
+				TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
+				response);
 	}
 
 }

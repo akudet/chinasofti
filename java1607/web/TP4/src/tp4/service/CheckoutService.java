@@ -22,7 +22,7 @@ import tp4.model.vo.Room;
  */
 public class CheckoutService {
 	// 参考 2.4 客户结账, 2.6 营业查询
-	
+
 	private final CheckoutDao mCheckoutDao;
 
 	public CheckoutService() {
@@ -90,39 +90,49 @@ public class CheckoutService {
 		CheckoutDao dao = new CheckoutDao();
 		return dao.findAll();
 	}
-	
-	public ArrayList<Checkout> findByRoom(String start, String end, String checkinType,
-			String[] roomTypeNos) {
-		System.out.println("FIND : " + start + end + checkinType + roomTypeNos);
-		
+
+	public List<Checkout> findByCus(String name, String roomId, String status,
+			String cusTypeNo) {
+		System.out.println("FindByCus : " + name + roomId + status + cusTypeNo);
+		if (status.equals("0")) {// 查找未结帐
+
+		}
+		return mCheckoutDao.findByCus(name, roomId, status,
+				Integer.parseInt(cusTypeNo));
+	}
+
+	public ArrayList<Checkout> findByRoom(String start, String end,
+			String checkinType, String[] roomTypeNos) {
+		System.out.println("FindByRoom : " + start + end + checkinType
+				+ roomTypeNos);
+
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		Date s_start = new Date();
-		Date e_end = new Date();
+		Date s_start;
+		Date e_end;
 		try {
 			s_start = df.parse(start);
-			e_end = df.parse(start);
+			e_end = df.parse(end);
 		} catch (ParseException e) {
-			return null;
+			s_start = new Date();
+			e_end = new Date();
 		}
-		
+
 		int c_checkinType = Integer.parseInt(checkinType);
 		List<Integer> r_roomTypeNos = parseInt(roomTypeNos);
-		
-		return mCheckoutDao.find(s_start, e_end, c_checkinType, r_roomTypeNos);
+
+		return mCheckoutDao.findByRoom(s_start, e_end, c_checkinType,
+				r_roomTypeNos);
 	}
 
 	private List<Integer> parseInt(String[] roomTypeNos) {
 		List<Integer> res = new ArrayList<Integer>();
+		if (null == roomTypeNos) {
+			return res;
+		}
 		for (String roomTypeNo : roomTypeNos) {
 			res.add(Integer.parseInt(roomTypeNo));
 		}
 		return res;
-	}
-
-	public List<Checkout> findByCus(String name, String roomId, String status,
-			String cusTypeNo) {
-		CheckoutDao dao = new CheckoutDao();
-		return dao.find(name, roomId, status, cusTypeNo);
 	}
 
 }

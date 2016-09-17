@@ -24,13 +24,13 @@ import tp4.servlet.CRUDServlet;
  * 
  */
 public class CheckoutServlet extends CRUDServlet {
-	
+
 	public static final String SERVLET_URL = "/op/checkout";
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
 
 	@Override
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doDelete(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doDelete(request, response);
 	}
@@ -41,33 +41,37 @@ public class CheckoutServlet extends CRUDServlet {
 		CheckoutService cks = new CheckoutService();
 		RoomTypeService rts = new RoomTypeService();
 		CusTypeService cts = new CusTypeService();
-		
+
 		List<Checkout> checkouts;
-		
+
 		if (null != request.getParameter("byRoom")) {
-			checkouts = cks.findByRoom(
-					request.getParameter("start"),
+			checkouts = cks.findByRoom(request.getParameter("start"),
 					request.getParameter("end"),
 					request.getParameter("chargeType"),
 					request.getParameterValues("roomTypeNos"));
 		} else if (null != request.getParameter("byCus")) {
-			checkouts = cks.findAll();
+			checkouts = cks.findByCus(request.getParameter("name"),
+					request.getParameter("roomId"),
+					request.getParameter("status"),
+					request.getParameter("cusTypeNo"));
 		} else {
 			checkouts = cks.findAll();
 		}
-		
-		
+
 		String path = request.getContextPath();
-		request.setAttribute("editUrl", path + SERVLET_URL + "/edit?checkoutId=");
-		request.setAttribute("deleteUrl", path + SERVLET_URL + "?DELETE=&&checkoutId=");
-		
+		request.setAttribute("editUrl", path + SERVLET_URL
+				+ "/edit?checkoutId=");
+		request.setAttribute("deleteUrl", path + SERVLET_URL
+				+ "?DELETE=&&checkoutId=");
+
 		request.setAttribute("checkouts", checkouts);
 		request.setAttribute("roomTypes", rts.findAll());
 		request.setAttribute("cusTypes", cts.findAll());
 		request.setAttribute("chargeTypes", new ChargeTypeDao().findAll());
 		request.setAttribute("roomStatuss", new RoomStatusDao().findAll());
-		
-		request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(request, response);
+
+		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
+				request, response);
 	}
 
 	@Override
@@ -90,20 +94,26 @@ public class CheckoutServlet extends CRUDServlet {
 	}
 
 	@Override
-	protected void doPut(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPut(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doPut(request, response);
 	}
 
 	@Override
-	public void getEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request, response);
+	public void getEdit(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher(
+				TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
+				response);
 	}
 
 	@Override
-	public void getNew(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void getNew(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setAttribute("checkin", new CheckinDao().findAll().get(1));
-		request.getRequestDispatcher(TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request, response);
+		request.getRequestDispatcher(
+				TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
+				response);
 	}
 }

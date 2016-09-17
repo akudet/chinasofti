@@ -4,10 +4,10 @@ import java.util.*;
 
 import tp4.model.vo.RoomStatus;
 
-public class RoomStatusDao extends DAO<RoomStatus>{
-	
+public class RoomStatusDao extends DAO<RoomStatus> {
+
 	private static final List<RoomStatus> mRoomStatuss;
-	
+
 	static {
 		mRoomStatuss = new ArrayList<RoomStatus>();
 		mRoomStatuss.add(new RoomStatus(0, "可用"));

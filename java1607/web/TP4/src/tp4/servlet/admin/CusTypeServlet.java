@@ -34,31 +34,32 @@ public class CusTypeServlet extends CRUDServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CusTypeService CTService= new CusTypeService();
-		List<CusType> list=CTService.findAll();
-		request.setAttribute("list",list );
-		request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(request, response);
+		CusTypeService CTService = new CusTypeService();
+		List<CusType> list = CTService.findAll();
+		request.setAttribute("list", list);
+		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
+				request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-    request.setCharacterEncoding("UTF-8");
-		
+		request.setCharacterEncoding("UTF-8");
+
 		int cusTypeNo = Integer.parseInt(request.getParameter("cusTypeNo"));
 		String cusTypeDesc = request.getParameter("cusTypeDesc");
-		int discount =Integer.parseInt(request.getParameter("discount"));
-		
+		int discount = Integer.parseInt(request.getParameter("discount"));
+
 		CusTypeService CTService = new CusTypeService();
 		int flag = CTService.add(cusTypeNo, cusTypeDesc, discount);
 		if (flag > 0) {
-			request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp")
-					.forward(request, response);
+			request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
+					request, response);
 		} else {
 			request.setAttribute("list", "请添加数据");
-			request.getRequestDispatcher(TEMPLATE_URL+"/new.jsp").forward(request,
-					response);
+			request.getRequestDispatcher(TEMPLATE_URL + "/new.jsp").forward(
+					request, response);
 		}
 	}
 
@@ -70,13 +71,17 @@ public class CusTypeServlet extends CRUDServlet {
 	}
 
 	@Override
-	public void getEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp").forward(req, resp);
+	public void getEdit(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
+				.forward(req, resp);
 	}
 
 	@Override
-	public void getNew(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp").forward(req, resp);
+	public void getNew(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
+				.forward(req, resp);
 	}
 
 }

@@ -24,7 +24,8 @@ public class VipDao {
 
 	// 添加数据
 	public int add(Vip vip) {
-		new CusInfoDao().add(vip.getCusInfo(), vip.getCusInfo().getCusType().getCusTypeNo());
+		new CusInfoDao().add(vip.getCusInfo(), vip.getCusInfo().getCusType()
+				.getCusTypeNo());
 		con = DBConnection.getConnection();
 		String sql = "insert into vip values(?,?)";
 		try {
@@ -96,34 +97,8 @@ public class VipDao {
 		return null;
 	}
 
-	public Vip findById(String vipNumber) {
-
-		con = DBConnection.getConnection();
-
-		String sql = "select * from vip where vip_no = ?";
-
-		try {
-			pre = con.prepareStatement(sql);
-			pre.setString(1, vipNumber);
-			res = pre.executeQuery();
-			if (res.next()) {
-				Vip vip = new Vip();
-				vip.setVipNo(res.getInt("vip_no"));
-				vip.setCusInfo(new CusInfoDao().findById(res.getString("cus_info_id")));
-				return vip;
-			}
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} finally {
-			DBConnection.close(con, pre, res);
-		}
-		return null;
-	}
-
-	//通过客户Id查找
-	public int findByCusInfoId(String cusInfoId){
+	// 通过客户Id查找
+	public int findByCusInfoId(String cusInfoId) {
 		con = DBConnection.getConnection();
 		String sql = "select vip_no from vip where cus_info_id = ?";
 		try {
@@ -138,12 +113,39 @@ public class VipDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			DBConnection.close(con, pre, res);
 		}
 		return 0;
 	}
-		
+
+	public Vip findById(String vipNumber) {
+
+		con = DBConnection.getConnection();
+
+		String sql = "select * from vip where vip_no = ?";
+
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setString(1, vipNumber);
+			res = pre.executeQuery();
+			if (res.next()) {
+				Vip vip = new Vip();
+				vip.setVipNo(res.getInt("vip_no"));
+				vip.setCusInfo(new CusInfoDao().findById(res
+						.getString("cus_info_id")));
+				return vip;
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(con, pre, res);
+		}
+		return null;
+	}
+
 	// 修改
 
 	public int update(Vip vipNumber) {

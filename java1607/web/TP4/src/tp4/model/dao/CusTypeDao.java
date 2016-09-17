@@ -109,9 +109,10 @@ public class CusTypeDao {
 	}
 
 	public int update(CusType cusType) {
-		return update(cusType.getCusTypeNo(), cusType.getCusTypeDesc(), cusType.getDiscount());
+		return update(cusType.getCusTypeNo(), cusType.getCusTypeDesc(),
+				cusType.getDiscount());
 	}
-	
+
 	// 修改
 	public int update(int cusTypeNo, String cusTypeDesc, int discount) {
 		con = DBConnection.getConnection();

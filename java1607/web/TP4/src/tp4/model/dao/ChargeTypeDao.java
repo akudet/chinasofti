@@ -5,9 +5,9 @@ import java.util.*;
 import tp4.model.vo.ChargeType;
 
 public class ChargeTypeDao extends DAO<ChargeType> {
-	
+
 	private static final List<ChargeType> mChargeTypes;
-	
+
 	static {
 		mChargeTypes = new ArrayList<ChargeType>();
 		mChargeTypes.add(new ChargeType(0, "标准"));

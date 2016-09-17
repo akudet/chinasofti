@@ -11,17 +11,19 @@ import tp4.model.vo.User;
  * 
  */
 public class UserService {
-	
+
 	// 参考 2.11 操作员管理
-	
+
 	private UserDao dao = new UserDao();
+	public static final int ERR_USER_NOT_FOUND = 1;
+
 	public int add(String username, String userpass, int privilege) {
-		User user = new User(username,userpass,privilege);
+		User user = new User(username, userpass, privilege);
 		return dao.add(user);
 	}
 
 	public int deleteById(String userId) {
-		
+
 		return dao.deleteById(userId);
 	}
 
@@ -33,8 +35,6 @@ public class UserService {
 		return dao.findByName(username);
 	}
 
-	public static final int ERR_USER_NOT_FOUND = 1;
-	
 	public int updateById(String userId, String userName, String userPass,
 			int privilege) {
 		User user = dao.findById(userId);

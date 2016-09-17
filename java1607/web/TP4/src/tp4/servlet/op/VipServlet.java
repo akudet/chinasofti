@@ -19,11 +19,77 @@ import tp4.servlet.CRUDServlet;
  */
 public class VipServlet extends CRUDServlet {
 
-	//参考 2.7 会员管理
-	
+	// 参考 2.7 会员管理
+
 	public static final String SERVLET_URL = "/op/vip";
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
-	
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		new VipDao().deleteById(Integer.parseInt(req.getParameter("vipNo")));
+		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
+	}
+
+	/**
+	 * The doGet method of the servlet. <br>
+	 * 
+	 * This method is called when a form has its tag value method equals to get.
+	 * 
+	 * @param request
+	 *            the request send by the client to the server
+	 * @param response
+	 *            the response send by the server to the client
+	 * @throws ServletException
+	 *             if an error occurred
+	 * @throws IOException
+	 *             if an error occurred
+	 */
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		VipDao dao = new VipDao();
+		req.setAttribute("vips", dao.findAll());
+		req.getRequestDispatcher(TEMPLATE_URL + "/index.jsp")
+				.forward(req, resp);
+	}
+
+	/**
+	 * The doPost method of the servlet. <br>
+	 * 
+	 * This method is called when a form has its tag value method equals to
+	 * post.
+	 * 
+	 * @param request
+	 *            the request send by the client to the server
+	 * @param response
+	 *            the response send by the server to the client
+	 * @throws ServletException
+	 *             if an error occurred
+	 * @throws IOException
+	 *             if an error occurred
+	 */
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		VipService service = new VipService();
+		service.add(Integer.parseInt(req.getParameter("vipNo")),
+				req.getParameter("name"), req.getParameter("sex"),
+				req.getParameter("certNo"), req.getParameter("phone"),
+				req.getParameter("address"), req.getParameter("comment"));
+		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
+	}
+
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		VipService service = new VipService();
+		req.setCharacterEncoding("utf-8");
+		service.updateById(Integer.parseInt(req.getParameter("vipNo")),
+				req.getParameter("name"), req.getParameter("sex"),
+				req.getParameter("certNo"), req.getParameter("phone"),
+				req.getParameter("address"), req.getParameter("comment"));
+		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
+	}
+
 	@Override
 	public void getEdit(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -39,70 +105,6 @@ public class VipServlet extends CRUDServlet {
 			throws ServletException, IOException {
 		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
 				.forward(req, resp);
-	}
-
-	/**
-	 * The doGet method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		VipDao dao = new VipDao();
-		req.setAttribute("vips", dao.findAll());
-		req.getRequestDispatcher(TEMPLATE_URL + "/index.jsp")
-		.forward(req, resp);
-	}
-
-	/**
-	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		VipService service = new VipService();
-		service.add(
-				Integer.parseInt(req.getParameter("vipNo")),
-				req.getParameter("name"),
-				req.getParameter("sex"),
-				req.getParameter("certNo"),
-				req.getParameter("phone"),
-				req.getParameter("address"),
-				req.getParameter("comment"));
-		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
-	}
-
-	@Override
-	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		VipService service = new VipService();
-		req.setCharacterEncoding("utf-8");
-		service.updateById(Integer.parseInt(req.getParameter("vipNo")),
-				req.getParameter("name"),
-				req.getParameter("sex"),
-				req.getParameter("certNo"),
-				req.getParameter("phone"),
-				req.getParameter("address"),
-				req.getParameter("comment"));
-		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
-	}
-
-	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		new VipDao().deleteById(Integer.parseInt(req.getParameter("vipNo")));
-		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
 	}
 
 }

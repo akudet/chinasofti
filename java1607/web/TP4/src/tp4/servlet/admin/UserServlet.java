@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
-
 import tp4.model.dao.RoomDao;
 import tp4.model.dao.UserDao;
 import tp4.model.vo.Room;
@@ -45,20 +41,20 @@ public class UserServlet extends CRUDServlet {
 		UserService us = new UserService();
 		List<User> list = us.findAll();
 		request.setAttribute("users", list);
-		request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(request, response);
-		
-		
+		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
+				request, response);
+
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String userName = request.getParameter("username");
 		String userPass = request.getParameter("userpass");
 		int privilege = Integer.parseInt(request.getParameter("privilege"));
-		
+
 		UserService us = new UserService();
 		int flag = us.add(userName, userPass, privilege);
 		if (flag > 0) {
@@ -69,7 +65,7 @@ public class UserServlet extends CRUDServlet {
 			this.doGet(request, response);
 
 		}
-		
+
 	}
 
 	@Override
@@ -89,23 +85,26 @@ public class UserServlet extends CRUDServlet {
 			this.doGet(req, resp);
 		}
 	}
-		
-	
+
 	@Override
-	public void getEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	public void getEdit(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
 		String userId = req.getParameter("userId");
 		UserDao mUserDao = new UserDao();
 		User user = mUserDao.findById(userId);
 		req.setAttribute("user", user);
-		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp").forward(req,resp);
+		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
+				.forward(req, resp);
 	}
 
 	@Override
-	public void getNew(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	public void getNew(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
 		System.out.println("12312");
-		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp").forward(req, resp);
+		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
+				.forward(req, resp);
 	}
 
 }

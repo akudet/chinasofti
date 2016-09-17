@@ -5,6 +5,7 @@
     	<input type="date" name="start">
     	<input type="date" name="end">
     	<select name="chargeType">
+    		<option value="-1">全部</option>
     	    <c:forEach items="${chargeTypes}" var="chargeType">
     			<option value="${chargeType.chargeTypeNo}">${chargeType.chargeTypeDesc}</option>
     		</c:forEach>

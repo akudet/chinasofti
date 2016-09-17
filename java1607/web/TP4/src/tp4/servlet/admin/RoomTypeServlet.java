@@ -100,7 +100,7 @@ public class RoomTypeServlet extends CRUDServlet {
 		int a = roomtype.updateById(roomno, roomdesc, beds, price, ishourRoom,
 				hourRoomPrice, comment);
 		doGet(req, resp);
-		
+
 	}
 
 	@Override
