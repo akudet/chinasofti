@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import tp4.model.dao.ChargeTypeDao;
 import tp4.model.dao.CheckinDao;
 import tp4.model.dao.CheckoutDao;
 import tp4.model.dao.RoomDao;
@@ -16,79 +17,90 @@ import tp4.model.vo.Room;
 
 /**
  * 
- * @author 项双江
  * @author 巫金桐
  * 
  */
 public class CheckoutService {
 	// 参考 2.4 客户结账, 2.6 营业查询
-
+	
+	private final CheckinDao mCheckinDao;
 	private final CheckoutDao mCheckoutDao;
 
 	public CheckoutService() {
 		super();
+		this.mCheckinDao = new CheckinDao();
 		this.mCheckoutDao = new CheckoutDao();
 	}
-
-	/**
-	 * 办理结帐
-	 * 
-	 * @param room
-	 *            结帐房间
-	 * @param amount
-	 *            实收金额个
-	 * @param res
-	 *            找零, 如果结帐成功,则在末尾添加找零,否则不作修改
-	 * @return 执行结果 0 表示成功
-	 */
-	public int checkout(Room room, float amount, List<Float> res) {
-		CheckinDao dao1 = new CheckinDao();
-		Checkin room1 = dao1.findByRoomId(room.getRoomId());
-		if (room1.getCheckinType().equals("标准")) {
-			Date d1 = new Date();
-			DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
-			try {
-				Date d2 = df.parse(room1.getCheckinTime());
-				long time1 = d1.getTime();
-				long time2 = d2.getTime();
-				long time = time1 - time2;
-				float a = time / 1000 / 60 / 60 / 24;
-				int days = (int) (Math.ceil(a));
-				float cost = days * room1.getPrice();
-				if ((room1.getDeposit() + amount) >= cost) {
-					float b = room1.getDeposit() + amount - cost;
-					res.add(b);
-				}
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			Date d1 = new Date();
-			DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
-			try {
-				Date d2 = df.parse(room1.getCheckinTime());
-				long time1 = d1.getTime();
-				long time2 = d2.getTime();
-				long time = time1 - time2;
-				float a = time / 1000 / 60 / 60;
-				int hours = Math.round(a);
-				float cost = hours * room1.getPrice();
-				if ((room1.getDeposit() + amount) >= cost) {
-					float c = room1.getDeposit() + amount - cost;
-					res.add(c);
-				}
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	
+	//em , pretty bad consider with diffInHours
+	private int diffInDays(Date start, Date end) {
+		int days = (int) ((end.getTime() - start.getTime()) / 1000 / 60 / 60 / 24);
+		if (days == 0) {
+			days = 1;
 		}
-		return -1;
+		return days;
+	}
+	
+	private float diffInHours(Date start, Date end) {
+		long minutes = (end.getTime() - start.getTime()) / 1000 / 60;
+		long hours = minutes / 60;
+		float res = hours;
+		long mod = minutes % 60;
+		if (mod > 40) {
+			res += 1.0f;
+		} else if (mod > 10) {
+			res += 0.5f;
+		}
+		return res;
 	}
 
+	public Checkout checkout(String checkinId, String amount, String comment) throws CheckoutServiceException {
+		Checkin checkin = mCheckinDao.findById(checkinId);
+
+		int chargeType = checkin.getChargeType().getChargeTypeNo();
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date start = null;
+		try {
+			start = df.parse(checkin.getCheckinTime());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Date end = new Date();
+		
+		float charge;
+		//System.out.println("PRICE : " + checkin.getPrice());
+		//System.out.println(diffInDays(start, end));
+		//System.out.println(diffInHours(start, end));
+		switch(chargeType) {
+		case 0:
+			charge = diffInDays(start, end) * checkin.getPrice();
+			break;
+		case 1:
+			charge = diffInHours(start, end) * checkin.getPrice();
+			break;
+		default:
+			throw new CheckoutServiceException("未知收费类型");
+		}
+		
+		Checkout checkout = new Checkout();
+		
+		checkout.setCheckin(checkin);
+		checkout.setCheckoutId("out" + new SimpleDateFormat("yyyyMMddhhmmss").format(end));
+		checkout.setCheckoutAmount(charge);
+		checkout.setCheckoutTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(end));
+		checkout.setComment(comment);
+		
+		mCheckoutDao.add(checkout);
+		
+		return checkout;
+	}
+
+
+
 	public List<Checkout> findAll() {
-		CheckoutDao dao = new CheckoutDao();
-		return dao.findAll();
+		return mCheckoutDao.findAll();
 	}
 
 	public List<Checkout> findByCus(String name, String roomId, String status,

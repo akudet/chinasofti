@@ -25,19 +25,15 @@ public class CheckoutDao {
 	// checkout表的添加
 	public int add(Checkout checkout) {
 		Connection con = DBConnection.getConnection();
-		String sql = "insert into checkout values(?,?,?,?,NULL)";
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
-		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		String now = sdf.format(date);
-		String now1 = sdf1.format(date);
+		String sql = "insert into checkout values(?,?,?,?,?)";
 		PreparedStatement pre = null;
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setString(1, "out" + now);
+			pre.setString(1, checkout.getCheckoutId());
 			pre.setFloat(2, checkout.getCheckoutAmount());
-			pre.setString(3, now1);
+			pre.setString(3, checkout.getCheckoutTime());
 			pre.setString(4, checkout.getComment());
+			pre.setString(5, checkout.getCheckin().getCheckinId());
 			int i = pre.executeUpdate();
 			if (i > 0) {
 				return 1;

@@ -32,6 +32,7 @@
 	</table>
 
 	<form action="${servletUrl}" method="POST">
+		<input type="hidden" name="checkinId" value="${checkin.checkinId}">
 		实收金额:<input type="number" name="amount">
 		备注:<input type="text" name="comment">
 		<input type="submit" value="结账">
