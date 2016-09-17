@@ -26,14 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <form action="/TP4/admin/room_type" method="post" >
      房间类型编号:  <input type="test" id = "room_no" name = "room_type_no"><br><br>
-    房间类型: <select name="room_type_desc" style="width: 120px ;height: 25px;text-align:left; font-size: 14;">
-            <option value ="0" selected="selected">>标准单人间</option>
-            <option value ="1">标准双人间</option>
-            <option value ="2">豪华单人间</option>
-            <option value ="3">豪华双人间</option>
-            <option value ="4">商务套房</option>
-            <option value ="5">总统套房</option>
-         </select><br><br>
+    房间类型: <input type="text" name="room_type_desc"><br><br>
     床位数:   <input type="text" id = "room_beds" name = "beds"><br><br>
     单价:     <input type="text" id = "room_beds" name = "price"><br><br>
   是否可开钟点房:     <input type="radio" name="isHourRoom" value="true"  /> 是
