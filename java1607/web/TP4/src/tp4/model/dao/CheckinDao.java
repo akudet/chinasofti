@@ -19,30 +19,26 @@ import tp4.model.vo.Room;
  * @author 田霞光
  * 
  */
-public class CheckinDao {
+public class CheckinDao extends DAO<Checkin> {
 	
 	// checkin表的添加
 	public int add(Checkin checkin) {
 		String cus_info_id = checkin.getCusInfo().getCusInfoId();
 		String room_id = checkin.getRoom().getRoomId();
+		
 		Connection con = DBConnection.getConnection();
 		String sql = "insert into checkin values(?,?,?,?,?,?,?,?)";
-		Date date = new Date();
-		SimpleDateFormat checkinid = new SimpleDateFormat("yyyyMMddhhmmss");
-		SimpleDateFormat checkintime = new SimpleDateFormat(
-				"yyyy-MM-dd hh:mm:ss");
-		String now = checkinid.format(date);
-		String now1 = checkintime.format(date);
+
 
 		PreparedStatement pre = null;
 
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setString(1, "in" + now);
+			pre.setString(1, checkin.getCheckinId());
 			pre.setString(2, room_id);
 			pre.setString(3, cus_info_id);
-			pre.setString(4, now1);
-			pre.setString(5, checkin.getCheckinType());
+			pre.setString(4, checkin.getCheckinTime());
+			pre.setInt(5, checkin.getChargeType().getChargeTypeNo());
 			pre.setFloat(6, checkin.getPrice());
 			pre.setInt(7, checkin.getNumOfDays());
 			pre.setFloat(8, checkin.getDeposit());
@@ -194,6 +190,12 @@ public class CheckinDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return 0;
+	}
+
+	@Override
+	public int deleteAll() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 

@@ -57,19 +57,14 @@ public class CheckinServlet extends CRUDServlet {
 			throws ServletException, IOException {
 		CheckinService service = new CheckinService();
 
-		CusInfo cusInfo = new CusInfoDao().findAll().get(1);
+		CusInfo cusInfo = new CusInfoDao().findAll().get(0);
 
-		int i = service.checkin(request.getParameter("roomId") ,cusInfo,
+		Checkin checkin = service.checkin(
+				request.getParameter("roomId") ,cusInfo,
 				request.getParameter("checkinType"),
 				request.getParameter("num_of_days"),
 				request.getParameter("deposit"));
-		if (i == 0) {
-			request.setAttribute("msg", "订房成功！");
-			this.doGet(request, response);
-		} else {
-			request.setAttribute("msg", "订房失败！");
-			this.doGet(request, response);
-		}
+		doGet(request, response);
 	}
 
 	@Override
