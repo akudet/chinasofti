@@ -1,6 +1,6 @@
 <%@page pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<table>
+<table class="table">
 	<tr>
 		<th>结账单号</th>
 		<th>房间类型</th>
