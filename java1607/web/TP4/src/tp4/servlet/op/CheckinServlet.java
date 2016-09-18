@@ -122,27 +122,21 @@ public class CheckinServlet extends CRUDServlet {
 			throws ServletException, IOException {
 		
 		Room room = new RoomDao().findById(request.getParameter("roomId"));
+		request.setAttribute("room", room);
+		
 		request.setAttribute("searchUrl", request.getContextPath() + SERVLET_URL + "/new");
 		request.setAttribute("newUrl", request.getContextPath() + SERVLET_URL + "/new?roomId=");
 		
-		String byRoom = request.getParameter("byRoom");
 		request.setAttribute("roomTypes", new RoomTypeDao().findAll());
-		if (null != room) {
-			request.setAttribute("room", room);
-			request.getRequestDispatcher(
-					TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
-					response);
-		} else if (byRoom != null) {
+		
+		String byRoom = request.getParameter("byRoom");
+		if (byRoom != null) {
 			int roomTypeNo = Integer.parseInt(request.getParameter("roomTypeNo"));
 			List<Room> rooms = new RoomService().findByType(roomTypeNo);
 			request.setAttribute("rooms", rooms);
-			request.getRequestDispatcher(
-					TEMPLATE_URL + "/search.jsp").forward(request,
-					response);
-		} else {
-			request.getRequestDispatcher(TEMPLATE_URL + "/search.jsp").forward(request, response);
 		}
-
+		
+		request.getRequestDispatcher(TEMPLATE_URL + "/new.jsp").forward(request, response);
 	}
 
 }

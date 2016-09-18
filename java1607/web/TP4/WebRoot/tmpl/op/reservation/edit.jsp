@@ -19,6 +19,7 @@
   </head>
   
   <body>
+  		<%@include file="../../nav.jsp"%>
        <form action="/TP4/op/reservation/" method="POST">
        	<input type="hidden" name="PUT">
     	ID:<input type="text" name="reservationId" value="${reservation.reservationId}" onblur="regavalidate()"><br>

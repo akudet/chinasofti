@@ -9,6 +9,7 @@
   </head>
   
   <body>
+  <%@include file="../../nav.jsp"%>
 <%@ include file="checkins.jsp" %>
   </body>
 </html>

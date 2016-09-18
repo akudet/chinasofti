@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <%@include file="../../nav.jsp"%>
     <form action="/TP4/op/checkin/" method="POST">
     <input type="hidden" name="PUT">
     	预定单号:<input type="text" readonly="readonly" name="checkinId" value="${checkin.checkinId}"/><br>

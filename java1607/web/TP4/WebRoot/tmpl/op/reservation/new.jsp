@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    
+    <%@include file="../../nav.jsp"%>
     <form action="/TP4/op/reservation/" method="POST">
     	姓名:<input type="text" name="name"  onblur="regavalidate()"><br>
     	电话:<input type="text" name="phone"  ><br>

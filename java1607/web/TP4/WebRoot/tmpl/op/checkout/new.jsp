@@ -5,8 +5,9 @@
 <head>
 <title>客户结账</title>
 </head>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <body>
+	<%@include file="../../nav.jsp"%>
 	<p>入住信息</p>
 	<table>
 		<tr>
@@ -30,6 +31,8 @@
 			<td>${checkin.deposit}</td>
 		</tr>
 	</table>
+	
+	<%@include file="search.jsp" %>
 
 	<form action="${servletUrl}" method="POST">
 		<input type="hidden" name="checkinId" value="${checkin.checkinId}">

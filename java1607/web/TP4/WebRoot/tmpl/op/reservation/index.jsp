@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <%@include file="../../nav.jsp"%>
    <table width="700" height="50" border="1" align="center">
    <tr>
    <th>ID</th> 

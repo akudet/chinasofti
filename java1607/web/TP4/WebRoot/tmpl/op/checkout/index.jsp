@@ -22,6 +22,7 @@
 </head>
 
 <body>
+	<%@include file="../../nav.jsp"%>
 	<%@ include file="search.jsp"%>
 	<%@ include file="checkouts.jsp"%>
 </body>

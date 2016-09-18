@@ -23,6 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  	<%@include file="../../nav.jsp"%>
+  	<%@include file="search.jsp"%>
     <form action="/TP4/op/checkin/" method="POST">
     	<input type="hidden" name="POST"/>
 		房间类型:<input type="text" name="roomTypeDesc" value="${room.roomType.roomTypeDesc }"/><br>

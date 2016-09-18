@@ -14,6 +14,7 @@
   </head>
   
   <body>
+  	<%@include file="../nav.jsp"%>
   	<a href="${checkinUrl}/new">开设房间</a>
   	<a href="${checkinUrl}">客户结帐</a>
   	<a href="${reservationUrl}">预定管理</a>
