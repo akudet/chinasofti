@@ -22,6 +22,8 @@ public class CusInfo extends VirtualObject {
 
 	public CusInfo() {
 		super();
+		cusInfoId = randomId();
+		
 	}
 
 	public CusInfo(String certType, String certNumber, String name,

@@ -1,6 +1,7 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+${requestScope.msg }
 <table>
 	<tr>
 		<th>入住单号</th>
@@ -37,7 +38,9 @@
 			<td>${checkin.price }</td>
 			<td>${checkin.numOfDays }</td>
 			<td>${checkin.deposit }</td>
-			<td><a href="${editUrl}${checkin.checkinId}">修改</a><a href="${checkoutUrl}${checkin.checkinId}">结账</a>
+			<td><a href="${editUrl}${checkin.checkinId}">修改</a>
+			<a href="${renewUrl }${checkin.checkinId }">续住</a>
+			<a href="${checkoutUrl}${checkin.checkinId}">结账</a>
 			</td>
 		</tr>
 	</c:forEach>
