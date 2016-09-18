@@ -76,10 +76,11 @@ public class CheckinService {
 		
 		int chargeType = checkin.getChargeType().getChargeTypeNo();
 		if (chargeType == 0) {
-			if (checkin.getDeposit() - checkin.getNumOfDays() * checkin.getPrice() > EPSILON) {
+			if (checkin.getDeposit() - checkin.getNumOfDays() * checkin.getPrice() <= EPSILON) {
 				throw new CheckinServiceException("计费方式为“标准”时，应押金>单价*预住天数");
 			}
 		} else {
+			checkin.setDeposit(checkin.getPrice() * 5);
 			if (checkin.getDeposit() - checkin.getPrice() * 5 >= EPSILON) {
 				throw new CheckinServiceException("计费方式为“钟点”时，应押金=单价*5");
 			}
