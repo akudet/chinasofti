@@ -1,15 +1,11 @@
 <%@ page language="java" import="java.util.*,tp4.model.vo.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
-    <base href="<%=basePath%>">
     
-    <title>My JSP 'edit.jsp' starting page</title>
+    <title>My JSP 'edit.jsp' stareservationing page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,16 +19,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  		<%Reservation rt = (Reservation)request.getAttribute("user"); %>
-       <form action="/TP4/op/reservation/" method="post"  align="center" >
+       <form action="/TP4/op/reservation/" method="POST">
        	<input type="hidden" name="PUT">
-    	I&nbsp;&nbsp;D:<input type="text" name="reservationId" value="${rt.reservationId}" onblur="regavalidate()"><br>
-    	姓&nbsp;&nbsp;名:<input type="text" name="name"  value="${rt.name}"onblur="regavalidate()"><br>
-    	电&nbsp;&nbsp;话:<input type="text" name="phone" value="${rt.phone}" ><br>
-		到达时间:<input type="text" name="arriveTime" value="${rt.arriveTime}"><br>
-    	延长时间:<input type="text" name="reserveTime" value="${rt.reserveTime}"><br>
-    	预订时间:<input type="text" name="reservationTime" value="${rt.reservationTime}"><br>
-    	备&nbsp;&nbsp;注:<input type="text" name="comment" value="${rt.comment}"><br>
+    	ID:<input type="text" name="reservationId" value="${reservation.reservationId}" onblur="regavalidate()"><br>
+    	姓名:<input type="text" name="name"  value="${reservation.name}"onblur="regavalidate()"><br>
+    	电话:<input type="text" name="phone" value="${reservation.phone}" ><br>
+		
+		预定房间类型：
+		<select name="roomTypeNo">
+    		<c:forEach items="${roomTypes}" var="roomType">
+    			<option value="${roomType.roomTypeNo}">${roomType.roomTypeDesc}</option>
+    		</c:forEach>
+    	</select><br>
+		到达时间:<input type="text" name="arriveTime" value="${reservation.arriveTime}"><br>
+    	延长时间:<input type="text" name="reserveTime" value="${reservation.reserveTime}"><br>
+    	预订时间:<input type="text" name="reservationTime" value="${reservation.reservationTime}"><br>
+    	备&nbsp;&nbsp;注:<input type="text" name="comment" value="${reservation.comment}"><br>
     	<input type="submit" value="修改"><br>
  
 		

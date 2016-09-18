@@ -5,6 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <base href="<%=basePath%>">
@@ -24,18 +25,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     
-    <form action="/TP4/op/reservation/" method="post"  align="center" >
-    	I&nbsp;&nbsp;D:<input type="text" name="reservationId"  onblur="regavalidate()"><br>
-    	姓&nbsp;&nbsp;名:<input type="text" name="name"  onblur="regavalidate()"><br>
-    	电&nbsp;&nbsp;话:<input type="text" name="phone"  ><br>
-    	房间类型:<input type="text" name="roomTypeDesc"  ><br>
-		到达时间:<input type="text" name="arriveTime"><br>
-    	延长时间:<input type="text" name="reserveTime"><br>
-    	预订时间:<input type="text" name="reservationTime"><br>
-    	备&nbsp;&nbsp;注:<input type="text" name="comment"><br>
+    <form action="/TP4/op/reservation/" method="POST">
+    	姓名:<input type="text" name="name"  onblur="regavalidate()"><br>
+    	电话:<input type="text" name="phone"  ><br>
+    	房间类型:
+    	<select name="roomTypeNo">
+    		<c:forEach items="${roomTypes}" var="roomType">
+    			<option value="${roomType.roomTypeNo}">${roomType.roomTypeDesc}</option>
+    		</c:forEach>
+    	</select><br>
+    	到达时间:<input type="date" name="arriveDate"><input type="time" name="arriveTime"><br>
+    	保留时间:<input type="date" name="reserveDate"><input type="time" name="reserveTime"><br>
+    	
+    	备注:<input type="text" name="comment"><br>
     	<input type="submit" value="添加"><br>
- 
-		
     </form>
+   
   </body>
 </html>

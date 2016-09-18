@@ -34,18 +34,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <th>备注</th>
    </tr>
    
-   <c:forEach items="${requestScope.users }" var="user">
+   <c:forEach items="${requestScope.users}" var="user">
    	<tr>
 		<td>${user.reservationId}</td>
-		<td>${user.name }</td>
-		<td>${user.phone }</td>
-		<td>${user.arriveTime }</td>
-		<td>${user.reserveTime }</td>
-		<td>${user.reservationTime }</td>
-		<td>${user.comment }</td>
-
-   </td>
+		<td>${user.name}</td>
+		<td>${user.phone}</td>
+		<td>${user.arriveTime}</td>
+		<td>${user.reserveTime}</td>
+		<td>${user.reservationTime}</td>
+		<td>${user.comment}</td>
+		<td>
+			<a href="<%= path + ReservationServlet.SERVLET_URL%>/edit?reservationId=${user.reservationId}">修改</a>
+			<a>删除</a>
+   		</td>
+   
    </c:forEach>
+   <a href="<%= path + ReservationServlet.SERVLET_URL%>/new">添加</a></br>
    
   </body>
 </html>
