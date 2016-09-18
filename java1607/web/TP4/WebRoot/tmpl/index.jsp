@@ -14,6 +14,7 @@
   </head>
   
   <body>
+  	<%@ include file="nav.jsp" %>
   	<a href="${opUrl}">操作员页面</a>
     <a href="${adminUrl}">系统管理</a>
   </body>
