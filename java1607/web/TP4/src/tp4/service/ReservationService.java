@@ -13,8 +13,8 @@ import tp4.model.vo.Reservation;
  */
 public class ReservationService {
 
-	public int add(String reservationId, String name, String phone,
-			String roomTypeDesc, String arriveTime, String reserveTime,
+	public int reserve(String reservationId, String roomTypeNo, String name, String phone,
+			String arriveTime, String reserveTime,
 			String reservationTime, String comment) {
 		Reservation Re = new Reservation(reservationId, name, phone,
 				arriveTime, reserveTime, reservationTime, comment);
@@ -43,7 +43,7 @@ public class ReservationService {
 			return Res.findAll();
 	}
 
-	public int updateById(String reservationId, String name, String phone,
+	public int updateById(String reservationId, String roomTypeNo, String name, String phone,
 			String arriveTime, String reserveTime, String reservationTime,
 			String comment) {
 		Reservation Re = new Reservation(reservationId, name, phone,

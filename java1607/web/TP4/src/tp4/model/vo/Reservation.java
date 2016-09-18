@@ -75,6 +75,14 @@ public class Reservation extends VirtualObject {
 		this.arriveTime = arriveTime;
 	}
 
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}

@@ -25,7 +25,7 @@ public class ReservationDao {
 	// 添加数据
 	public int add(Reservation reservation) {
 		con = DBConnection.getConnection();
-		String sql = "insert into reservation values(?,?,?,?,?,?,?)";
+		String sql = "insert into reservation values(?,?,?,?,?,?,?,?)";
 
 		try {
 			pre = con.prepareStatement(sql);
@@ -37,6 +37,7 @@ public class ReservationDao {
 			pre.setString(5, reservation.getReserveTime());
 			pre.setString(6, reservation.getReservationTime());
 			pre.setString(7, reservation.getComment());
+			pre.setString(8, reservation.getRoom().getRoomId());
 
 			int i = pre.executeUpdate();
 
@@ -118,6 +119,8 @@ public class ReservationDao {
 						res.getString("reserve_time"),
 						res.getString("reservation_time"),
 						res.getString("comment"));
+				
+				reservation.setRoom(new RoomDao().findById(res.getString("room_id")));
 
 				list.add(reservation);
 			}
