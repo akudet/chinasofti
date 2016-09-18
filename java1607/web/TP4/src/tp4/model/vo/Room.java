@@ -19,14 +19,42 @@ public class Room extends VirtualObject {
 	protected String comment;
 
 	// 0位可用 1位停用
-	public static final int ROOM_STATUS_INUSE;
-	public static final int ROOM_STATUS_FREE;
-	public static final int ROOM_STATUS_RESERVED;
+	public static final int ROOM_STATUS_INUSE = 1;
+	public static final int ROOM_STATUS_FREE = 0;
+	public static final int ROOM_STATUS_RESERVED = 2;
+	public static final int ROOM_STATUS_BLOCKED = 3;
 
-	static {
-		ROOM_STATUS_INUSE = regMsg("占用");
-		ROOM_STATUS_FREE = regMsg("空闲");
-		ROOM_STATUS_RESERVED = regMsg("保留");
+	public void setStatusFree() {
+		this.status = 0;
+	}
+	
+	public boolean isFree() {
+		return this.status == ROOM_STATUS_FREE;
+	}
+	
+	public void setStatusInuse() {
+		this.status = ROOM_STATUS_INUSE;
+	}
+	
+	public boolean isInuse() {
+		return this.status == ROOM_STATUS_INUSE;
+	}
+	
+	public void setStatusReserved() {
+		this.status = ROOM_STATUS_RESERVED;
+	}
+	
+	public boolean isReserved() {
+		return this.status == ROOM_STATUS_RESERVED;
+	}
+	
+	//停用
+	public void setStatusBlocked() {
+		this.status = ROOM_STATUS_BLOCKED;
+	}
+	
+	public boolean isBlocked() {
+		return this.status == ROOM_STATUS_BLOCKED;
 	}
 
 	public Room() {

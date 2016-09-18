@@ -5,10 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import tp4.model.db.DBConnection;
 import tp4.model.vo.Room;
+import tp4.model.vo.RoomType;
 
 /**
  * 
@@ -146,5 +148,35 @@ public class RoomDao {
 		}
 
 		return 1;
+	}
+
+	public List<Room> findByRoomTypeNo(String roomTypeNo) {
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		
+		RoomTypeDao roomTypeDao = new RoomTypeDao();
+		RoomType roomType = roomTypeDao.findById(Integer.parseInt(roomTypeNo));
+		
+		List<Room> rooms = new ArrayList<Room>();
+		String sql = "select * from room where room_type_no=? and status=?";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, Integer.parseInt(roomTypeNo));
+			pre.setInt(2, Room.ROOM_STATUS_FREE);
+			System.out.println(pre);
+			rs = pre.executeQuery();
+			while (rs.next()) {
+				Room room = new Room();
+				room.map(rs);
+				room.setRoomType(roomType);
+				rooms.add(room);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rooms;
+
 	}
 }

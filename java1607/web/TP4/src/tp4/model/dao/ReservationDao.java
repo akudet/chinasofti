@@ -138,18 +138,15 @@ public class ReservationDao {
 
 	public Reservation findById(String reservationId) {
 		con = DBConnection.getConnection();
-		String sql = "select * from reservation where reservationId=? ";
+		String sql = "select * from reservation where reservation_id=? ";
 		try {
 			pre = con.prepareStatement(sql);
 			pre.setString(1, reservationId);
 			res = pre.executeQuery();
 			if (res.next()) {
-				Reservation reservation = new Reservation(
-						res.getString("reservationId"), res.getString("name"),
-						res.getString("phone"), res.getString("arriveTime"),
-						res.getString("reserveTime"),
-						res.getString("reservationTime"),
-						res.getString("comment"));
+				Reservation reservation = new Reservation();
+				reservation.map(res);
+				reservation.setRoom(new RoomDao().findById(res.getString("room_id")));
 				return reservation;
 			}
 		} catch (SQLException e) {
@@ -192,17 +189,19 @@ public class ReservationDao {
 	// 修改
 	public int update(Reservation reservation) {
 		con = DBConnection.getConnection();
-		String sql = "update reservation set name = ?,phone = ?,arriveTime= ?,reserveTime= ?,reservationTime= ?,comment= ?  where userid= ?";
+		String sql = "update reservation set name = ?,phone = ?,arrive_time= ?,reserve_time= ?,reservation_time= ?,comment= ?, room_id=?  where reservation_id= ?";
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setString(1, reservation.getReservationId());
-			pre.setString(2, reservation.getName());
-			pre.setString(3, reservation.getPhone());
 
-			pre.setString(4, reservation.getArriveTime());
+			pre.setString(1, reservation.getName());
+			pre.setString(2, reservation.getPhone());
+			pre.setString(3, reservation.getArriveTime());
 			pre.setString(4, reservation.getReserveTime());
-			pre.setString(4, reservation.getReservationTime());
-			pre.setString(4, reservation.getComment());
+			pre.setString(5, reservation.getReservationTime());
+			pre.setString(6, reservation.getComment());
+			pre.setString(7, reservation.getRoom().getRoomId());
+			pre.setString(8, reservation.getReservationId());
+			
 			int i = pre.executeUpdate();
 			if (i > 0) {
 				return i;

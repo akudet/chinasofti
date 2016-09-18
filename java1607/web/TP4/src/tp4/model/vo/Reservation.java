@@ -27,7 +27,8 @@ public class Reservation extends VirtualObject {
 	protected Room room;
 
 	public Reservation() {
-
+		super();
+		this.reservationId = randomId();
 	}
 
 	public Reservation(String reservationId, String name, String phone,
