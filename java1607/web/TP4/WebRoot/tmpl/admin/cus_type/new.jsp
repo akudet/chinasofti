@@ -18,11 +18,12 @@
   </head>
   
   <body>
-    <form action="${pageContext.request.contextPath }/TP4/admin/cus_type/new" method="post">
+    <form action="/TP4/admin/cus_type" method="post">
     <input type="hidden" name="POST">
-              客户类型编号：<input type="text"name="cusTypeNo"><br> 
+              客户类型编号：<input type="number"name="cusTypeNo"><br> 
               客户类型：<input type="text" name="cusTypeDesc"><br>
-              折扣类型：<input type="text" name="discount"><br>
+              折扣类型：<input type="number" name="discount"><br>
+              <input type="submit" value="修改">
     </form>
   </body>
 </html>

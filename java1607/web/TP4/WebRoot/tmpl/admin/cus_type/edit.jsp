@@ -19,11 +19,11 @@
   </head>
   
   <body>
-    <form action="${pageContext.request.contextPath }/TP4/admin/cus_type/edit" method="post" id=<%="cusTypeNo" %>>
+    <form action="/TP4/admin/cus_type/" method="post">
     <input type="hidden" name="PUT">
-		客户类型编号：<input type="number" name="cusTypeNo" value="${CusType.cusTypeNo}" disable><br>
-		客户类型：<input type="text" name="name" value="${CusType.cusTypeDesc }"><br>
-		折扣类型：<input type="text" name="sex" value="${CusType.discount}"><br>
+		客户类型编号：<input type="number" name="cusTypeNo" value="${cusType.cusTypeNo}" readonly><br>
+		客户类型：<input type="text" name="cusTypeDesc" value="${cusType.cusTypeDesc }"><br>
+		折扣类型：<input type="number" name="discount" value="${cusType.discount}"><br>
 		<input type="submit" value="修改">
 	</form>
     
