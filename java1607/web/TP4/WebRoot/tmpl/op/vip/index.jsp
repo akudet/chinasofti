@@ -18,12 +18,16 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
+<link href="/TP4/modules/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
+<script src="/TP4/modules/jquery/jquery.min.js"></script>
+<script src="/TP4/modules/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<table>
-		<tr>
+<%@include file="../../nav.jsp"%>
+	<table class="table-striped table-bordered table">
+		<tr class="active">
 			<th>会员编号</th>
 			<th>会员姓名</th>
 			<th>性别</th>
@@ -40,7 +44,7 @@
 				<td>${vip.certNo}</td>
 				<td>${vip.phone}</td>
 				<td>${vip.address}</td>
-				<td>
+				<td class="info">
 					<a href="<%= path + VipServlet.SERVLET_URL + "/edit?vipNo=" %>${vip.vipNo}">修改</a>
 					<a href="<%= path + VipServlet.SERVLET_URL + "?DELETE=&&vipNo=" %>${vip.vipNo}">删除</a>
 				</td>
