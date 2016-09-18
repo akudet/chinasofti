@@ -9,8 +9,9 @@
   	<a href="#byCus" data-toggle="tab">客户信息查询</a>
   </li>
 </ul>
+
 <div class="tab-content">
-<div class="tab-pane active in" id="byRoom">
+<div class="tab-pane active" id="byRoom">
 
 <form action="${servletUrl}" action="GET">
 	<input type="hidden" name="byRoom">
@@ -19,6 +20,7 @@
 		<label>开始日期</label>
 		<input class="form-control" type="date" name="start">
 	</div>
+	
 	<div class="form-group">
 		<label>结束日期</label> 
 		 <input class="form-control" type="date" name="end">
@@ -34,19 +36,22 @@
 		</select>
 	</div>
 	
-	<c:forEach items="${roomTypes}" var="roomType">
-		<label class="checkbox-inline">
-			<input type="checkbox" name="roomTypeNos" value="${roomType.roomTypeNo}">
-			${roomType.roomTypeDesc}	
-		</label>
-    </c:forEach>
+	<div class="form-group">
+		<c:forEach items="${roomTypes}" var="roomType">
+			<label class="checkbox-inline">
+				<input type="checkbox" name="roomTypeNos" value="${roomType.roomTypeNo}">
+				${roomType.roomTypeDesc}	
+			</label>
+		</c:forEach>
+	</div>
 
-	<button type="submit" class="btn btn-default">查询</button>
-	
+	<div class="form-group">
+		<button type="submit" class="btn btn-default">查询</button>
+	</div>
 </form>
 </div>
 
-<div class="tab-pane fade" id="byCus">
+<div class="tab-pane" id="byCus">
 <form id="byCus" action="${servletUrl}" action="GET">
 	<input type="hidden" name="byCus">
 	<div class="form-group">
@@ -59,13 +64,18 @@
 	 	<input class="form-control" type="text" name="roomId">
 	 </div>	
 	 
+	 <div class="form-group">
+	 
 	 <select class="form-control" name="cusTypeNo">
 		<c:forEach items="${cusTypes}" var="cusType">
 			<option value="${cusType.cusTypeNo}">${cusType.cusTypeDesc}</option>
 		</c:forEach>
 	</select>
+	</div>
 	
+	<div class="form-group">
 	<button type="submit" class="btn btn-default">查询</button>
+	</div>
 </form>
 </div>
 </div>

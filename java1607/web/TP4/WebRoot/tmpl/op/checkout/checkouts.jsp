@@ -1,5 +1,6 @@
 <%@page pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:if test="${checkouts != null}">
 <table class="table">
 	<tr>
 		<th>结账单号</th>
@@ -24,3 +25,4 @@
 		</tr>
 	</c:forEach>
 </table>
+</c:if>
