@@ -35,6 +35,40 @@ public class CheckinServlet extends CRUDServlet {
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
 
 	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String pathInfo = request.getPathInfo();
+
+		if (pathInfo !=null && pathInfo.equals("/renew")) {
+			getRenew(request, response);
+		} else {
+			super.service(request, response);
+		}
+	}
+
+	
+	private void getRenew(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		CheckinService cis = new CheckinService();
+		String checkinId = request.getParameter("checkinId");
+		Checkin checkin = null;
+		
+		if (checkinId != null) {
+			checkin = cis.findById(checkinId);
+		} else {
+			request.setAttribute("checkins", cis.findAllRenew());
+		}
+		System.out.println(checkinId);
+		
+		request.setAttribute("checkin", checkin);
+		request.setAttribute("renewUrl", request.getContextPath() + SERVLET_URL + "/renew?checkinId=");
+		
+		request.getRequestDispatcher(TEMPLATE_URL + "/renew.jsp").forward(
+				request, response);
+	}
+	
+	@Override
 	protected void doDelete(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

@@ -31,12 +31,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 <div class="panel-body">
 	 
   	<%@include file="search.jsp"%>
+  	
+  	<c:if test="${room != null}">
     <form action="/TP4/op/checkin/" method="POST">
     	<input type="hidden" name="POST"/>
-    	<div class="form-group">
-			<label for="exampalInputemail1">房间类型:</label>
-			<input type="text" class="form-control" style="font-size:large; " name="roomTypeDesc" value="${room.roomType.roomTypeDesc }"/><br>
-		</div>
+    	
 		<div class="form-group">
 			<label for="exampalInputemail1">房间号:</label>
 			<input type="text" class="form-control" style="font-size:large; " name="roomId" value="${room.roomId }"/><br>
@@ -94,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<input type="submit" value="提交" style="height:30px;width:100px;text-algin:center;"/>
     </form>
-    
+    </c:if>
     </div>
     </div>
     </div>

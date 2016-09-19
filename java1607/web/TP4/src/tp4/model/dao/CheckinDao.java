@@ -7,12 +7,13 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import tp4.model.db.DBConnection;
-
 import tp4.model.vo.Checkin;
 import tp4.model.vo.CusInfo;
 import tp4.model.vo.Room;
+import tp4.model.vo.RoomType;
 
 /**
  * 
@@ -38,7 +39,7 @@ public class CheckinDao extends DAO<Checkin> {
 			pre.setString(2, room_id);
 			pre.setString(3, cus_info_id);
 			pre.setString(4, checkin.getCheckinTime());
-			pre.setInt(5, checkin.getChargeType().getChargeTypeNo());
+			pre.setInt(5, checkin.getCheckinType());
 			pre.setFloat(6, checkin.getPrice());
 			pre.setInt(7, checkin.getNumOfDays());
 			pre.setFloat(8, checkin.getDeposit());
@@ -82,7 +83,7 @@ public class CheckinDao extends DAO<Checkin> {
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
-		String sql = "select * from checkin and status=?";
+		String sql = "select * from checkin where status=?";
 		try {
 			pre = con.prepareStatement(sql);
 			pre.setInt(1, Checkin.UNCHECK);
@@ -184,7 +185,7 @@ public class CheckinDao extends DAO<Checkin> {
 			pre.setString(1, checkin.getRoom().getRoomId());
 			pre.setString(2, checkin.getCusInfo().getCusInfoId());
 			pre.setString(3, checkin.getCheckinTime());
-			pre.setInt(4, checkin.getChargeType().getChargeTypeNo());
+			pre.setInt(4, checkin.getCheckinType());
 			pre.setFloat(5, checkin.getPrice());
 			pre.setInt(6, checkin.getNumOfDays());
 			pre.setFloat(7, checkin.getDeposit());
@@ -201,6 +202,39 @@ public class CheckinDao extends DAO<Checkin> {
 		return 0;
 	}
 
+	//checkin表查询所有可续住房间
+	public List<Checkin> findAllRenew(){
+		Connection con = DBConnection.getConnection();
+		String sql = "select * from checkin where checkin_type = ? and status = ?";
+		PreparedStatement pre = null;
+		ResultSet res = null;
+		List<Checkin> list = new ArrayList<Checkin>();
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, RoomType.NORMAL_ROOM);
+			pre.setInt(2, Checkin.UNCHECK);
+			res = pre.executeQuery();
+			while(res.next()){
+				CusInfoDao dao = new CusInfoDao();
+				RoomDao dao1 = new RoomDao();
+				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
+				Room room = dao1.findById(res.getString("room_id"));
+				
+				Checkin checkin = new Checkin();
+				checkin.map(res);
+				checkin.setCusInfo(cusinfo);
+				checkin.setRoom(room);
+				
+				list.add(checkin);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@Override
 	public int deleteAll() {
 		// TODO Auto-generated method stub

@@ -27,7 +27,7 @@ public class Checkout extends VirtualObject {
 		return checkin.getRoomId();
 	}
 	
-	public String getCheckinType() {
+	public int getCheckinType() {
 		return checkin.getCheckinType();
 	}
 	

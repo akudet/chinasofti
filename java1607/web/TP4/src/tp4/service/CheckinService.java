@@ -69,12 +69,12 @@ public class CheckinService {
 		checkin.setRoom(room);
 		checkin.setCusInfo(cusInfo);
 		checkin.setCheckinTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(now));
-		checkin.setCheckinType(checkin_type_no);
-		checkin.setPrice(getPrice(room.getRoomType(), cusInfo.getCusType(), checkin.getChargeType().getChargeTypeNo()));
+		checkin.setCheckinType(Integer.parseInt(checkin_type_no));
+		checkin.setPrice(getPrice(room.getRoomType(), cusInfo.getCusType(), checkin.getCheckinType()));
 		checkin.setNumOfDays(Integer.parseInt(num_of_days));
 		checkin.setDeposit(Float.parseFloat(deposit));
 		
-		int chargeType = checkin.getChargeType().getChargeTypeNo();
+		int chargeType = checkin.getCheckinType();
 		if (chargeType == 0) {
 			if (checkin.getDeposit() - checkin.getNumOfDays() * checkin.getPrice() <= EPSILON) {
 				throw new CheckinServiceException("计费方式为“标准”时，应押金>单价*预住天数");
@@ -103,9 +103,9 @@ public class CheckinService {
 	// 续住
 	public Checkin renew(String checkinId, String p_days, String p_deposit) {
 		Checkin checkin  = mCheckinDao.findById(checkinId);
-		int chargeType = checkin.getChargeType().getChargeTypeNo();
+		int chargeType = checkin.getCheckinType();
 		
-		if (chargeType == 1) {
+		if (chargeType == RoomType.HOUR_ROOM) {
 			throw new CheckinServiceException("钟点房不能续住");
 		}
 		
@@ -138,5 +138,10 @@ public class CheckinService {
 		
 		return mCusInfoDao.update(cusinfo);
 
+	}
+	
+	//查询所有可以续住的房间
+	public List<Checkin> findAllRenew(){
+		return mCheckinDao.findAllRenew();
 	}
 }

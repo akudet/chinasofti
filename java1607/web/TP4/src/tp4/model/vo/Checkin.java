@@ -16,11 +16,12 @@ public class Checkin extends VirtualObject {
 	protected Room room;
 	protected CusInfo cusInfo;
 	protected String checkinTime;
-	protected ChargeType chargeType;
 	protected float price;
 	protected int numOfDays;
 	protected float deposit;
 	private int status = UNCHECK;
+	
+	private int checkinType;
 	
 	public static int UNCHECK = 0;
 	public static int CHECKED = 1;
@@ -54,7 +55,7 @@ public class Checkin extends VirtualObject {
 		this.room = room;
 		this.cusInfo = cus_info_id;
 		this.checkinTime = checkin_time;
-		this.chargeType = new ChargeTypeDao().findById(checkin_type);
+		this.checkinType = Integer.parseInt(checkin_type);
 		this.price = price;
 		this.numOfDays = num_of_days;
 		this.deposit = deposit;
@@ -72,10 +73,6 @@ public class Checkin extends VirtualObject {
 		return cusInfo.getCertType();
 	}
 
-	public ChargeType getChargeType() {
-		return chargeType;
-	}
-
 	public String getCheckinId() {
 		return checkinId;
 	}
@@ -83,9 +80,9 @@ public class Checkin extends VirtualObject {
 	public String getCheckinTime() {
 		return checkinTime;
 	}
-
-	public String getCheckinType() {
-		return chargeType.getChargeTypeDesc();
+	
+	public int getCheckinType() {
+		return checkinType;
 	}
 
 	public String getComment(){
@@ -136,16 +133,13 @@ public class Checkin extends VirtualObject {
 	public void map(ResultSet rs) throws SQLException {
 		checkinId=rs.getString("checkin_id"); 
 		checkinTime=rs.getString("checkin_time");
-		chargeType=new ChargeTypeDao().findById(rs.getString("checkin_type"));
+		checkinType=rs.getInt("checkin_type");
 		price=rs.getFloat("price");
 		numOfDays=rs.getInt("num_of_days");
 		deposit=rs.getFloat("deposit");
 		status=rs.getInt("status");
 	}
 	
-	public void setChargeType(ChargeType chargeType) {
-		this.chargeType = chargeType;
-	}
 	
 	public void setCheckinId(String checkinId) {
 		this.checkinId = checkinId;
@@ -155,8 +149,8 @@ public class Checkin extends VirtualObject {
 		this.checkinTime = checkinTime;
 	}
 	
-	public void setCheckinType(String checkinType) {
-		this.chargeType = new ChargeTypeDao().findById(checkinType);
+	public void setCheckinType(int checkinType) {
+		this.checkinType = checkinType;
 	}
 	
 	public void setCusInfo(CusInfo cusInfo) {

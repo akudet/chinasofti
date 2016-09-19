@@ -57,7 +57,7 @@ public class CheckoutService {
 	public Checkout checkout(String checkinId, String amount, String comment) throws CheckoutServiceException {
 		Checkin checkin = mCheckinDao.findById(checkinId);
 
-		int chargeType = checkin.getChargeType().getChargeTypeNo();
+		int chargeType = checkin.getCheckinType();
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date start = null;
