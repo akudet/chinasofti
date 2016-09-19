@@ -15,4 +15,12 @@ public abstract class DAO<T> {
 	public abstract T findById(String id);
 
 	public abstract int update(T t);
+	
+	public List<T> findAll(int pageNo) {
+		return null;
+	}
+	
+	public int getTotalPage() {
+		return 0;
+	}
 }
