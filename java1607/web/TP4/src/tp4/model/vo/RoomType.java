@@ -17,7 +17,26 @@ public class RoomType extends VirtualObject {
 	protected int isHourRoom;
 	protected Float hourRoomPrice;
 	protected String comment;
+	
+	public static final int HOUR_ROOM = 0;
+	public static final int NORMAL_ROOM = 1;
 
+	public void setHourRoom() {
+		isHourRoom = HOUR_ROOM;
+	}
+	
+	public boolean isHourRoom() {
+		return isHourRoom == HOUR_ROOM ;
+	}
+	
+	public void setNormalRoom() {
+		isHourRoom = NORMAL_ROOM;
+	}
+	
+	public boolean isNormalRoom() {
+		return isHourRoom == NORMAL_ROOM;
+	}
+	
 	public RoomType() {
 		super();
 	}

@@ -51,23 +51,19 @@ public class RoomTypeServlet extends CRUDServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		boolean ishourRoom;
 		int roomno = Integer.parseInt(request.getParameter("room_type_no"));
 		String roomdesc = request.getParameter("room_type_desc");
 		int beds = Integer.parseInt(request.getParameter("beds"));
 		float price = Integer.parseInt(request.getParameter("price"));
 		String isHourRoom = request.getParameter("isHourRoom");
-		if (isHourRoom == "true") {
-			ishourRoom = true;
-
-		} else {
-			ishourRoom = false;
-		}
+		
+		boolean hourRoom = isHourRoom.equals("true");
+		
 		float hourRoomPrice = Integer.parseInt(request
 				.getParameter("hourRoomPrice"));
 		String comment = request.getParameter("comment");
 		RoomTypeService roomtype = new RoomTypeService();
-		int a = roomtype.add(roomno, roomdesc, beds, price, ishourRoom,
+		int a = roomtype.add(roomno, roomdesc, beds, price, hourRoom,
 				hourRoomPrice, comment);
 		if (a > 0) {
 			doGet(request, response);
@@ -81,23 +77,18 @@ public class RoomTypeServlet extends CRUDServlet {
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		boolean ishourRoom;
 		int roomno = Integer.parseInt(req.getParameter("room_type_no"));
 		String roomdesc = req.getParameter("room_type_desc");
 		int beds = Integer.parseInt(req.getParameter("beds"));
 		float price = Float.parseFloat(req.getParameter("price"));
 		String isHourRoom = req.getParameter("isHourRoom");
-		if (isHourRoom == "true") {
-			ishourRoom = true;
-
-		} else {
-			ishourRoom = false;
-		}
+		boolean hourRoom = isHourRoom.equals("true");
+		
 		float hourRoomPrice = Float.parseFloat(req
 				.getParameter("hourRoomPrice"));
 		String comment = req.getParameter("comment");
 		RoomTypeService roomtype = new RoomTypeService();
-		int a = roomtype.updateById(roomno, roomdesc, beds, price, ishourRoom,
+		int a = roomtype.updateById(roomno, roomdesc, beds, price, hourRoom,
 				hourRoomPrice, comment);
 		doGet(req, resp);
 

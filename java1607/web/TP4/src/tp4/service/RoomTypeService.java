@@ -19,9 +19,14 @@ public class RoomTypeService {
 	// 添加房间类型
 	public int add(int roomTypeNo, String roomTypeDesc, int beds, float price,
 			boolean isHourRoom, float hourRoomPrice, String comment) {
-		int isHourRoom_t = isHourRoom ? 1 : 0;
 		RoomType roomType = new RoomType(roomTypeNo, roomTypeDesc, beds, price,
-				isHourRoom_t, hourRoomPrice, comment);
+				0, hourRoomPrice, comment);
+		
+		if (isHourRoom) {
+			roomType.setHourRoom();
+		} else {
+			roomType.setNormalRoom();
+		}
 
 		return roomTypeDao.add(roomType);
 
@@ -49,13 +54,18 @@ public class RoomTypeService {
 	public int updateById(int roomTypeNo, String roomTypeDesc, int beds,
 			float price, boolean isHourRoom, float hourRoomPrice, String comment) {
 
-		int isHourRoom_t = isHourRoom ? 1 : 0;
 		RoomType roomType = roomTypeDao.findById(roomTypeNo);
 		roomType.setRoomTypeNo(roomTypeNo);
 		roomType.setRoomTypeDesc(roomTypeDesc);
 		roomType.setBeds(beds);
 		roomType.setPrice(price);
-		roomType.setIsHourRoom(isHourRoom_t);
+
+		if (isHourRoom) {
+			roomType.setHourRoom();
+		} else {
+			roomType.setNormalRoom();
+		}
+		
 		roomType.setHourRoomPrice(hourRoomPrice);
 		roomType.setComment(comment);
 
