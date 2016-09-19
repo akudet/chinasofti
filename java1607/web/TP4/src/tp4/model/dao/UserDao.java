@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 import tp4.model.db.DBConnection;
@@ -16,10 +17,64 @@ import tp4.model.vo.User;
  * @author 马厦伟
  * 
  */
-public class UserDao {
+public class UserDao extends DAO<User>{
+	private static final int DATE_PAGE = 5;
 	Connection con = null;
 	PreparedStatement pre = null;
 	ResultSet res = null;
+	@Override
+	public List<User> findAll(int pageNo) {
+		List<User> list = new ArrayList<User>();
+		
+		String sql = "select * from user limit ?,?";
+		
+		try {
+			con = DBConnection.getConnection();
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, (pageNo - 1) * DATE_PAGE);
+			pre.setInt(2, DATE_PAGE);
+			
+			res = pre.executeQuery();
+			while(res.next()){
+				User user = new User();
+				user.setUserId(res.getString(1));
+				user.setUserName(res.getString(2));
+				user.setUserPass(res.getString(3));
+				user.setPrivilege(res.getInt(4));
+				list.add(user);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
+	
+
+	@Override
+	public int getTotalPage() {
+		int count = 0;
+		String sql = "select count(*) from user";
+		
+		try {
+			con = DBConnection.getConnection();
+			pre = con.prepareStatement(sql);
+			res = pre.executeQuery();
+			
+			while (res.next()) {
+				count = res.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		count = (int) Math.ceil((count + 1.0 - 1.0) / DATE_PAGE);
+		return count;
+	}
 
 	// 添加数据
 	public int add(User user) {

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import tp4.model.db.DBConnection;
@@ -17,10 +18,59 @@ import tp4.model.vo.Checkin;
  * @author 马厦伟
  * 
  */
-public class VipDao {
+public class VipDao extends DAO<Vip>{
+	private static final int DATE_PAGE = 5;
 	Connection con = null;
 	PreparedStatement pre = null;
 	ResultSet res = null;
+	@Override
+	public List<Vip> findAll(int pageNo) {
+		
+		String sql = "selcet * from vip limit ?, ?";
+		ArrayList<Vip> list = new ArrayList<Vip>();
+		try {
+			con = DBConnection.getConnection();
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, (pageNo - 1) * DATE_PAGE);
+			pre.setInt(2, DATE_PAGE);
+			res = pre.executeQuery();
+			
+			while(res.next()){
+				CusInfoDao dao = new CusInfoDao();
+				CusInfo cusInfo = dao.findById(res.getString("cus_info_id"));
+				Vip vip = new Vip(res.getInt("vip_no"), cusInfo);
+				vip.setCusInfo(cusInfo);
+				vip.setVipNo(res.getInt(1));
+				list.add(vip);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int getTotalPage() {
+		int count = 0;
+		String sql = "select count(*) from vip";
+		
+		try {
+			con = DBConnection.getConnection();
+			pre = con.prepareStatement(sql);
+			res = pre.executeQuery();
+			
+			while (res.next()) {
+				count = res.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		count = (int) Math.ceil((count + 1.0 - 1.0) / DATE_PAGE);
+		return count;
+		
+	}
 
 	// 添加数据
 	public int add(Vip vip) {
@@ -74,7 +124,7 @@ public class VipDao {
 
 	// 查询数据
 	public ArrayList<Vip> findAll() {
-
+		
 		con = DBConnection.getConnection();
 		String sql = "select * from vip";
 		try {
@@ -167,6 +217,18 @@ public class VipDao {
 			DBConnection.close(con, pre);
 		}
 
+		return 0;
+	}
+
+	@Override
+	public int deleteAll() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteById(String id) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 

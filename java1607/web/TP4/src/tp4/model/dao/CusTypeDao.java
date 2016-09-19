@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import tp4.model.db.DBConnection;
 import tp4.model.vo.CusType;
@@ -14,7 +15,8 @@ import tp4.model.vo.CusType;
  * @author 项双江
  * 
  */
-public class CusTypeDao {
+public class CusTypeDao extends DAO<CusType>{
+	private static final int DATA_PRE_PAGE = 5;
 	Connection con = null;
 	PreparedStatement pre = null;
 	ResultSet res;
@@ -108,6 +110,7 @@ public class CusTypeDao {
 		return null;
 	}
 
+	//更新
 	public int update(CusType cusType) {
 		return update(cusType.getCusTypeNo(), cusType.getCusTypeDesc(),
 				cusType.getDiscount());
@@ -135,4 +138,78 @@ public class CusTypeDao {
 		}
 		return -1;
 	}
+
+	
+	@Override
+	public int deleteAll() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	@Override
+	public int deleteById(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	@Override
+	public CusType findById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	//分页查询
+	@Override
+	public List<CusType> findAll(int pageNo) {
+		con = DBConnection.getConnection();
+		String sql = "select * from cus_type limit ?,?";
+		List<CusType> list = new ArrayList<CusType>();
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, (pageNo-1)*DATA_PRE_PAGE);
+			pre.setInt(2, DATA_PRE_PAGE);
+			res = pre.executeQuery();
+			while (res.next()) {
+				CusType cusType = new CusType(res.getInt("cus_type_no"),
+						res.getString("cus_type_desc"), res.getInt("discount"));
+				list.add(cusType);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(con, pre, res);
+		}
+		return super.findAll(pageNo);
+	}
+	
+	//查询总页数
+
+	@Override
+	public int getTotalPage() {
+		int count = 0;
+		con = DBConnection.getConnection();
+		String sql = "select count(*) from cus_type";	
+		try {
+			pre = con.prepareStatement(sql);
+			res = pre.executeQuery();
+			while(res.next()){
+				count = res.getInt(1);
+			}
+			count = (int) Math.ceil((count + 1.0 -1.0)/DATA_PRE_PAGE);
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(con, pre, res);
+		}
+		return super.getTotalPage();
+	}
+
+	
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import tp4.model.db.DBConnection;
 import tp4.model.vo.CusInfo;
@@ -14,11 +15,12 @@ import tp4.model.vo.CusInfo;
  * @author 项双江
  * 
  */
-public class CusInfoDao {
+public class CusInfoDao extends DAO<CusInfo>{
 	Connection con = null;
 	PreparedStatement pre = null;
 	ResultSet res = null;
-
+	private static final int DATA_PRE_PAGE = 5;
+	
 	// 增加
 	public int add(CusInfo cusInfo) {
 		con = DBConnection.getConnection();
@@ -155,6 +157,7 @@ public class CusInfoDao {
 		return null;
 	}
 
+	//更新
 	public int update(CusInfo cusInfo) {
 		con = DBConnection.getConnection();
 		String sql = "update cus_info set cus_info_id = ?,cert_type = ?,cert_number = ?,name = ?,phone = ?,address = ?,sex = ?,cus_type_no = ?,comment = ? where cus_info_id = ?";
@@ -210,5 +213,67 @@ public class CusInfoDao {
 			DBConnection.close(con, pre);
 		}
 		return 1;
+	}
+
+	@Override
+	public int deleteAll() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	//分页查询
+	@Override
+	public List<CusInfo> findAll(int pageNo) {
+		con = DBConnection.getConnection();
+		String sql = "select * from cus_info limit ?,?";
+		List<CusInfo> list = new ArrayList<CusInfo>();
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, (pageNo-1)*DATA_PRE_PAGE);
+			pre.setInt(2, DATA_PRE_PAGE);
+			res = pre.executeQuery();
+			while (res.next()) {
+				int cusTypeNo = res.getInt("cus_type_no");
+
+				CusInfo cusInfo = new CusInfo(res.getString("cus_info_id"),
+						res.getString("cert_type"),
+						res.getString("cert_number"), res.getString("name"),
+						res.getString("phone"), res.getString("address"),
+						res.getString("sex"), res.getString("comment"));
+				CusTypeDao dao = new CusTypeDao();
+				cusInfo.setCusType(dao.findById(cusTypeNo));
+				list.add(cusInfo);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(con, pre, res);
+		}
+		
+		return super.findAll(pageNo);
+	}
+
+
+	//查询总页数
+	@Override
+	public int getTotalPage() {
+		int count = 0;
+		con = DBConnection.getConnection();
+		String sql = "select count(*) from cus_info";
+		try {
+			pre = con.prepareStatement(sql);
+			res = pre.executeQuery();
+			while(res.next()){
+				count = res.getInt(1);
+			}
+			count = (int) Math.ceil((count + 1.0 - 1.0)/DATA_PRE_PAGE);
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return super.getTotalPage();
 	}
 }

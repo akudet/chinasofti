@@ -11,13 +11,73 @@ import java.util.UUID;
 import tp4.model.db.DBConnection;
 import tp4.model.vo.Room;
 import tp4.model.vo.RoomType;
+import tp4.model.vo.Vip;
 
 /**
  * 
  * @author 张科林
  * 
  */
-public class RoomDao {
+public class RoomDao extends DAO<Room>{
+	
+	private static final int DATE_PAGE=5;
+	@Override
+	
+	public List<Room> findAll(int pageNo) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet res = null;
+		List<Room> list = new ArrayList<Room>();
+		String sql = "selcet * from room limit ?,?";
+	
+	try {
+		con = DBConnection.getConnection();
+		pre = con.prepareStatement(sql);
+		pre.setInt(1, (pageNo - 1) * DATE_PAGE);
+		pre.setInt(2, DATE_PAGE);
+		res = pre.executeQuery();
+		while(res.next()){
+			Room room = new Room();
+			RoomTypeDao roomTypeDao = new RoomTypeDao();
+			RoomType roomType = roomTypeDao.findById(res.getInt("room_type_no"));
+			room.setRoomId(res.getString(1));
+			room.setRoomType(roomType);
+			room.setFloor(res.getString(3));
+			room.setPhone(res.getString(4));
+			room.setStatus(res.getInt(5));
+			room.setComment(res.getString(6));
+			list.add(room);
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+		return list;
+	}
+
+	@Override
+	public int getTotalPage() {
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet res = null;
+		int count = 0;
+		String sql = "select count(*) from room";
+		
+		try {
+			con = DBConnection.getConnection();
+			pre = con.prepareStatement(sql);
+			res = pre.executeQuery();
+			while(res.next()){
+				count = res.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		count = (int) Math.ceil((count + 1.0 - 1.0) / DATE_PAGE);
+		return count;
+	}
 
 	Connection con = DBConnection.getConnection();
 

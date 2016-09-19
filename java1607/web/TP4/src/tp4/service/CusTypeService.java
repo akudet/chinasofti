@@ -14,7 +14,16 @@ public class CusTypeService {
 
 	// 参考 2.10 客户类型折扣
 	CusTypeDao cusTypeDao = new CusTypeDao();
-
+	
+	//分页查询
+	public List<CusType> findAll(int pageNo){
+		return cusTypeDao.findAll(pageNo);
+	}
+	
+	public int getTotalPages() {
+		return cusTypeDao.getTotalPage();
+	}
+	
 	// 添加客户类型
 	public int add(int cusTypeNo, String cusTypeDesc, int discount) {
 		if (discount > 1 && discount <= 10) {
