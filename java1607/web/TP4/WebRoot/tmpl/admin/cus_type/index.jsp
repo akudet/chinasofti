@@ -19,11 +19,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<%@ include file="/tmpl/include.jsp" %>
   </head>
  
   <body>
-   <table>
+   <table class="table">
 		<tr>
 			<th>客户类型编号</th>
 			<th>客户类型</th>
@@ -42,6 +42,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="<%= path + CusTypeServlet.SERVLET_URL + "/new" %>">添加</a>
+	<a href="<%= path + CusTypeServlet.SERVLET_URL + "/new" %>" style="text-align: right;"><h4>添加</h4></a>
   </body>
 </html>

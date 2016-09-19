@@ -14,16 +14,19 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<%@ include file="/tmpl/include.jsp" %>
   </head>
   
   <body>
     <form action="/TP4/admin/cus_type" method="post">
     <input type="hidden" name="POST">
-              客户类型编号：<input type="number"name="cusTypeNo"><br> 
-              客户类型：<input type="text" name="cusTypeDesc"><br>
-              折扣类型：<input type="number" name="discount"><br>
-              <input type="submit" value="修改">
+        <label for="exampleInputEmail1">客户类型编号:</label>
+		<input style="font-size:large;" class="form-control" type="number" id="cus_type_no" name="cusTypeNo"/><br>
+		<label for="exampleInputEmail1">客户类型:</label>
+		<input style="font-size:large;" class="form-control" type="text" id="cus_type_desc" name="cusTypeDesc"/><br>
+		<label for="exampleInputEmail1">折扣类型:</label>
+		<input style="font-size:large;" class="form-control" type="number" id="discount" name="discount"/><br>
+		<input type="submit" value="添加" style="height: 30px;width: 100px;text-align: center;">
     </form>
   </body>
 </html>
