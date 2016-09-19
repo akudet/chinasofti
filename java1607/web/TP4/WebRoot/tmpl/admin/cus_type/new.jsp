@@ -18,6 +18,10 @@
   </head>
   
   <body>
+  <%@include file="../../nav.jsp"%>
+	<div class="col-sm-12 col-lg-10 sidebar">
+	<div class="panel panel-primary">
+	
     <form action="/TP4/admin/cus_type" method="post">
     <input type="hidden" name="POST">
         <label for="exampleInputEmail1">客户类型编号:</label>
@@ -28,5 +32,6 @@
 		<input style="font-size:large;" class="form-control" type="number" id="discount" name="discount"/><br>
 		<input type="submit" value="添加" style="height: 30px;width: 100px;text-align: center;">
     </form>
+    </div></div>
   </body>
 </html>

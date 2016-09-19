@@ -24,6 +24,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <%@include file="../../nav.jsp"%>
+	<div class="col-sm-12 col-lg-10 sidebar">
+	<div class="panel panel-primary">
+	
   	${requestScope.msg }
   	<table class="table">
   		<tr>
@@ -43,5 +47,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</c:forEach>
   	</table>
   	<a href="<%= path + RoomServlet.SERVLET_URL%>/new"><h4>添加房间</h4></a>
+  </div></div>
   </body>
 </html>

@@ -25,6 +25,10 @@
 </head>
 
 <body>
+	<%@include file="../../nav.jsp"%>
+	<div class="col-sm-12 col-lg-10 sidebar">
+	<div class="panel panel-primary">
+	
 	<form action="/TP4/admin/room_type" method="POST">
 	
 		<input type="hidden" name="PUT"> 
@@ -60,5 +64,7 @@
 		<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="submit"value="修改" style="height: 30px;width: 100px;text-align: center;">
 	</form>
+	
+	</div></div>
 </body>
 </html>

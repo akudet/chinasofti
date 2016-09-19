@@ -25,6 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  	<%@include file="../../nav.jsp"%>
+
+	<div class="col-sm-12 col-lg-10 sidebar">
+	<div class="panel panel-primary">
+		
    <table class="table">
    <tr>
    <th>ID</th> 
@@ -41,12 +46,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<td>${user.userName }</td>
 		<td>${user.userPass }</td>
 		<td>${user.privilege }</td>
-   		<td><a href="<%= path + UserServlet.SERVLET_URL%>/edit?userId=${user.userId}">修改</a> <a>删除</a>
-   </td>
+   		<td>
+   			<a href="<%= path + UserServlet.SERVLET_URL%>/edit?userId=${user.userId}">修改</a>
+			<a href="${deleteUrl}${user.userId}">删除</a>
+		</td>
    </tr>
    </c:forEach>
-   
-  
+   </table>
+  </div></div>
    
   
   </body>

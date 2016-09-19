@@ -55,8 +55,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </script>
   
   <body>
-  	
+  		<%@include file="../../nav.jsp"%>
+
+	<div class="col-sm-12 col-lg-10 sidebar">
+		<div class="panel panel-primary">
+		
     <form  action="/TP4/admin/user/" method="post" onsubmit="reg()"  >
+ 
+
+    
     <div class="form-group">
     	<label>姓名</label>
     	<input type="text"  name="username" id="name" onblur="regavalidate()" class="form-control" ><span id="sp"></span>
@@ -74,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	 	<input type="text" name="privilege" class="form-control" >
     </div>
     	<input type="submit" value="添加"><br>
-    
     </form>
+    </div></div>
   </body>
 </html>
