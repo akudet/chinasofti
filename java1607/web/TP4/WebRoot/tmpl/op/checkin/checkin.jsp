@@ -1,8 +1,8 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:if test="${checkin != null}">
-    <form action="">
-    	<input type="hidden" name="PUT">
+    <form action="${servletUrl}" method="POST">
+    	<input type="hidden" name="renew">
     	<div class="form-group">
     		<label for="exampleInputEmail1">预定单号:</label>
     		<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="checkinId" value="${checkin.checkinId}"/><br>

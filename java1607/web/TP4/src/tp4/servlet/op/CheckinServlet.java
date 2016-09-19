@@ -40,14 +40,14 @@ public class CheckinServlet extends CRUDServlet {
 		String pathInfo = request.getPathInfo();
 
 		if (pathInfo !=null && pathInfo.equals("/renew")) {
-			getRenew(request, response);
+			handleRenew(request, response);
 		} else {
 			super.service(request, response);
 		}
 	}
 
 	
-	private void getRenew(HttpServletRequest request, HttpServletResponse response)
+	private void handleRenew(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		CheckinService cis = new CheckinService();
@@ -56,11 +56,16 @@ public class CheckinServlet extends CRUDServlet {
 		
 		if (checkinId != null) {
 			checkin = cis.findById(checkinId);
+			if (request.getParameter("renew") != null) {
+				cis.renew(checkinId, request.getParameter("reNumOfDays"), request.getParameter("reDeposit"));
+				doGet(request, response);
+				return;
+			}
 		} else {
 			request.setAttribute("checkins", cis.findAllRenew());
 		}
-		System.out.println(checkinId);
 		
+		request.setAttribute("servletUrl", request.getContextPath() + SERVLET_URL + "/renew");
 		request.setAttribute("checkin", checkin);
 		request.setAttribute("renewUrl", request.getContextPath() + SERVLET_URL + "/renew?checkinId=");
 		
@@ -129,14 +134,10 @@ public class CheckinServlet extends CRUDServlet {
 		String address = request.getParameter("address");
 		String comment = request.getParameter("comment");
 		CheckinService cis = new CheckinService();
-		int flag = cis.updateCheckin(checkinId, certNumber, address, comment);
-		if (flag == 0) {
-			request.setAttribute("msg", "修改成功");
-			this.doGet(request, response);
-		} else {
-			request.setAttribute("msg", "修改失败");
-			this.doGet(request, response);
-		}
+		
+		cis.updateCheckin(checkinId, certNumber, address, comment);
+		
+		doGet(request, response);
 	}
 
 	@Override
