@@ -20,14 +20,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+   <%@include file="../../include.jsp" %>
   </head>
   
   <body>
     <form action="/TP4/admin/room/" method="POST">
     <input type="hidden" name="POST">
-    	房间号&nbsp;：<input type="text" name="roomId"/><br>
-    	房间类型：<select name="roomTypeNo">
+        <label class="control-label" for="inputSuccess1"> 房间号:</label>
+    	&nbsp;<input class="form-control"type="text" name="roomId"/><br>
+    	 <label class="control-label" for="inputSuccess1"> 房间类型：</label>
+    	<select class="form-control" name="roomTypeNo">
     			<option value="0" selected="selected">标准单人间</option>
     			<option value="1">标准双人间</option>
     			<option value="2">豪华单人间</option>
@@ -35,13 +37,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<option value="4">商务套房</option>
     			<option value="5">总统套房</option>
     			</select><br>
-    	房间楼层：<input type="text" name="floor"/><br>
-    	房间电话：<input type="text" name="phone"/><br>
-    	房间状态：<input type="radio" name="status" value="0" checked="checked"/>可用
-    	<input type="radio" name="status" value="1"/>停用<br>
-    	备&nbsp;&nbsp;注：<br>&nbsp;&nbsp;&nbsp;&nbsp; 
-    	<textarea rows="5px;" cols="30px;" name="comment"></textarea><br>
-    	<input type="submit" value="添加"/>
+    		<label class="control-label" for="inputSuccess1"> 房间楼层：</label>
+    	<input class="form-control"type="text" name="floor"/><br>
+    	    <label class="control-label" for="inputSuccess1"> 房间电话：</label>
+    	<input class="form-control"type="text" name="phone"/><br>
+    	    <label class="control-label" for="inputSuccess1"> 房间状态</label>
+    	<input type="radio" name="status" value="0" checked="checked"/>可用
+    	        <input type="radio" name="status" value="1"/>停用<br>
+    	    <label class="control-label" for="inputSuccess1"> 备&nbsp;&nbsp;注：</label>
+    	<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+    	<textarea class="form-control"rows="5px;" cols="30px;" name="comment"></textarea><br>
+    	<input class="btn btn-default btn-lg" type="submit" style="text-align:center;"  value="添加"/>
     </form>
   </body>
 </html>

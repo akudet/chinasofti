@@ -20,25 +20,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+  <%@ include file="/tmpl/include.jsp" %>
   </head>
   
   <body>
     <form action="/TP4/admin/room/" method="POST">
     <input type="hidden" name="PUT">
-    	房间号：&nbsp;<input type="text" name="roomId" readonly="readonly" value="${room.roomId }"/><br>
-    	房间类型：
-    	<select name="roomTypeNo">
+      <label for="exampleInputEmail1">房间号：</label> 
+    	&nbsp;<input class="form-control" type="text" name="roomId" readonly="readonly" value="${room.roomId }"/><br>
+      <label for="exampleInputEmail1">房间类型：</label> 
+    	<select class="form-control" name="roomTypeNo">
     	<c:forEach items="${roomTypes}" var="roomType">
     		<option <c:if test="${room.roomType.roomTypeNo==roomType.roomTypeNo}">selected</c:if> value="${roomType.roomTypeNo}">${roomType.roomTypeDesc}</option>
     	</c:forEach>
     	</select><br>
-    	房间楼层：<input type="text" name="floor" value="${room.floor }"/><br>
-    	房间电话：<input type="text" name="phone" value="${room.phone }"/><br>
-    	房间状态：<input type="radio" name="status" value="${room.status }" checked="checked"/>可用
-    		<input type="radio" name="status" value="${room.status }"/>停用<br>
-    	备&nbsp;&nbsp;注：<input type="text" name="comment" value="${room.comment }"/><br>
-    	<input type="submit" value="修改"/>
+      <label for="exampleInputEmail1">房间楼层：</label> 
+    	<input class="form-control"type="text" name="floor" value="${room.floor }"/><br>
+      <label for="exampleInputEmail1">房间电话：</label> 
+    	<input class="form-control"type="text" name="phone" value="${room.phone }"/><br>
+      <label for="exampleInputEmail1">房间状态：</label> 
+    	<input type="radio" name="status" value="${room.status }" checked="checked"/><label for="exampleInputEmail1">可用</label>
+        <input type="radio" name="status" value="${room.status }"/><label for="exampleInputEmail1">停用</label><br>
+      <label for="exampleInputEmail1">备&nbsp;&nbsp;注：</label> 
+    	<textarea class="form-control"type="text" name="comment" value="${room.comment }"></textarea><br>
+    	<input type="submit" value="修改"style="height: 30px;width: 100px;text-align: center;"/>
     </form>
   </body>
 </html>

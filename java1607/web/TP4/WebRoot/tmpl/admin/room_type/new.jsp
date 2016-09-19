@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
++<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 
 String path = request.getContextPath();
@@ -20,20 +20,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="te xt/css" href="styles.css">
 	-->
-
+<%@include file="../../include.jsp" %>
   </head>
   
-  <body>
-    <form action="/TP4/admin/room_type" method="post" >
-     房间类型编号:  <input type="test" id = "room_no" name = "room_type_no"><br><br>
-    房间类型: <input type="text" name="room_type_desc"><br><br>
-    床位数:   <input type="text" id = "room_beds" name = "beds"><br><br>
-    单价:     <input type="text" id = "room_beds" name = "price"><br><br>
-  是否可开钟点房:     <input type="radio" name="isHourRoom" value="true"  /> 是
-                 <input type="radio" name="isHourRoom" value="false" /> 否<br><br>
-      钟点房价格: <input type="text" id = "room_beds" name = "hourRoomPrice"><br><br>
-   备注: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows="5px" cols="50px" name="comment"></textarea><br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input type="submit" value="添加" style="height: 25px;width: 70px;text-align: center;">
+ <body>
+  <form action="/TP4/admin/room_type" method="post" >
+    <label class="control-label" for="inputSuccess1"> 房间类型编号: </label>
+     <input class="form-control" type="text" id = "room_no" name = "room_type_no"style="font-size:large;"><br>
+    <label class="control-label" for="inputSuccess1">  房间类型:</label>
+      <input class="form-control" type="text"  name="room_type_desc"style="font-size:large;"><br>
+    <label class="control-label" for="inputSuccess1"> 床位数: </label>
+     <input class="form-control" type="text" id = "room_beds" name = "beds"style="font-size:large;"><br>
+  
+    <label class="control-label" for="inputSuccess1">单价: </label> 
+     <input class="form-control" type="text"  id = "room_beds" name = "price"style="font-size:large;"><br>
+    <label class="control-label" for="inputSuccess1">是否可开钟点房:</label> 
+     <input type="radio" name="isHourRoom" value="true" style="height: 10px;width: 10px;" /> 
+       <label class="control-label" for="inputSuccess1">是</label> 
+     <input type="radio" name="isHourRoom" value="false" /> 
+     <label class="control-label" for="inputSuccess1">否</label> <br>
+    <label class="control-label" for="inputSuccess1">钟点房价格: </label> 
+     <input class="form-control" type="text" id = "room_beds" name = "hourRoomPrice"style="font-size:large;"><br>
+    <label class="control-label" for="inputSuccess1">   备注:</label> 
+      <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea class="form-control" rows="7px" cols="100px" name="comment" style="font-size:large;"></textarea><br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input type="submit" value="添加" style="height: 30px;width: 100px;text-align: center;">
     </form>
   </body>
 </html>

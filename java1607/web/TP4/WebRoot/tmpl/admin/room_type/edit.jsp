@@ -21,37 +21,44 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<%@ include file="/tmpl/include.jsp" %>
 </head>
 
 <body>
 	<form action="/TP4/admin/room_type" method="POST">
-		<input type="hidden" name="PUT"> 房间类型编号: <input type="text"
-			id="room_type_no" name="room_type_no" value="${roomType.roomTypeNo}"><br>
-		<br> 房间类型: 
-		<input type="text" name="room_type_desc" value="${roomType.roomTypeDesc}"><br> 床位数: <input type="text" id="room_beds" name="beds"
-			value="${roomType.beds}"><br>
-		<br> 单价: <input type="text" id="room_beds" name="price"
-			value="${roomType.price}"><br>
-		<br>
+	
+		<input type="hidden" name="PUT"> 
+		 <label for="exampleInputEmail1">房间类型编号:</label>
+		<input style="font-size:large;"class="form-control" type="text" id="room_type_no" name="room_type_no" value="${roomType.roomTypeNo}"><br>
+		
+		<label for="exampleInputEmail1">房间类型:</label> 
+		<input style="font-size:large;" class="form-control"type="text" name="room_type_desc" value="${roomType.roomTypeDesc}"> 
+		<br><label for="exampleInputEmail1">床位数:</label> 
+		 <input style="font-size:large;" class="form-control"  type="text" id="room_beds" name="beds"value="${roomType.beds}">
+		<br><label for="exampleInputEmail1"> 单价:</label>
+		 <input style="font-size:large;" class="form-control"  type="text" id="room_beds" name="price"value="${roomType.price}">
+		
 		<c:if test="${roomType.isHourRoom==0}">
-  是否可开钟点房:     <input type="radio" name="isHourRoom" value="true"checked /> 是
-                 <input type="radio" name="isHourRoom" value="false" /> 否<br>
-			<br>
+		<br><label for="exampleInputEmail1">是否可开钟点房:</label>
+         <input   type="radio" name="isHourRoom" value="true"checked /> 
+          <label for="exampleInputEmail1">是</label>
+         <input type="radio" name="isHourRoom" value="false" />
+         <label for="exampleInputEmail1">否</label><br>
+			
 		</c:if>
 		<c:if test="${roomType.isHourRoom==1}">
-		
-			<input type="radio" name="isHourRoom" value="true" /> 是
-            <input type="radio" name="isHourRoom" value="false" checked /> 否<br>
-			<br>
+		 <label for="exampleInputEmail1">   是否可开钟点房:</label>
+			<input type="radio" name="isHourRoom" value="true" /> 
+			 <label for="exampleInputEmail1">是</label>
+            <input type="radio" name="isHourRoom" value="false" checked /> 
+             <label for="exampleInputEmail1">否</label><br>
 		</c:if>
-		钟点房价格: <input type="text" id="room_beds" name="hourRoomPrice"
-			value="${roomType.hourRoomPrice}"><br>
-		<br> 备注: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<textarea rows="5" cols="50" name="comment"
-			>${roomType.comment}</textarea>
-		<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit"
-			value="修改" style="height: 25px;width: 70px;text-align: center;">
+		<br><label for="exampleInputEmail1">钟点房价格:</label>
+		 <input style="font-size:large;" class="form-control"  type="text" id="room_beds" name="hourRoomPrice"value="${roomType.hourRoomPrice}"><br>
+		<br> <label for="exampleInputEmail1">备注：</label> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<textarea style="font-size:large;left: 20px" class="form-control"  rows="5" cols="50" name="comment" value="${roomType.comment}"></textarea>
+		<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit"value="修改" style="height: 30px;width: 100px;text-align: center;">
 	</form>
 </body>
 </html>

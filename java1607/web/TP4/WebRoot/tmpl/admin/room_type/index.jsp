@@ -10,7 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>My JSP 'index.jsp' starting page</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,11 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+  <%@include file="../../include.jsp" %>
   </head>
   
   <body>
-   <table width="700" height="30"  border="1" align="center">
+   <table class="table">
         <tr>
             <td>房间类型编号 </td> 
             <td> 房间类型</td>  
@@ -53,6 +54,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
             <td>
                <a href="<%= path + RoomTypeServlet.SERVLET_URL%>?DELETE=&&roomTypeNo=${list.roomTypeNo}">删除</a>
+            </td>  
+            <td>
 			   <a href="<%= path + RoomTypeServlet.SERVLET_URL%>/edit?roomTypeNo=${list.roomTypeNo}">修改</a>
 		    </td>
         </tr>
@@ -60,6 +63,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </c:forEach>
    
    </table>
-     
+    <a href="<%= path + RoomTypeServlet.SERVLET_URL%>/new" style="text-align: right;"><h4>添加</h4></a>
   </body>
 </html>
