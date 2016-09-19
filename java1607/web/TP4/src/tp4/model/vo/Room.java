@@ -23,6 +23,13 @@ public class Room extends VirtualObject {
 	public static final int ROOM_STATUS_FREE = 0;
 	public static final int ROOM_STATUS_RESERVED = 2;
 	public static final int ROOM_STATUS_BLOCKED = 3;
+	
+	static {
+		regMsg(ROOM_STATUS_INUSE, "占用");
+		regMsg(ROOM_STATUS_FREE, "空闲");
+		regMsg(ROOM_STATUS_RESERVED, "保留");
+		regMsg(ROOM_STATUS_BLOCKED, "停用");
+	}
 
 	public void setStatusFree() {
 		this.status = 0;

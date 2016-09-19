@@ -28,6 +28,10 @@ public abstract class VirtualObject {
 		mMagicTable.put(mMagic++, msg);
 		return magic;
 	}
+	
+	public static void regMsg(int magic, String msg) {
+		mMagicTable.put(magic, msg);
+	}
 
 	protected String getMsg(int magic) {
 		;

@@ -45,8 +45,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <label for="exampleInputEmail1">房间电话：</label> 
     	<input class="form-control"type="text" name="phone" value="${room.phone }"/><br>
       <label for="exampleInputEmail1">房间状态：</label> 
-    	<input type="radio" name="status" value="${room.status }" checked="checked"/><label for="exampleInputEmail1">可用</label>
-        <input type="radio" name="status" value="${room.status }"/><label for="exampleInputEmail1">停用</label><br>
+    	<input type="radio" name="status" value="<%= Room.ROOM_STATUS_FREE %>" checked="checked"/><label for="exampleInputEmail1">可用</label>
+        <input type="radio" name="status" value="<%= Room.ROOM_STATUS_BLOCKED %>"/><label for="exampleInputEmail1">停用</label><br>
       <label for="exampleInputEmail1">备&nbsp;&nbsp;注：</label> 
     	<textarea class="form-control"type="text" name="comment" value="${room.comment }"></textarea><br>
     	<input type="submit" value="修改"style="height: 30px;width: 100px;text-align: center;"/>
