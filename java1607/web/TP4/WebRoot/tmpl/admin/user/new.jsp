@@ -8,6 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
+    	<%@include file="../../include.jsp" %>
     
     <title>My JSP 'new.jsp' starting page</title>
     
@@ -54,12 +55,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </script>
   
   <body>
-  	${requestScope.list}
-    <form action="/TP4/admin/user/" method="post" onsubmit="reg()" align="center" >
-    	姓&nbsp;&nbsp;名:<input type="text" name="username" id="name" onblur="regavalidate()"><span id="sp"></span><br>
-    	密&nbsp;&nbsp;码:<input type="password" name="userpass" id="pass" ><span id="sp"></span><br>
-    	确认密码:<input type="password" name="userpass" id="pass1" onblur="changpass()"><br>
-    	特&nbsp;&nbsp;权:<input type="text" name="privilege"><br>
+  	
+    <form  action="/TP4/admin/user/" method="post" onsubmit="reg()"  >
+    <div class="form-group">
+    	<label>姓名</label>
+    	<input type="text"  name="username" id="name" onblur="regavalidate()" class="form-control" ><span id="sp"></span>
+    </div>
+    <div class="form-group">
+    	<label>密码</label>
+    	<input type="password" name="userpass" id="pass" class="form-control" ><span id="sp"></span>
+    </div>
+    <div class="form-group">
+   	 <label>确认密码</label>
+    	<input type="password" name="userpass" id="pass1" onblur="changpass()" class="form-control" >
+    </div>
+    <div calss="form-group">
+    	<label>特权</label>
+   	 	<input type="text" name="privilege" class="form-control" >
+    </div>
     	<input type="submit" value="添加"><br>
     
     </form>

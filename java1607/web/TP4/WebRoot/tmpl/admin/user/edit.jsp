@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+    <%@include file="../../include.jsp" %>
     <title>My JSP 'edit.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
@@ -27,10 +27,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div align="center">
     	<form method="post" action="/TP4/admin/user/">
     	<input type="hidden" name="PUT">
-    		I&nbsp;&nbsp;D:<input type="text" name="userId" value="${user.userId } " /><br>
-    		名&nbsp;字:<input type="text" name="userName"  value="${user.userName }" /><br>
-    		密&nbsp;码:<input type="text" name="userPass"  value="${user.userPass } " /><br>
-    		特&nbsp;权:<input type="text" name="privilege"  value="${user.privilege }" /><br>
+    		<div class="form-group">
+    			<label>ID</label>
+    			<input class="form-control" type="text" name="userId" value="${user.userId } " />
+    		</div>
+    		
+    		<div class="form-group">
+    			<label>名字</label>
+    			<input class="form-control" type="text" name="userName"  value="${user.userName }" />
+    		</div>
+    		
+    		<div class="form-group">
+    			<label >密码</label>
+    			<input class="form-control" type="text" name="userPass"  value="${user.userPass } " />
+    		</div>
+  
+    		<div class="form-group">
+    			<label>特权</label>
+    			<input class="form-control" type="text" name="privilege"  value="${user.privilege }" />
+    		</div>
     		
     		<input type="submit" value="修改"/><br>
     	</form>

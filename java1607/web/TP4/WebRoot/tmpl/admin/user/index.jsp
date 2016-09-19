@@ -6,7 +6,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+
   <head>
+  	<%@include file="../../include.jsp" %>
     <base href="<%=basePath%>">
     
     <title>My JSP 'index.jsp' starting page</title>
@@ -23,13 +25,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <table width="700" height="50" border="1" align="center">
+   <table class="table">
    <tr>
    <th>ID</th> 
    <th>账号</th>
    <th>密码</th> 
    <th>特权</th> 
    <th>操做</th>
+   <th><a href="<%= path + UserServlet.SERVLET_URL%>/new">添加</a></th>
    </tr>
    
    <c:forEach items="${requestScope.users }" var="user">
@@ -40,9 +43,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<td>${user.privilege }</td>
    		<td><a href="<%= path + UserServlet.SERVLET_URL%>/edit?userId=${user.userId}">修改</a> <a>删除</a>
    </td>
+   </tr>
    </c:forEach>
    
-   <a href="<%= path + UserServlet.SERVLET_URL%>/new">添加</a></br>
+  
    
   
   </body>
