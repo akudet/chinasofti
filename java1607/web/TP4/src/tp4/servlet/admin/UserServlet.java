@@ -31,8 +31,12 @@ public class UserServlet extends CRUDServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doDelete(req, resp);
+		
+		String userId = req.getParameter("userId");
+		UserService mUserService = new UserService();
+		int i = mUserService.deleteById(userId);
+		doGet(req, resp);
+		
 	}
 
 	@Override
@@ -40,6 +44,8 @@ public class UserServlet extends CRUDServlet {
 			throws ServletException, IOException {
 		UserService us = new UserService();
 		List<User> list = us.findAll();
+		
+		request.setAttribute("deleteUrl", request.getContextPath() + SERVLET_URL + "?DELETE=&userId=");
 		request.setAttribute("users", list);
 		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
 				request, response);
