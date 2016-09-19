@@ -108,18 +108,22 @@ public class CheckoutServlet extends CRUDServlet {
 	@Override
 	public void getNew(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CheckinService cis = new CheckinService();
-		Checkin checkin = cis.findById(request.getParameter("checkinId"));
+		CheckoutService cos = new CheckoutService();
+		Checkin checkin = null;
 		
-		if (null == checkin) {
-			request.getRequestDispatcher(CheckinServlet.SERVLET_URL).forward(request, response);
-		} else {
-			request.setAttribute("checkin", checkin);
-			request.setAttribute("servletUrl", request.getContextPath() + SERVLET_URL);
-			request.getRequestDispatcher(
-					TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
-					response);
+		String checkinId = request.getParameter("checkinId");
+		String roomId = request.getParameter("roomId");
+		
+		if (checkinId != null) {
+			checkin = cos.findByCheckinId(checkinId);
+		} else if (roomId != null) {
+			checkin = cos.findByRoomId(roomId);
 		}
+		
+		request.setAttribute("checkin", checkin);
+		request.setAttribute("servletUrl", request.getContextPath() + SERVLET_URL);
+		
+		request.getRequestDispatcher(TEMPLATE_URL + "/new.jsp").forward(request, response);
 		
 
 	}

@@ -27,7 +27,7 @@ public class CheckinDao extends DAO<Checkin> {
 		String room_id = checkin.getRoom().getRoomId();
 		
 		Connection con = DBConnection.getConnection();
-		String sql = "insert into checkin values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into checkin values(?,?,?,?,?,?,?,?,?)";
 
 
 		PreparedStatement pre = null;
@@ -42,6 +42,7 @@ public class CheckinDao extends DAO<Checkin> {
 			pre.setFloat(6, checkin.getPrice());
 			pre.setInt(7, checkin.getNumOfDays());
 			pre.setFloat(8, checkin.getDeposit());
+			pre.setInt(9, checkin.getStatus());
 			int i = pre.executeUpdate();
 			if (i > 0) {
 				return 0;
@@ -81,9 +82,10 @@ public class CheckinDao extends DAO<Checkin> {
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
-		String sql = "select * from checkin";
+		String sql = "select * from checkin and status=?";
 		try {
 			pre = con.prepareStatement(sql);
+			pre.setInt(1, Checkin.UNCHECK);
 			res = pre.executeQuery();
 			ArrayList<Checkin> list = new ArrayList<Checkin>();
 			while (res.next()) {
@@ -91,11 +93,13 @@ public class CheckinDao extends DAO<Checkin> {
 				RoomDao dao1 = new RoomDao();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
 				Room room = dao1.findById(res.getString("room_id"));
-				Checkin user = new Checkin(res.getString("checkin_id"), room,
-						cusinfo, res.getString("checkin_time"),
-						res.getString("checkin_type"), res.getFloat("price"),
-						res.getInt("num_of_days"), res.getFloat("deposit"));
-				list.add(user);
+				
+				Checkin checkin = new Checkin();
+				checkin.map(res);
+				checkin.setCusInfo(cusinfo);
+				checkin.setRoom(room);
+				
+				list.add(checkin);
 			}
 
 			return list;
@@ -122,11 +126,13 @@ public class CheckinDao extends DAO<Checkin> {
 				RoomDao dao1 = new RoomDao();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
 				Room room = dao1.findById(res.getString("room_id"));
-				Checkin user = new Checkin(res.getString("checkin_id"), room,
-						cusinfo, res.getString("checkin_time"),
-						res.getString("checkin_type"), res.getFloat("price"),
-						res.getInt("num_of_days"), res.getFloat("deposit"));
 
+				Checkin user = new Checkin();
+				
+				user.map(res);
+				user.setCusInfo(cusinfo);
+				user.setRoom(room);
+				
 				return user;
 			}
 		} catch (SQLException e) {
@@ -142,21 +148,23 @@ public class CheckinDao extends DAO<Checkin> {
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
-		String sql = "select * from checkin where room_id=? order by checkin_time desc";
+		String sql = "select * from checkin where room_id=? and status=?";
 		try {
 			pre = con.prepareStatement(sql);
 			pre.setString(1, roomId);
+			pre.setInt(2, Checkin.UNCHECK);
 			res = pre.executeQuery();
 			if (res.next()) {
 				CusInfoDao dao = new CusInfoDao();
 				RoomDao dao1 = new RoomDao();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
 				Room room = dao1.findById(res.getString("room_id"));
-				Checkin user = new Checkin(res.getString("checkin_id"), room,
-						cusinfo, res.getString("checkin_time"),
-						res.getString("checkin_type"), res.getFloat("price"),
-						res.getInt("num_of_days"), res.getFloat("deposit"));
-
+				Checkin user = new Checkin();
+				
+				user.map(res);
+				user.setCusInfo(cusinfo);
+				user.setRoom(room);
+				
 				return user;
 			}
 		} catch (SQLException e) {
@@ -169,19 +177,19 @@ public class CheckinDao extends DAO<Checkin> {
 	// checkin修改
 	public int update(Checkin checkin) {
 		Connection con = DBConnection.getConnection();
-		String sql = "update checkin set checkin_id=?, room_id=?,cus_info_id=？,checkin_time=?,checkin_type=?,price=?,num_of_days=?,deposit=? where checkin_id= ? ";
+		String sql = "update checkin set room_id=?,cus_info_id=?,checkin_time=?,checkin_type=?,price=?,num_of_days=?,deposit=?,status=? where checkin_id=?";
 		PreparedStatement pre = null;
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setString(1, checkin.getCheckinId());
-			pre.setString(2, checkin.getRoom().getRoomId());
-
-			pre.setString(4, checkin.getCusInfo().getCusInfoId());
-			pre.setString(5, checkin.getCheckinTime());
-			pre.setString(6, checkin.getCheckinType());
-			pre.setFloat(3, checkin.getPrice());
-			pre.setInt(7, checkin.getNumOfDays());
-			pre.setFloat(8, checkin.getDeposit());
+			pre.setString(1, checkin.getRoom().getRoomId());
+			pre.setString(2, checkin.getCusInfo().getCusInfoId());
+			pre.setString(3, checkin.getCheckinTime());
+			pre.setInt(4, checkin.getChargeType().getChargeTypeNo());
+			pre.setFloat(5, checkin.getPrice());
+			pre.setInt(6, checkin.getNumOfDays());
+			pre.setFloat(7, checkin.getDeposit());
+			pre.setInt(8, checkin.getStatus());
+			pre.setString(9, checkin.getCheckinId());
 			int i = pre.executeUpdate();
 			if (i > 0) {
 				return 1;

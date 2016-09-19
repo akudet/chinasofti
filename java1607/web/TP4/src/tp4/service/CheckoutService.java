@@ -92,6 +92,9 @@ public class CheckoutService {
 		checkout.setCheckoutTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(end));
 		checkout.setComment(comment);
 		
+		checkin.setChecked();
+		mCheckinDao.update(checkin);
+		
 		mCheckoutDao.add(checkout);
 		
 		return checkout;
@@ -145,6 +148,20 @@ public class CheckoutService {
 			res.add(Integer.parseInt(roomTypeNo));
 		}
 		return res;
+	}
+
+	public Checkin findByCheckinId(String checkinId) {
+		Checkin checkin = mCheckinDao.findById(checkinId);
+		if (checkin != null && checkin.isChecked()) {
+			throw new CheckoutServiceException("该房间已经结账");
+		}
+		return checkin;
+	}
+
+	// 通过房间号查找未结账的登记信息
+	public Checkin findByRoomId(String roomId) {
+		Checkin checkin = mCheckinDao.findByRoomId(roomId);
+		return checkin;
 	}
 
 }

@@ -20,11 +20,32 @@ public class Checkin extends VirtualObject {
 	protected float price;
 	protected int numOfDays;
 	protected float deposit;
+	private int status = UNCHECK;
+	
+	public static int UNCHECK = 0;
+	public static int CHECKED = 1;
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 	public Checkin() {
 		super();
+		this.checkinId = randomId();
+	}
+	
+	public void setChecked() {
+		this.status = CHECKED;
 	}
 
+	public boolean isChecked() {
+		return this.status == CHECKED;
+	}
+	
 	public Checkin(String checkin_id, Room room, CusInfo cus_info_id,
 			String checkin_time, String checkin_type, float price,
 			int num_of_days, float deposit) {
@@ -119,6 +140,7 @@ public class Checkin extends VirtualObject {
 		price=rs.getFloat("price");
 		numOfDays=rs.getInt("num_of_days");
 		deposit=rs.getFloat("deposit");
+		status=rs.getInt("status");
 	}
 	
 	public void setChargeType(ChargeType chargeType) {
