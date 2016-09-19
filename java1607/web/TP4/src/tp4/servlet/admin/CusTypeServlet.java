@@ -27,8 +27,10 @@ public class CusTypeServlet extends CRUDServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doDelete(req, resp);
+		int cusTypeNo = Integer.parseInt(req.getParameter("cusTypeNo"));
+		CusTypeService cusTypeService = new CusTypeService();
+		int i = cusTypeService.deleteById(cusTypeNo);
+		doGet(req,resp);
 	}
 
 	@Override

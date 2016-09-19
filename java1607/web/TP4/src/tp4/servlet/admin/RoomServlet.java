@@ -14,6 +14,7 @@ import tp4.model.dao.RoomDao;
 import tp4.model.dao.RoomTypeDao;
 import tp4.model.vo.Room;
 import tp4.service.RoomService;
+import tp4.service.RoomTypeService;
 import tp4.servlet.CRUDServlet;
 
 /**
@@ -29,8 +30,11 @@ public class RoomServlet extends CRUDServlet {
 	@Override
 	protected void doDelete(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doDelete(request, response);
+		String roomId = request.getParameter("roomId");
+		RoomService roomService = new RoomService();
+		int i = roomService.deleteById(roomId);
+		doGet(request,response);
+	
 	}
 
 	@Override
@@ -40,6 +44,7 @@ public class RoomServlet extends CRUDServlet {
 		RoomService rs = new RoomService();
 		List<Room> rooms = rs.findByType(roomTypeNo);
 		request.setAttribute("rooms", rooms);
+		request.setAttribute("deleteUrl", request.getContextPath() + SERVLET_URL + "?DELETE=&roomId=");
 		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
 				request, response);
 	}
