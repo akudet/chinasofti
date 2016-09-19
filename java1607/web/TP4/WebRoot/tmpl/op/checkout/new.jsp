@@ -17,7 +17,6 @@
 			<div class="panel-body">
 
 				<%@ include file="search_by_room.jsp"%>
-				<%@ include file="checkins.jsp"%>
 				<%@ include file="checkin.jsp"%>
 
 			</div>
