@@ -34,18 +34,18 @@
 	 <div class="panel-heading">会员添加</div>
 	 <div class="panel-body">
 	<form action="<%=path + VipServlet.SERVLET_URL%>" method="POST">
-		<input type="hidden" name="POST" >	
-        <div>
+		<input type="hidden" name="POST">
+        <div class="form-group">
         <label  for="vipNo">会员编号：</label>
 		<input class="form-control" type="number" name="vipNo" id="vipNo"><br> 
         </div>
 		
-        <div>
+        <div class="form-group">
         <label for="name">会员姓名：</label>
 		<input class="form-control" type="text" name="name" id="name"><br> 
         </div>
 		
-        <div>
+        <div class="form-group">
         <label for="sex">会员性别：</label>
 		<select class="form-control" type="text" name="sex" id="sex">
 		<option selected="selected">男(men)</option>
@@ -53,29 +53,29 @@
 		</select>
         </div> 
 		
-        <div>
+        <div class="form-group">
         <label for="sex">证件编号：</label>
 		<input class="form-control" type="text" name="certNo" id="certNo"><br> 
         </div>
 		 
-        <div>
+        <div class="form-group">
         <label  for="phone">联系电话：</label>
 		<input class="form-control" type="text" name="phone" id="phone"><br> 
         </div>
 		
-        <div>
+        <div class="form-group">
         <label  for="address">详细地址：</label>
 		<input class="form-control" type="text" name="address" id="address"><br> 
         </div>
 		
-        <div>
+        <div class="form-group">
         <label  for="comment">备注：</label>
-		<input class="form-control" type="text" name="comment" id="comment"><br> 
+		<textarea rows="3" class="form-control" type="text" name="comment" id="comment"></textarea><br> 
         </div> 
 		
        
         <label  for="submit"></label>
-		<input class="form-control" type="submit" name="submit" id="submit" value="提交"><br> 
+		<input class="col-lg-3" type="submit" name="submit" id="submit" value="提交"><br> 
        
     </form>
     </div>
