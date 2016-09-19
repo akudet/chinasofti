@@ -1,8 +1,9 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="/tmpl/include.jsp" %>
 ${requestScope.msg }
-<table>
+<table class="table">
 	<tr>
 		<th>入住单号</th>
 		<th>房间号</th>

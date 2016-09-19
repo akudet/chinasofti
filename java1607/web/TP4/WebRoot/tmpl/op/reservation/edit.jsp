@@ -15,30 +15,45 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+    <%@ include file="/tmpl/include.jsp" %>
   </head>
   
   <body>
-  		<%@include file="../../nav.jsp"%>
+  	 <%@include file="../../nav.jsp"%>
+  	 <div class="col-sm-12 col-lg-10 sidebar">
+		<div class="panel panel-primary">
+		  <div class="panel-heading">预订修改</div>
+		  <div class="panel-body">
        <form action="/TP4/op/reservation/" method="POST">
-       	<input type="hidden" name="PUT">
-    	ID:<input type="text" name="reservationId" value="${reservation.reservationId}" onblur="regavalidate()"><br>
-    	姓名:<input type="text" name="name"  value="${reservation.name}"onblur="regavalidate()"><br>
-    	电话:<input type="text" name="phone" value="${reservation.phone}" ><br>
+       	<input  type="hidden" name="PUT">
+       	
+       	<label class="control-label" for="inputSuccess1">ID:</label>
+    	   <input class="form-control" type="text" name="reservationId" value="${reservation.reservationId}" onblur="regavalidate()"><br>
+    	<label class="control-label" for="inputSuccess1">姓名:</label>
+    	   <input class="form-control" type="text" name="name"  value="${reservation.name}"onblur="regavalidate()"><br>
+    	<label class="control-label" for="inputSuccess1">电话:</label>
+    	   <input class="form-control" type="text" name="phone" value="${reservation.phone}" ><br>
+		<label class="control-label" for="inputSuccess1">预定房间类型：</label>
 		
-		预定房间类型：
-		<select name="roomTypeNo">
+		  <select class="form-control" name="roomTypeNo">
     		<c:forEach items="${roomTypes}" var="roomType">
     			<option value="${roomType.roomTypeNo}">${roomType.roomTypeDesc}</option>
     		</c:forEach>
-    	</select><br>
-		到达时间:<input type="text" name="arriveTime" value="${reservation.arriveTime}"><br>
-    	延长时间:<input type="text" name="reserveTime" value="${reservation.reserveTime}"><br>
-    	预订时间:<input type="text" name="reservationTime" value="${reservation.reservationTime}"><br>
-    	备&nbsp;&nbsp;注:<input type="text" name="comment" value="${reservation.comment}"><br>
-    	<input type="submit" value="修改"><br>
+    	  </select><br>
+		<label class="control-label" for="inputSuccess1">到达时间:</label>
+		  <input class="form-control" type="text" name="arriveTime" value="${reservation.arriveTime}"><br>
+    	<label class="control-label" for="inputSuccess1">延长时间:</label>
+    	  <input class="form-control" type="text" name="reserveTime" value="${reservation.reserveTime}"><br>
+    	<label class="control-label" for="inputSuccess1">预订时间:</label>
+    	  <input class="form-control" type="text" name="reservationTime" value="${reservation.reservationTime}"><br>
+    	<label class="control-label" for="inputSuccess1">备&nbsp;&nbsp;注:</label>
+    	  <textarea class="form-control" type="text" name="comment" value="${reservation.comment}"></textarea><br>
+    	<input class="form-control" type="submit" value="修改"><br>
  
 		
-    </form>
+      </form>
+     </div>
+    </div>
+    </div>
   </body>
 </html>

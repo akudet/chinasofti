@@ -26,7 +26,17 @@
 
 <body>
 <%@include file="../../nav.jsp"%>
-	<table class="table-striped table-bordered table">
+  <div class="col-sm-12 col-lg-10 sidebar">
+	<div class="panel panel-primary">
+	 <div class="panel-heading">会员信息</div>
+	 <div class="panel-body">
+	 
+<div class="btn-toolbar">
+    <a class="btn btn-primary" href="<%= path + VipServlet.SERVLET_URL%>/new"><i class="glyphicon glyphicon-plus"></i> 添加</a>
+</div>
+<p></p>
+
+	  <table class="table-striped table-bordered table">
 		<tr class="active">
 			<th>会员编号</th>
 			<th>会员姓名</th>
@@ -51,6 +61,9 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="<%= path + VipServlet.SERVLET_URL + "/new" %>">添加</a>
+	
+	</div>
+	</div>
+	</div>
 </body>
 </html>

@@ -20,37 +20,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ include file="/tmpl/include.jsp" %>
   </head>
   
   <body>
   <%@include file="../../nav.jsp"%>
-   <table width="700" height="50" border="1" align="center">
-   <tr>
-   <th>ID</th> 
-   <th>名字</th>
-   <th>电话</th> 
-   <th>到达时间</th> 
-   <th>延长时间</th>
-   <th>预订时间</th>
-   <th>备注</th>
-   </tr>
+   <div class="col-sm-12 col-lg-10 sidebar">
+	 <div class="panel panel-primary">
+	   <div class="panel-heading">预订信息</div>
+	  <div class="panel-body">
+	
+   <div class="btn-toolbar">
+      <a class="btn btn-primary" href="<%= path + ReservationServlet.SERVLET_URL%>/new"><i class="glyphicon glyphicon-plus"></i> 添加</a>
+   </div>
+   <p></p>
+      <table class="table">
+       <tr>
+         <th>ID</th> 
+         <th>名字</th>
+         <th>电话</th> 
+         <th>到达时间</th> 
+         <th>延长时间</th>
+         <th>预订时间</th>
+         <th>备注</th>
+         <th></th>
+         <th></th>
+       </tr>
    
-   <c:forEach items="${requestScope.users}" var="user">
-   	<tr>
-		<td>${user.reservationId}</td>
-		<td>${user.name}</td>
-		<td>${user.phone}</td>
-		<td>${user.arriveTime}</td>
-		<td>${user.reserveTime}</td>
-		<td>${user.reservationTime}</td>
-		<td>${user.comment}</td>
-		<td>
+      <c:forEach items="${requestScope.users}" var="user">
+   	   <tr>
+		 <td>${user.reservationId}</td>
+		 <td>${user.name}</td>
+		 <td>${user.phone}</td>
+		 <td>${user.arriveTime}</td>
+		 <td>${user.reserveTime}</td>
+	 	 <td>${user.reservationTime}</td>
+		 <td>${user.comment}</td>
+		 <td>
 			<a href="<%= path + ReservationServlet.SERVLET_URL%>/edit?reservationId=${user.reservationId}">修改</a>
+			
+   		 </td>
+   		  <td>
 			<a>删除</a>
-   		</td>
+   		 </td>
    
-   </c:forEach>
-   <a href="<%= path + ReservationServlet.SERVLET_URL%>/new">添加</a></br>
+      </c:forEach>
+     </table>
    
+     
+      </div>
+     </div>
+    </div>
   </body>
 </html>

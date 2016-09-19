@@ -19,28 +19,84 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<%@ include file="/tmpl/include.jsp" %>
   </head>
   
   <body>
   	<%@include file="../../nav.jsp"%>
+  	
+  <div class="col-sm-12 col-lg-10 sidebar">
+	<div class="panel panel-primary">
+	 <div class="panel-heading">开设房间</div>
+	 <div class="panel-body">
+	 
   	<%@include file="search.jsp"%>
     <form action="/TP4/op/checkin/" method="POST">
     	<input type="hidden" name="POST"/>
-		房间类型:<input type="text" name="roomTypeDesc" value="${room.roomType.roomTypeDesc }"/><br>
-		房间号:<input type="text" name="roomId" value="${room.roomId }"/><br>
-		客户类型:<input type="text" name="cusTypeNo"/><br>
-		客户名称:<input type="text" name="name"/><br>
-		会员编号:<input type="text" name="vipNo"/><br>
-		性别:<input type="text" name="sex"/><br>
-		证件类型:<input type="text" name="certType"/><br>
-		证件编号:<input type="text" name="certNumber"/><br>
-		地址信息:<input type="text" name="address"/><br>
-		备注:<input type="text" name="comment"/><br>
-		计费方式:<input type="text" name="checkinType"/><br>
-		预住天数:<input type="text" name="numOfDays"/><br>
-		押金:<input type="text" name="deposit"/><br>
-		<input type="submit" value="提交"/>
+    	<div class="form-group">
+			<label for="exampalInputemail1">房间类型:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="roomTypeDesc" value="${room.roomType.roomTypeDesc }"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">房间号:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="roomId" value="${room.roomId }"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">客户类型:</label>
+			<select name="cusTypeNo" class="form-control">
+				<option value="0" selected="selected">普通客户</option>
+				<option value="1">会员</option>
+				<option value="2">团体组织</option>
+				<option value="3">内部人事</option>
+				<option value="4">协议单位</option>
+			</select><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">客户名称:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="name"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">会员编号:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="vipNo"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">性别:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="sex"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">证件类型:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="certType"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">证件编号:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="certNumber"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">地址信息:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="address"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">备注:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="comment"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">计费方式:</label>
+			<input type="radio" name="checkinType" value="0" checked="checked"/>标准
+			<input type="radio" name="checkinType" value="1"/>钟点<br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">预住天数:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="numOfDays"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampalInputemail1">押金:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="deposit"/><br>
+		</div>
+		<input type="submit" value="提交" style="height:30px;width:100px;text-algin:center;"/>
     </form>
+    
+    </div>
+    </div>
+    </div>
   </body>
 </html>

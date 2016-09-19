@@ -19,27 +19,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<%@ include file="/tmpl/include.jsp" %>
   </head>
   
   <body>
   <%@include file="../../nav.jsp"%>
     <form action="/TP4/op/checkin/" method="POST">
     <input type="hidden" name="PUT">
-    	预定单号:<input type="text" readonly="readonly" name="checkinId" value="${checkin.checkinId}"/><br>
-    	房间类型:<input type="text" readonly="readonly" name="roomTypeDesc" value="${checkin.roomTypeDesc }" /><br>
-		房间号:<input type="text" readonly="readonly" name="roomId" value="${checkin.roomId }" /><br>
-		客户类型:<input type="text" readonly="readonly" name="cusTypeNo" value="${checkin.cusTypeDesc }"/><br>
-		客户名称:<input type="text" readonly="readonly" name="name" value="${checkin.name }"/><br>
-		性别:<input type="text" readonly="readonly" name="sex" value="${checkin.sex }"/><br>
-		证件类型:<input type="text" readonly="readonly" name="certType" value="${checkin.certType }"/><br>
-		证件编号:<input type="text" name="certNumber" value="${checkin.certNumber }"/><br>
-		地址信息:<input type="text" name="address" value="${checkin.address }"/><br>
-		备注:<input type="text" name="comment" value="${checkin.comment }"/><br>
-		计费方式:<input type="text" readonly="readonly" name="checkinType" value="${checkin.checkinType }"/><br>
-		预住天数:<input type="text" readonly="readonly" name="numOfDays" value="${checkin.numOfDays }"/><br>
-		押金:<input type="text" readonly="readonly" name="deposit" value="${checkin.deposit }"/><br>
-		<input type="submit" value="修改"/>
+    	<div class="form-group">
+    		<label for="exampleInputEmail1">预定单号:</label>
+    		<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="checkinId" value="${checkin.checkinId}"/><br>
+    	</div>
+    	<div class="form-group">
+    	    <label for="exampleInputEmail1">房间类型:</label>
+    		<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="roomTypeDesc" value="${checkin.roomTypeDesc }" /><br>	
+    	</div>
+		<div class="form-group">
+    		<label for="exampleInputEmail1">房间号:</label>
+			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="roomId" value="${checkin.roomId }" /><br>		
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">客户类型:</label>
+			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="cusTypeNo" value="${checkin.cusTypeDesc }"/><br>		
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">客户名称:</label>
+			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="name" value="${checkin.name }"/><br>	
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">性别:</label>
+			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="sex" value="${checkin.sex }"/><br>	
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">证件类型:</label>
+			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="certType" value="${checkin.certType }"/><br>	
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">证件编号:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="certNumber" value="${checkin.certNumber }"/><br>	
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">地址信息:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="address" value="${checkin.address }"/><br>	
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">备注:</label>
+			<input type="text" class="form-control" style="font-size:large; " name="comment" value="${checkin.comment }"/><br>		
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">计费方式:</label>
+			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="checkinType" value="${checkin.checkinType }"/><br>
+		
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">预住天数:</label>
+			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="numOfDays" value="${checkin.numOfDays }"/><br>		
+    	</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">押金:</label>
+			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="deposit" value="${checkin.deposit }"/><br>		
+    	</div>
+		<input type="submit" value="修改" style="height: 30px;width:100px;text-align: center; "/>
     </form>
   </body>
 </html>

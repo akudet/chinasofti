@@ -20,26 +20,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+    <%@ include file="/tmpl/include.jsp" %>
   </head>
   
   <body>
     <%@include file="../../nav.jsp"%>
-    <form action="/TP4/op/reservation/" method="POST">
-    	姓名:<input type="text" name="name"  onblur="regavalidate()"><br>
-    	电话:<input type="text" name="phone"  ><br>
-    	房间类型:
-    	<select name="roomTypeNo">
+    <div class="col-sm-12 col-lg-10 sidebar">
+	 <div class="panel panel-primary">
+	  <div class="panel-heading">预定添加</div>
+      <div class="panel-body">
+       <form action="/TP4/op/reservation/" method="POST">
+   
+        <label class="control-label" for="inputSuccess1">姓名:</label>
+    	   <input class="form-control" type="text" name="name"  onblur="regavalidate()"><br>
+    	<label class="control-label" for="inputSuccess1">电话:</label>
+    	   <input class="form-control" type="text" name="phone"  ><br>
+    	<label class="control-label" for="inputSuccess1">房间类型:</label>
+    	  <select class="form-control" name="roomTypeNo">
     		<c:forEach items="${roomTypes}" var="roomType">
     			<option value="${roomType.roomTypeNo}">${roomType.roomTypeDesc}</option>
     		</c:forEach>
-    	</select><br>
-    	到达时间:<input type="date" name="arriveDate"><input type="time" name="arriveTime"><br>
-    	保留时间:<input type="date" name="reserveDate"><input type="time" name="reserveTime"><br>
-    	
-    	备注:<input type="text" name="comment"><br>
-    	<input type="submit" value="添加"><br>
-    </form>
-   
+    	  </select><br>
+    	<label class="control-label" for="inputSuccess1">到达时间:</label>
+    	  <input class="form-control" type="date" name="arriveDate"><input class="control-label" type="time" name="arriveTime"><br>
+    	<label class="control-label" for="inputSuccess1">保留时间:</label>
+    	  <input class="form-control" type="date" name="reserveDate"><input class="control-label" type="time" name="reserveTime"><br>
+    	<label class="control-label" for="inputSuccess1">备注:</label>
+    	  <textarea class="form-control" type="text" name="comment"></textarea><br>
+    	<input class="form-control" type="submit" value="添加"><br>
+      </form>
+     </div>
+    </div>
+   </div>
   </body>
 </html>

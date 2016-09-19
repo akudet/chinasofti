@@ -29,6 +29,10 @@
 
 <body>
 <%@include file="../../nav.jsp"%>
+<div class="col-sm-12 col-lg-10 sidebar">
+	<div class="panel panel-primary">
+	 <div class="panel-heading">会员添加</div>
+	 <div class="panel-body">
 	<form action="<%=path + VipServlet.SERVLET_URL%>" method="POST">
 		<input type="hidden" name="POST" >	
         <div>
@@ -74,5 +78,8 @@
 		<input class="form-control" type="submit" name="submit" id="submit" value="提交"><br> 
        
     </form>
+    </div>
+    </div>
+    </div>
 </body>
 </html>

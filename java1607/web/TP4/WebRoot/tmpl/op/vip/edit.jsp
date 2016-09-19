@@ -29,7 +29,11 @@ String path = request.getContextPath();
   
   <body>
   <%@include file="../../nav.jsp"%>
-  	<form action="<%=path + VipServlet.SERVLET_URL%>" method="POST">
+  <div class="col-sm-12 col-lg-10 sidebar">
+	<div class="panel panel-primary">
+	 <div class="panel-heading">会员修改</div>
+	 <div class="panel-body">
+  	 <form action="<%=path + VipServlet.SERVLET_URL%>" method="POST">
 		<input type="hidden" name="PUT">
 
 		<div>
@@ -80,6 +84,9 @@ String path = request.getContextPath();
         <label  for="submit"></label>
 		<input class="form-control" type="submit" name="submit" id="submit" value="提交"><br> 
         </div>
-	</form>
+	 </form>
+	 </div>
+	 </div>
+	 </div>
   </body>
 </html>
