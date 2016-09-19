@@ -26,16 +26,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <%@include file="../../nav.jsp"%>
 	<div class="col-sm-12 col-lg-10 sidebar">
-	<div class="panel panel-primary">
+	<%@include file="../admin-nav.jsp"%>
+	<div class="panel">
+	<div class="panel-body">
+	  <div class="btn-toolbar">
+        <a class="btn btn-primary" href="<%= path + RoomTypeServlet.SERVLET_URL%>/new"><i class="glyphicon glyphicon-plus"></i> 添加</a>
+      </div>
+   <p></p>
    <table class="table">
         <tr>
-            <td>房间类型编号 </td> 
-            <td> 房间类型</td>  
-            <td>床位数 </td> 
-            <td>单价 </td> 
-            <td>是否开钟点房 </td> 
-            <td>钟点房价格 </td> 
-            <td>备注 </td> 
+            <th>房间类型编号 </th> 
+            <th> 房间类型</th>  
+            <th>床位数 </th> 
+            <th>单价 </th> 
+            <th>是否开钟点房 </th> 
+            <th>钟点房价格 </th> 
+            <th>备注 </th> 
+            <th>操作</th>
               
         </tr>
         <c:forEach items="${requestScope.list}" var="list">
@@ -57,8 +64,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
             <td>
                <a href="<%= path + RoomTypeServlet.SERVLET_URL%>?DELETE=&&roomTypeNo=${list.roomTypeNo}">删除</a>
-            </td>  
-            <td>
 			   <a href="<%= path + RoomTypeServlet.SERVLET_URL%>/edit?roomTypeNo=${list.roomTypeNo}">修改</a>
 		    </td>
         </tr>
@@ -66,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </c:forEach>
    
    </table>
-    <a href="<%= path + RoomTypeServlet.SERVLET_URL%>/new" style="text-align: right;"><h4>添加</h4></a>
-  </div></div>
+    
+  </div></div></div>
   </body>
 </html>

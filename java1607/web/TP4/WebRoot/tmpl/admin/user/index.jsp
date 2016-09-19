@@ -28,8 +28,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<%@include file="../../nav.jsp"%>
 
 	<div class="col-sm-12 col-lg-10 sidebar">
-	<div class="panel panel-primary">
-		
+	<%@include file="../admin-nav.jsp"%>
+	<div class="panel">
+	 <div class="panel-body">
+	   <div class="btn-toolbar">
+        <a class="btn btn-primary" href="<%= path + UserServlet.SERVLET_URL%>/new"><i class="glyphicon glyphicon-plus"></i> 添加</a>
+      </div>
+   <p></p>	
    <table class="table">
    <tr>
    <th>ID</th> 
@@ -37,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <th>密码</th> 
    <th>特权</th> 
    <th>操做</th>
-   <th><a href="<%= path + UserServlet.SERVLET_URL%>/new">添加</a></th>
+ 
    </tr>
    
    <c:forEach items="${requestScope.users }" var="user">
@@ -53,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </tr>
    </c:forEach>
    </table>
-  </div></div>
+  </div></div></div>
    
   
   </body>

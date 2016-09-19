@@ -25,8 +25,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <%@include file="../../nav.jsp"%>
 	<div class="col-sm-12 col-lg-10 sidebar">
-	<div class="panel panel-primary">
-	
+	<%@include file="../admin-nav.jsp"%>
+	<div class="panel">
+	   <div class="panel-body">
+	   <div class="btn-toolbar">
+        <a class="btn btn-primary" href="<%= path + CusTypeServlet.SERVLET_URL + "/new" %>"><i class="glyphicon glyphicon-plus"></i> 添加</a>
+      </div>
+   <p></p>
    <table class="table">
 		<tr>
 			<th>客户类型编号</th>
@@ -46,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="<%= path + CusTypeServlet.SERVLET_URL + "/new" %>" style="text-align: right;"><h4>添加</h4></a>
-  </div>
+	
+  </div></div>
   </body>
 </html>

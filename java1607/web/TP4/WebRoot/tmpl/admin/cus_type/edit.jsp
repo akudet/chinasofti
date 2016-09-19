@@ -21,18 +21,26 @@
   <body>
   <%@include file="../../nav.jsp"%>
 	<div class="col-sm-12 col-lg-10 sidebar">
-	<div class="panel panel-primary">
-	
+	<%@include file="../admin-nav.jsp"%>
+	<div class="panel">
+	<div class="panel-heading">修改用户</div>
+			<div class="panel-body">
     <form action="/TP4/admin/cus_type/" method="post">
     <input type="hidden" name="PUT">
-		<label for="exampleInputEmail1">客户类型编号:</label>
-		<input style="font-size:large;" class="form-control" type="number" id="cus_type_no" name="cusTypeNo" value="${cusType.cusTypeNo}" readonly><br>
-		<label for="exampleInputEmail1">客户类型:</label>
-		<input style="font-size:large;" class="form-control" type="text" id="cus_type_desc" name="cusTypeDesc" value="${cusType.cusTypeDesc }"><br>
-		<label for="exampleInputEmail1">折扣类型:</label>
-		<input style="font-size:large;" class="form-control" type="number" id="discount" name="discount" value="${cusType.discount}"><br>
+		<div class="form-group">
+			<label for="exampleInputEmail1">客户类型编号:</label>
+			<input style="font-size:large;" class="form-control" type="number" id="cus_type_no" name="cusTypeNo" value="${cusType.cusTypeNo}" readonly="readonly"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">客户类型:</label>
+			<input style="font-size:large;" class="form-control" type="text" id="cus_type_desc" name="cusTypeDesc" value="${cusType.cusTypeDesc }" readonly="readonly"/><br>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">折扣类型:</label>
+			<input style="font-size:large;" class="form-control" type="number" id="discount" name="discount" value="${cusType.discount}"/><br>
+		</div>
 		<input type="submit" value="修改" style="height: 30px;width: 100px;text-align: center;">
 	</form>
-    </div></div>
+    </div></div></div>
   </body>
 </html>

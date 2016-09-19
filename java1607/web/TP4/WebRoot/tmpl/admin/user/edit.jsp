@@ -26,8 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<%@include file="../../nav.jsp"%>
 
 	<div class="col-sm-12 col-lg-10 sidebar">
-		<div class="panel panel-primary">
-		
+	<%@include file="../admin-nav.jsp"%>
+		<div class="panel">
+		<div class="panel-heading">修改用户</div>
+			<div class="panel-body">
   	<%User user = (User)request.getAttribute("user"); %>
     	<div align="center">
     	<form method="post" action="/TP4/admin/user/">
@@ -54,6 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		
     		<input type="submit" value="修改"/><br>
     	</form>
+    	</div>
     	</div>
     	</div>
     	</div>

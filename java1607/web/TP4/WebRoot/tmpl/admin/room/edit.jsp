@@ -26,8 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <%@include file="../../nav.jsp"%>
 	<div class="col-sm-12 col-lg-10 sidebar">
-	<div class="panel panel-primary">
-	
+	<%@include file="../admin-nav.jsp"%>
+	<div class="panel">
+	<div class="panel-heading">修改用户</div>
+			<div class="panel-body">
     <form action="/TP4/admin/room/" method="POST">
     <input type="hidden" name="PUT">
       <label for="exampleInputEmail1">房间号：</label> 
@@ -49,6 +51,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<textarea class="form-control"type="text" name="comment" value="${room.comment }"></textarea><br>
     	<input type="submit" value="修改"style="height: 30px;width: 100px;text-align: center;"/>
     </form>
-    </div></div>
+    </div></div></div>
   </body>
 </html>

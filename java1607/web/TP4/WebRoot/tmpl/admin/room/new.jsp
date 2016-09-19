@@ -26,8 +26,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <%@include file="../../nav.jsp"%>
 	<div class="col-sm-12 col-lg-10 sidebar">
-	<div class="panel panel-primary">
-	
+	<%@include file="../admin-nav.jsp"%>
+	<div class="panel">
+	<div class="panel-heading">添加用户</div>
+			<div class="panel-body">
+			
     <form action="/TP4/admin/room/" method="POST">
     <input type="hidden" name="POST">
         <label class="control-label" for="inputSuccess1"> 房间号:</label>
@@ -53,6 +56,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<textarea class="form-control"rows="5px;" cols="30px;" name="comment"></textarea><br>
     	<input class="btn btn-default btn-lg" type="submit" style="text-align:center;"  value="添加"/>
     </form>
-    </div></div>
+    </div></div></div>
   </body>
 </html>

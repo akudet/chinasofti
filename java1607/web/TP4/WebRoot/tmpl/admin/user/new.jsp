@@ -58,8 +58,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<%@include file="../../nav.jsp"%>
 
 	<div class="col-sm-12 col-lg-10 sidebar">
-		<div class="panel panel-primary">
-		
+	<%@include file="../admin-nav.jsp"%>
+		<div class="panel">
+		<div class="panel-heading">添加用户</div>
+			<div class="panel-body">
     <form  action="/TP4/admin/user/" method="post" onsubmit="reg()"  >
  
 
@@ -82,6 +84,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     	<input type="submit" value="添加"><br>
     </form>
-    </div></div>
+    </div></div></div>
   </body>
 </html>
