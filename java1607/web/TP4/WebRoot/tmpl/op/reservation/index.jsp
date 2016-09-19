@@ -43,8 +43,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <th>延长时间</th>
          <th>预订时间</th>
          <th>备注</th>
-         <th></th>
-         <th></th>
+         <th>操作</th>
+         
        </tr>
    
       <c:forEach items="${requestScope.users}" var="user">
@@ -57,11 +57,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	 <td>${user.reservationTime}</td>
 		 <td>${user.comment}</td>
 		 <td>
-			<a href="<%= path + ReservationServlet.SERVLET_URL%>/edit?reservationId=${user.reservationId}">修改</a>
-			
-   		 </td>
-   		  <td>
-			<a>删除</a>
+			<a href="<%= path + ReservationServlet.SERVLET_URL%>/edit?reservationId=${user.reservationId}"><span class="glyphicon glyphicon-edit"></span></a>
+			&nbsp;&nbsp; <a><span class="glyphicon glyphicon-trash"></span></a>
    		 </td>
    
       </c:forEach>

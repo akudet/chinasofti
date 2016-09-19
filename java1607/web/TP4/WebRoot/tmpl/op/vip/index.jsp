@@ -55,8 +55,8 @@
 				<td>${vip.phone}</td>
 				<td>${vip.address}</td>
 				<td class="info">
-					<a href="<%= path + VipServlet.SERVLET_URL + "/edit?vipNo=" %>${vip.vipNo}">修改</a>
-					<a href="<%= path + VipServlet.SERVLET_URL + "?DELETE=&&vipNo=" %>${vip.vipNo}">删除</a>
+					<a href="<%= path + VipServlet.SERVLET_URL + "/edit?vipNo=" %>${vip.vipNo}"><span class="glyphicon glyphicon-edit"></span></a>
+					&nbsp;&nbsp;<a href="<%= path + VipServlet.SERVLET_URL + "?DELETE=&&vipNo=" %>${vip.vipNo}"><span class="glyphicon glyphicon-trash"></span></a>
 				</td>
 			</tr>
 		</c:forEach>

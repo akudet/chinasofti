@@ -53,18 +53,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td>${list.beds}</td> 
             <td>${list.price} </td> 
             
-            <c:if test="${list.isHourRoom  == 0}">
+            <c:if test="${list.isHourRoom  == 1}">
 				<td>否</td>
 			</c:if>
-			<c:if test="${list.isHourRoom  == 1}">
+			<c:if test="${list.isHourRoom  == 0}">
 				<td>是</td>
 			</c:if>
 		    <td>${list.hourRoomPrice} </td>
             <td>${list.comment}</td> 
             
             <td>
-               <a href="<%= path + RoomTypeServlet.SERVLET_URL%>?DELETE=&&roomTypeNo=${list.roomTypeNo}">删除</a>
-			   <a href="<%= path + RoomTypeServlet.SERVLET_URL%>/edit?roomTypeNo=${list.roomTypeNo}">修改</a>
+               
+			  <a href="<%= path + RoomTypeServlet.SERVLET_URL%>/edit?roomTypeNo=${list.roomTypeNo}"><span class="glyphicon glyphicon-edit"></span></a>
+		      &nbsp;&nbsp; <a href="<%= path + RoomTypeServlet.SERVLET_URL%>?DELETE=&&roomTypeNo=${list.roomTypeNo}"><span class="glyphicon glyphicon-trash"></span></a>
+		    
 		    </td>
         </tr>
         

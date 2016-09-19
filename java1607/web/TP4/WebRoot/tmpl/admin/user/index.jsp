@@ -52,8 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<td>${user.userPass }</td>
 		<td>${user.privilege }</td>
    		<td>
-   			<a href="<%= path + UserServlet.SERVLET_URL%>/edit?userId=${user.userId}">修改</a>
-			<a href="${deleteUrl}${user.userId}">删除</a>
+   			<a href="<%= path + UserServlet.SERVLET_URL%>/edit?userId=${user.userId}"><span class="glyphicon glyphicon-edit"></span></a>
+			&nbsp;&nbsp;<a href="${deleteUrl}${user.userId}"><span class="glyphicon glyphicon-trash"></span></a>
 		</td>
    </tr>
    </c:forEach>

@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<th>客户类型编号</th>
 			<th>客户类型</th>
 			<th>打折比例</th>
-			<th>操作</th>
+			<th>操 作</th>
 		</tr>
 		<c:forEach items="${cusTypes}" var="cusType">
 			<tr>
@@ -45,8 +45,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>${cusType.cusTypeDesc}</td>
 				<td>${cusType.discount}</td>
 				<td>
-					<a href="<%= path + CusTypeServlet.SERVLET_URL + "/edit?cusTypeNo=" %>${cusType.cusTypeNo}">修改</a>
-					<a href="<%= path + CusTypeServlet.SERVLET_URL + "?DELETE=&&cusTypeNo=" %>${cusType.cusTypeNo}">删除</a>
+					<a href="<%= path + CusTypeServlet.SERVLET_URL + "/edit?cusTypeNo=" %>${cusType.cusTypeNo}"><span class="glyphicon glyphicon-edit"></span></a>
+					 &nbsp;&nbsp; <a href="<%= path + CusTypeServlet.SERVLET_URL + "?DELETE=&&cusTypeNo=" %>${cusType.cusTypeNo}"><span class="glyphicon glyphicon-trash"></span></a>
 				</td>
 			</tr>
 		</c:forEach>

@@ -47,7 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<td>${rooms.phone }</td>
   		<td>${rooms.status }</td>
   		<td>${rooms.comment }</td>
-  		<td><a href="<%= path + RoomServlet.SERVLET_URL%>/edit?roomId=${rooms.roomId}">修改</a> <a>删除</a></td>
+  		<td><a href="<%= path + RoomServlet.SERVLET_URL%>/edit?roomId=${rooms.roomId}"><span class="glyphicon glyphicon-edit"></span></a> 
+  		 &nbsp;&nbsp; <a><span class="glyphicon glyphicon-trash"></span></a></td>
   		</tr>
   		</c:forEach>
   	</table>
