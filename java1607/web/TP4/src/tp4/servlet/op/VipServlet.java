@@ -2,6 +2,8 @@ package tp4.servlet.op;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tp4.model.dao.VipDao;
+import tp4.model.vo.Vip;
 import tp4.service.VipService;
 import tp4.servlet.CRUDServlet;
 
@@ -31,26 +34,26 @@ public class VipServlet extends CRUDServlet {
 		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
 	}
 
-	/**
-	 * The doGet method of the servlet. <br>
-	 * 
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request
-	 *            the request send by the client to the server
-	 * @param response
-	 *            the response send by the server to the client
-	 * @throws ServletException
-	 *             if an error occurred
-	 * @throws IOException
-	 *             if an error occurred
-	 */
+
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		VipDao dao = new VipDao();
-		req.setAttribute("vips", dao.findAll());
-		req.getRequestDispatcher(TEMPLATE_URL + "/index.jsp")
-				.forward(req, resp);
+		String vipNumber = req.getParameter("vipNo");
+		
+		if (null != vipNumber) {
+			VipService vs = new VipService();
+			Vip vip  = vs.findById(vipNumber);
+			if (vip != null) {
+				List<Vip> vips = new ArrayList<Vip>();
+				vips.add(vip);
+				req.setAttribute("vips", vips);
+			}
+		} else {
+			VipDao dao = new VipDao();
+			req.setAttribute("vips", dao.findAll());
+		}
+		
+		req.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(req, resp);
+
 	}
 
 	/**
