@@ -19,7 +19,7 @@
 				<td>${user.privilege }</td>
 				<td><a href="${servletUrl}/edit?userId=${user.userId}"><span
 						class="glyphicon glyphicon-edit"></span></a> 
-						&nbsp;&nbsp;<a href="${deleteUrl}${user.userId}">
+						&nbsp;&nbsp;<a href="${deleteUrl}${user.userId}" onClick="return confirm('确定删除?');">
 					<span class="glyphicon glyphicon-trash"></span></a></td>
 			</tr>
 		</c:forEach>

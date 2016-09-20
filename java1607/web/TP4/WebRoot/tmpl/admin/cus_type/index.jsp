@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>${cusType.discount}</td>
 				<td>
 					<a href="<%= path + CusTypeServlet.SERVLET_URL + "/edit?cusTypeNo=" %>${cusType.cusTypeNo}"><span class="glyphicon glyphicon-edit"></span></a>
-					 &nbsp;&nbsp; <a href="<%= path + CusTypeServlet.SERVLET_URL + "?DELETE=&&cusTypeNo=" %>${cusType.cusTypeNo}"><span class="glyphicon glyphicon-trash"></span></a>
+					 &nbsp;&nbsp; <a href="<%= path + CusTypeServlet.SERVLET_URL + "?DELETE=&&cusTypeNo=" %>${cusType.cusTypeNo}" onClick="return confirm('确定删除?');"><span class="glyphicon glyphicon-trash"></span></a>
 				</td>
 			</tr>
 		</c:forEach>

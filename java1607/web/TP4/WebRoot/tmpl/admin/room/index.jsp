@@ -63,7 +63,7 @@
 								<td>${room.comment }</td>
 								<td><a href="${editUrl}${room.roomId}"><span
 										class="glyphicon glyphicon-edit"></span>
-								</a> &nbsp;&nbsp; <a href="${deleteUrl}${room.roomId}"><span
+								</a> &nbsp;&nbsp; <a href="${deleteUrl}${room.roomId}" onClick="return confirm('确定删除?');"><span
 										class="glyphicon glyphicon-trash"></span>
 								</a>
 								</td>
