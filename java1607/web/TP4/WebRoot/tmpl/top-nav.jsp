@@ -7,7 +7,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="" href="index.html"><span class="navbar-brand">
+		<a class="" href="/TP4/main"><span class="navbar-brand">
 		<span class="fa fa-paper-plane">
 		</span>酒店管理系统</span></a></div>
 
