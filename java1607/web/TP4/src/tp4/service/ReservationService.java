@@ -1,6 +1,10 @@
 package tp4.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import tp4.model.dao.ReservationDao;
@@ -111,6 +115,12 @@ public class ReservationService {
 		mReservationDao.update(reservation);
 		
 		return 0;
+	}
+
+	//查询预订信息
+	public List<Reservation> findAllReservation(String name, String phone,String arriveTime){
+		ReservationDao reservation = new ReservationDao();
+		return reservation.findAllReservation(name, phone, arriveTime);
 	}
 
 }

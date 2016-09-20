@@ -3,6 +3,7 @@ package tp4.servlet.op;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,22 +34,39 @@ public class ReservationServlet extends CRUDServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		String reservationId = req.getParameter("reservationId");
+		ReservationService rs = new ReservationService();
+		int flag = rs.deleteById(reservationId);
+		if(flag==0){
+			req.setAttribute("msg", "删除成功");
 
-		super.doDelete(req, resp);
+			this.doGet(req, resp);
+		}else{
+			req.setAttribute("msg", "删除失败");
+		
+			this.doGet(req, resp);
+		}
 	}
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ReservationDao rd = new ReservationDao();
-		ArrayList<Reservation> mReservation = rd.findAll();
-		
-		String arriveTime = parseDateTime(request.getParameter("arriveDate"), request.getParameter("arriveTime"));
-		String reserveTime = parseDateTime(request.getParameter("reserveDate"), request.getParameter("reserveTime"));
-		
-		System.out.println(arriveTime + "----" + reserveTime);
-		
-		request.setAttribute("users", mReservation);
+		if (null != request.getParameter("search")) {
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String arriveTime = request.getParameter("arriveTime");
+			ReservationService rs = new ReservationService();
+			List<Reservation> reservations = rs.findAllReservation(name, phone, arriveTime);
+			request.setAttribute("reservations", reservations);
+		} else {
+			ReservationService rs = new ReservationService();
+			List<Reservation> reservations = rs.findAllReservation("", "", "");
+			request.setAttribute("reservations", reservations);
+		}
+		String path = request.getContextPath();
+		request.setAttribute("editUrl", path + SERVLET_URL + "/edit?reservationId=");
+		request.setAttribute("newUrl", path + SERVLET_URL + "/new");
+		request.setAttribute("deleteUrl", path + SERVLET_URL + "?DELETE=&reservationId=");
 		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
 				request, response);
 	}

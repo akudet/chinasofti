@@ -4,12 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import tp4.model.db.DBConnection;
 import tp4.model.vo.Reservation;
+import tp4.model.vo.Room;
 import tp4.model.vo.User;
 
 /**
@@ -85,14 +91,14 @@ public class ReservationDao {
 
 	public int deleteById(String reservationId) {
 		con = DBConnection.getConnection();
-		String sql = "delete from reservation where reservationId = ?";
+		String sql = "delete from reservation where reservation_id = ?";
 
 		try {
 			pre = con.prepareStatement(sql);
 			pre.setString(1, reservationId);
 			int i = pre.executeUpdate();
 			if (i > 0) {
-				return i;
+				return 0;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -101,7 +107,7 @@ public class ReservationDao {
 			DBConnection.close(con, pre);
 		}
 
-		return 0;
+		return -1;
 	}
 
 	// 查询数据
@@ -119,8 +125,9 @@ public class ReservationDao {
 						res.getString("reserve_time"),
 						res.getString("reservation_time"),
 						res.getString("comment"));
-				
-				reservation.setRoom(new RoomDao().findById(res.getString("room_id")));
+
+				reservation.setRoom(new RoomDao().findById(res
+						.getString("room_id")));
 
 				list.add(reservation);
 			}
@@ -146,7 +153,8 @@ public class ReservationDao {
 			if (res.next()) {
 				Reservation reservation = new Reservation();
 				reservation.map(res);
-				reservation.setRoom(new RoomDao().findById(res.getString("room_id")));
+				reservation.setRoom(new RoomDao().findById(res
+						.getString("room_id")));
 				return reservation;
 			}
 		} catch (SQLException e) {
@@ -201,7 +209,7 @@ public class ReservationDao {
 			pre.setString(6, reservation.getComment());
 			pre.setString(7, reservation.getRoom().getRoomId());
 			pre.setString(8, reservation.getReservationId());
-			
+
 			int i = pre.executeUpdate();
 			if (i > 0) {
 				return i;
@@ -215,5 +223,72 @@ public class ReservationDao {
 		}
 		return 0;
 	}
-
+	
+	//查询预订信息调用方法
+	private String join(List<String> args) {
+		String result = "";
+		if (args.size() == 0) {
+			return result;
+		}
+		
+		result = args.get(0);
+		
+		for (int i = 1; i < args.size(); i++) {
+			result += " AND " + args.get(i);
+		}
+		return result;
+	}
+	
+	//查询预订信息
+	public List<Reservation> findAllReservation(String name, String phone,String arriveTime){
+		con = DBConnection.getConnection();
+		String sql = null;
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Date now = new Date();	
+		String start = null;
+		String end = null;
+		try {
+			DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+			Date today = df.parse(df.format(now));
+			start = df2.format(today);
+			end = df2.format(df.parse(df.format(today.getTime()+48*60*60*1000)));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		List<String> conds = new ArrayList<String>();
+		if(!name.equals("")){
+			conds.add(" name='" + name + "' ");
+		}
+		if(!phone.equals("")){
+			conds.add(" phone='" + phone + "'");
+		}
+		if(arriveTime.equals("")){
+			conds.add(" arrive_time between '" + start + "' and '" + end + "' ");
+		} else {
+			conds.add(" arrive_time like '" + arriveTime + "%' ");
+		}
+		
+		String cond = join(conds);
+		sql = "SELECT * FROM reservation WHERE " + cond;
+		List<Reservation> list = new ArrayList<Reservation>();
+		try {
+			pre = con.prepareStatement(sql);
+			res = pre.executeQuery();
+			while(res.next()){
+				Room room = new RoomDao().findById(res.getString("room_id"));
+				Reservation reservation = new Reservation();
+				reservation.map(res);
+				reservation.setRoom(room);
+				list.add(reservation);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
