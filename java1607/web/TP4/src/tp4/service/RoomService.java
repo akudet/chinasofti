@@ -74,6 +74,11 @@ public class RoomService {
 		}
 		return results;
 	}
+	//根据房间类型查找
+	public List<Room> findAllByTypeNo(String roomtypeNo)
+	{
+		return mRoomDao.findAllByTypeNo(roomtypeNo);
+	}
 
 	// 修改
 	public int updateById(String roomId, int roomTypeId, String floor,

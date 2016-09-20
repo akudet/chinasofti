@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import tp4.model.dao.RoomDao;
 import tp4.model.dao.RoomTypeDao;
 import tp4.model.vo.Room;
+import tp4.model.vo.RoomType;
 import tp4.service.RoomService;
 import tp4.service.RoomTypeService;
 import tp4.servlet.CRUDServlet;
@@ -26,6 +27,8 @@ public class RoomServlet extends CRUDServlet {
 
 	public static final String SERVLET_URL = "/admin/room";
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
+	
+	public static final String INDEX_PAGE = TEMPLATE_URL + "/index.jsp";
 
 	@Override
 	protected void doDelete(HttpServletRequest request,
@@ -40,13 +43,25 @@ public class RoomServlet extends CRUDServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int roomTypeNo = 0;
-		RoomService rs = new RoomService();
-		List<Room> rooms = rs.findByType(roomTypeNo);
-		request.setAttribute("rooms", rooms);
+		
+		String roomTypeNo = request.getParameter("roomTypeNo");
+		
+		if (roomTypeNo != null) {
+			RoomService rs = new RoomService();
+			List<Room> rooms = rs.findAllByTypeNo(roomTypeNo);
+			request.setAttribute("rooms", rooms);
+		}
+		
+		// find all roomTypes
+		
+		List<RoomType> roomTypes = new RoomTypeService().findAll();
+		request.setAttribute("roomTypes", roomTypes);
+		
+		request.setAttribute("editUrl", request.getContextPath() + SERVLET_URL + "/edit?roomId=");
 		request.setAttribute("deleteUrl", request.getContextPath() + SERVLET_URL + "?DELETE=&roomId=");
-		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
-				request, response);
+
+		request.getRequestDispatcher(INDEX_PAGE).forward(request, response);
+		
 	}
 
 	@Override

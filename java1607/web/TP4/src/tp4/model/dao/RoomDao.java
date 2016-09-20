@@ -239,4 +239,32 @@ public class RoomDao extends DAO<Room>{
 		return rooms;
 
 	}
+	// 根据房间类型查询所有房间
+	  public List<Room> findAllByTypeNo(String roomypeNo) {
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		ArrayList<Room> list = new ArrayList<Room>();
+		String sql = "select * from room where room_type_no=?";
+		try {
+				pre = con.prepareStatement(sql);
+				pre.setString(1, roomypeNo);
+				rs = pre.executeQuery();
+				if (rs.next()) {
+					int roomType = rs.getInt("room_type_no");
+					Room room = new Room();
+					room.map(rs);
+					RoomTypeDao roomTypeDao = new RoomTypeDao();
+					room.setRoomType(roomTypeDao.findById(roomType));
+					list.add(room);
+					return list;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+
+		}
+	
 }
