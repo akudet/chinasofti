@@ -2,6 +2,7 @@ package tp4.servlet.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -43,13 +44,31 @@ public class UserServlet extends CRUDServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UserService us = new UserService();
-		List<User> list = us.findAll();
-		
-		request.setAttribute("deleteUrl", request.getContextPath() + SERVLET_URL + "?DELETE=&userId=");
-		request.setAttribute("users", list);
-		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
-				request, response);
 
+		String userName = request.getParameter("userName");
+
+		request.setAttribute("servletUrl", request.getContextPath() + SERVLET_URL);
+		request.setAttribute("deleteUrl", request.getContextPath() + SERVLET_URL + "?DELETE=&userId=");
+		
+		if (userName != null) {
+			UserDao mUserDao = new UserDao();
+			User user = mUserDao.findByName(userName);
+			
+			List<User> users = new ArrayList<User>();
+			users.add(user);
+			if (user != null) {
+			request.setAttribute("users", users);
+			}
+			request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp")
+					.forward(request, response);
+		} else {
+			List<User> list = us.findAll();
+			
+			request.setAttribute("users", list);
+			request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
+					request, response);
+
+		}
 	}
 
 	@Override
