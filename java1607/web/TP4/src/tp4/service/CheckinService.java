@@ -144,4 +144,9 @@ public class CheckinService {
 	public List<Checkin> findAllRenew(){
 		return mCheckinDao.findAllRenew();
 	}
+
+	public List<Checkin> findByCus(String name, String roomId,
+			String cusTypeNo) {
+		 return mCheckinDao.finByCus(name, roomId, Integer.parseInt(cusTypeNo));
+	}
 }

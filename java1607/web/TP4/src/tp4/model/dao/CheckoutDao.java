@@ -210,12 +210,12 @@ public class CheckoutDao {
 	// checkType 0 全部 1 标准 2 钟点房
 	
 	// checkout表根据客户姓名、客户类型、房间号和当前状态查询
-	public ArrayList<Checkout> findByCus(String name, String roomId, String status,
+	public List<Checkout> findByCus(String name, String roomId,
 			int cusTypeNo){
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
-		ArrayList<Checkout> list = new ArrayList<Checkout>();
+		List<Checkout> list = new ArrayList<Checkout>();
 		String sql = "select * from checkout, checkin, cus_info where checkout.checkin_id = checkin.checkin_id and checkin.cus_info_id = cus_info.cus_info_id and cus_info.name = ? and checkin.room_id=? and cus_info.cus_type_no = ?";
 		try {
 			pre = con.prepareStatement(sql);

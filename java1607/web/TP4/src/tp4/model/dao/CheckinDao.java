@@ -11,6 +11,7 @@ import java.util.List;
 
 import tp4.model.db.DBConnection;
 import tp4.model.vo.Checkin;
+import tp4.model.vo.Checkout;
 import tp4.model.vo.CusInfo;
 import tp4.model.vo.Room;
 import tp4.model.vo.RoomType;
@@ -239,6 +240,36 @@ public class CheckinDao extends DAO<Checkin> {
 	public int deleteAll() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public List<Checkin> finByCus(String name, String roomId, int cusTypeNo) {
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pre = null;
+		ResultSet res = null;
+		List<Checkin> list = new ArrayList<Checkin>();
+		String sql = "select * from checkin, cus_info where checkin.cus_info_id = cus_info.cus_info_id and cus_info.name = ? and checkin.room_id=? and cus_info.cus_type_no = ? and status = ?";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setString(1, name);
+			pre.setString(2, roomId);
+			pre.setInt(3, cusTypeNo);
+			pre.setInt(4, Checkin.UNCHECK);
+			res = pre.executeQuery();
+			while(res.next()){
+				Checkin ci = new Checkin();
+				ci.map(res);
+				ci.setCusInfo(new CusInfoDao().findById(res.getString("cus_info_id")));
+				ci.setRoom(new RoomDao().findById(res.getString("room_id")));
+				list.add(ci);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(con, pre, res);
+		}
+		return null;
 	}
 
 }

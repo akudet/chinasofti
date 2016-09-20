@@ -28,7 +28,8 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">营业查询</div>
 			<div class="panel-body">
-				<%@ include file="search.jsp"%>
+				<%@ include file="search.jsp" %>
+				<%@ include file="checkins.jsp" %>
 				<%@ include file="checkouts.jsp"%>
 			</div>
 		</div>

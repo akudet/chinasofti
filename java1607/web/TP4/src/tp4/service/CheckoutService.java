@@ -22,7 +22,7 @@ import tp4.model.vo.Room;
  */
 public class CheckoutService {
 	// 参考 2.4 客户结账, 2.6 营业查询
-	
+
 	private final CheckinDao mCheckinDao;
 	private final CheckoutDao mCheckoutDao;
 
@@ -31,8 +31,8 @@ public class CheckoutService {
 		this.mCheckinDao = new CheckinDao();
 		this.mCheckoutDao = new CheckoutDao();
 	}
-	
-	//em , pretty bad consider with diffInHours
+
+	// em , pretty bad consider with diffInHours
 	private int diffInDays(Date start, Date end) {
 		int days = (int) ((end.getTime() - start.getTime()) / 1000 / 60 / 60 / 24);
 		if (days == 0) {
@@ -40,7 +40,7 @@ public class CheckoutService {
 		}
 		return days;
 	}
-	
+
 	private float diffInHours(Date start, Date end) {
 		long minutes = (end.getTime() - start.getTime()) / 1000 / 60;
 		long hours = minutes / 60;
@@ -54,11 +54,12 @@ public class CheckoutService {
 		return res;
 	}
 
-	public Checkout checkout(String checkinId, String amount, String comment) throws CheckoutServiceException {
+	public Checkout checkout(String checkinId, String amount, String comment)
+			throws CheckoutServiceException {
 		Checkin checkin = mCheckinDao.findById(checkinId);
 
 		int chargeType = checkin.getCheckinType();
-		
+
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date start = null;
 		try {
@@ -68,12 +69,12 @@ public class CheckoutService {
 			e.printStackTrace();
 		}
 		Date end = new Date();
-		
+
 		float charge;
-		//System.out.println("PRICE : " + checkin.getPrice());
-		//System.out.println(diffInDays(start, end));
-		//System.out.println(diffInHours(start, end));
-		switch(chargeType) {
+		// System.out.println("PRICE : " + checkin.getPrice());
+		// System.out.println(diffInDays(start, end));
+		// System.out.println(diffInHours(start, end));
+		switch (chargeType) {
 		case 0:
 			charge = diffInDays(start, end) * checkin.getPrice();
 			break;
@@ -83,40 +84,38 @@ public class CheckoutService {
 		default:
 			throw new CheckoutServiceException("未知收费类型");
 		}
-		
+
 		Checkout checkout = new Checkout();
-		
+
 		checkout.setCheckin(checkin);
-		checkout.setCheckoutId("out" + new SimpleDateFormat("yyyyMMddhhmmss").format(end));
+		checkout.setCheckoutId("out"
+				+ new SimpleDateFormat("yyyyMMddhhmmss").format(end));
 		checkout.setCheckoutAmount(charge);
-		checkout.setCheckoutTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(end));
+		checkout.setCheckoutTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+				.format(end));
 		checkout.setComment(comment);
-		
+
 		checkin.setChecked();
 		mCheckinDao.update(checkin);
-		
+
 		mCheckoutDao.add(checkout);
-		
+
 		return checkout;
 	}
-
-
 
 	public List<Checkout> findAll() {
 		return mCheckoutDao.findAll();
 	}
 
-	public List<Checkout> findByCus(String name, String roomId, String status,
-			String cusTypeNo) {
-		System.out.println("FindByCus : " + name + roomId + status + cusTypeNo);
-		if (status.equals("0")) {// 查找未结帐
+	// status should be CHECKED or UNCHECKED
+	public List<Checkout> findByCus(String name, String roomId, String cusTypeNo) {
+		System.out.println("FindByCus : " + name + roomId + cusTypeNo);
 
-		}
-		return mCheckoutDao.findByCus(name, roomId, status,
-				Integer.parseInt(cusTypeNo));
+		return mCheckoutDao
+				.findByCus(name, roomId, Integer.parseInt(cusTypeNo));
 	}
 
-	public ArrayList<Checkout> findByRoom(String start, String end,
+	public List<Checkout> findByRoom(String start, String end,
 			String checkinType, String[] roomTypeNos) {
 		System.out.println("FindByRoom : " + start + end + checkinType
 				+ roomTypeNos);
