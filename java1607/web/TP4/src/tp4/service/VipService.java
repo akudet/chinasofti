@@ -22,6 +22,11 @@ public class VipService {
 	private VipDao mVipDao = new VipDao();
 	private CusInfoDao mCusInfoDao = new CusInfoDao();
 	
+	//按会员名字查询
+	public Vip findVipByName(String name){
+		return mVipDao.findByName(name);
+	}
+	
 	//通过会员编号查询
 	public Vip findVipByVipNo(int vipNo){
 		return mVipDao.findById("" + vipNo);

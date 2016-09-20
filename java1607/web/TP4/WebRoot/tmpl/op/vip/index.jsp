@@ -37,7 +37,11 @@
 <p></p>
 <form action="${servletUrl}" action="GET">
 	<input type="text" name="vipNo">
-	    <button class="btn btn-primary" type="submit">查询</button>
+	    <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i>按vip编号查询</button>
+	</form>
+<form action="${servletUrl}" action="GET">
+	<input type="text" name="name">
+	    <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i>按vip姓名查询</button>
 	</form>
 	  <table class="table-striped table-bordered table">
 		<tr class="active">

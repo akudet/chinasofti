@@ -195,6 +195,35 @@ public class VipDao extends DAO<Vip>{
 		}
 		return null;
 	}
+	
+	//按名字查
+	public Vip findByName(String name) {
+
+		con = DBConnection.getConnection();
+
+		String sql = "select * from vip inner join cus_info on vip.cus_info_id = cus_info.cus_info_id where name = ?";
+
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setString(1, name);
+			res = pre.executeQuery();
+			if (res.next()) {
+				Vip vip = new Vip();
+				vip.setVipNo(res.getInt("vip_no"));
+				vip.setCusInfo(new CusInfoDao().findById(res
+						.getString("cus_info_id")));
+				return vip;
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			DBConnection.close(con, pre, res);
+		}
+		return null;
+	}
+
 
 	// 修改
 
