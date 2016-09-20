@@ -51,11 +51,17 @@ public class CheckoutServlet extends CRUDServlet {
 					request.getParameter("end"),
 					request.getParameter("chargeType"),
 					request.getParameterValues("roomTypeNos"));
+			if (checkouts != null) {
+				request.setAttribute("totalAmount", computeTotalAmount(checkouts));
+			}
 		} else if (null != request.getParameter("byCus")) {
 			checkouts = cks.findByCus(request.getParameter("name"),
 					request.getParameter("roomId"),
 					"0",
 					request.getParameter("cusTypeNo"));
+			if (checkouts != null) {
+				request.setAttribute("cusCount", checkouts.size());
+			}
 		} else {
 			checkouts = cks.findAll();
 		}
@@ -74,6 +80,14 @@ public class CheckoutServlet extends CRUDServlet {
 
 		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
 				request, response);
+	}
+
+	private float computeTotalAmount(List<Checkout> checkouts) {
+		float total = 0.0f;
+		for (Checkout checkout : checkouts) {
+			total += checkout.getCheckoutAmount();
+		}
+		return total;
 	}
 
 	@Override

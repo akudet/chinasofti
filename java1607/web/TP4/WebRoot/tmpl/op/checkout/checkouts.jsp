@@ -1,6 +1,12 @@
 <%@page pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:if test="${checkouts != null}">
+<c:if test="${totalAmount != null}">
+	实收金额之和：${totalAmount}
+</c:if>
+<c:if test="${cusCount != null}">
+	客户人数之和：${cusCount}
+</c:if>
 <table class="table">
 	<tr>
 		<th>结账单号</th>
