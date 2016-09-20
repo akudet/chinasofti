@@ -119,7 +119,7 @@ public class RoomTypeDao {
 			ps.setInt(2, roomType.getBeds());
 			ps.setFloat(3, roomType.getPrice());
 			ps.setInt(4, roomType.getIsHourRoom());
-			ps.setFloat(5, roomType.getIsHourRoom());
+			ps.setFloat(5, roomType.getHourRoomPrice());
 			ps.setString(6, roomType.getComment());
 			ps.setInt(7, roomType.getRoomTypeNo());
 

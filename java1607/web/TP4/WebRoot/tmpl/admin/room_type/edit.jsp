@@ -23,7 +23,17 @@
 	-->
 <%@ include file="/tmpl/include.jsp" %>
 </head>
-
+	<script>
+	
+		
+		
+		function setEnable() {
+			$("#hourRoomPrice").attr("disabled",false);
+		}
+		function setDisabled(){
+			$("#hourRoomPrice").attr("disabled",true);
+		}
+	</script>
 <body>
 	<%@include file="../../nav.jsp"%>
 	<div class="col-sm-12 col-lg-10 sidebar">
@@ -35,7 +45,7 @@
 	
 		<input type="hidden" name="PUT"> 
 		 <label for="exampleInputEmail1">房间类型编号:</label>
-		<input style="font-size:large;"class="form-control" type="text" id="room_type_no" name="room_type_no" value="${roomType.roomTypeNo}"><br>
+		<input style="font-size:large;"class="form-control" type="text" id="room_type_no" name="room_type_no" value="${roomType.roomTypeNo}" disabled="disabled"><br>
 		
 		<label for="exampleInputEmail1">房间类型:</label> 
 		<input style="font-size:large;" class="form-control"type="text" name="room_type_desc" value="${roomType.roomTypeDesc}"> 
@@ -46,21 +56,21 @@
 		
 		<c:if test="${roomType.isHourRoom==0}">
 		<br><label for="exampleInputEmail1">是否可开钟点房:</label>
-         <input   type="radio" name="isHourRoom" value="true"checked /> 
+         <input  onclick="setEnable();" type="radio" name="isHourRoom" value="true"checked /> 
           <label for="exampleInputEmail1">是</label>
-         <input type="radio" name="isHourRoom" value="false" />
-         <label for="exampleInputEmail1">否</label><br>
+         <input onclick="setDisabled();" type="radio" name="isHourRoom" value="false"  />
+         <label for="exampleInputEmail1" >否</label><br>
 			
 		</c:if>
 		<c:if test="${roomType.isHourRoom==1}">
 		 <label for="exampleInputEmail1">   是否可开钟点房:</label>
-			<input type="radio" name="isHourRoom" value="true" /> 
+			<input  onclick="setEnable();" type="radio" name="isHourRoom" value="true" /> 
 			 <label for="exampleInputEmail1">是</label>
-            <input type="radio" name="isHourRoom" value="false" checked /> 
+            <input  onclick="setDisabled();" type="radio" name="isHourRoom" value="false"  checked /> 
              <label for="exampleInputEmail1">否</label><br>
 		</c:if>
 		<br><label for="exampleInputEmail1">钟点房价格:</label>
-		 <input style="font-size:large;" class="form-control"  type="text" id="room_beds" name="hourRoomPrice"value="${roomType.hourRoomPrice}"><br>
+		 <input id="hourRoomPrice" style="font-size:large;" class="form-control"  type="text" name="hourRoomPrice"value="${roomType.hourRoomPrice}" ><br>
 		<br> <label for="exampleInputEmail1">备注：</label> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<textarea style="font-size:large;left: 20px" class="form-control"  rows="5" cols="50" name="comment" value="${roomType.comment}"></textarea>
 		<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
