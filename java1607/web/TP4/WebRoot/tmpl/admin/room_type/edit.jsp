@@ -45,7 +45,7 @@
 	
 		<input type="hidden" name="PUT"> 
 		 <label for="exampleInputEmail1">房间类型编号:</label>
-		<input style="font-size:large;"class="form-control" type="text" id="room_type_no" name="room_type_no" value="${roomType.roomTypeNo}" disabled="disabled"><br>
+		<input style="font-size:large;"class="form-control" type="text" id="room_type_no" name="room_type_no" value="${roomType.roomTypeNo}" readonly><br>
 		
 		<label for="exampleInputEmail1">房间类型:</label> 
 		<input style="font-size:large;" class="form-control"type="text" name="room_type_desc" value="${roomType.roomTypeDesc}"> 
@@ -70,7 +70,7 @@
              <label for="exampleInputEmail1">否</label><br>
 		</c:if>
 		<br><label for="exampleInputEmail1">钟点房价格:</label>
-		 <input id="hourRoomPrice" style="font-size:large;" class="form-control"  type="text" name="hourRoomPrice"value="${roomType.hourRoomPrice}" ><br>
+		 <input <c:if test="${!roomType.isHourRoom()}">disabled</c:if> id="hourRoomPrice" style="font-size:large;" class="form-control"  type="text" name="hourRoomPrice"value="${roomType.hourRoomPrice}" ><br>
 		<br> <label for="exampleInputEmail1">备注：</label> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<textarea style="font-size:large;left: 20px" class="form-control"  rows="5" cols="50" name="comment" value="${roomType.comment}"></textarea>
 		<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

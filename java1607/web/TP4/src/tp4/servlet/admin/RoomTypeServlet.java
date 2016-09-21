@@ -84,12 +84,16 @@ public class RoomTypeServlet extends CRUDServlet {
 		String isHourRoom = req.getParameter("isHourRoom");
 		boolean hourRoom = isHourRoom.equals("true");
 		
-		float hourRoomPrice = Float.parseFloat(req
-				.getParameter("hourRoomPrice"));
 		String comment = req.getParameter("comment");
 		RoomTypeService roomtype = new RoomTypeService();
-		int a = roomtype.updateById(roomno, roomdesc, beds, price, hourRoom,
-				hourRoomPrice, comment);
+		int a = roomtype.updateById(
+				roomno,
+				roomdesc,
+				beds,
+				price,
+				hourRoom,
+				req.getParameter("hourRoomPrice"),
+				comment);
 		doGet(req, resp);
 
 	}
