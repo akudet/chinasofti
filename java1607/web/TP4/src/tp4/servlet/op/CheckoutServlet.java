@@ -121,7 +121,7 @@ public class CheckoutServlet extends CRUDServlet {
 		
 		Float amount = Float.parseFloat(request.getParameter("amount"));
 		request.setAttribute("checkout", checkout);
-		request.setAttribute("change", amount - checkout.getCheckoutAmount());
+		request.setAttribute("change", checkout.getCheckin().getDeposit() + amount - checkout.getCheckoutAmount());
 		request.getRequestDispatcher(TEMPLATE_URL + "/checkout_result.jsp").forward(request, response);
 	}
 

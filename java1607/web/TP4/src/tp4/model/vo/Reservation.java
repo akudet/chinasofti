@@ -121,9 +121,9 @@ public class Reservation extends VirtualObject {
 		reservationId=rs.getString("reservation_id");
 		name=rs.getString("name");
 		phone=rs.getString("phone");
-		arriveTime=rs.getString("arrive_time");
-		reserveTime=rs.getString("reserve_time");
-		reservationTime=rs.getString("reservation_time");
+		arriveTime=parseDateTime(rs.getTimestamp("arrive_time"));
+		reserveTime=parseDateTime(rs.getTimestamp("reserve_time"));
+		reservationTime=parseDateTime(rs.getTimestamp("reservation_time"));
 		comment=rs.getString("comment");
 		
 	}

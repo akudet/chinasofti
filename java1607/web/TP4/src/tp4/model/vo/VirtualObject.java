@@ -1,7 +1,10 @@
 package tp4.model.vo;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -18,6 +21,10 @@ import java.util.UUID;
  * 
  */
 public abstract class VirtualObject {
+	
+	final protected String parseDateTime(Timestamp date) {
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date(date.getTime()));
+	}
 
 	private static int mMagic = 1;
 	private static final Map<Integer, String> mMagicTable = new HashMap<Integer, String>();

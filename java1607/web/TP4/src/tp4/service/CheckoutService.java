@@ -60,7 +60,7 @@ public class CheckoutService {
 
 		int chargeType = checkin.getCheckinType();
 
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date start = null;
 		try {
 			start = df.parse(checkin.getCheckinTime());
@@ -91,7 +91,7 @@ public class CheckoutService {
 		checkout.setCheckoutId("out"
 				+ new SimpleDateFormat("yyyyMMddhhmmss").format(end));
 		checkout.setCheckoutAmount(charge);
-		checkout.setCheckoutTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+		checkout.setCheckoutTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 				.format(end));
 		checkout.setComment(comment);
 

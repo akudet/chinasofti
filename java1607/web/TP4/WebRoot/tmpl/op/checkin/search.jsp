@@ -24,7 +24,7 @@
 		<tr>
 			<td>${room.roomId }</td>
 			<td>${room.roomType.roomTypeDesc }</td>
-			<td>${room.status }</td>
+			<td>${room.statusDesc }</td>
 			<td><a href="${newUrl}${room.roomId}">开房</a></td>
 		</tr>
 	</c:forEach>

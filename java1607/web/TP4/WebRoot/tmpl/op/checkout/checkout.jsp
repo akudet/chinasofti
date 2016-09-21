@@ -5,14 +5,18 @@
 		<tr>
 			<th>结账单号</th>
 			<th>客户名称</th>
+			<th>定金</th>
 			<th>实收金额</th>
+			<th>入住时间</th>
 			<th>结账时间</th>
 			<th>备注</th>
 		</tr>
 		<tr>
 			<td>${checkout.checkoutId}</td>
 			<td>${checkout.name}</td>
+			<td>${checkout.checkin.deposit}</td>
 			<td>${checkout.checkoutAmount}</td>
+			<td>${checkout.checkin.checkinTime}</td>
 			<td>${checkout.checkoutTime}</td>
 			<td>${checkout.comment}</td>
 		</tr>

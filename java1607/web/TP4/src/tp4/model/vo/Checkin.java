@@ -2,6 +2,7 @@ package tp4.model.vo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import tp4.model.dao.ChargeTypeDao;
 
@@ -132,7 +133,9 @@ public class Checkin extends VirtualObject {
 	@Override
 	public void map(ResultSet rs) throws SQLException {
 		checkinId=rs.getString("checkin_id"); 
-		checkinTime=rs.getString("checkin_time");
+		checkinTime= parseDateTime(rs.getTimestamp("checkin_time"));
+		System.out.println("DASFDSAFDS"  + checkinTime);
+		System.out.println(rs.getTimestamp("checkin_time"));
 		checkinType=rs.getInt("checkin_type");
 		price=rs.getFloat("price");
 		numOfDays=rs.getInt("num_of_days");
