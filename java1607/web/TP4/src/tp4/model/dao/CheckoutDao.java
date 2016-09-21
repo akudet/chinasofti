@@ -20,8 +20,10 @@ import tp4.model.vo.Room;
  * @author 田霞光
  * 
  */
-public class CheckoutDao {
-
+public class CheckoutDao extends DAO<Checkout> {
+	
+	private static final int PAGE = 5; 
+	
 	// checkout表的添加
 	public int add(Checkout checkout) {
 		Connection con = DBConnection.getConnection();
@@ -264,4 +266,72 @@ public class CheckoutDao {
 		return 0;
 	}
 
+	@Override
+	public int deleteAll() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	//分页查询
+	@Override
+	public List<Checkout> findAll(int pageNo) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet res = null;
+		List<Checkout> list = new ArrayList<Checkout>();
+		
+		con = DBConnection.getConnection();
+		String sql = "select * from checkout limit ?,?";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, (pageNo-1)*PAGE);
+			pre.setInt(1, PAGE);
+			res = pre.executeQuery();
+			while(res.next()){
+				Checkout checkout = new Checkout();
+				Checkin checkin = new CheckinDao().findById(res.getString("check_id"));
+				checkout.map(res);
+				checkout.setCheckin(checkin);
+				list.add(checkout);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(con, pre, res);
+		}
+		return null;
+	}
+
+	
+	//获得总页数
+	@Override
+	public int getTotalPage() {
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet res = null;
+		int count = 0;
+		
+		con = DBConnection.getConnection();
+		String sql = "select count(*) from checkout";
+		try {
+			pre = con.prepareStatement(sql);
+			res = pre.executeQuery();
+			while(res.next()){
+				count = res.getInt(1);
+			}
+			count = (int) Math.ceil((count + 1.0 - 1.0)/PAGE);
+			return count;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(con, pre, res);
+		}
+		return super.getTotalPage();
+	}
+
+	
+	
 }

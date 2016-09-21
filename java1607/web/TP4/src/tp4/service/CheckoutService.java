@@ -163,4 +163,14 @@ public class CheckoutService {
 		return checkin;
 	}
 
+	//分页查询
+	public List<Checkout> findAll(int pageNo){
+		
+		return mCheckoutDao.findAll(pageNo);
+	}
+	
+	//查询总页数
+	public int getTotalPage(){
+		return mCheckoutDao.getTotalPage();
+	}
 }
