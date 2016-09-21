@@ -29,7 +29,13 @@ public class VipService {
 	
 	//通过会员编号查询
 	public Vip findVipByVipNo(int vipNo){
-		return mVipDao.findById("" + vipNo);
+		Vip vip = null;
+		try {
+			vip = mVipDao.findById("" + vipNo);
+		} catch(NumberFormatException e) {
+			return vip;
+		}
+		return vip;
 	}
 	
 	public int add(int vipNumber, String name, String sex, String certNumber,
@@ -37,10 +43,8 @@ public class VipService {
 		CusInfo user = new CusInfo("身份证", certNumber, name, phone, address,
 				sex, comment);
 		CusTypeDao dao = new CusTypeDao();
-		CusType cusType = dao.findById(1);
+		CusType cusType = dao.findById(CusType.VIP_CUS_TYPE_NO);
 		user.setCusType(cusType);
-		System.out.println("123123123");
-		System.out.println(user);
 
 		Vip vip = new Vip(vipNumber, user);
 
@@ -56,20 +60,6 @@ public class VipService {
 	public Vip findById(String vipNumber) {
 		Integer.parseInt(vipNumber);
 		return mVipDao.findById(vipNumber);
-	}
-
-	public List<Vip> findByName(String name) {
-		List<Vip> mVip = mVipDao.findAll();
-		List<Vip> results = new ArrayList<Vip>();
-		for (Vip vip : mVip) {
-			if (vip.getCusInfo().getName().equals(name)) {
-				results.add(vip);
-			}
-		}
-		if (results.size() == 0) {
-			return null;
-		}
-		return null;
 	}
 
 	// 根据提供的信息对信息进行修改
