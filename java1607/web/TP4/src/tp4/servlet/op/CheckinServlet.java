@@ -55,18 +55,10 @@ public class CheckinServlet extends CRUDServlet {
 
 		if (checkinId != null) {
 			checkin = cis.findById(checkinId);
-			if (request.getParameter("renew") != null) {
-				cis.renew(checkinId, request.getParameter("reNumOfDays"),
-						request.getParameter("reDeposit"));
-				doGet(request, response);
-				return;
-			}
 		} else {
 			request.setAttribute("checkins", cis.findAllRenew());
 		}
 
-		request.setAttribute("servletUrl", request.getContextPath()
-				+ SERVLET_URL + "/renew");
 		request.setAttribute("checkin", checkin);
 		request.setAttribute("renewUrl", request.getContextPath() + SERVLET_URL
 				+ "/renew?checkinId=");
@@ -89,9 +81,7 @@ public class CheckinServlet extends CRUDServlet {
 
 		List<Checkin> checkins = cis.findAll();
 		String path = request.getContextPath();
-		
-		request.setAttribute("renewUrl", path + SERVLET_URL
-				+ "/renew?checkinId=");
+
 		request.setAttribute("checkins", checkins);
 		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
 				request, response);
@@ -123,14 +113,20 @@ public class CheckinServlet extends CRUDServlet {
 	@Override
 	protected void doPut(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String checkinId = request.getParameter("checkinId");
-		String certNumber = request.getParameter("certNumber");
-		String address = request.getParameter("address");
-		String comment = request.getParameter("comment");
 		CheckinService cis = new CheckinService();
-
-		cis.updateCheckin(checkinId, certNumber, address, comment);
-
+		
+		if (request.getParameter("renew") != null) {
+			String checkinId = request.getParameter("checkinId");
+			cis.renew(checkinId, request.getParameter("reNumOfDays"),
+					request.getParameter("reDeposit"));
+		} else if (request.getParameter("edit") != null) {
+			String checkinId = request.getParameter("checkinId");
+			String certNumber = request.getParameter("certNumber");
+			String address = request.getParameter("address");
+			String comment = request.getParameter("comment");
+			cis.updateCheckin(checkinId, certNumber, address, comment);
+		}
+		
 		doGet(request, response);
 	}
 
@@ -139,6 +135,7 @@ public class CheckinServlet extends CRUDServlet {
 			throws ServletException, IOException {
 
 		CheckinService cis = new CheckinService();
+		
 		String checkinId = request.getParameter("checkinId");
 		String path = request.getContextPath();
 		request.setAttribute("editUrl", path + SERVLET_URL + "/edit?checkinId=");
@@ -159,20 +156,16 @@ public class CheckinServlet extends CRUDServlet {
 			throws ServletException, IOException {
 
 		CheckinService cis = new CheckinService();
-		Room room = new RoomDao().findById(request.getParameter("roomId"));
-		request.setAttribute("room", room);
-
-		request.setAttribute("searchUrl", request.getContextPath()
-				+ SERVLET_URL + "/new");
-		request.setAttribute("newUrl", request.getContextPath() + SERVLET_URL
-				+ "/new?roomId=");
 
 		request.setAttribute("roomTypes", new RoomTypeDao().findAll());
+		
+		request.setAttribute("room", new RoomDao().findById(request.getParameter("roomId")));
 		request.setAttribute("cusTypes", new CusTypeDao().findAll());
 
-		String byRoom = request.getParameter("byRoom");
-		if (byRoom != null) {
-			request.setAttribute("rooms", cis.findFreeRooms(request.getParameter("roomTypeNo")));
+		String findRooms = request.getParameter("findRooms");
+		if (findRooms != null) {
+			request.setAttribute("rooms",
+					cis.findFreeRooms(request.getParameter("roomTypeNo")));
 		}
 
 		request.getRequestDispatcher(TEMPLATE_URL + "/new.jsp").forward(

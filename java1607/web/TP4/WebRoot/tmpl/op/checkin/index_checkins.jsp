@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<c:if test="${checkins != null }">
 入住信息：
 <table class="table">
 	<tr>
@@ -56,3 +57,4 @@
 		</tr>
 	</c:forEach>
 </table>
+</c:if>

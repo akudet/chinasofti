@@ -16,9 +16,10 @@
 			<div class="panel-heading">登记</div>
 			<div class="panel-body">
 
-				<%@ include file="new_search.jsp"%>
-				<%@ include file="new_checkin.jsp" %>
-				
+				<%@ include file="new_find_rooms.jsp"%>
+				<%@ include file="new_rooms.jsp"%>
+				<%@ include file="new_checkin.jsp"%>
+
 			</div>
 		</div>
 	</div>

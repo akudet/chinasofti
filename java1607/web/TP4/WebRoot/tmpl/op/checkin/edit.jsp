@@ -15,8 +15,8 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">修改登记</div>
 			<div class="panel-body">
-				<%@ include file="edit_checkin.jsp"%>
 				<%@ include file="edit_checkins.jsp"%>
+				<%@ include file="edit_checkin.jsp"%>
 			</div>
 		</div>
 	</div>

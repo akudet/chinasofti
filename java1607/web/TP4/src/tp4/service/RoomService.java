@@ -91,4 +91,8 @@ public class RoomService {
 		return mRoomDao.findAll();
 	}
 
+	public Room findById(String roomId) {
+		return mRoomDao.findById(roomId);
+	}
+
 }

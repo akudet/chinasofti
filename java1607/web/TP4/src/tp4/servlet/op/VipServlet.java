@@ -38,23 +38,24 @@ public class VipServlet extends CRUDServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String vipNumber = req.getParameter("vipNo");
-		int vipNo = Integer.parseInt(vipNumber);
 		String name = req.getParameter("name");
 		
-		VipService vs = new VipService();
-		Vip vip1  = vs.findById(vipNumber);
-		Vip vip2  = vs.findVipByName(name);
-		
-			if (vip1.getVipNo() == vipNo) {
+		if (null != vipNumber) {
+			VipService vs = new VipService();
+			Vip vip  = vs.findById(vipNumber);
+			if (vip != null) {
 				List<Vip> vips = new ArrayList<Vip>();
-				vips.add(vip1);
+				vips.add(vip);
 				req.setAttribute("vips", vips);
-			
-		} else if (vip2.getCusInfo().getName().equals(name)) {
+			}
+		} else if (null != name) {
+			VipService vs = new VipService();
+			Vip vip  = vs.findVipByName(name);
+			if (vip != null) {
 				List<Vip> vips = new ArrayList<Vip>();
-				vips.add(vip2);
+				vips.add(vip);
 				req.setAttribute("vips", vips);
-			
+			}
 		}else{
 			VipDao dao = new VipDao();
 			req.setAttribute("vips", dao.findAll());
