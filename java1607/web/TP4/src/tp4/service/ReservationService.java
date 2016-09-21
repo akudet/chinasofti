@@ -1,5 +1,6 @@
 package tp4.service;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,9 +31,13 @@ public class ReservationService {
 	
 	public int deleteById(String reservationId) {
 		ReservationDao Res = new ReservationDao();
-		if (Res.findById(reservationId) == null) {
+		Reservation reservation = Res.findById(reservationId);
+		if (reservation == null) {
 			return -1;
 		} else {
+			Room room = reservation.getRoom();
+			room.setStatusFree();
+			mRoomDao.update(room);
 			return Res.deleteById(reservationId);
 		}
 	}
@@ -46,7 +51,7 @@ public class ReservationService {
 	}
 
 	private Room findFreeRoom(String roomTypeNo) {
-		List<Room> rooms = mRoomDao.findByRoomTypeNo(roomTypeNo);
+		List<Room> rooms = mRoomDao.findFreeRoom(roomTypeNo);
 		if (null == rooms || rooms.size() == 0) {
 			return null;
 		}
@@ -59,10 +64,17 @@ public class ReservationService {
 
 		
 		Room room = findFreeRoom(roomTypeNo);
+		if (room == null) {
+			throw new ReservationServiceException("没有空闲房间");
+		}
 		room.setStatusReserved();
 		mRoomDao.update(room);
 		
 		Reservation reservation = new Reservation();
+		
+		if (name.equals("") || phone.equals("")) {
+			throw new ReservationServiceException("姓名和电话必须都不为空");
+		}
 		
 		reservation.setName(name);
 		reservation.setPhone(phone);
@@ -73,7 +85,13 @@ public class ReservationService {
 
 		reservation.setRoom(room);
 		
-		mReservationDao.add(reservation);
+		try {
+			mReservationDao.add(reservation);
+		} catch (SQLException e) {
+			// TODO : come up with a better way to do this
+			// this is not right
+			throw new ReservationServiceException("时间格式错误");
+		}
 		
 		return reservation;
 	}

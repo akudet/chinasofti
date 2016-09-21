@@ -29,7 +29,7 @@ public class ReservationDao {
 	ResultSet res = null;
 
 	// 添加数据
-	public int add(Reservation reservation) {
+	public int add(Reservation reservation) throws SQLException {
 		con = DBConnection.getConnection();
 		String sql = "insert into reservation values(?,?,?,?,?,?,?,?)";
 
@@ -52,15 +52,14 @@ public class ReservationDao {
 			}
 
 		} catch (SQLException e) {
-
-			e.printStackTrace();
+			throw e;
 		} finally {
 			DBConnection.close(con, pre);
 		}
 		return 0;
 	}
 
-	public int addAll(Collection<Reservation> reservations) {
+	public int addAll(Collection<Reservation> reservations) throws SQLException {
 		for (Reservation reservation : reservations) {
 			if (0 != add(reservation)) {
 				return -1;

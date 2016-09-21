@@ -219,6 +219,35 @@ public class RoomDao extends DAO<Room>{
 		RoomType roomType = roomTypeDao.findById(Integer.parseInt(roomTypeNo));
 		
 		List<Room> rooms = new ArrayList<Room>();
+		String sql = "select * from room where room_type_no=?";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, Integer.parseInt(roomTypeNo));
+			System.out.println(pre);
+			rs = pre.executeQuery();
+			while (rs.next()) {
+				Room room = new Room();
+				room.map(rs);
+				room.setRoomType(roomType);
+				rooms.add(room);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rooms;
+
+	}
+	
+	public List<Room> findFreeRoom(String roomTypeNo) {
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		
+		RoomTypeDao roomTypeDao = new RoomTypeDao();
+		RoomType roomType = roomTypeDao.findById(Integer.parseInt(roomTypeNo));
+		
+		List<Room> rooms = new ArrayList<Room>();
 		String sql = "select * from room where room_type_no=? and status=?";
 		try {
 			pre = con.prepareStatement(sql);
@@ -239,6 +268,7 @@ public class RoomDao extends DAO<Room>{
 		return rooms;
 
 	}
+	
 	// 根据房间类型查询所有房间
 	  public List<Room> findAllByTypeNo(String roomypeNo) {
 		Connection con = DBConnection.getConnection();
@@ -248,17 +278,17 @@ public class RoomDao extends DAO<Room>{
 		String sql = "select * from room where room_type_no=?";
 		try {
 				pre = con.prepareStatement(sql);
-				pre.setString(1, roomypeNo);
+				pre.setString(1, roomypeNo);//TODO : should be int
 				rs = pre.executeQuery();
-				if (rs.next()) {
+				while (rs.next()) {
 					int roomType = rs.getInt("room_type_no");
 					Room room = new Room();
 					room.map(rs);
 					RoomTypeDao roomTypeDao = new RoomTypeDao();
 					room.setRoomType(roomTypeDao.findById(roomType));
 					list.add(room);
-					return list;
 				}
+				return list;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
