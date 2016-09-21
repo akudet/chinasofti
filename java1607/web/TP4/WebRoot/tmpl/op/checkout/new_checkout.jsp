@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <c:if test="${checkin != null}">
 	<table class="table">
 		<tr>
@@ -24,7 +25,7 @@
 		</tr>
 	</table>
 
-	<form action="${servletUrl}" method="POST">
+	<form action="${checkoutUrl}" method="POST">
 		<input type="hidden" name="checkinId" value="${checkin.checkinId}">
 		<div class="form-group">
 			<label>实收金额</label> <input class="form-control" type="number"

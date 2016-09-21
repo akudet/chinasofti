@@ -180,4 +180,8 @@ public class CheckoutService {
 	public int getTotalPage(){
 		return mCheckoutDao.getTotalPage();
 	}
+
+	public List<Checkin> findAllUncheck() {
+		return mCheckinDao.findAllByCheckinStatus(Checkin.UNCHECK);
+	}
 }

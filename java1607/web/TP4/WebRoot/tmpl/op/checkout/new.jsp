@@ -16,8 +16,9 @@
 			<div class="panel-heading">客户结账</div>
 			<div class="panel-body">
 
-				<%@ include file="search_by_room.jsp"%>
-				<%@ include file="checkin.jsp"%>
+				<%@ include file="new_find_uncheck.jsp"%>
+				<%@ include file="new_checkins.jsp"%>
+				<%@ include file="new_checkout.jsp"%>
 
 			</div>
 		</div>

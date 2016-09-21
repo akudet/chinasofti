@@ -138,10 +138,12 @@ public class CheckoutServlet extends CRUDServlet {
 			checkin = cos.findByCheckinId(checkinId);
 		} else if (roomId != null) {
 			checkin = cos.findByRoomId(roomId);
+		} else {
+			request.setAttribute("checkins", cos.findAllUncheck());
 		}
 		
 		request.setAttribute("checkin", checkin);
-		request.setAttribute("servletUrl", request.getContextPath() + SERVLET_URL);
+		request.setAttribute("newUrl", request.getContextPath() + SERVLET_URL + "/new?checkinId=");
 		
 		request.getRequestDispatcher(TEMPLATE_URL + "/new.jsp").forward(request, response);
 		

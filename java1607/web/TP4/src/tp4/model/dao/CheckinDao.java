@@ -143,6 +143,41 @@ public class CheckinDao extends DAO<Checkin> {
 		return null;
 
 	}
+	
+	private List<Checkin> queryAll(String sql) {
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		List<Checkin> checkins = new ArrayList<Checkin>();
+		try {
+			pre = con.prepareStatement(sql);
+			rs = pre.executeQuery();
+			while (rs.next()) {
+
+				Checkin checkin = new Checkin();
+				
+				checkin.map(rs);
+				
+				Room room = new RoomDao().findById(rs.getString("room_id"));
+				CusInfo cusinfo = new CusInfoDao().findById(rs.getString("cus_info_id"));
+				
+				checkin.setRoom(room);
+				checkin.setCusInfo(cusinfo);
+				
+				checkins.add(checkin);
+			}
+			return checkins;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<Checkin> findAllByCheckinStatus(int status) {
+		String sql = "select * from checkin where status='" + status + "'";
+		return queryAll(sql);
+	}
 
 	// checkin表根据roomId查询
 	public Checkin findByRoomId(String roomId) {

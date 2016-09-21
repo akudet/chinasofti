@@ -5,7 +5,7 @@
 <html>
 <head>
 
-<title>My JSP 'checkout.jsp' starting page</title>
+<title>结账结果</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -26,7 +26,12 @@
 			<div class="panel-heading">结账结果</div>
 			<div class="panel-body">
 				<%@ include file="checkout.jsp"%>
-				找零:${change}
+				<div class="row">
+					<div class="col-md-4">找零:${change}</div>
+					<div class="col-md-8 text-right">
+						<a class="btn btn-info" href="${checkoutUrl }/new">返回</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
