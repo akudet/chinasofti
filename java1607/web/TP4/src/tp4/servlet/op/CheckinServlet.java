@@ -35,44 +35,46 @@ public class CheckinServlet extends CRUDServlet {
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void service(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String pathInfo = request.getPathInfo();
 
-		if (pathInfo !=null && pathInfo.equals("/renew")) {
+		if (pathInfo != null && pathInfo.equals("/renew")) {
 			handleRenew(request, response);
 		} else {
 			super.service(request, response);
 		}
 	}
 
-	
-	private void handleRenew(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
+	private void handleRenew(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		CheckinService cis = new CheckinService();
 		String checkinId = request.getParameter("checkinId");
 		Checkin checkin = null;
-		
+
 		if (checkinId != null) {
 			checkin = cis.findById(checkinId);
 			if (request.getParameter("renew") != null) {
-				cis.renew(checkinId, request.getParameter("reNumOfDays"), request.getParameter("reDeposit"));
+				cis.renew(checkinId, request.getParameter("reNumOfDays"),
+						request.getParameter("reDeposit"));
 				doGet(request, response);
 				return;
 			}
 		} else {
 			request.setAttribute("checkins", cis.findAllRenew());
 		}
-		
-		request.setAttribute("servletUrl", request.getContextPath() + SERVLET_URL + "/renew");
+
+		request.setAttribute("servletUrl", request.getContextPath()
+				+ SERVLET_URL + "/renew");
 		request.setAttribute("checkin", checkin);
-		request.setAttribute("renewUrl", request.getContextPath() + SERVLET_URL + "/renew?checkinId=");
-		
+		request.setAttribute("renewUrl", request.getContextPath() + SERVLET_URL
+				+ "/renew?checkinId=");
+
 		request.getRequestDispatcher(TEMPLATE_URL + "/renew.jsp").forward(
 				request, response);
 	}
-	
+
 	@Override
 	protected void doDelete(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -84,31 +86,24 @@ public class CheckinServlet extends CRUDServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		CheckinService cis = new CheckinService();
-		RoomService rs = new RoomService();
+
+		List<Checkin> checkins = cis.findAll();
+		String path = request.getContextPath();
 		
-		String byRoomType = request.getParameter("byRoomTypeNo");
-		if (null != byRoomType) {
-			List<Room> rooms = rs.findByType(Integer.parseInt(request.getParameter("roomTypeNo")));
-			request.setAttribute("rooms", rooms);
-			request.getRequestDispatcher(SERVLET_URL + "/search.jsp");
-		} else {
-			List<Checkin> checkins = cis.findAll();
-			String path = request.getContextPath();
-			request.setAttribute("editUrl", path + SERVLET_URL + "/edit?checkinId=");
-			request.setAttribute("renewUrl", path + SERVLET_URL + "/renew?checkinId=");
-			request.setAttribute("checkoutUrl", path + CheckoutServlet.SERVLET_URL + "/new?checkinId=");
-			request.setAttribute("checkins", checkins);
-			request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
-					request, response);
-		}
+		request.setAttribute("renewUrl", path + SERVLET_URL
+				+ "/renew?checkinId=");
+		request.setAttribute("checkins", checkins);
+		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
+				request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		CheckinService service = new CheckinService();
-		
-		CusType cusType = new CusTypeDao().findById(Integer.parseInt(request.getParameter("cusTypeNo")));
+
+		CusType cusType = new CusTypeDao().findById(Integer.parseInt(request
+				.getParameter("cusTypeNo")));
 		CusInfo cusInfo = new CusInfo();
 		cusInfo.setName(request.getParameter("name"));
 		cusInfo.setCusType(cusType);
@@ -117,9 +112,8 @@ public class CheckinServlet extends CRUDServlet {
 		cusInfo.setCertNumber(request.getParameter("certNumber"));
 		cusInfo.setAddress(request.getParameter("address"));
 		cusInfo.setComment(request.getParameter("comment"));
-		Checkin checkin = service.checkin(
-				request.getParameter("roomId") ,cusInfo,
-				request.getParameter("checkinType"),
+		Checkin checkin = service.checkin(request.getParameter("roomId"),
+				cusInfo, request.getParameter("checkinType"),
 				request.getParameter("numOfDays"),
 				request.getParameter("deposit"));
 		request.setAttribute("checkin", checkin);
@@ -134,9 +128,9 @@ public class CheckinServlet extends CRUDServlet {
 		String address = request.getParameter("address");
 		String comment = request.getParameter("comment");
 		CheckinService cis = new CheckinService();
-		
+
 		cis.updateCheckin(checkinId, certNumber, address, comment);
-		
+
 		doGet(request, response);
 	}
 
@@ -145,8 +139,16 @@ public class CheckinServlet extends CRUDServlet {
 			throws ServletException, IOException {
 
 		CheckinService cis = new CheckinService();
-		Checkin checkin = cis.findById(request.getParameter("checkinId"));
-		request.setAttribute("checkin", checkin);
+		String checkinId = request.getParameter("checkinId");
+		String path = request.getContextPath();
+		request.setAttribute("editUrl", path + SERVLET_URL + "/edit?checkinId=");
+
+		if (checkinId != null) {
+			request.setAttribute("checkin", cis.findById(checkinId));
+		} else {
+			request.setAttribute("checkins", cis.findAll());
+		}
+
 		request.getRequestDispatcher(
 				TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
 				response);
@@ -155,23 +157,26 @@ public class CheckinServlet extends CRUDServlet {
 	@Override
 	public void getNew(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
+		CheckinService cis = new CheckinService();
 		Room room = new RoomDao().findById(request.getParameter("roomId"));
 		request.setAttribute("room", room);
-		
-		request.setAttribute("searchUrl", request.getContextPath() + SERVLET_URL + "/new");
-		request.setAttribute("newUrl", request.getContextPath() + SERVLET_URL + "/new?roomId=");
-		
+
+		request.setAttribute("searchUrl", request.getContextPath()
+				+ SERVLET_URL + "/new");
+		request.setAttribute("newUrl", request.getContextPath() + SERVLET_URL
+				+ "/new?roomId=");
+
 		request.setAttribute("roomTypes", new RoomTypeDao().findAll());
-		
+		request.setAttribute("cusTypes", new CusTypeDao().findAll());
+
 		String byRoom = request.getParameter("byRoom");
 		if (byRoom != null) {
-			int roomTypeNo = Integer.parseInt(request.getParameter("roomTypeNo"));
-			List<Room> rooms = new RoomService().findByType(roomTypeNo);
-			request.setAttribute("rooms", rooms);
+			request.setAttribute("rooms", cis.findFreeRooms(request.getParameter("roomTypeNo")));
 		}
-		
-		request.getRequestDispatcher(TEMPLATE_URL + "/new.jsp").forward(request, response);
+
+		request.getRequestDispatcher(TEMPLATE_URL + "/new.jsp").forward(
+				request, response);
 	}
 
 }

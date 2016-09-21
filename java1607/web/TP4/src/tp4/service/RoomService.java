@@ -59,21 +59,6 @@ public class RoomService {
 		return mRoomDao.deleteById(roomId);
 	}
 
-	// 查找
-	public List<Room> findByType(int roomTypeNo) {
-		// TODO : performance issue
-		List<Room> rooms = mRoomDao.findAll();
-		List<Room> results = new ArrayList<Room>();
-		for (Room room : rooms) {
-			if (room.getRoomType().getRoomTypeNo() == roomTypeNo) {
-				results.add(room);
-			}
-		}
-		if (results.size() == 0) {
-			return null;
-		}
-		return results;
-	}
 	//根据房间类型查找
 	public List<Room> findAllByTypeNo(String roomtypeNo)
 	{

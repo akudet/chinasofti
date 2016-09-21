@@ -30,6 +30,14 @@ public class Checkin extends VirtualObject {
 	public int getStatus() {
 		return status;
 	}
+	
+	public String getStatusDesc() {
+		if (status == UNCHECK) {
+			return "正在使用";
+		} else {
+			return "已结账";
+		}
+	}
 
 	public void setStatus(int status) {
 		this.status = status;
@@ -38,6 +46,14 @@ public class Checkin extends VirtualObject {
 	public Checkin() {
 		super();
 		this.checkinId = randomId();
+	}
+	
+	public String getCheckinTypeDesc() {
+		if (checkinType == RoomType.HOUR_ROOM) {
+			return "钟点房";
+		} else {
+			return "标准";
+		}
 	}
 	
 	public void setChecked() {

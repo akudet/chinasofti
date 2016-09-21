@@ -18,7 +18,7 @@
 			<td>${checkin.roomId}</td>
 			<td>${checkin.name}</td>
 			<td>${checkin.price}</td>
-			<td>${checkin.checkinType}</td>
+			<td>${checkin.checkinTypeDesc}</td>
 			<td>${checkin.checkinTime}</td>
 			<td>${checkin.deposit}</td>
 		</tr>

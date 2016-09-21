@@ -45,7 +45,7 @@
     	</div>
 		<div class="form-group">
 			<label for="exampleInputEmail1">计费方式:</label>
-			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="checkinType" value="${checkin.checkinType }"/><br>
+			<input type="text" class="form-control" style="font-size:large; " readonly="readonly" name="checkinType" value="${checkin.checkinTypeDesc }"/><br>
 		
     	</div>
 		<div class="form-group">

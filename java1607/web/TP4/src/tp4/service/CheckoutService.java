@@ -25,11 +25,13 @@ public class CheckoutService {
 
 	private final CheckinDao mCheckinDao;
 	private final CheckoutDao mCheckoutDao;
+	private final RoomDao mRoomDao;
 
 	public CheckoutService() {
 		super();
 		this.mCheckinDao = new CheckinDao();
 		this.mCheckoutDao = new CheckoutDao();
+		this.mRoomDao = new RoomDao();
 	}
 
 	// em , pretty bad consider with diffInHours
@@ -95,6 +97,11 @@ public class CheckoutService {
 				.format(end));
 		checkout.setComment(comment);
 
+		Room room = checkin.getRoom();
+		
+		room.setStatusFree();
+		mRoomDao.update(room);
+		
 		checkin.setChecked();
 		mCheckinDao.update(checkin);
 

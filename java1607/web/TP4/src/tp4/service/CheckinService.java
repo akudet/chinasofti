@@ -61,6 +61,8 @@ public class CheckinService {
 		if (null == room) {
 			throw new CheckinServiceException("房间未找到");
 		}
+		room.setStatusInuse();
+		mRoomDao.update(room);
 		
 		Checkin checkin = new Checkin();
 		Date now = new Date();
@@ -74,8 +76,7 @@ public class CheckinService {
 		checkin.setNumOfDays(Integer.parseInt(num_of_days));
 		checkin.setDeposit(Float.parseFloat(deposit));
 		
-		int chargeType = checkin.getCheckinType();
-		if (chargeType == 0) {
+		if (checkin.getCheckinType() == RoomType.NORMAL_ROOM) {
 			if (checkin.getDeposit() - checkin.getNumOfDays() * checkin.getPrice() <= EPSILON) {
 				throw new CheckinServiceException("计费方式为“标准”时，应押金>单价*预住天数");
 			}
@@ -115,7 +116,7 @@ public class CheckinService {
 		float newDeposit = checkin.getDeposit() + deposit;
 		int newNumOfDays = days + checkin.getNumOfDays();
 		
-		if (newDeposit -  checkin.getPrice() * newNumOfDays > EPSILON) {
+		if (newDeposit -  checkin.getPrice() * newNumOfDays <= EPSILON) {
 			throw new CheckinServiceException("续缴押金：续缴押金后总金额应>单价*续住后总天数");
 		}
 			
@@ -148,5 +149,9 @@ public class CheckinService {
 	public List<Checkin> findByCus(String name, String roomId,
 			String cusTypeNo) {
 		 return mCheckinDao.finByCus(name, roomId, Integer.parseInt(cusTypeNo));
+	}
+
+	public List<Room> findFreeRooms(String roomTypeNo) {
+		return mRoomDao.findFreeRoom(roomTypeNo);
 	}
 }

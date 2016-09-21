@@ -30,6 +30,18 @@ public class Room extends VirtualObject {
 		regMsg(ROOM_STATUS_RESERVED, "保留");
 		regMsg(ROOM_STATUS_BLOCKED, "停用");
 	}
+	
+	public float getPrice() {
+		return roomType.getPrice();
+	}
+	
+	public float getHourRoomPrice() {
+		return roomType.getHourRoomPrice();
+	}
+	
+	public boolean isHourRoom() {
+		return roomType.isHourRoom();
+	}
 
 	public void setStatusFree() {
 		this.status = 0;
@@ -138,6 +150,13 @@ public class Room extends VirtualObject {
 
 	public void setFloor(String floor) {
 		this.floor = floor;
+	}
+
+	@Override
+	public String toString() {
+		return "Room [roomId=" + roomId + ", roomType=" + roomType + ", floor="
+				+ floor + ", phone=" + phone + ", status=" + status
+				+ ", comment=" + comment + "]";
 	}
 
 	public void setPhone(String phone) {

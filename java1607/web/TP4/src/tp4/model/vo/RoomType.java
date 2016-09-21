@@ -10,6 +10,14 @@ import java.sql.SQLException;
  */
 public class RoomType extends VirtualObject {
 
+	@Override
+	public String toString() {
+		return "RoomType [roomTypeNo=" + roomTypeNo + ", roomTypeDesc="
+				+ roomTypeDesc + ", beds=" + beds + ", price=" + price
+				+ ", isHourRoom=" + isHourRoom + ", hourRoomPrice="
+				+ hourRoomPrice + ", comment=" + comment + "]";
+	}
+
 	protected int roomTypeNo;
 	protected String roomTypeDesc;
 	protected int beds;

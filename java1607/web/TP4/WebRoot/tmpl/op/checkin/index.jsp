@@ -4,18 +4,20 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>My JSP 'index.jsp' starting page</title>
+<title>入住信息</title>
 
 </head>
 
 <body>
-	<%@include file="../../nav.jsp"%>
+	<%@ include file="../../nav.jsp"%>
 	
 	<div class="col-sm-12 col-lg-10 sidebar">
+		<%@ include file="checkin-nav.jsp" %>
+	
 		<div class="panel panel-primary">
-			<div class="panel-heading">会员信息</div>
+			<div class="panel-heading">入住信息</div>
 			<div class="panel-body">
-				<%@ include file="checkins.jsp"%>
+				<%@ include file="index_checkins.jsp"%>
 			</div>
 		</div>
 	</div>

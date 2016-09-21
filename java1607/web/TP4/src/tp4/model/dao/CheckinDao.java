@@ -84,10 +84,9 @@ public class CheckinDao extends DAO<Checkin> {
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
-		String sql = "select * from checkin where status=?";
+		String sql = "select * from checkin";
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setInt(1, Checkin.UNCHECK);
 			res = pre.executeQuery();
 			ArrayList<Checkin> list = new ArrayList<Checkin>();
 			while (res.next()) {
