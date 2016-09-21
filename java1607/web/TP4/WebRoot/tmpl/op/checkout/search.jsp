@@ -36,10 +36,18 @@
 				</select>
 			</div>
 
+<script type="text/javascript">
+	var flag = false;
+	function a(){
+		flag = !flag;
+		$("input[type=checkbox]").prop("checked",flag);
+	}
+</script>
 			<div class="form-group">
+				<label class="checkbox-inline"> <input type="checkbox" checked onclick="a()">全部</label>
 				<c:forEach items="${roomTypes}" var="roomType">
 					<label class="checkbox-inline"> <input type="checkbox"
-						name="roomTypeNos" value="${roomType.roomTypeNo}">
+						checked name="roomTypeNos" value="${roomType.roomTypeNo}">
 						${roomType.roomTypeDesc} </label>
 				</c:forEach>
 			</div>
