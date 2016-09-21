@@ -1,7 +1,10 @@
 package tp4.model.dao;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 
 import tp4.model.db.DBConnection;
 import tp4.model.vo.CheckStatistic;
@@ -36,13 +39,27 @@ public class CheckStatisticDao {
 		return null;
 	}
 
-	public List<CheckStatistic> findAllCheckinStatistic() {
-		String sql = "select count(*) as count, date(checkin_time) as date FROM checkin group by date(checkin_time) order by date asc;";
+	public List<CheckStatistic> findAllCheckinStatistic(String start, String end) {
+		String having = "having date between '" + start + "' and '" + end + "'";
+		String sql = "select count(*) as count, date(checkin_time) as date FROM checkin group by date(checkin_time) " + having + " order by date asc;";
+		System.out.println(sql);
 		return queryAll(sql);
 	}
 	
-	public List<CheckStatistic> findAllCheckoutStatistic() {
-		String sql = "select count(*) as count, date(checkout_time) as date FROM checkout group by date(checkout_time) order by date asc;";
+	public List<CheckStatistic> findAllCheckoutStatistic(String start, String end) {
+		String having = "having date between '" + start + "' and '" + end + "'";
+		String sql = "select count(*) as count, date(checkout_time) as date FROM checkout group by date(checkout_time) " + having + "  order by date asc;";
 		return queryAll(sql);
+	}
+	
+	public static void main(String[] args) {
+		CheckStatisticDao mCSD = new CheckStatisticDao();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Date now = new Date();
+		String end = df.format(now);
+		String start = df.format(new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000));
+		
+		List<CheckStatistic> statistics = mCSD.findAllCheckinStatistic(start, end);
+		System.out.println(statistics);
 	}
 }

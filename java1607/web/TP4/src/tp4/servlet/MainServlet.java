@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import tp4.model.dao.RoomDao;
 import tp4.model.dao.VipDao;
+import tp4.service.CheckStatisticService;
 import tp4.service.CheckinService;
 import tp4.service.CheckoutService;
 import tp4.service.RoomService;
@@ -27,11 +28,17 @@ public class MainServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		CheckStatisticService statService = new CheckStatisticService();
+		
 		String path = request.getContextPath();
 		
 		int checkinCount = new CheckinService().findAll().size();
 		int checkoutCount = new CheckoutService().findAll().size();
 		int checkCount = checkinCount + checkoutCount;
+		
+		request.setAttribute("labels", statService.getLabels());
+		request.setAttribute("checkinStats", statService.getCheckinStatistics());
+		request.setAttribute("checkoutStats", statService.getCheckoutStatistics());
 		
 		request.setAttribute("checkinCount", checkinCount);
 		request.setAttribute("freeRoomCount", new RoomDao().findAll().size());

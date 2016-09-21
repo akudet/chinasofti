@@ -74,6 +74,58 @@
 			</div>
 		</div>
 	</div>
+	
+			<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Site Traffic Overview</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+		
+		<script>
+		var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
+	
+
+		
+		
+			var lineChartData = {
+			labels : ${labels.toString()},
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : ${checkoutStats.toString()}
+				},
+				{
+					label: "My Second dataset",
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 1)",
+					pointColor : "rgba(48, 164, 255, 1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(48, 164, 255, 1)",
+					data : ${checkinStats.toString()}
+				}
+			]
+
+		}
+		</script>
+		
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
 	<!--/.row-->
 	</div>
 	<a href="${opUrl}">操作员页面</a>

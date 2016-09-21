@@ -67,10 +67,10 @@ public class CheckinService {
 		Checkin checkin = new Checkin();
 		Date now = new Date();
 		
-		checkin.setCheckinId("in" + new SimpleDateFormat("yyyyMMddhhmmss").format(now));
+		checkin.setCheckinId("in" + new SimpleDateFormat("yyyyMMddHHmmss").format(now));
 		checkin.setRoom(room);
 		checkin.setCusInfo(cusInfo);
-		checkin.setCheckinTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(now));
+		checkin.setCheckinTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(now));
 		checkin.setCheckinType(Integer.parseInt(checkin_type_no));
 		checkin.setPrice(getPrice(room.getRoomType(), cusInfo.getCusType(), checkin.getCheckinType()));
 		checkin.setNumOfDays(Integer.parseInt(num_of_days));
