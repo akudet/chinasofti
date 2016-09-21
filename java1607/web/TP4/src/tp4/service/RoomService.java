@@ -102,4 +102,8 @@ public class RoomService {
 		return ERR_UPDATE_FAILED;
 	}
 
+	public List<Room> findAll() {
+		return mRoomDao.findAll();
+	}
+
 }

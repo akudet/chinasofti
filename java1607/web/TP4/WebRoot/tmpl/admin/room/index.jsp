@@ -27,51 +27,20 @@
 </head>
 
 <body>
+
 	<%@include file="../../nav.jsp"%>
+
 	<div class="col-sm-12 col-lg-10 sidebar">
+
 		<%@include file="../admin-nav.jsp"%>
-		<%@include file="search.jsp"%>
+
 		<div class="panel">
+			<div class="panel-heading">
+				<%@ include file="search.jsp"%>
+			</div>
+
 			<div class="panel-body">
-
-				${requestScope.msg }
-				<div class="btn-toolbar">
-					<a class="btn btn-primary"
-						href="<%=path + RoomServlet.SERVLET_URL%>/new"><i
-						class="glyphicon glyphicon-plus"></i> 添加</a>
-
-				</div>
-				<p></p>
-				<c:if test="${rooms != null}">
-					<table class="table">
-						<tr>
-							<th>房间号</th>
-							<th>房间类型</th>
-							<th>房间区域</th>
-							<th>房间电话</th>
-							<th>房间状态</th>
-							<th>房间备注</th>
-							<th>操作</th>
-						</tr>
-						<c:forEach items="${rooms }" var="room">
-							<tr>
-								<td>${room.roomId }</td>
-								<td>${room.roomType.roomTypeDesc }</td>
-								<td>${room.floor }</td>
-								<td>${room.phone }</td>
-								<td>${room.statusDesc }</td>
-								<td>${room.comment }</td>
-								<td><a href="${editUrl}${room.roomId}"><span
-										class="glyphicon glyphicon-edit"></span>
-								</a> &nbsp;&nbsp; <a href="${deleteUrl}${room.roomId}" onClick="return confirm('确定删除?');"><span
-										class="glyphicon glyphicon-trash"></span>
-								</a>
-								</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</c:if>
-
+				<%@ include file="rooms.jsp"%>
 			</div>
 		</div>
 	</div>

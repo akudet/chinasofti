@@ -13,6 +13,8 @@ public class CusType extends VirtualObject {
 	protected String cusTypeDesc;
 	protected int discount;
 
+	public static final int VIP_CUS_TYPE_NO = 1;
+	
 	public CusType() {
 		super();
 	}

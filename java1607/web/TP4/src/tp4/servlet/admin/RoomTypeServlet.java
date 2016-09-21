@@ -42,7 +42,7 @@ public class RoomTypeServlet extends CRUDServlet {
 		RoomTypeService us = new RoomTypeService();
 		List<RoomType> list = us.findAll();
 
-		request.setAttribute("list", list);
+		request.setAttribute("roomTypes", list);
 
 		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(
 				request, response);

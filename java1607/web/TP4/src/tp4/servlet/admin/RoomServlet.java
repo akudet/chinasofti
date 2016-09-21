@@ -43,13 +43,13 @@ public class RoomServlet extends CRUDServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		RoomService rs = new RoomService();
 		String roomTypeNo = request.getParameter("roomTypeNo");
 		
 		if (roomTypeNo != null) {
-			RoomService rs = new RoomService();
-			List<Room> rooms = rs.findAllByTypeNo(roomTypeNo);
-			request.setAttribute("rooms", rooms);
+			request.setAttribute("rooms", rs.findAllByTypeNo(roomTypeNo));
+		} else {
+			request.setAttribute("rooms", rs.findAll());
 		}
 		
 		// find all roomTypes
