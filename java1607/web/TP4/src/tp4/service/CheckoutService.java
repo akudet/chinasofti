@@ -98,10 +98,10 @@ public class CheckoutService {
 		checkout.setComment(comment);
 
 		Room room = checkin.getRoom();
-		
+
 		room.setStatusFree();
 		mRoomDao.update(room);
-		
+
 		checkin.setChecked();
 		mCheckinDao.update(checkin);
 
@@ -118,8 +118,7 @@ public class CheckoutService {
 	public List<Checkout> findByCus(String name, String roomId, String cusTypeNo) {
 		System.out.println("FindByCus : " + name + roomId + cusTypeNo);
 
-		return mCheckoutDao
-				.findByCus(name, roomId, Integer.parseInt(cusTypeNo));
+		return mCheckoutDao.findByCus(name, roomId, cusTypeNo);
 	}
 
 	public List<Checkout> findByRoom(String start, String end,
@@ -134,14 +133,14 @@ public class CheckoutService {
 			s_start = df.parse(start);
 			e_end = df.parse(end);
 		} catch (ParseException e) {
-			s_start = new Date();
-			e_end = new Date();
+			Date now = new Date();
+			start = df.format(now);
+			end = df.format(now);
 		}
 
-		int c_checkinType = Integer.parseInt(checkinType);
 		List<Integer> r_roomTypeNos = parseInt(roomTypeNos);
 
-		return mCheckoutDao.findByRoom(s_start, e_end, c_checkinType,
+		return mCheckoutDao.findByRoom(start, end, checkinType,
 				r_roomTypeNos);
 	}
 
@@ -170,14 +169,14 @@ public class CheckoutService {
 		return checkin;
 	}
 
-	//分页查询
-	public List<Checkout> findAll(int pageNo){
-		
+	// 分页查询
+	public List<Checkout> findAll(int pageNo) {
+
 		return mCheckoutDao.findAll(pageNo);
 	}
-	
-	//查询总页数
-	public int getTotalPage(){
+
+	// 查询总页数
+	public int getTotalPage() {
 		return mCheckoutDao.getTotalPage();
 	}
 

@@ -23,4 +23,20 @@ public abstract class DAO<T> {
 	public int getTotalPage() {
 		return 0;
 	}
+	
+	//查询预订信息调用方法
+	public String join(List<String> args, String conn) {
+		StringBuilder result = new StringBuilder();
+		if (args.size() == 0) {
+			return result.toString();
+		}
+		
+		result.append(args.get(0));
+		
+		for (int i = 1; i < args.size(); i++) {
+			result.append(conn);
+			result.append(args.get(i));
+		}
+		return result.toString();
+	}
 }

@@ -275,18 +275,33 @@ public class CheckinDao extends DAO<Checkin> {
 		return 0;
 	}
 
-	public List<Checkin> finByCus(String name, String roomId, int cusTypeNo) {
+	public List<Checkin> findUncheckByCus(String name, String roomId, String cusTypeNo) {
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
 		List<Checkin> list = new ArrayList<Checkin>();
-		String sql = "select * from checkin, cus_info where checkin.cus_info_id = cus_info.cus_info_id and cus_info.name = ? and checkin.room_id=? and cus_info.cus_type_no = ? and status = ?";
+		
+		String sql = "select * from checkin, cus_info where checkin.cus_info_id = cus_info.cus_info_id  and status = ? and ";
+		
+		List<String> conds = new ArrayList<String>();
+		if (null != name && !name.equals("")) {
+			conds.add(" cus_info.name='" + name + "' ");
+		}
+		
+		if (null != roomId && !roomId.equals("")) {
+			conds.add(" checkin.room_id='" + roomId  + "' ");
+		}
+		
+		if (null != cusTypeNo && !cusTypeNo.equals("")) {
+			conds.add(" cus_info.cus_type_no ='" + cusTypeNo + "' ");
+		}
+		
+		sql += join(conds, " AND ");
+		System.out.println(sql);
+		
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setString(1, name);
-			pre.setString(2, roomId);
-			pre.setInt(3, cusTypeNo);
-			pre.setInt(4, Checkin.UNCHECK);
+			pre.setInt(1, Checkin.UNCHECK);
 			res = pre.executeQuery();
 			while(res.next()){
 				Checkin ci = new Checkin();

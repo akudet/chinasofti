@@ -64,7 +64,7 @@ public class CheckoutServlet extends CRUDServlet {
 			int cusCount = 0;
 			
 			if (status.equals("0")) {// find all
-				checkins = cis.findByCus(
+				checkins = cis.findUncheckByCus(
 						request.getParameter("name"),
 						request.getParameter("roomId"),
 						request.getParameter("cusTypeNo"));
@@ -73,7 +73,7 @@ public class CheckoutServlet extends CRUDServlet {
 						request.getParameter("roomId"),
 						request.getParameter("cusTypeNo"));
 			} else if (status.equals("1")) {// find unchecked
-				checkins = cis.findByCus(
+				checkins = cis.findUncheckByCus(
 						request.getParameter("name"),
 						request.getParameter("roomId"),
 						request.getParameter("cusTypeNo"));

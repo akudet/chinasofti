@@ -23,13 +23,13 @@ import tp4.model.vo.User;
  * @author 范中兴
  * 
  */
-public class ReservationDao {
+public class ReservationDao extends DAO<Reservation>{
 	Connection con = null;
 	PreparedStatement pre = null;
 	ResultSet res = null;
 
 	// 添加数据
-	public int add(Reservation reservation) throws SQLException {
+	public int add(Reservation reservation) {
 		con = DBConnection.getConnection();
 		String sql = "insert into reservation values(?,?,?,?,?,?,?,?)";
 
@@ -52,7 +52,7 @@ public class ReservationDao {
 			}
 
 		} catch (SQLException e) {
-			throw e;
+			e.printStackTrace();
 		} finally {
 			DBConnection.close(con, pre);
 		}
@@ -223,20 +223,7 @@ public class ReservationDao {
 		return 0;
 	}
 	
-	//查询预订信息调用方法
-	private String join(List<String> args) {
-		String result = "";
-		if (args.size() == 0) {
-			return result;
-		}
-		
-		result = args.get(0);
-		
-		for (int i = 1; i < args.size(); i++) {
-			result += " AND " + args.get(i);
-		}
-		return result;
-	}
+
 	
 	//查询预订信息
 	public List<Reservation> findAllReservation(String name, String phone,String arriveTime){
@@ -270,7 +257,7 @@ public class ReservationDao {
 			conds.add(" arrive_time like '" + arriveTime + "%' ");
 		}
 		
-		String cond = join(conds);
+		String cond = join(conds, " AND ");
 		sql = "SELECT * FROM reservation WHERE " + cond;
 		List<Reservation> list = new ArrayList<Reservation>();
 		try {

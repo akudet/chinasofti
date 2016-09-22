@@ -105,13 +105,7 @@ public class ReservationService {
 		room.setStatusReserved();
 		mRoomDao.update(room);
 		
-		try {
-			mReservationDao.add(reservation);
-		} catch (SQLException e) {
-			// TODO : come up with a better way to do this
-			// this is not right
-			throw new ReservationServiceException("时间格式错误");
-		}
+		mReservationDao.add(reservation);
 		
 		return reservation;
 	}

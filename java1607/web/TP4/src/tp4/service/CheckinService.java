@@ -161,9 +161,9 @@ public class CheckinService {
 		return mCheckinDao.findAll(RoomType.NORMAL_ROOM, Checkin.UNCHECK);
 	}
 
-	public List<Checkin> findByCus(String name, String roomId,
+	public List<Checkin> findUncheckByCus(String name, String roomId,
 			String cusTypeNo) {
-		 return mCheckinDao.finByCus(name, roomId, Integer.parseInt(cusTypeNo));
+		 return mCheckinDao.findUncheckByCus(name, roomId, cusTypeNo);
 	}
 
 	public List<Room> findFreeRooms(String roomTypeNo) {

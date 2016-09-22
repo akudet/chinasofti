@@ -31,6 +31,10 @@ public class Checkout extends VirtualObject {
 		return checkin.getCheckinType();
 	}
 	
+	public String getCheckinTypeDesc() {
+		return checkin.getCheckinTypeDesc();
+	}
+	
 	public String getName() {
 		return checkin.getName();
 	}

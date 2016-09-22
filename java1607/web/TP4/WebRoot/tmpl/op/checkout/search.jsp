@@ -1,4 +1,4 @@
-<%@page pageEncoding="UTF-8"%>
+<%@page import="tp4.model.vo.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <ul class="nav nav-tabs">
@@ -30,9 +30,8 @@
 			<div class="form-group">
 				<label>收费类型</label> <select class="form-control" name="chargeType">
 					<option value="-1">全部</option>
-					<c:forEach items="${chargeTypes}" var="chargeType">
-						<option value="${chargeType.chargeTypeNo}">${chargeType.chargeTypeDesc}</option>
-					</c:forEach>
+					<option value="<%= RoomType.NORMAL_ROOM %>">标准</option>
+					<option value="<%= RoomType.HOUR_ROOM %>">钟点房</option>
 				</select>
 			</div>
 
@@ -53,7 +52,7 @@
 			</div>
 
 			<div class="form-group">
-				<button type="submit" class="btn btn-default">查询</button>
+				<button type="submit" class="btn btn-primary">查询</button>
 			</div>
 		</form>
 	</div>
@@ -91,7 +90,7 @@
 			</div>
 
 			<div class="form-group">
-				<button type="submit" class="btn btn-default">查询</button>
+				<button type="submit" class="btn btn-primary">查询</button>
 			</div>
 		</form>
 	</div>

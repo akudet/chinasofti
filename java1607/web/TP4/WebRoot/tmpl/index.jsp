@@ -20,8 +20,6 @@
 	<%@ include file="nav.jsp"%>
 
 	<div class="col-sm-9 col-lg-10 main">
-		<a href="${opUrl}">操作员页面</a> <a href="${adminUrl}">系统管理</a>
-
 		<div class="row">
 			<div class="col-xs-12 col-md-6 col-lg-3">
 				<div class="panel panel-blue panel-widget ">

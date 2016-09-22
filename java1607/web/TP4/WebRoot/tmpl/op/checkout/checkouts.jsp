@@ -15,7 +15,7 @@
 				<td>${checkout.checkoutId}</td>
 				<td>${checkout.roomTypeDesc}</td>
 				<td>${checkout.roomId}</td>
-				<td>${checkout.checkinType}</td>
+				<td>${checkout.checkinTypeDesc}</td>
 				<td>${checkout.name}</td>
 				<td>${checkout.checkoutAmount}</td>
 			</tr>

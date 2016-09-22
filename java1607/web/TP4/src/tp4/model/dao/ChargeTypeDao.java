@@ -3,6 +3,7 @@ package tp4.model.dao;
 import java.util.*;
 
 import tp4.model.vo.ChargeType;
+import tp4.model.vo.RoomType;
 
 public class ChargeTypeDao extends DAO<ChargeType> {
 
@@ -10,8 +11,8 @@ public class ChargeTypeDao extends DAO<ChargeType> {
 
 	static {
 		mChargeTypes = new ArrayList<ChargeType>();
-		mChargeTypes.add(new ChargeType(0, "标准"));
-		mChargeTypes.add(new ChargeType(1, "钟点房"));
+		mChargeTypes.add(new ChargeType(RoomType.NORMAL_ROOM, "标准"));
+		mChargeTypes.add(new ChargeType(RoomType.HOUR_ROOM, "钟点房"));
 	}
 
 	@Override

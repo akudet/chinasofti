@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*,tp4.model.vo.*" pageEncoding="UTF-8"%>
-<div class="navbar navbar-default" role="navigation">
+<div  style="color:#ACD6FF" class="navbar navbar-default" role="navigation">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 			<span class="sr-only">Toggle navigation</span>
@@ -7,16 +7,16 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="" href="/TP4/main"><span class="navbar-brand">
-		<span class="fa fa-paper-plane">
+		<a class="" href="/TP4/main" ><span class="navbar-brand" style="color: white;font-weight:bold;font-size: 1.4em;">
+		<span class="fa fa-paper-plane" ><img width="140px" height="38px" src="http://cache.marriott.com/Images/DigitalFoundations/Header/logo-marriott-markonleft-2x.png" alt="Marriott Logo">
 		</span>酒店管理系统</span></a></div>
 
-	<div class="navbar-collapse collapse" style="height: 1px;">
+	<div class="navbar-collapse collapse" style="height: 1px;background-color:#C4E1FF;">
 		<ul id="main-menu" class="nav navbar-nav navbar-right">
 			<li class="dropdown hidden-xs">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;">
-					</span>ahhahaha
+					</span>设置中心
 					<i class="fa fa-caret-down"></i>
 				</a>
 

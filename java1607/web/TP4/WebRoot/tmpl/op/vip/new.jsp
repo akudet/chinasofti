@@ -37,46 +37,46 @@
 		<input type="hidden" name="POST">
         <div class="form-group">
         <label  for="vipNo">会员编号：</label>
-		<input class="form-control" type="number" name="vipNo" id="vipNo"><br> 
+		<input class="form-control" type="number" name="vipNo" id="vipNo"> 
         </div>
 		
         <div class="form-group">
         <label for="name">会员姓名：</label>
-		<input class="form-control" type="text" name="name" id="name"><br> 
+		<input class="form-control" type="text" name="name" id="name"> 
         </div>
 		
         <div class="form-group">
         <label for="sex">会员性别：</label>
-		<select class="form-control" type="text" name="sex" id="sex">
-		<option selected="selected">男(men)</option>
-		<option>女(women)</option>
+		<select class="form-control" name="sex" id="sex">
+		<option selected="selected">男</option>
+		<option>女</option>
 		</select>
         </div> 
 		
         <div class="form-group">
         <label for="sex">证件编号：</label>
-		<input class="form-control" type="text" name="certNo" id="certNo"><br> 
+		<input class="form-control" type="text" name="certNo" id="certNo"> 
         </div>
 		 
         <div class="form-group">
         <label  for="phone">联系电话：</label>
-		<input class="form-control" type="text" name="phone" id="phone"><br> 
+		<input class="form-control" type="text" name="phone" id="phone"> 
         </div>
 		
         <div class="form-group">
         <label  for="address">详细地址：</label>
-		<input class="form-control" type="text" name="address" id="address"><br> 
+		<input class="form-control" type="text" name="address" id="address"> 
         </div>
 		
         <div class="form-group">
         <label  for="comment">备注：</label>
-		<textarea rows="3" class="form-control" type="text" name="comment" id="comment"></textarea><br> 
+		<textarea rows="3" class="form-control" name="comment" id="comment"></textarea> 
         </div> 
 		
        
-        <label  for="submit"></label>
-		<input class="col-lg-3" type="submit" name="submit" id="submit" value="提交"><br> 
-       
+       <div class="form-group">
+		<button class="btn btn-primary" type="submit">提交</button>
+       </div>
     </form>
     </div>
     </div>

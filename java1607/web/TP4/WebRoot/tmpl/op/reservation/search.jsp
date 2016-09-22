@@ -24,7 +24,7 @@
 	</div>
 	
 	<div class="form-group">
-		<button type="submit" class="btn btn-default">查询</button>
+		<button type="submit" class="btn btn-primary">查询</button>
 	</div>
 </form>
 </div>
