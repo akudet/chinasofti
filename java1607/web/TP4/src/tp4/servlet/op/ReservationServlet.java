@@ -28,7 +28,7 @@ public class ReservationServlet extends CRUDServlet {
 	public static final String TEMPLATE_URL = "/tmpl" + SERVLET_URL;
 
 	private String parseDateTime(String date, String time) {
-		return date + " " + time + ":00";
+		return date + " " + time;
 	}
 	
 	@Override
@@ -79,13 +79,12 @@ public class ReservationServlet extends CRUDServlet {
 		String phone = request.getParameter("phone");
 		String arriveTime = parseDateTime(request.getParameter("arriveDate"), request.getParameter("arriveTime"));
 		String reserveTime = parseDateTime(request.getParameter("reserveDate"), request.getParameter("reserveTime"));
-		String reservationTime = request.getParameter("reservationTime");
 		String comment = request.getParameter("comment");
 
 		ReservationService rs = new ReservationService();
 	
 		int flag = 0;
-		rs.reserve(roomTypeNo, name, phone, arriveTime, reserveTime, reservationTime, comment);
+		rs.reserve(roomTypeNo, name, phone, arriveTime, reserveTime, comment);
 		if (flag > 0) {
 			request.setAttribute("err_msg", "添加成功");
 			this.doGet(request, response);

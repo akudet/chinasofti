@@ -59,16 +59,13 @@ public class ReservationService {
 	}
 
 	public Reservation reserve(String roomTypeNo, String name, String phone,
-			String arriveTime, String reserveTime,
-			String reservationTime, String comment) {
+			String arriveTime, String reserveTime, String comment) {
 
 		
 		Room room = findFreeRoom(roomTypeNo);
 		if (room == null) {
 			throw new ReservationServiceException("没有空闲房间");
 		}
-		room.setStatusReserved();
-		mRoomDao.update(room);
 		
 		Reservation reservation = new Reservation();
 		
@@ -78,12 +75,35 @@ public class ReservationService {
 		
 		reservation.setName(name);
 		reservation.setPhone(phone);
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date now = new Date();
+		
+		try {
+			Date arrive = df.parse(arriveTime);
+			Date reserve = df.parse(reserveTime);
+			
+			
+			long hours = diffInHours(arrive, now);
+			if (hours > 72 || hours < 0) {
+				throw new RuntimeException("预定时间不得超过当前时间72小时");
+			}
+			
+			hours =  diffInHours(reserve, arrive);
+			if (hours > 5 || hours < 0) {
+				throw new RuntimeException("保留时间不得超过预定时间5小时");
+			}
+		} catch (ParseException e1) {
+			throw new RuntimeException("时间格式错误");
+		}
+		
 		reservation.setArriveTime(arriveTime);
 		reservation.setReserveTime(reserveTime);
-		reservation.setReservationTime(reservationTime);
 		reservation.setComment(comment);
 
 		reservation.setRoom(room);
+		room.setStatusReserved();
+		mRoomDao.update(room);
 		
 		try {
 			mReservationDao.add(reservation);
@@ -94,6 +114,11 @@ public class ReservationService {
 		}
 		
 		return reservation;
+	}
+
+	private long diffInHours(Date start, Date end) {
+		return (start.getTime() - end.getTime()) / 1000 / 60 / 60;
+		
 	}
 
 	public int updateById(String reservationId, String roomTypeNo, String name, String phone,
