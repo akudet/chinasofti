@@ -23,7 +23,11 @@ public class UserService {
 	}
 
 	public int deleteById(String userId) {
-
+		User user = dao.findById(userId);
+		if (user.getPrivilege() == User.ADMIN_PRIVILEGE) {
+			throw new RuntimeException("不能删除系统管理员");
+		}
+		
 		return dao.deleteById(userId);
 	}
 
@@ -45,5 +49,9 @@ public class UserService {
 		user.setUserPass(userPass);
 		user.setPrivilege(privilege);
 		return dao.update(user);
+	}
+
+	public User findById(String id) {
+		return dao.findById(id);
 	}
 }

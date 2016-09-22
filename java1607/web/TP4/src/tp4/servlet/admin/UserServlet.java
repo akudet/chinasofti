@@ -101,6 +101,18 @@ public class UserServlet extends CRUDServlet {
 		String userPass = req.getParameter("userPass");
 		int privilege = Integer.parseInt(req.getParameter("privilege"));
 		UserService us = new UserService();
+		
+		User user = us.findById((String) req.getSession().getAttribute("userId"));
+		if (user.getPrivilege() == User.OP_PRIVILEGE) {
+			if (user.getUserId().equals(userId)) {
+				us.updateById(userId, userName, userPass, privilege);
+			} else {
+				req.setAttribute("err_msg", "只能修改自己的信息");
+				req.getRequestDispatcher("/err.jsp").forward(req, resp);
+				return;
+			}
+		}
+		
 		int flag = us.updateById(userId, userName, userPass, privilege);
 		if (flag > 0) {
 			req.setAttribute("err_msg", "修改成功");
