@@ -46,10 +46,10 @@ public class CheckinService {
 		float discount = cusType.getDiscount();
 		discount /= 10.0f;
 		float price;
-		if (chargeType == 0) {
+		if (chargeType == RoomType.NORMAL_ROOM) {
 			price = roomType.getPrice();
-		} else if (chargeType == 1) {
-			price = discount * roomType.getHourRoomPrice();
+		} else if (chargeType == RoomType.HOUR_ROOM) {
+			price = roomType.getHourRoomPrice();
 		} else {
 			throw new CheckinServiceException("未知收费类型");
 		}
@@ -100,6 +100,7 @@ public class CheckinService {
 			}
 		}
 		
+		// this is ok if user choose vip_no, and we got duplicatee key
 		mCusInfoDao.add(cusInfo);
 		mCheckinDao.add(checkin);
 
