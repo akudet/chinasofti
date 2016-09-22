@@ -1,6 +1,7 @@
 package tp4.fliter;
 
 import java.io.IOException;
+import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -9,18 +10,20 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
+import tp4.service.AuthenticationService;
 
 /**
- * Servlet Filter implementation class DenialFilter
+ * Servlet Filter implementation class OpFilter
  */
-@WebFilter("/DenialFilter")
-public class DenialFilter implements Filter {
+@WebFilter(dispatcherTypes = {DispatcherType.REQUEST }
+					, urlPatterns = { "/op/*", "/main" })
+public class OpFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public DenialFilter() {
+    public OpFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -35,13 +38,22 @@ public class DenialFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
-
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse rep = (HttpServletResponse) response;
+		String userId = (String) req.getSession().getAttribute("userId");
 		
-		rep.sendRedirect(req.getContextPath());
+		if (null == userId) {
+			req.setAttribute("err_msg",  "请先登录");
+			req.getRequestDispatcher("/login").forward(request, response);
+			return;
+		}
+		
+		AuthenticationService as = new AuthenticationService();
+		if (as.accept(userId, AuthenticationService.OP_ACESS)) {
+			chain.doFilter(request, response);
+		} else {
+			req.setAttribute("err_msg",  "没有足够的权限访问该页面");
+			req.getRequestDispatcher("/err.jsp").forward(request, response);
+		}
 	}
 
 	/**

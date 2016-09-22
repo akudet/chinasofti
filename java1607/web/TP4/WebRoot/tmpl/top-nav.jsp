@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*,tp4.model.vo.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <div  style="color:#ACD6FF" class="navbar navbar-default" role="navigation">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -15,9 +17,6 @@
 		<ul id="main-menu" class="nav navbar-nav navbar-right">
 			<li class="dropdown hidden-xs">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;">
-					</span>设置中心
-					<i class="fa fa-caret-down"></i>
 				</a>
 
 				<ul class="dropdown-menu">
@@ -30,6 +29,9 @@
                	 <li class="divider"></li>
                 	<li><a tabindex="-1" href="sign-in.html">Logout</a></li>
 				</ul>
+			</li>
+			<li>
+			<a href="${logoutUrl}">登出</a>
 			</li>
 		</ul>
 

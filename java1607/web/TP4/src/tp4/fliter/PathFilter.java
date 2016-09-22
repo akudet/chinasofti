@@ -10,6 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
+import tp4.servlet.LogoutServlet;
 import tp4.servlet.admin.AdminServlet;
 import tp4.servlet.admin.CusTypeServlet;
 import tp4.servlet.admin.RoomServlet;
@@ -50,6 +51,8 @@ public class PathFilter implements Filter {
 		
 		HttpServletRequest req = (HttpServletRequest) request;
 		String path = req.getContextPath();
+		
+		request.setAttribute("logoutUrl", path + LogoutServlet.SERVLET_URL);
 		
 		request.setAttribute("adminUrl", path + AdminServlet.SERVLET_URL);
 		request.setAttribute("opUrl", path + OpServlet.SERVLET_URL);

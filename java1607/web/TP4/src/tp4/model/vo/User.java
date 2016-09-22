@@ -13,7 +13,10 @@ public class User extends VirtualObject {
 	protected String userName;
 	protected String userPass;
 	protected int privilege;
-
+	
+	public static int ADMIN_PRIVILEGE = 0;
+	public static int OP_PRIVILEGE = 1;
+	
 	public User() {
 
 	}
