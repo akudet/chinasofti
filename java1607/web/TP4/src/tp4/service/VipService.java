@@ -59,7 +59,6 @@ public class VipService {
 	}
 
 	public Vip findById(String vipNumber) {
-		Integer.parseInt(vipNumber);
 		return mVipDao.findById(vipNumber);
 	}
 

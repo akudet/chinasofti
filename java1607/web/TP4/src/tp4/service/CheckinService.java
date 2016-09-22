@@ -157,7 +157,7 @@ public class CheckinService {
 	
 	//查询所有可以续住的房间
 	public List<Checkin> findAllRenew(){
-		return mCheckinDao.findAll(Checkin.UNCHECK, RoomType.NORMAL_ROOM);
+		return mCheckinDao.findAll(RoomType.NORMAL_ROOM, Checkin.UNCHECK);
 	}
 
 	public List<Checkin> findByCus(String name, String roomId,

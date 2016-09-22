@@ -35,10 +35,10 @@ public class VipServlet extends CRUDServlet {
 	}
 
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String vipNumber = req.getParameter("vipNo");
-		String name = req.getParameter("name");
+		String vipNumber = request.getParameter("vipNo");
+		String name = request.getParameter("name");
 		
 		if (null != vipNumber) {
 			VipService vs = new VipService();
@@ -46,7 +46,7 @@ public class VipServlet extends CRUDServlet {
 			if (vip != null) {
 				List<Vip> vips = new ArrayList<Vip>();
 				vips.add(vip);
-				req.setAttribute("vips", vips);
+				request.setAttribute("vips", vips);
 			}
 		} else if (null != name) {
 			VipService vs = new VipService();
@@ -54,14 +54,34 @@ public class VipServlet extends CRUDServlet {
 			if (vip != null) {
 				List<Vip> vips = new ArrayList<Vip>();
 				vips.add(vip);
-				req.setAttribute("vips", vips);
+				request.setAttribute("vips", vips);
 			}
 		}else{
 			VipDao dao = new VipDao();
-			req.setAttribute("vips", dao.findAll());
+			request.setAttribute("vips", dao.findAll());
 		}
 		
-		req.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(req, resp);
+		VipService vs = new VipService();
+		if (request.getParameter("vip_no") != null) {
+			Vip vip = vs.findById(request.getParameter("vip_no"));
+			
+
+			 response.setContentType("text/xml;charset=utf-8");
+			 PrintWriter out = response.getWriter();  
+			 response.setHeader("Cache-Control","no-cache");
+			     out.println("<?xml version='1.0' encoding='"+"utf-8"+"' ?>");
+					if (null != vip) {
+						 out.println(vip.toXML());
+					} else {
+						out.println("<ERROR>not found</ERROR>");
+					}
+			    
+			     out.close();
+		} else {
+			request.getRequestDispatcher(TEMPLATE_URL+"/index.jsp").forward(request, response);
+		}
+
+		
 
 	}
 

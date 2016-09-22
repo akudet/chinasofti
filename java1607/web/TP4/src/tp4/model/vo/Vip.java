@@ -68,6 +68,17 @@ public class Vip extends VirtualObject {
 	}
 
 	@Override
+	public String toXML() {
+		String xml = "<vip>" + "<vip_no>" + getVipNo() + "</vip_no>" + "<name>"
+				+ getName() + "</name>" + "<sex>" + getSex() + "</sex>"
+				+ "<cert_number>" + getCertNo() + "</cert_number>"
+				+ "<address>" + getAddress() + "</address>" + "<comment>"
+				+ getComment() + "</comment>" + "</vip>";
+		return xml;
+
+	}
+
+	@Override
 	public String toString() {
 		return "Vip [vipNumber=" + vipNo + ", cusInformation=" + cusInfo + "]";
 	}
