@@ -11,6 +11,7 @@ import tp4.model.dao.CusTypeDao;
 import tp4.model.dao.RoomDao;
 import tp4.model.dao.VipDao;
 import tp4.model.vo.Checkin;
+import tp4.model.vo.Checkout;
 import tp4.model.vo.CusInfo;
 import tp4.model.vo.CusType;
 import tp4.model.vo.Room;
@@ -153,9 +154,10 @@ public class CheckinService {
 
 	}
 	
+	
 	//查询所有可以续住的房间
 	public List<Checkin> findAllRenew(){
-		return mCheckinDao.findAllRenew();
+		return mCheckinDao.findAll(Checkin.UNCHECK, RoomType.NORMAL_ROOM);
 	}
 
 	public List<Checkin> findByCus(String name, String roomId,
@@ -165,5 +167,13 @@ public class CheckinService {
 
 	public List<Room> findFreeRooms(String roomTypeNo) {
 		return mRoomDao.findFreeRoom(roomTypeNo);
+	}
+
+	public List<Checkin> findAllUncheck() {
+		return mCheckinDao.findByStatus(Checkin.UNCHECK);
+	}
+	
+	public List<Checkin> findAllChecked() {
+		return mCheckinDao.findByStatus(Checkin.CHECKED);
 	}
 }

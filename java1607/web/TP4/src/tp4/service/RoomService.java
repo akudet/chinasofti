@@ -95,4 +95,9 @@ public class RoomService {
 		return mRoomDao.findById(roomId);
 	}
 
+	public List<Room> findAllFreeRooms() {
+		List<Room> rooms = mRoomDao.findByRoomStatus(Room.ROOM_STATUS_FREE);
+		return rooms;
+	}
+
 }

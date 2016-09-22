@@ -296,5 +296,31 @@ public class RoomDao extends DAO<Room>{
 			return null;
 
 		}
+
+	public List<Room> findByRoomStatus(int status) {
+		Connection con = DBConnection.getConnection();
+		PreparedStatement pre = null;
+		ResultSet rs = null;
+		
+		List<Room> rooms = new ArrayList<Room>();
+		String sql = "select * from room where status=?";
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, status);
+			System.out.println(pre);
+			rs = pre.executeQuery();
+			while (rs.next()) {
+				Room room = new Room();
+				room.map(rs);
+				room.setRoomType(new RoomTypeDao().findById(rs.getInt("room_type_no")));
+				rooms.add(room);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rooms;
+
+	}
 	
 }

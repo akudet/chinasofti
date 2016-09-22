@@ -5,6 +5,7 @@ import java.util.*;
 import tp4.model.dao.CusInfoDao;
 import tp4.model.dao.CusTypeDao;
 import tp4.model.dao.VipDao;
+import tp4.model.vo.Checkin;
 import tp4.model.vo.CusInfo;
 import tp4.model.vo.CusType;
 import tp4.model.vo.Room;
@@ -75,5 +76,9 @@ public class VipService {
 		cusInfo.setComment(comment);
 		return mCusInfoDao.update(cusInfo, cusInfo.getCusType().getCusTypeNo());
 
+	}
+
+	public List<Vip> findAll() {
+		return mVipDao.findAll();
 	}
 }

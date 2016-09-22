@@ -236,9 +236,8 @@ public class CheckinDao extends DAO<Checkin> {
 		}
 		return 0;
 	}
-
-	//checkin表查询所有可续住房间
-	public List<Checkin> findAllRenew(){
+	
+	public List<Checkin> findAll(int checkinType, int status) {
 		Connection con = DBConnection.getConnection();
 		String sql = "select * from checkin where checkin_type = ? and status = ?";
 		PreparedStatement pre = null;
@@ -246,8 +245,8 @@ public class CheckinDao extends DAO<Checkin> {
 		List<Checkin> list = new ArrayList<Checkin>();
 		try {
 			pre = con.prepareStatement(sql);
-			pre.setInt(1, RoomType.NORMAL_ROOM);
-			pre.setInt(2, Checkin.UNCHECK);
+			pre.setInt(1, checkinType);
+			pre.setInt(2, status);
 			res = pre.executeQuery();
 			while(res.next()){
 				CusInfoDao dao = new CusInfoDao();
@@ -302,6 +301,37 @@ public class CheckinDao extends DAO<Checkin> {
 			e.printStackTrace();
 		}finally{
 			DBConnection.close(con, pre, res);
+		}
+		return null;
+	}
+
+	public List<Checkin> findByStatus(int status) {
+		Connection con = DBConnection.getConnection();
+		String sql = "select * from checkin where status = ?";
+		PreparedStatement pre = null;
+		ResultSet res = null;
+		List<Checkin> list = new ArrayList<Checkin>();
+		try {
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, status);
+			res = pre.executeQuery();
+			while(res.next()){
+				CusInfoDao dao = new CusInfoDao();
+				RoomDao dao1 = new RoomDao();
+				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
+				Room room = dao1.findById(res.getString("room_id"));
+				
+				Checkin checkin = new Checkin();
+				checkin.map(res);
+				checkin.setCusInfo(cusinfo);
+				checkin.setRoom(room);
+				
+				list.add(checkin);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;
 	}

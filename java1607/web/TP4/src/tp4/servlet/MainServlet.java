@@ -29,11 +29,18 @@ public class MainServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		CheckStatisticService statService = new CheckStatisticService();
+		CheckinService cis = new CheckinService();
+		RoomService rs = new RoomService();
+		VipService vs = new VipService();
 		
-		String path = request.getContextPath();
-		
-		int checkinCount = new CheckinService().findAll().size();
+		int checkinCount = cis.findAllUncheck().size();
 		int checkoutCount = new CheckoutService().findAll().size();
+		
+		int t = cis.findAllChecked().size();
+		if (t != checkoutCount) {
+			System.out.println("REP INVAR CHECK FAILED");
+		}
+		
 		int checkCount = checkinCount + checkoutCount;
 		
 		request.setAttribute("labels", statService.getLabels());
@@ -41,8 +48,8 @@ public class MainServlet extends HttpServlet {
 		request.setAttribute("checkoutStats", statService.getCheckoutStatistics());
 		
 		request.setAttribute("checkinCount", checkinCount);
-		request.setAttribute("freeRoomCount", new RoomDao().findAll().size());
-		request.setAttribute("vipCount", new VipDao().findAll().size());
+		request.setAttribute("freeRoomCount", rs.findAllFreeRooms().size());
+		request.setAttribute("vipCount", vs.findAll().size());
 		request.setAttribute("checkCount", checkCount);
 		
 		request.getRequestDispatcher(TEMPLATE_URL + "/index.jsp").forward(request, response);
