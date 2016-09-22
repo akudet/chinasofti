@@ -100,4 +100,9 @@ public class RoomService {
 		return rooms;
 	}
 
+	public List<Room> findPage(String pageNo) {
+		// TODO Auto-generated method stub
+		return mRoomDao.findAll(Integer.parseInt(pageNo));
+	}
+
 }

@@ -46,7 +46,11 @@ public class RoomServlet extends CRUDServlet {
 		RoomService rs = new RoomService();
 		String roomTypeNo = request.getParameter("roomTypeNo");
 		
-		if (roomTypeNo != null) {
+		String pageNo = request.getParameter("pageNo");
+		
+		if (pageNo != null) {
+			request.setAttribute("rooms", rs.findPage(pageNo));
+		} else if (roomTypeNo != null) {
 			request.setAttribute("rooms", rs.findAllByTypeNo(roomTypeNo));
 		} else {
 			request.setAttribute("rooms", rs.findAll());

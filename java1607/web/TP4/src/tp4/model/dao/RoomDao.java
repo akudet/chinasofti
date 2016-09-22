@@ -28,7 +28,7 @@ public class RoomDao extends DAO<Room>{
 		PreparedStatement pre = null;
 		ResultSet res = null;
 		List<Room> list = new ArrayList<Room>();
-		String sql = "selcet * from room limit ?,?";
+		String sql = "select * from room limit ?,?";
 	
 	try {
 		con = DBConnection.getConnection();

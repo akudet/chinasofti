@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'edit.jsp' starting page</title>
+    <title>修改房间信息</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="col-sm-12 col-lg-10 sidebar">
 	<%@include file="../admin-nav.jsp"%>
 	<div class="panel">
-	<div class="panel-heading">修改用户</div>
+	<div class="panel-heading">修改房间信息</div>
 			<div class="panel-body">
     <form action="/TP4/admin/room/" method="POST">
     <input type="hidden" name="PUT">
