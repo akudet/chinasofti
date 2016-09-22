@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import tp4.model.dao.RoomDao;
 import tp4.model.dao.VipDao;
+import tp4.model.vo.Room;
 import tp4.service.CheckStatisticService;
 import tp4.service.CheckinService;
 import tp4.service.CheckoutService;
@@ -42,6 +43,20 @@ public class MainServlet extends HttpServlet {
 		}
 		
 		int checkCount = checkinCount + checkoutCount;
+		
+		RoomDao rd = new RoomDao();
+		
+		int freeCount = rd.findByRoomStatus(Room.ROOM_STATUS_FREE).size();
+		int inuseCount = rd.findByRoomStatus(Room.ROOM_STATUS_INUSE).size();
+		int reservedCount = rd.findByRoomStatus(Room.ROOM_STATUS_RESERVED).size();
+		int blockedCount = rd.findByRoomStatus(Room.ROOM_STATUS_BLOCKED).size();
+		int totalCount = freeCount + inuseCount + reservedCount + blockedCount;
+		
+		request.setAttribute("freeCount", freeCount);
+		request.setAttribute("inuseCount", inuseCount);
+		request.setAttribute("reservedCount", reservedCount);
+		request.setAttribute("blockedCount", blockedCount );
+		request.setAttribute("totalCount", totalCount );
 		
 		request.setAttribute("labels", statService.getLabels());
 		request.setAttribute("checkinStats", statService.getCheckinStatistics());

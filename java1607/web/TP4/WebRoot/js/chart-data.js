@@ -6,6 +6,4 @@ window.onload = function(){
 	window.myLine = new Chart(chart1).Line(lineChartData, {
 		responsive: true
 	});
-
-	
 };
