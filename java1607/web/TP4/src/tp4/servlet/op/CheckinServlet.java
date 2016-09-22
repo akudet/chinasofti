@@ -102,8 +102,11 @@ public class CheckinServlet extends CRUDServlet {
 		cusInfo.setCertNumber(request.getParameter("certNumber"));
 		cusInfo.setAddress(request.getParameter("address"));
 		cusInfo.setComment(request.getParameter("comment"));
-		Checkin checkin = service.checkin(request.getParameter("roomId"),
-				cusInfo, request.getParameter("checkinType"),
+		Checkin checkin = service.checkin(
+				request.getParameter("roomId"),
+				cusInfo,
+				request.getParameter("vipNo"),
+				request.getParameter("checkinType"),
 				request.getParameter("numOfDays"),
 				request.getParameter("deposit"));
 		request.setAttribute("checkin", checkin);

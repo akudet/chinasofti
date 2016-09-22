@@ -58,4 +58,8 @@ public class CusType extends VirtualObject {
 		this.discount = discount;
 	}
 
+	public boolean isVip() {
+		return cusTypeNo == VIP_CUS_TYPE_NO;
+	}
+
 }

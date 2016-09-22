@@ -138,4 +138,8 @@ public class CusInfo extends VirtualObject {
 		this.sex = sex;
 	}
 
+	public boolean isVip() {
+		return cusType.isVip();
+	}
+
 }

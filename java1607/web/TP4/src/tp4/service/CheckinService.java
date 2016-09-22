@@ -9,11 +9,13 @@ import tp4.model.dao.CheckinDao;
 import tp4.model.dao.CusInfoDao;
 import tp4.model.dao.CusTypeDao;
 import tp4.model.dao.RoomDao;
+import tp4.model.dao.VipDao;
 import tp4.model.vo.Checkin;
 import tp4.model.vo.CusInfo;
 import tp4.model.vo.CusType;
 import tp4.model.vo.Room;
 import tp4.model.vo.RoomType;
+import tp4.model.vo.Vip;
 
 /**
  * 
@@ -26,6 +28,7 @@ public class CheckinService {
 	private final CusInfoDao mCusInfoDao;
 	private final RoomDao mRoomDao;
 	final float EPSILON = 0.005f;
+	private final VipDao mVipDao;
 
 
 	// 参考 2.3 开设房间
@@ -35,6 +38,7 @@ public class CheckinService {
 		this.mCheckinDao = new CheckinDao();
 		this.mCusInfoDao = new CusInfoDao();
 		this.mRoomDao = new RoomDao();
+		this.mVipDao = new VipDao();
 	}
 	
 	private float getPrice(RoomType roomType, CusType cusType, int chargeType) {
@@ -54,7 +58,7 @@ public class CheckinService {
 	}
 
 	// 办理入住
-	public Checkin checkin(String roomId, CusInfo cusInfo,
+	public Checkin checkin(String roomId, CusInfo cusInfo, String vip_no, 
 			String checkin_type_no, String num_of_days, String deposit) {
 		
 		Room room = mRoomDao.findById(roomId);
@@ -66,6 +70,14 @@ public class CheckinService {
 		
 		Checkin checkin = new Checkin();
 		Date now = new Date();
+		
+		if (cusInfo.isVip() && vip_no != null && !vip_no.equals("")) {
+			Vip vip = mVipDao.findById(vip_no);
+			if (null == vip) {
+				throw new CheckinServiceException("会员编号：" + vip_no + "不存在");
+			}
+			cusInfo = vip.getCusInfo();
+		}
 		
 		checkin.setCheckinId("in" + new SimpleDateFormat("yyyyMMddHHmmss").format(now));
 		checkin.setRoom(room);
