@@ -12,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'new.jsp' starting page</title>
+<title>新增预定</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">

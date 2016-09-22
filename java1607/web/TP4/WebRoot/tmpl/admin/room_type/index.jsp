@@ -13,7 +13,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'index.jsp' starting page</title>
+<title>房间类型管理</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">

@@ -12,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 <%@include file="../../include.jsp"%>
-<title>My JSP 'edit.jsp' starting page</title>
+<title>修改操作员</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">

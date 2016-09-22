@@ -5,7 +5,7 @@
 <html>
   <head>
     
-    <title>My JSP 'edit.jsp' stareservationing page</title>
+    <title>修改预定</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">

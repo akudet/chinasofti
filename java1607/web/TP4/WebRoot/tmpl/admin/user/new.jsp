@@ -12,7 +12,7 @@
 <base href="<%=basePath%>">
 <%@include file="../../include.jsp"%>
 
-<title>My JSP 'new.jsp' starting page</title>
+<title>新增操作员</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
