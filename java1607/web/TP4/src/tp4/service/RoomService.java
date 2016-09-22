@@ -105,4 +105,8 @@ public class RoomService {
 		return mRoomDao.findAll(Integer.parseInt(pageNo));
 	}
 
+	public int getTotalPages() {
+		return mRoomDao.getTotalPage();
+	}
+
 }

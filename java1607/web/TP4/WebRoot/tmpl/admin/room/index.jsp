@@ -41,28 +41,39 @@
 
 			<div class="panel-body">
 				<%@ include file="rooms.jsp"%>
-		<c:if test="${param.pageNo==1}">
-			<a>首页</a>
-			<a>上一页</a>
-		</c:if>
-		<c:if test="${param.pageNo !=1}">
-			<a href="${roomUrl}?pageNo=1">首页</a>
-			<a href="${roomUrl}?pageNo=${param.pageNo-1}">上一页</a>
-		</c:if>
-		<% Object o = request.getAttribute("totalPage");%>
-		<% Integer i = 0; %>
-		<% for(int j = 0 ; j<i; j++) {%>
-		<a href="${roomUrl}?pageNo=<%=j+1%>"><%=j+1%></a>
-  		<%}%>
-  		<c:if test="${param.pageNo == requestScope.totalPage }">
-  			<a>下一页</a>
-  			<a>尾页</a>
-  		</c:if>
-  		<c:if test="${param.pageNo != requestScope.totalPage }">
-  			<a href = "${roomUrl}?pageNo=${param.pageNo+1}">下一页</a>
-  			<a href = "${roomUrl}?pageNo=${requestScope.totalPage }">尾页</a>
-  		</c:if>
-  		<p>当前第${param.pageNo}页  总共${requestScope.totalPage}页</p> 
+
+				<c:if test="${param.pageNo != null }">
+					<c:if test="${param.pageNo==1}">
+						<a>首页</a>
+						<a>上一页</a>
+					</c:if>
+					<c:if test="${param.pageNo !=1}">
+						<a href="${roomUrl}?pageNo=1">首页</a>
+						<a href="${roomUrl}?pageNo=${param.pageNo-1}">上一页</a>
+					</c:if>
+					<%
+						Object o = request.getAttribute("totalPage");
+					%>
+					<%
+						Integer i = 0;
+					%>
+					<%
+						for (int j = 0; j < i; j++) {
+					%>
+					<a href="${roomUrl}?pageNo=<%=j+1%>"><%=j + 1%></a>
+					<%
+						}
+					%>
+					<c:if test="${param.pageNo == requestScope.totalPage }">
+						<a>下一页</a>
+						<a>尾页</a>
+					</c:if>
+					<c:if test="${param.pageNo != requestScope.totalPage }">
+						<a href="${roomUrl}?pageNo=${param.pageNo+1}">下一页</a>
+						<a href="${roomUrl}?pageNo=${requestScope.totalPage }">尾页</a>
+					</c:if>
+					<p>当前第${param.pageNo}页 总共${requestScope.totalPage}页</p>
+				</c:if>
 			</div>
 		</div>
 	</div>
