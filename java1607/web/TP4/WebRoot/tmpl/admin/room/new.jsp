@@ -37,13 +37,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	&nbsp;<input class="form-control"type="text" name="roomId"/><br>
     	 <label class="control-label" for="inputSuccess1"> 房间类型：</label>
     	<select class="form-control" name="roomTypeNo">
-    			<option value="0" selected="selected">标准单人间</option>
-    			<option value="1">标准双人间</option>
-    			<option value="2">豪华单人间</option>
-    			<option value="3">豪华双人间</option>
-    			<option value="4">商务套房</option>
-    			<option value="5">总统套房</option>
-    			</select><br>
+    		<c:forEach items="${roomTypes }" var="roomType">
+    			<option value="${roomType.roomTypeNo }">${roomType.roomTypeDesc }</option>
+    		</c:forEach>
+    	</select><br>
     		<label class="control-label" for="inputSuccess1"> 房间楼层：</label>
     	<input class="form-control"type="text" name="floor"/><br>
     	    <label class="control-label" for="inputSuccess1"> 房间电话：</label>

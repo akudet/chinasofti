@@ -125,6 +125,9 @@ public class RoomServlet extends CRUDServlet {
 	@Override
 	public void getNew(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RoomTypeService rts = new RoomTypeService();
+		List<RoomType> roomTypes = rts.findAll();
+		request.setAttribute("roomTypes", roomTypes);
 		request.getRequestDispatcher(
 				TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
 				response);
