@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50096
 File Encoding         : 65001
 
-Date: 2016-09-11 09:05:30
+Date: 2016-09-22 16:56:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,11 +22,12 @@ CREATE TABLE `checkin` (
   `checkin_id` varchar(32) NOT NULL,
   `room_id` varchar(64) NOT NULL,
   `cus_info_id` varchar(64) NOT NULL,
-  `checkin_time` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
+  `checkin_time` timestamp NOT NULL default '0000-00-00 00:00:00',
   `checkin_type` varchar(16) NOT NULL,
   `price` float NOT NULL,
   `num_of_days` int(11) NOT NULL,
   `deposit` float NOT NULL,
+  `status` int(11) default NULL,
   PRIMARY KEY  (`checkin_id`),
   KEY `fk_room_id` (`room_id`),
   KEY `fk_cus_info_id` (`cus_info_id`),
@@ -37,6 +38,19 @@ CREATE TABLE `checkin` (
 -- ----------------------------
 -- Records of checkin
 -- ----------------------------
+INSERT INTO `checkin` VALUES ('in20160921034322', '1000', '30c3e414cfc140c990163546b0b2c375', '2016-09-21 03:43:22', '1', '10', '123', '12312', '1');
+INSERT INTO `checkin` VALUES ('in20160921034419', '1000', '4cf6091d6484426b828bc827f85fae0b', '2016-09-21 03:44:19', '1', '10', '33', '12324', '1');
+INSERT INTO `checkin` VALUES ('in20160921043655', '1000', '3043210d8b494ec794f3f1be520cc62c', '2016-09-21 04:36:55', '1', '10', '123', '12312', '1');
+INSERT INTO `checkin` VALUES ('in20160922085315', '1000', 'ed617d267fd340498cff503fd9b41bcb', '2016-09-22 08:53:15', '1', '4.9', '12', '1221', '1');
+INSERT INTO `checkin` VALUES ('in20160922085536', '1000', 'ed617d267fd340498cff503fd9b41bcb', '2016-09-22 08:55:36', '1', '4.9', '10', '1111', '1');
+INSERT INTO `checkin` VALUES ('in20160922085859', '1000', 'ed617d267fd340498cff503fd9b41bcb', '2016-09-22 08:58:59', '1', '4.9', '10', '1111', '1');
+INSERT INTO `checkin` VALUES ('in20160922085921', '1000', '904272d3554f4584a48ab949cc38c20f', '2016-09-22 08:59:21', '1', '10', '10', '1111', '1');
+INSERT INTO `checkin` VALUES ('in20160922085929', '1000', 'ed617d267fd340498cff503fd9b41bcb', '2016-09-22 08:59:29', '1', '4.9', '10', '1111', '1');
+INSERT INTO `checkin` VALUES ('in20160922125637', '111', 'ed617d267fd340498cff503fd9b41bcb', '2016-09-22 12:56:37', '1', '4.9', '10', '120', '1');
+INSERT INTO `checkin` VALUES ('in20160922133203', '1000', 'ed617d267fd340498cff503fd9b41bcb', '2016-09-22 13:32:03', '1', '4.9', '10', '1000', '0');
+INSERT INTO `checkin` VALUES ('in20160922142859', '222', 'ed617d267fd340498cff503fd9b41bcb', '2016-09-22 14:28:59', '0', '140', '12', '700', '1');
+INSERT INTO `checkin` VALUES ('in20160922143524', '22211', 'ed617d267fd340498cff503fd9b41bcb', '2016-09-22 14:35:24', '1', '35', '10', '1000', '0');
+INSERT INTO `checkin` VALUES ('in20160922143623', '100044', 'ed617d267fd340498cff503fd9b41bcb', '2016-09-22 14:36:23', '1', '35', '10', '1000', '0');
 
 -- ----------------------------
 -- Table structure for `checkout`
@@ -56,10 +70,16 @@ CREATE TABLE `checkout` (
 -- ----------------------------
 -- Records of checkout
 -- ----------------------------
-INSERT INTO `checkout` VALUES ('out20160911022035', '120', '2016-09-11 02:20:35', 'qwqwqw', null);
-INSERT INTO `checkout` VALUES ('out20160911023652', '120', '2016-09-11 02:36:52', 'qwqwqw', null);
-INSERT INTO `checkout` VALUES ('out20160911023702', '120', '2016-09-11 02:37:02', 'qwqwqw', null);
-INSERT INTO `checkout` VALUES ('out20160911042022', '120', '2016-09-11 04:20:22', 'qwqwqw', null);
+INSERT INTO `checkout` VALUES ('out20160921034346', '120', '2016-09-21 15:43:46', '0', 'in20160921034322');
+INSERT INTO `checkout` VALUES ('out20160921042132', '125', '2016-09-21 16:21:32', '10', 'in20160921034419');
+INSERT INTO `checkout` VALUES ('out20160922033954', '140', '2016-09-22 15:39:54', '0', 'in20160922142859');
+INSERT INTO `checkout` VALUES ('out20160922035540', '14.7', '2016-09-22 15:55:40', '211', 'in20160922125637');
+INSERT INTO `checkout` VALUES ('out20160922085222', '285', '2016-09-22 08:52:22', '1', 'in20160921043655');
+INSERT INTO `checkout` VALUES ('out20160922085433', '0', '2016-09-22 08:54:33', '0', 'in20160922085315');
+INSERT INTO `checkout` VALUES ('out20160922085943', '0', '2016-09-22 08:59:43', '1', 'in20160922085536');
+INSERT INTO `checkout` VALUES ('out20160922085947', '0', '2016-09-22 08:59:47', '1', 'in20160922085859');
+INSERT INTO `checkout` VALUES ('out20160922085951', '0', '2016-09-22 08:59:51', '1', 'in20160922085921');
+INSERT INTO `checkout` VALUES ('out20160922085957', '0', '2016-09-22 08:59:57', '1', 'in20160922085929');
 
 -- ----------------------------
 -- Table structure for `cus_info`
@@ -84,16 +104,14 @@ CREATE TABLE `cus_info` (
 -- ----------------------------
 -- Records of cus_info
 -- ----------------------------
-INSERT INTO `cus_info` VALUES ('08dafe8f082b4bf49e7cdfeaaf978e82', '军官证', '6jzplgqyijils1vqaisb2ximxsw', '4', 'h6v3yyyc5j1', 'l121l7ulb4lmxd3uikw0gwgqurj', '女', '1', '1svh69gp7ct1lhaj8');
-INSERT INTO `cus_info` VALUES ('3ac35bbf27cb4204ae2c832c9a9e3a5d', '护照', '7qdsso0qpqt5783k1', '3', 'gm4hwpnyeh7m', 'ib0tvg1egatpzcpm40kihpo', '男', '1', 'ze2j2ev9b2fck85fvj');
-INSERT INTO `cus_info` VALUES ('59fcdaf3447d425184b87b0d8265305a', '护照', 'wkicifb8qncpquur1', 'f6', '6624xnd7vtf1', 'mpz3dueqjeno0grcirdwsdydd', '女', '1', 'udrokdak41er9');
-INSERT INTO `cus_info` VALUES ('6f74756ea2ef47a19a5d233a57d25c0a', '身份证', 'exjxed1nlqa2lms2vwlg0oo', '94', 'twwkoegzp1iv', '9ft8zyrutcyh24vrfruzrwngkiqj', '女', '1', 'op6sfn4fjfhp3scqs');
-INSERT INTO `cus_info` VALUES ('7b4cd8b19299482994efa4b4a84375f0', '其他', '9o2oym9id1859fd8zda1', 'sd', 'l616bf45ja4h', '49gvlshvfbufbta12lbh8', '男', '1', 'rht3tuaiiztwf');
-INSERT INTO `cus_info` VALUES ('97fe082547824ea490b1905889022adc', '其他', 'brst52uywiqiytcc3r6qi5cjb8', '5', '0hw7s29rr0ph', 'd2ywg4kru60gowgjthl6tu38', '女', '1', 'gyqpzwa8zvij');
-INSERT INTO `cus_info` VALUES ('b998ad847b354c7393dff14c3a135537', '军官证', 'riyv2ul3', 'w', 'xzhl17zoqup', 'rgpppltxl2v1oq87d4hmq7uvjai5b', '男', '1', 'xheatp3sypo2l3');
-INSERT INTO `cus_info` VALUES ('e7bd749546924285adf0dd06f83c396c', '身份证', '1nu2tenl55qjeefxj07', 'jx', 'zokca8br57v', 'jobno5w82z4vhfenrmpn3rbptebek', '女', '1', 'e85l1vkhwr26');
-INSERT INTO `cus_info` VALUES ('efbea955e2434519862e8523711d12fb', '身份证', 'o1gnfxgqf1xe', 'm', '7qvnklcbarn', 'ex4y3ngls125w3vr7v0sxgm2bomdt', '男', '1', '6krx0g0odyhy');
-INSERT INTO `cus_info` VALUES ('fe3d307141034030af6ff14f1df38749', '军官证', 'im6jjviwl0pce1bw4du4', '4', '93djand18sm', 'ajvinw9buxfh8tzuozsz1sthi', '男', '1', 'oia0g7m8dkddqk8');
+INSERT INTO `cus_info` VALUES ('0064405e4f434ffa9a194ace5f974743', '11', '11', '111             ', null, '11', '111', '0', '11');
+INSERT INTO `cus_info` VALUES ('3043210d8b494ec794f3f1be520cc62c', '123', '123', '-', null, '123', '213', '0', '123');
+INSERT INTO `cus_info` VALUES ('30c3e414cfc140c990163546b0b2c375', '123', '123', '123', null, '123', '213', '0', '123');
+INSERT INTO `cus_info` VALUES ('4cf6091d6484426b828bc827f85fae0b', '123', 'xxx', '123', null, 'xxx', '123', '0', 'xxx');
+INSERT INTO `cus_info` VALUES ('904272d3554f4584a48ab949cc38c20f', '身份证', '', '', null, '', '男', '0', '');
+INSERT INTO `cus_info` VALUES ('ed617d267fd340498cff503fd9b41bcb', '身份证', 'XXXX', '巫金桐', '17768100357', '重庆市璧山县', '男(men)', '1', '1221');
+INSERT INTO `cus_info` VALUES ('f070f9f160b5496db44ab463852b9c43', '777', '777', '巫金桐', '', '777', '男', '0', '777');
+INSERT INTO `cus_info` VALUES ('fe9698eff91440a2ba3c7aa94f39d31f', '身份证', '123123', '12', '12', '1231212', '男', '1', '121');
 
 -- ----------------------------
 -- Table structure for `cus_type`
@@ -109,11 +127,11 @@ CREATE TABLE `cus_type` (
 -- ----------------------------
 -- Records of cus_type
 -- ----------------------------
-INSERT INTO `cus_type` VALUES ('0', '普通客户', '10');
-INSERT INTO `cus_type` VALUES ('1', '会员', '5');
-INSERT INTO `cus_type` VALUES ('2', '团体组织', '7');
-INSERT INTO `cus_type` VALUES ('3', '内部人事', '5');
-INSERT INTO `cus_type` VALUES ('4', '协议单位', '10');
+INSERT INTO `cus_type` VALUES ('0', '普通用户', '10');
+INSERT INTO `cus_type` VALUES ('1', '会员', '7');
+INSERT INTO `cus_type` VALUES ('2', '团队组织', '5');
+INSERT INTO `cus_type` VALUES ('3', '内部人事', '7');
+INSERT INTO `cus_type` VALUES ('5', '协议单位', '9');
 
 -- ----------------------------
 -- Table structure for `reservation`
@@ -124,11 +142,10 @@ CREATE TABLE `reservation` (
   `name` varchar(16) NOT NULL,
   `phone` varchar(16) NOT NULL,
   `arrive_time` datetime NOT NULL,
-  `reserve_time` time NOT NULL,
-  `reservation_time` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
+  `reserve_time` datetime NOT NULL,
+  `reservation_time` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   `comment` text,
   `room_id` varchar(64) default NULL,
-  `status` int(11) NOT NULL,
   PRIMARY KEY  (`reservation_id`),
   KEY `reservation_ibfk_1` (`room_id`),
   CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `room` (`room_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -137,6 +154,7 @@ CREATE TABLE `reservation` (
 -- ----------------------------
 -- Records of reservation
 -- ----------------------------
+INSERT INTO `reservation` VALUES ('d86eb46cd97d4a79a6eaad3bbf82c008', '1231123', '213', '2016-09-23 00:00:00', '2016-09-23 10:00:00', '2016-09-22 20:55:00', '', '122121');
 
 -- ----------------------------
 -- Table structure for `room`
@@ -157,21 +175,13 @@ CREATE TABLE `room` (
 -- ----------------------------
 -- Records of room
 -- ----------------------------
-INSERT INTO `room` VALUES ('2083997c1923475892c192306e351ca0', '1', '15', '92109534879', '0', 'znf1wda75vte');
-INSERT INTO `room` VALUES ('20e38d2839ed485e88f007fb4d153fbb', '1', '2', '96897699271', '0', 'jomk04kuhsxa9');
-INSERT INTO `room` VALUES ('449d8c72d0674bc09f6f5358259ee59c', '1', '11', '86601468449', '0', '26m77a91lpa9au01zqv');
-INSERT INTO `room` VALUES ('4f4c5ae8024d45bea8e0c4161e2fc6e5', '1', '10', '60169079764', '0', 'ibyukmvrb8q7');
-INSERT INTO `room` VALUES ('53005a0dff874953883e1820dfa8471d', '1', '13', '38187361974', '0', 'zunhgyz42ittf');
-INSERT INTO `room` VALUES ('5f375c224ebd48e38ad0d4d62acf72b2', '1', '8', '07014587057', '0', 'qw3i9br7c44kvjab');
-INSERT INTO `room` VALUES ('63eb38010264476db24d9d4f47e049a2', '1', '16', '18215632588', '0', 'sp42je1m09c0');
-INSERT INTO `room` VALUES ('645d5563d0e3456f8022f5d28f185c9e', '1', '3', '40930394815', '0', '6u5c4nt9zwe9');
-INSERT INTO `room` VALUES ('6960c2ed24fa454db3b844f6c22e581e', '1', '31', '68348146425', '0', 'qa1josxegm899wogar3t');
-INSERT INTO `room` VALUES ('6bb6669a092643409db255b7d4e5c5d4', '1', '18', '30214134826', '0', 'clwh8qk94g6');
-INSERT INTO `room` VALUES ('7a1adb1fbf514175b731fe183a4a1e59', '1', '25', '17488863567', '0', 'lbshns80n8u248ocqvnbf');
-INSERT INTO `room` VALUES ('a8fe48e50a2248188de2eea3b19c6f9a', '1', '25', '22025684844', '0', '0l086zieose4vjf');
-INSERT INTO `room` VALUES ('aa0afa3e187b48548f75f4a405761b0a', '1', '20', '98916032292', '0', 'muoozhjuhc4awhpkl');
-INSERT INTO `room` VALUES ('ed23854f8d544efa89d63e00a1e650b1', '1', '18', '28298949416', '0', 'p75shp250ztjetd01ghv');
-INSERT INTO `room` VALUES ('f8cb8ee4457f4081923aeaa1c890e398', '1', '30', '24335161088', '0', '199k7hk80mzslkwrmqmfu');
+INSERT INTO `room` VALUES ('1000', '1', '10', '110', '1', '');
+INSERT INTO `room` VALUES ('100044', '1', '45', '45', '1', '45');
+INSERT INTO `room` VALUES ('111', '1', '1212', '12321', '0', '21');
+INSERT INTO `room` VALUES ('122121', '1', '12', '21', '2', '12');
+INSERT INTO `room` VALUES ('21', '4', '1212', '12', '3', '');
+INSERT INTO `room` VALUES ('222', '4', '12', '12312', '0', '');
+INSERT INTO `room` VALUES ('22211', '1', '123', '12312', '1', '');
 
 -- ----------------------------
 -- Table structure for `room_type`
@@ -191,12 +201,12 @@ CREATE TABLE `room_type` (
 -- ----------------------------
 -- Records of room_type
 -- ----------------------------
-INSERT INTO `room_type` VALUES ('0', '标准单人间', '1', '61.2254', '1', '5.0105', 'vol36n1p9hp2f0yowixyq1f22');
-INSERT INTO `room_type` VALUES ('1', '标准双人间', '2', '41.7787', '0', '2.97274', '5qfv3uu58t6x1gpta7q');
-INSERT INTO `room_type` VALUES ('2', '豪华单人间', '3', '31.1571', '1', '5.47802', '6p3bam4e23nt');
-INSERT INTO `room_type` VALUES ('3', '豪华双人间', '2', '90.2562', '0', '2.40963', 'mvtkwiamfyvj1oer');
-INSERT INTO `room_type` VALUES ('4', '商务套房', '1', '63.901', '1', '1.9615', 'enr7ruyk113gx2yeu5wpevvz5h');
-INSERT INTO `room_type` VALUES ('5', '总统套房', '2', '55.5286', '0', '7.63085', 'yxvfoyzedg');
+INSERT INTO `room_type` VALUES ('1', '标准单人间', '2', '50', '0', '10', '');
+INSERT INTO `room_type` VALUES ('2', '标准双人间', '2', '100', '0', '20', '');
+INSERT INTO `room_type` VALUES ('3', '豪华单人间', '1', '150', '0', '20', '');
+INSERT INTO `room_type` VALUES ('4', '豪华双人间', '1', '200', '0', '200', '');
+INSERT INTO `room_type` VALUES ('5', '商务套房', '1', '500', '0', '50', '12312');
+INSERT INTO `room_type` VALUES ('110', '豪华双人gai', '22', '123', '1', '1000', '');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -213,13 +223,9 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1000', 'jtwu', 'jtwu', '0');
-INSERT INTO `user` VALUES ('1001', 'xsj', 'xsj', '0');
-INSERT INTO `user` VALUES ('1002', 'zkl', 'zkl', '0');
-INSERT INTO `user` VALUES ('1003', 'fxz', 'fxz', '0');
-INSERT INTO `user` VALUES ('1004', 'mxw', 'mxw', '0');
-INSERT INTO `user` VALUES ('1005', 'wjt', 'wjt', '0');
-INSERT INTO `user` VALUES ('1006', 'jtwu', 'jtwu', '0');
+INSERT INTO `user` VALUES ('1', 'jt', 'jt', '1');
+INSERT INTO `user` VALUES ('2', 'jtwu', 'jtwu', '0');
+INSERT INTO `user` VALUES ('389179822a264876bc2d9534d0a13d5c', '巫金桐', '123', '0');
 
 -- ----------------------------
 -- Table structure for `vip`
@@ -236,3 +242,5 @@ CREATE TABLE `vip` (
 -- ----------------------------
 -- Records of vip
 -- ----------------------------
+INSERT INTO `vip` VALUES ('1000', 'ed617d267fd340498cff503fd9b41bcb');
+INSERT INTO `vip` VALUES ('12112', 'fe9698eff91440a2ba3c7aa94f39d31f');
