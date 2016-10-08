@@ -4,6 +4,8 @@
 
 <package name="hello" namespace="/msg" extends="struts-default">
 	<action name="hello" class="struts2demo.controller.MsgAction" >
+		<result name="success">/succ.jsp</result>
+		<result name="error">/error.jsp</result>
 	</action>
 </package>
 
