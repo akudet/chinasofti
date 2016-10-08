@@ -2,9 +2,13 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 
-<constant name="strus.action.extension" value="action"></constant>
 <constant name="strus.devMode" value="true">http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-windows-x86-msvc2013-5.7.0.exe</constant>
 
-<include file="./struts2demo/strutsxml/admin.xml"></include>
+<package name="hello" namespace="/msg" extends="struts-default">
+	<action name="hello" class="struts2demo.controller.MsgAction" >
+		<result name="sc">/succ.jsp</result>
+		<result name="er">/error.jsp</result>
+	</action>
+</package>
 
 </struts>    
