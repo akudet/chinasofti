@@ -2,9 +2,10 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 
-<constant name="strus.action.extension" value="action"></constant>
-<constant name="strus.devMode" value="true">http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-windows-x86-msvc2013-5.7.0.exe</constant>
+<constant name="struts.action.extension" value="action"></constant>
+<constant name="struts.devMode" value="true">http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-windows-x86-msvc2013-5.7.0.exe</constant>
 
 <include file="./struts2demo/strutsxml/admin.xml"></include>
+<include file="./struts2demo/strutsxml/user.xml"></include>
 
 </struts>    

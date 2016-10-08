@@ -21,8 +21,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <form action="msg/hello.action" method="get">
-    	<input type="text" name="msg">
+  	${msg }
+    <form action="user/login.action" method="get">
+    	NAME:<input type="text" name="username">
+    	PASS:<input type="text" name="userpass">
     	<input type="submit" value="提交">
     </form>
   </body>
