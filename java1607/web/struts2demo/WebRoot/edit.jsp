@@ -4,13 +4,13 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'edit.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,19 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-  	${msg }
-    <form action="user/login.action" method="get">
+        <form action="user/edit.action" method="get">
+        <input type="hidden" name="id" value="${param.id }">
     	NAME:<input type="text" name="username">
     	<input type="submit" value="提交">
     </form>
-    
-    <ul>
-    <c:forEach items="${users}" var="user">
-    	<li>${user.value} <a href="/struts2demo/edit.jsp?id=${user.value.id }">修改</a></li>
-    </c:forEach>
-    </ul>
   </body>
 </html>

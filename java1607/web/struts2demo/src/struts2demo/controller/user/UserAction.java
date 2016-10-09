@@ -1,6 +1,10 @@
 package struts2demo.controller.user;
 
-public class UserAction {
+import java.util.*;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class UserAction extends ActionSupport{
 	
 	private String msg;
 	
@@ -42,13 +46,44 @@ public class UserAction {
 	}
 
 	public String login() {
+		System.out.println(user);
 		if ("admin".equals(username) && "123".equals(userpass)) {
 			return "succ";
 		}
 		msg = "登录失败";
 		
-		System.out.println(user);
+		
 		return "error";
+	}
+	
+	private String id;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Map<String, User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Map<String, User> users) {
+		UserAction.users = users;
+	}
+
+	private static Map<String, User> users = new HashMap<String, User>();
+	
+	static {
+		users.put("1", new User("1", "jtwu"));
+		users.put("2", new User("2", "kyo"));
+	}
+	
+	public String edit() {
+		user = new User(id, getUsername());
+		users.put(id, user);
+		return "success";
 	}
 	
 	public String logout() {

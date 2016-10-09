@@ -6,7 +6,12 @@
 
 <package name="user" namespace="/user" extends="struts-default">
 	<action name="login" class="struts2demo.controller.user.UserAction" method="login">
-		<result name="succ">/succ.jsp</result>
+		<result name="succ">/index.jsp</result>
+		<result name="error">/index.jsp</result>
+	</action>
+	
+		<action name="edit" class="struts2demo.controller.user.UserAction" method="edit">
+		<result name="success">/index.jsp</result>
 		<result name="error">/index.jsp</result>
 	</action>
 </package>
