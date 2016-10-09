@@ -2,6 +2,8 @@ package struts2demo.controller.user;
 
 import java.util.*;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -10,14 +12,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	private User user = new User("ASD");
 
 	private String mErrMsg;
-	
-	public String getErrMsg() {
-		return mErrMsg;
-	}
-
-	public User getUser() {
-		return user;
-	}
 
 	private static Map<String, User> mUsersMap = new HashMap<String, User>();
 
@@ -29,31 +23,44 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		mUsersMap.put("5", new User("5", "kyo"));
 	}
 
-	public String delete() {
-		mUsersMap.remove(user.getId());
-		return index();
+	public String getErrMsg() {
+		return mErrMsg;
 	}
 
+	@Override
+	public User getModel() {
+		return user;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public Collection<User> getUsers() {
+		return mUsersMap.values();
+	}
+
+	public String login() {
+		System.out.println(user);
+		if ("admin".equals(user.getUsername())) {
+			ServletActionContext.getRequest().getSession()
+					.setAttribute("userId", "12321");
+			return "index";
+		}
+
+		mErrMsg = "登录失败";
+		return "login";
+	}
+
+	public String logout() {
+		return "";
+	}
+	
 	// return an edit page for editing a user
 	// the user to edit can obtains by getUser
 	public String edit() {
 		user = mUsersMap.get(user.getId());
 		return "edit";
-	}
-
-	@Override
-	public User getModel() {
-		System.out.println(user.getUsername());
-		return user;
-	}
-	
-	public String put() {
-		mUsersMap.put(user.getId(), user);
-		return index();
-	}
-
-	public Collection<User> getUsers() {
-		return mUsersMap.values();
 	}
 	
 	// return an page to show users
@@ -61,18 +68,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "index";
 	}
 
-	public String login() {
-		System.out.println(user);
-		if ("admin".equals(user.getUsername())) {
-			return "index";
-		}
-		
-		mErrMsg = "登录失败";
-		return "login";
+	public String put() {
+		mUsersMap.put(user.getId(), user);
+		return index();
 	}
 
-	public String logout() {
-		return "";
+	public String delete() {
+		mUsersMap.remove(user.getId());
+		return index();
 	}
 
 }
