@@ -9,6 +9,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	private User user = new User("ASD");
 
+	private String mErrMsg;
+	
+	public String getErrMsg() {
+		return mErrMsg;
+	}
+
 	private static Map<String, User> mUsersMap = new HashMap<String, User>();
 
 	static {
@@ -26,23 +32,31 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	public String edit() {
 		mUsersMap.put(user.getId(), user);
-		return "success";
+		return "edit";
 	}
 
 	@Override
 	public User getModel() {
+		System.out.println(user.getUsername());
 		return user;
 	}
 
 	public Collection<User> getUsers() {
 		return mUsersMap.values();
 	}
+	
+	public String index() {
+		return "index";
+	}
 
 	public String login() {
-		if ("admin".equals(user.getUsername()) && "123".equals("123")) {
-			return "succ";
+		System.out.println(user);
+		if ("admin".equals(user.getUsername())) {
+			return "index";
 		}
-		return "error";
+		
+		mErrMsg = "登录失败";
+		return "login";
 	}
 
 	public String logout() {

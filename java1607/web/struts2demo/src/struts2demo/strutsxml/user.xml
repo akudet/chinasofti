@@ -11,35 +11,27 @@
 				<interceptor-ref name="authenticatitonInterceptor">
 					<param name="excludeMethods">login</param>
 				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="authenticationStack"></default-interceptor-ref>
 
 		<global-results>
-			<result name="login" type="redirectAction">
-				<param name="namespace">/user</param>
-				<param name="actionName">login</param>
-			</result>
+			<result name="login">login.jsp</result>
+			<result name="index">index.jsp</result>
 		</global-results>
 		
 		<action name="login" class="struts2demo.controller.user.UserAction"
 			method="login">
-			<result name="succ">/index.jsp</result>
-			<result name="error">/index.jsp</result>
 		</action>
 
 		<action name="edit" class="struts2demo.controller.user.UserAction"
 			method="edit">
-			<result name="success">/index.jsp</result>
-			<result name="error">/index.jsp</result>
-
-
+			<result name="edit">edit.jsp</result>
 		</action>
 
 		<action name="delete" class="struts2demo.controller.user.UserAction"
 			method="delete">
-			<result name="success">/index.jsp</result>
-			<result name="error">/index.jsp</result>
 		</action>
 	</package>
 
