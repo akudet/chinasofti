@@ -23,9 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  ${model}sdfasd
         <form action="user/edit.action" method="get">
         <input type="hidden" name="id" value="${param.id }">
-    	NAME:<input type="text" name="username">
+    	NAME:<input type="text" name="username" value="${user.username}">
     	<input type="submit" value="提交">
     </form>
   </body>
