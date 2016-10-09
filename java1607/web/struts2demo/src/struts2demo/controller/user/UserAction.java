@@ -78,11 +78,19 @@ public class UserAction extends ActionSupport{
 	static {
 		users.put("1", new User("1", "jtwu"));
 		users.put("2", new User("2", "kyo"));
+		users.put("3", new User("3", "kyo"));
+		users.put("4", new User("4", "kyo"));
+		users.put("5", new User("5", "kyo"));
 	}
 	
 	public String edit() {
 		user = new User(id, getUsername());
 		users.put(id, user);
+		return "success";
+	}
+	
+	public String delete() {
+		users.remove(id);
 		return "success";
 	}
 	

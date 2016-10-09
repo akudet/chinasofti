@@ -2,18 +2,28 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 
-<constant name="strus.devMode" value="true">http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-windows-x86-msvc2013-5.7.0.exe</constant>
+	<constant name="strus.devMode" value="true">http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-windows-x86-msvc2013-5.7.0.exe</constant>
 
-<package name="user" namespace="/user" extends="struts-default">
-	<action name="login" class="struts2demo.controller.user.UserAction" method="login">
-		<result name="succ">/index.jsp</result>
-		<result name="error">/index.jsp</result>
-	</action>
-	
-		<action name="edit" class="struts2demo.controller.user.UserAction" method="edit">
-		<result name="success">/index.jsp</result>
-		<result name="error">/index.jsp</result>
-	</action>
-</package>
+	<package name="user" namespace="/user" extends="struts-default">
+		<action name="login" class="struts2demo.controller.user.UserAction"
+			method="login">
+			<result name="succ">/index.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+
+		<action name="edit" class="struts2demo.controller.user.UserAction"
+			method="edit">
+			<result name="success">/index.jsp</result>
+			<result name="error">/index.jsp</result>
+
+
+		</action>
+
+		<action name="delete" class="struts2demo.controller.user.UserAction"
+			method="delete">
+			<result name="success">/index.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+	</package>
 
 </struts>    
