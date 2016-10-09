@@ -25,7 +25,7 @@
 </head>
 
 <body>
-	<form action="user/edit.action" method="get">
+	<form action="user/put.action" method="get">
 		<input type="hidden" name="id" value="${param.id }"> NAME:<input
 			type="text" name="username" value="${user.username}"> <input
 			type="submit" value="提交">

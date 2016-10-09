@@ -7,7 +7,7 @@ public class AuthenticaitonInterceptor extends MethodFilterInterceptor{
 
 	@Override
 	protected String doIntercept(ActionInvocation arg0) throws Exception {
-		return "login";
+		return arg0.invoke();
 	}
 
 }

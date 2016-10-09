@@ -24,6 +24,10 @@
 		<action name="login" class="struts2demo.controller.user.UserAction"
 			method="login">
 		</action>
+		
+		<action name="put" class="struts2demo.controller.user.UserAction"
+			method="put">
+		</action>
 
 		<action name="edit" class="struts2demo.controller.user.UserAction"
 			method="edit">

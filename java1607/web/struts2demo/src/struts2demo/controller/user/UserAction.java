@@ -15,6 +15,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return mErrMsg;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
 	private static Map<String, User> mUsersMap = new HashMap<String, User>();
 
 	static {
@@ -27,11 +31,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	public String delete() {
 		mUsersMap.remove(user.getId());
-		return "success";
+		return index();
 	}
 
+	// return an edit page for editing a user
+	// the user to edit can obtains by getUser
 	public String edit() {
-		mUsersMap.put(user.getId(), user);
+		user = mUsersMap.get(user.getId());
 		return "edit";
 	}
 
@@ -40,11 +46,17 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		System.out.println(user.getUsername());
 		return user;
 	}
+	
+	public String put() {
+		mUsersMap.put(user.getId(), user);
+		return index();
+	}
 
 	public Collection<User> getUsers() {
 		return mUsersMap.values();
 	}
 	
+	// return an page to show users
 	public String index() {
 		return "index";
 	}
