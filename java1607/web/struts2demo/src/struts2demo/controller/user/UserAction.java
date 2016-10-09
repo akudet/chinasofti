@@ -3,97 +3,48 @@ package struts2demo.controller.user;
 import java.util.*;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
-public class UserAction extends ActionSupport{
-	
-	private String msg;
-	
-	public String getMsg() {
-		return msg;
+public class UserAction extends ActionSupport implements ModelDriven<User> {
+
+	private User user = new User("ASD");
+
+	private static Map<String, User> mUsersMap = new HashMap<String, User>();
+
+	static {
+		mUsersMap.put("1", new User("1", "jtwu"));
+		mUsersMap.put("2", new User("2", "kyo"));
+		mUsersMap.put("3", new User("3", "kyo"));
+		mUsersMap.put("4", new User("4", "kyo"));
+		mUsersMap.put("5", new User("5", "kyo"));
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public String delete() {
+		mUsersMap.remove(user.getId());
+		return "success";
 	}
 
-	private String username;
-	private String userpass;
-	
-	private User user;
+	public String edit() {
+		mUsersMap.put(user.getId(), user);
+		return "success";
+	}
 
-	public User getUser() {
+	@Override
+	public User getModel() {
 		return user;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getUserpass() {
-		return userpass;
-	}
-
-	public void setUserpass(String userpass) {
-		this.userpass = userpass;
+	public Collection<User> getUsers() {
+		return mUsersMap.values();
 	}
 
 	public String login() {
-		System.out.println(user);
-		if ("admin".equals(username) && "123".equals(userpass)) {
+		if ("admin".equals(user.getUsername()) && "123".equals("123")) {
 			return "succ";
 		}
-		msg = "登录失败";
-		
-		
 		return "error";
 	}
-	
-	private String id;
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public Map<String, User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Map<String, User> users) {
-		UserAction.users = users;
-	}
-
-	private static Map<String, User> users = new HashMap<String, User>();
-	
-	static {
-		users.put("1", new User("1", "jtwu"));
-		users.put("2", new User("2", "kyo"));
-		users.put("3", new User("3", "kyo"));
-		users.put("4", new User("4", "kyo"));
-		users.put("5", new User("5", "kyo"));
-	}
-	
-	public String edit() {
-		user = new User(id, getUsername());
-		users.put(id, user);
-		return "success";
-	}
-	
-	public String delete() {
-		users.remove(id);
-		return "success";
-	}
-	
 	public String logout() {
 		return "";
 	}

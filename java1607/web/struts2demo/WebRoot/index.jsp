@@ -30,9 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <ul>
     <c:forEach items="${users}" var="user">
-    	<li>${user.value}
-    	 <a href="/struts2demo/edit.jsp?id=${user.value.id }">修改</a>
-    	 <a href="user/delete.action?id=${user.value.id}">删除</a></li>
+    	<li>${user}
+    	 <a href="/struts2demo/edit.jsp?id=${user.id }">修改</a>
+    	 <a href="user/delete.action?id=${user.id}">删除</a></li>
     </c:forEach>
     </ul>
   </body>
