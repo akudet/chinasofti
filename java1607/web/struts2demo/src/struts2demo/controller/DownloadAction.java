@@ -12,7 +12,7 @@ import org.apache.struts2.ServletActionContext;
 public class DownloadAction {
 
 	private String filename = "你好.txt";
-	private File downloadFile = new File("D:\\x.txt");
+	private File file = new File("D:\\x.txt");
 
 	public String getEncodedFilename() {
 		
@@ -22,12 +22,19 @@ public class DownloadAction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return filename;
+		return null;
+	}
+	
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 
 	public InputStream getDownloadFile() {
+		final String FILES_DIR = ServletActionContext.getServletContext().getRealPath("/files");
+		file = new File(FILES_DIR, filename);
+		
 		try {
-			return new FileInputStream(downloadFile);
+			return new FileInputStream(file);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,16 +42,8 @@ public class DownloadAction {
 		return null;
 	}
 
-	public void setDownloadFile(File downloadFile) {
-		this.downloadFile = downloadFile;
-	}
-
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
-
 	public String download() {
-		System.out.println(downloadFile);
+		System.out.println(file);
 		return "success";
 	}
 

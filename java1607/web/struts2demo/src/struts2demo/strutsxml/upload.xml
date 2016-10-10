@@ -11,6 +11,10 @@
 			method="upload">
 			<result name="sc">/succ.jsp</result>
 		</action>
+		
+		<action name="index" class="struts2demo.controller.TestFileUpload" method="index">
+			<result name="index">/index.jsp</result>
+		</action>
 
 		<action name="download" class="struts2demo.controller.DownloadAction"
 			method="download">

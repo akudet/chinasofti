@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -15,6 +17,13 @@ public class TestFileUpload extends ActionSupport {
 	File file;
 	String fileFileName;
 	String fileContentType;
+	
+	List<String> files;
+
+	public List<String> getFiles() {
+		return files;
+	}
+
 
 	public File getFile() {
 		return file;
@@ -53,6 +62,19 @@ public class TestFileUpload extends ActionSupport {
 		copy(file, dest);
 
 		return "sc";
+	}
+	
+	public String index() {
+		String filesDirPath = ServletActionContext.getServletContext().getRealPath(
+				"/files");
+		File filesDir = new File(filesDirPath);
+		
+		files = new ArrayList<String>();
+		
+		for (File file : filesDir.listFiles()) {
+			files.add(file.getName());
+		}
+		return "index";
 	}
 
 	// will replace @to file if exists
