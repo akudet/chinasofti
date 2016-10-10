@@ -7,5 +7,6 @@
 
 <include file="./struts2demo/strutsxml/admin.xml"></include>
 <include file="./struts2demo/strutsxml/user.xml"></include>
+<include file="./struts2demo/strutsxml/upload.xml"></include>
 
 </struts>    
