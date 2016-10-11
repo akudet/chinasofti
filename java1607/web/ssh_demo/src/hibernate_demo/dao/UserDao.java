@@ -1,5 +1,10 @@
 package hibernate_demo.dao;
 
+import java.util.List;
+
+import hibernate_demo.db.DBHelper;
+import hibernate_demo.db.SessionWrapper;
+import hibernate_demo.db.TransactionWork;
 import hibernate_demo.vo.User;
 
 import org.hibernate.Session;
@@ -9,17 +14,38 @@ import org.hibernate.cfg.Configuration;
 
 public class UserDao {
 	
+	public void add(User u) {
+		new SessionWrapper(DBHelper.newSession()).save(u);
+	}
+	
 	public static void main(String[] args) {
-		SessionFactory sf = new Configuration().configure().buildSessionFactory();
-		Session session = sf.openSession();
 		
-		Transaction tx = session.beginTransaction();
+		DBHelper.execute(new TransactionWork<Object>() {
+
+			@Override
+			public Object execute(Session session) {
+				session.save(new User(1, "ASDAS", 12));
+				return null;
+			}
+			
+		});
 		
-		session.save(new User(1, "sa", 12));
 		
-		tx.commit();
+		List<User> users = DBHelper.queryAll("FROM User");
 		
-		session.clear();
+		User user = DBHelper.execute(new TransactionWork<User>() {
+
+			@Override
+			public User execute(Session session) {
+				return (User) session.get(User.class, 1);
+			}
+			
+		});
+		
+		System.out.println(users.get(0));
+		
+		System.out.println(user);
+	
 		
 	}
 

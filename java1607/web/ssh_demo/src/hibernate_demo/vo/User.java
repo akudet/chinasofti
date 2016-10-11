@@ -24,6 +24,11 @@ public class User {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", age=" + age + "]";
+	}
+
 	public String getName() {
 		return name;
 	}
