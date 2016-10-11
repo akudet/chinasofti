@@ -23,8 +23,9 @@
 
 	<property name="show_sql">true</property>
 	<property name="hbm2ddl.auto">create</property>
-	
+
 	<mapping resource="hibernate_demo/vo/User.hbm.xml" />
+	<mapping class="hibernate_demo.vo.Message" />
 </session-factory>
 
 </hibernate-configuration>

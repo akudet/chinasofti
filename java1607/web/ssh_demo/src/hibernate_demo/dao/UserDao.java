@@ -12,41 +12,35 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class UserDao {
+public class UserDao extends AbstractDao<User> {
 	
-	public void add(User u) {
-		new SessionWrapper(DBHelper.newSession()).save(u);
+	public UserDao() {
+		super(User.class);
 	}
-	
+
 	public static void main(String[] args) {
 		
-		DBHelper.execute(new TransactionWork<Object>() {
-
-			@Override
-			public Object execute(Session session) {
-				session.save(new User(1, "ASDAS", 12));
-				return null;
-			}
-			
-		});
+		UserDao dao = new UserDao();
+		dao.add(new User(1, "ASDAS", 12));
+		dao.add(new User(1, "SADAS", 33));
 		
+		System.out.println(dao.find(2));
+		dao.delete(dao.find(2));
 		
-		List<User> users = DBHelper.queryAll("FROM User");
+		User u1 = dao.find(1);
 		
-		User user = DBHelper.execute(new TransactionWork<User>() {
-
-			@Override
-			public User execute(Session session) {
-				return (User) session.get(User.class, 1);
-			}
-			
-		});
+		u1.setName("jtwu");
 		
-		System.out.println(users.get(0));
+		dao.update(u1);
 		
-		System.out.println(user);
+		dao.add(new User(1,"kyo", 23));
+		
+		List<User> users = dao.findAll("FROM User");
+		for (User u : users) {
+			System.out.println(u);
+		}
 	
-		
+		System.out.println(dao.find(3));
 	}
 
 }
