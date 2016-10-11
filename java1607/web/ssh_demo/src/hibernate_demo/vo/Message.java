@@ -7,15 +7,15 @@ import javax.persistence.*;
 public class Message {
 	@Id
 	@GeneratedValue
-	@Column(name = "MESSAGE_ID")
-	private Long id;
+	@Column(name = "ID")
+	private int id;
 	@Column(name = "MESSAGE_TEXT")
 	private String text;
 
 	public Message() {
 	}
 
-	public Message(Long id, String text) {
+	public Message(int id, String text) {
 		super();
 		this.id = id;
 		this.text = text;
@@ -25,7 +25,7 @@ public class Message {
 		this.text = text;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -33,7 +33,7 @@ public class Message {
 		return text;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

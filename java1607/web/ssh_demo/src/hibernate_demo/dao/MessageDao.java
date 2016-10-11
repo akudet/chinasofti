@@ -17,13 +17,17 @@ public class MessageDao extends AbstractDao<Message> {
 	public static void main(String[] args) {
 		
 		MessageDao dao = new MessageDao();
-		dao.add(new Message(1l, "DSFS"));
-		dao.add(new Message(2l, "SDFS"));
+		dao.add(new Message(1, "DSFS"));
+		dao.add(new Message(1, "SDFS"));
+		
+		Message m = dao.find(1);
+		m.setText("I love hibernate");
+		dao.update(m);
 		
 		List<Message> messages = dao.findAll("FROM Message");
 		
-		for (Message m : messages) {
-			System.out.println(m);
+		for (Message message : messages) {
+			System.out.println(message);
 		}
 		
 	}

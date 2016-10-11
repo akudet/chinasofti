@@ -17,6 +17,7 @@ public class AbstractDao<T> implements Dao<T> {
 		this.voClass = voClass;
 	}
 
+	@Override
 	public void add(final T t) {
 		DBHelper.execute(new TransactionWork<T>() {
 
@@ -29,6 +30,7 @@ public class AbstractDao<T> implements Dao<T> {
 		});
 	}
 
+	@Override
 	public void delete(final T t) {
 		DBHelper.execute(new TransactionWork<Object>() {
 
@@ -41,6 +43,7 @@ public class AbstractDao<T> implements Dao<T> {
 		});
 	}
 
+	@Override
 	public T find(final int id) {
 		return DBHelper.execute(new TransactionWork<T>() {
 
@@ -52,7 +55,8 @@ public class AbstractDao<T> implements Dao<T> {
 
 		});
 	}
-
+	
+	@Override
 	public List<T> findAll(final String query) {
 		return DBHelper.execute(new TransactionWork<List<T>>() {
 
@@ -65,6 +69,7 @@ public class AbstractDao<T> implements Dao<T> {
 		});
 	}
 
+	@Override
 	public void update(final T t) {
 		DBHelper.execute(new TransactionWork<Object>() {
 
