@@ -4,6 +4,7 @@ public class User {
 	int id;
 	String name;
 	int age;
+	Message message;
 
 	public User() {
 		super();
@@ -16,6 +17,14 @@ public class User {
 		this.age = age;
 	}
 
+	public Message getMessage() {
+		return message;
+	}
+
+	public void setMessage(Message message) {
+		this.message = message;
+	}
+
 	public int getAge() {
 		return age;
 	}
@@ -26,7 +35,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", age=" + age + "]";
+		return "User [id=" + id + ", name=" + name + ", age=" + age
+				+ ", message=" + message + "]";
 	}
 
 	public String getName() {

@@ -8,7 +8,9 @@
       <id name="id" type="int" column="id">
          <generator class="native"/>
       </id>
-      <property name="name" column="name" type="string"/>
+      <property name="name" column="name" type="string" length="121"/>
       <property name="age" column="age" type="int"/>
+      
+      <many-to-one name="message" column="message_id" class="hibernate_demo.vo.Message" lazy="false"></many-to-one>
    </class>
 </hibernate-mapping>

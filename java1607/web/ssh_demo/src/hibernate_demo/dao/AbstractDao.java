@@ -4,6 +4,7 @@ import hibernate_demo.db.DBHelper;
 import hibernate_demo.db.TransactionWork;
 import hibernate_demo.vo.User;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -18,13 +19,12 @@ public class AbstractDao<T> implements Dao<T> {
 	}
 
 	@Override
-	public void add(final T t) {
-		DBHelper.execute(new TransactionWork<T>() {
+	public Serializable add(final T t) {
+		return DBHelper.execute(new TransactionWork<Serializable>() {
 
 			@Override
-			public T execute(Session session) {
-				session.save(t);
-				return null;
+			public Serializable execute(Session session) {
+				return session.save(t);
 			}
 
 		});
@@ -44,7 +44,7 @@ public class AbstractDao<T> implements Dao<T> {
 	}
 
 	@Override
-	public T find(final int id) {
+	public T find(final Serializable id) {
 		return DBHelper.execute(new TransactionWork<T>() {
 
 			@SuppressWarnings("unchecked")
