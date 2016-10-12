@@ -1,9 +1,13 @@
 package hibernate_demo.dao;
 
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 import hibernate_demo.vo.Address;
 import hibernate_demo.vo.Message;
+import hibernate_demo.vo.Room;
 import hibernate_demo.vo.User;
 
 public class Test {
@@ -23,17 +27,31 @@ public class Test {
 		// add many users refer to the the message
 		addUsers(m);
 		
-		Address addr1 = new Address();
+		User ub = ud.find(1);
 		
-		addr1.setLine_1("Beijing");
-		addr1.setLine_2("ZhaoYang");
+		RoomDao rd = new RoomDao();
 		
-		ad.add(addr1);
+		Room r1 = new Room();
+		r1.setName("SADA");
+		r1.setUsers(new HashSet<User>(ud.findAll("FROM User")));
 		
-		Iterator<User> iter = ud.findAll("From User").iterator();
-		while (iter.hasNext()) {
-			System.out.println(iter.next());
+		rd.add(r1);
+		
+		User ua = ud.find(1);
+		
+		List<Room> rooms = rd.findAll("FROM Room");
+		
+		System.out.println(ub);
+		System.out.println(ub.getRooms());
+		
+		System.out.println(ua);
+		System.out.println(ua.getRooms());
+		
+		for (Room room : rooms) {
+			System.out.println(room);
+			System.out.println(room.getUsers());
 		}
+		
 	}
 
 	private static void addUsers(Message m) {

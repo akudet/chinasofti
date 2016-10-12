@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC 
  "-//Hibernate/Hibernate Mapping DTD//EN"
- "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-   <class name="hibernate_demo.vo.User" table="user">
-      <id name="id" type="int" column="id">
-         <generator class="native"/>
-      </id>
-      <property name="name" column="name" type="string" length="121"/>
-      <property name="age" column="age" type="int"/>
-      
-      <many-to-one name="message" column="message_id" class="hibernate_demo.vo.Message" lazy="false"></many-to-one>
-   </class>
+	<class name="hibernate_demo.vo.User" table="user">
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+		<property name="name" column="name" type="string" length="121" />
+		<property name="age" column="age" type="int" />
+
+		<set name="rooms" table="enrollment" lazy="false">
+			<key column="user_id"></key>
+			<many-to-many column="room_id" class="hibernate_demo.vo.Room"></many-to-many>
+		</set>
+		<many-to-one name="message" column="message_id"
+			class="hibernate_demo.vo.Message" lazy="false"></many-to-one>
+	</class>
 </hibernate-mapping>

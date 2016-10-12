@@ -27,6 +27,7 @@
 	<mapping resource="hibernate_demo/vo/User.hbm.xml" />
 	<mapping class="hibernate_demo.vo.Message" />
 	<mapping class="hibernate_demo.vo.Address" />
+	<mapping resource="hibernate_demo/vo/Room.hbm.xml" />
 </session-factory>
 
 </hibernate-configuration>

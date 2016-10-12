@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="hibernate_demo.vo.Room" table="rooms">
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+		<property name="name" column="name" type="string" />
+		<set name="users" table="enrollment" lazy="false">
+			<key column="room_id"></key>
+			<many-to-many column="user_id" class="hibernate_demo.vo.User"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
