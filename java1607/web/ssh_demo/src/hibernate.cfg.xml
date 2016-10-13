@@ -20,13 +20,13 @@
 	<property name="myeclipse.connection.profile">
 		MyEclipse Derby
 	</property>
-	
-<!--
 
-	<property name="show_sql">true</property>
-	
-	<property name="hbm2ddl.auto">create</property>
--->
+	<!--
+		
+		<property name="show_sql">true</property>
+		
+		<property name="hbm2ddl.auto">create</property>
+	-->
 
 	<!-- 配置C3P0连接池属性 -->
 	<property name="hibernate.connection.provider_class">
@@ -43,7 +43,6 @@
 	<property name="hibernate.c3p0.validate">false</property>
 	<mapping class="demo.model.vo.Address" />
 	<mapping class="demo.model.vo.Message" />
-	<mapping class="demo.model.vo.MyEntity" />
 	<mapping resource="demo/model/vo/Room.hbm.xml" />
 	<mapping resource="demo/model/vo/User.hbm.xml" />
 

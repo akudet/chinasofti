@@ -4,14 +4,17 @@ import java.util.*;
 
 import org.apache.struts2.ServletActionContext;
 
+import demo.controller.service.impl.UserServiceImpl;
 import demo.model.vo.User;
 
 public class UserAction extends AbstractCRUDAction<User> {
 	
 	private String mErrMsg;
+	private UserServiceImpl service;
 
 	public UserAction() {
 		super(User.class);
+		service = new UserServiceImpl();
 	}
 
 	public String getErrMsg() {
@@ -27,12 +30,16 @@ public class UserAction extends AbstractCRUDAction<User> {
 	}
 
 	public String login() {
-		User user = getModel();
-		if ("admin".equals(user.getName())) {
-			ServletActionContext.getRequest().getSession()
-					.setAttribute("userId", user.getId());
-			return "index";
+		String name = getModel().getName();
+		if (null != name) {
+			User user = service.login(name, "123");
+			if (null != user) {
+				ServletActionContext.getRequest().getSession()
+						.setAttribute("userId", user.getId());
+				return "index";
+			}
 		}
+
 
 		mErrMsg = "登录失败";
 		return "login";
