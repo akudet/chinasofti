@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	${errMsg}
     <form action="user/login.action" method="get">
-    	NAME:<input type="text" name="username">
+    	NAME:<input type="text" name="name">
     	<input type="submit" value="提交">
     </form>
   </body>

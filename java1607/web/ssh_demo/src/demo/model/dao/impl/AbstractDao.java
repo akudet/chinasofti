@@ -59,10 +59,6 @@ public class AbstractDao<T> implements Dao<T> {
 
 	@Override
 	public List<T> findAll(final String query, final Object... params) {
-		if (null == params || params.length == 0) {
-			return findAll(query);
-		}
-
 		List<T> result = DBHelper.execute(new TransactionWork<List<T>>() {
 
 			@SuppressWarnings("unchecked")
@@ -70,8 +66,10 @@ public class AbstractDao<T> implements Dao<T> {
 			public List<T> execute(Session session) {
 				Query q = session.createQuery(query);
 
-				for (int i = 0; i < params.length; i++) {
-					q.setEntity(i, params[i]);
+				if (null != params) {
+					for (int i = 0; i < params.length; i++) {
+						q.setEntity(i, params[i]);
+					}
 				}
 
 				return q.list();

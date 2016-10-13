@@ -20,9 +20,13 @@
 	<property name="myeclipse.connection.profile">
 		MyEclipse Derby
 	</property>
+	
+<!--
 
 	<property name="show_sql">true</property>
+	
 	<property name="hbm2ddl.auto">create</property>
+-->
 
 	<!-- 配置C3P0连接池属性 -->
 	<property name="hibernate.connection.provider_class">

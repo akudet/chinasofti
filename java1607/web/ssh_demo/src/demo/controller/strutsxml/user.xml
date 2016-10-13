@@ -21,20 +21,20 @@
 			<result name="index">index.jsp</result>
 		</global-results>
 		
-		<action name="login" class="demo.controller.user.UserAction"
+		<action name="login" class="demo.controller.UserAction"
 			method="login">
 		</action>
 		
-		<action name="put" class="demo.controller.user.UserAction"
+		<action name="put" class="demo.controller.UserAction"
 			method="put">
 		</action>
 
-		<action name="edit" class="demo.controller.user.UserAction"
+		<action name="edit" class="demo.controller.UserAction"
 			method="edit">
 			<result name="edit">edit.jsp</result>
 		</action>
 
-		<action name="delete" class="demo.controller.user.UserAction"
+		<action name="delete" class="demo.controller.UserAction"
 			method="delete">
 		</action>
 	</package>

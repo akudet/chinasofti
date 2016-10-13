@@ -25,9 +25,10 @@
 </head>
 
 <body>
+编辑用户
 	<form action="user/put.action" method="get">
 		<input type="hidden" name="id" value="${param.id }"> NAME:<input
-			type="text" name="username" value="${user.username}"> <input
+			type="text" name="name" value="${user.name}"> <input
 			type="submit" value="提交">
 	</form>
 </body>

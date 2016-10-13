@@ -7,23 +7,15 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import demo.model.dao.impl.UserDao;
 import demo.model.vo.User;
 
 public class UserAction extends ActionSupport implements ModelDriven<User> {
 
-	private User user = new User("1", "ASD");
+	private User mUser = new User();
+	private UserDao mUserDao = new UserDao();
 
 	private String mErrMsg;
-
-	private static Map<String, User> mUsersMap = new HashMap<String, User>();
-
-	static {
-		mUsersMap.put("1", new User("1", "jtwu"));
-		mUsersMap.put("2", new User("2", "kyo"));
-		mUsersMap.put("3", new User("3", "kyo"));
-		mUsersMap.put("4", new User("4", "kyo"));
-		mUsersMap.put("5", new User("5", "kyo"));
-	}
 
 	public String getErrMsg() {
 		return mErrMsg;
@@ -31,23 +23,23 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	@Override
 	public User getModel() {
-		return user;
+		return mUser;
 	}
 
 	public User getUser() {
-		return user;
+		return mUser;
 	}
 
 	public Collection<User> getUsers() {
-		return mUsersMap.values();
+		return mUserDao.findAll("From User");
 	}
 
 	public String login() {
-		System.out.println(user);
-		if ("admin".equals(user.getName())) {
+		System.out.println(mUser);
+		if ("admin".equals(mUser.getName())) {
 			ServletActionContext.getRequest().getSession()
-					.setAttribute("userId", "12321");
-			return "index";
+					.setAttribute("userId", mUser.getId());
+			return index();
 		}
 
 		mErrMsg = "登录失败";
@@ -58,10 +50,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "";
 	}
 	
-	// return an edit page for editing a user
-	// the user to edit can obtains by getUser
+	// return an edit page for editing a mUser
+	// the mUser to edit can obtains by getUser
 	public String edit() {
-		user = mUsersMap.get(user.getId());
+		System.out.println("EDIT : " + mUser);
+		mUser = mUserDao.find(mUser.getId());
+		
 		return "edit";
 	}
 	
@@ -71,12 +65,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 
 	public String put() {
-		mUsersMap.put("" + user.getId(), user);
+		System.out.println("PUT : " + mUser);
+		mUserDao.update(mUser);
 		return index();
 	}
 
 	public String delete() {
-		mUsersMap.remove(user.getId());
+		System.out.println("DELETE : " + mUser);
+		mUserDao.delete(mUser);
 		return index();
 	}
 
