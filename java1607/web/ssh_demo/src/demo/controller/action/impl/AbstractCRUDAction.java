@@ -2,6 +2,8 @@ package demo.controller.action.impl;
 
 import java.util.Collection;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts2.ServletActionContext;
 
 import demo.controller.action.CRUDAction;
@@ -40,16 +42,12 @@ public class AbstractCRUDAction<T extends ValueObject> implements CRUDAction<T> 
 
 	public String input() {
 		mModel = mService.find(mModel.getId());
-		return INPUT_PAGE;
+		return NEW_PAGE;
 	}
 
 	public String edit() {
 		mModel = mService.find(mModel.getId());
 		return EDIT_PAGE;
-	}
-	
-	public String index() {
-		return MODELS_PAGE;
 	}
 
 	public String get() {
@@ -78,7 +76,51 @@ public class AbstractCRUDAction<T extends ValueObject> implements CRUDAction<T> 
 
 	@Override
 	public String execute() {
-		System.out.println(ServletActionContext.getRequest().getMethod());
+		HttpServletRequest req = ServletActionContext.getRequest();
+		String method = req.getMethod();
+		
+		System.out.println(method + " : " + req.getRequestURI());
+		String uri = req.getRequestURI();
+		
+		// dispatch by action
+		// TODO : improve this logic
+		if (uri.endsWith("get.action")) {
+			return get();
+		}
+		
+		if (uri.endsWith("post.action")) {
+			return post();
+		}
+		
+		if (uri.endsWith("put.action")) {
+			return put();
+		}
+		
+		if (uri.endsWith("delete.action")) {
+			return delete();
+		}
+		
+		if (uri.endsWith("edit.action")) {
+			return edit();
+		}
+		
+		if (uri.endsWith("new.action")) {
+			return input();
+		}
+		
+		// dispatch by methods compatibility issues
+		if (method.equals("GET")) {
+			if (null != req.getParameter("id")) {
+				return get();
+			}
+		} else if (method.equals("POST")) {
+			return post();
+		} else if (method.equals("PUT")) {
+			return put();
+		} else if (method.equals("DELETE")) {
+			return delete();
+		}
+		
 		return MODELS_PAGE;
 	}
 

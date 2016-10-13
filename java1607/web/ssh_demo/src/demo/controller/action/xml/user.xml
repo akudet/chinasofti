@@ -21,39 +21,20 @@
 		
 		<global-results>
 			<result name="login">login.jsp</result>
-			<result name="index">index.jsp</result>
-			<result name="models">index.jsp</result>
+			
+			<result name="new">new.jsp</result>
+			<result name="edit">edit.jsp</result>
+			
+			<result name="model">user.jsp</result>
+			<result name="models">users.jsp</result>
 		</global-results>
+		
+		<action name="user" class="demo.controller.action.impl.UserAction"></action>
 		
 		<action name="login" class="demo.controller.action.impl.UserAction"
 			method="login">
 		</action>
-		
-		<action name="edit" class="demo.controller.action.impl.UserAction"
-			method="edit">
-			<result name="edit">edit.jsp</result>
-		</action>
-		
-		<action name="index" class="demo.controller.action.impl.UserAction"
-			method="index">
-		</action>
-		
-		<action name="get" class="demo.controller.action.impl.UserAction"
-			method="get">
-			<result name="model">user.jsp</result>
-		</action>
-		
-		<action name="post" class="demo.controller.action.impl.UserAction"
-			method="post">
-		</action>
 
-		<action name="put" class="demo.controller.action.impl.UserAction"
-			method="put">
-		</action>
-
-		<action name="delete" class="demo.controller.action.impl.UserAction"
-			method="delete">
-		</action>
 	</package>
 
 </struts>    

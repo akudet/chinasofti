@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.opensymphony.xwork2.ModelDriven;
 
 public interface CRUDAction<T> extends ModelDriven<T> {
-	public final String INPUT_PAGE = "input";
+	public final String NEW_PAGE = "new";
 	public final String EDIT_PAGE = "edit";
 	
 	public final String MODEL_PAGE = "model";
