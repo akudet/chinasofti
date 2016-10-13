@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.multipart.saveDir" value="D:\"></constant>
+
+	<constant name="struts.multipart.maxSize" value="30000000000" />
+
+	<package name="upload" namespace="/" extends="struts-default">
+		<action name="upload" class="demo.controller.TestFileUpload"
+			method="upload">
+			<result name="sc">/succ.jsp</result>
+		</action>
+		
+		<action name="index" class="demo.controller.TestFileUpload" method="index">
+			<result name="index">/index.jsp</result>
+		</action>
+
+		<action name="download" class="demo.controller.DownloadAction"
+			method="download">
+			<result name="success" type="stream">
+				<param name="bufferSize">
+					4096
+				</param>
+
+				<param name="inputName">downloadFile</param>
+
+				<param name="contentDisposition">
+					attachment;filename="${encodedFilename}"
+				</param>
+
+				<param name="contentType">
+					text/plain
+				</param>
+			</result>
+		</action>
+	</package>
+
+</struts>    

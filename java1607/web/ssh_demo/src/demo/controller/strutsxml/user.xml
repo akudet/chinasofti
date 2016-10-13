@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="user" namespace="/user" extends="struts-default">
+		<interceptors>
+			<interceptor name="authenticatitonInterceptor"
+				class="demo.controller.AuthenticaitonInterceptor">
+			</interceptor>
+			<interceptor-stack name="authenticationStack">
+				<interceptor-ref name="authenticatitonInterceptor">
+					<param name="excludeMethods">login</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="authenticationStack"></default-interceptor-ref>
+
+		<global-results>
+			<result name="login">login.jsp</result>
+			<result name="index">index.jsp</result>
+		</global-results>
+		
+		<action name="login" class="demo.controller.user.UserAction"
+			method="login">
+		</action>
+		
+		<action name="put" class="demo.controller.user.UserAction"
+			method="put">
+		</action>
+
+		<action name="edit" class="demo.controller.user.UserAction"
+			method="edit">
+			<result name="edit">edit.jsp</result>
+		</action>
+
+		<action name="delete" class="demo.controller.user.UserAction"
+			method="delete">
+		</action>
+	</package>
+
+</struts>    
