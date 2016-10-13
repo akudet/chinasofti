@@ -58,19 +58,6 @@ public class AbstractDao<T> implements Dao<T> {
 	}
 
 	@Override
-	public List<T> findAll(final String query) {
-		return DBHelper.execute(new TransactionWork<List<T>>() {
-
-			@SuppressWarnings("unchecked")
-			@Override
-			public List<T> execute(Session session) {
-				return session.createQuery(query).list();
-			}
-
-		});
-	}
-
-	@Override
 	public List<T> findAll(final String query, final Object... params) {
 		if (null == params || params.length == 0) {
 			return findAll(query);
@@ -92,15 +79,6 @@ public class AbstractDao<T> implements Dao<T> {
 		});
 
 		return result;
-	}
-
-	@Override
-	public T findOne(final String query) {
-		List<T> ts = findAll(query);
-		if (ts.size() == 0) {
-			return null;
-		}
-		return ts.get(0);
 	}
 
 	@Override
