@@ -14,7 +14,7 @@ import demo.model.vo.Message;
 import demo.model.vo.Room;
 import demo.model.vo.User;
 
-public class Test {
+public class AbstractDAOTest {
 	public static void main(String[] args) {
 
 		UserDao ud = new UserDao();
@@ -37,7 +37,7 @@ public class Test {
 		
 		Room r1 = new Room();
 		r1.setName("SADA");
-		r1.setUsers(new HashSet<User>(ud.findAll("FROM User")));
+		r1.setUsers(new HashSet<User>(ud.findAll()));
 		
 		rd.add(r1);
 		

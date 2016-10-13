@@ -4,7 +4,7 @@ import java.util.List;
 
 import demo.model.vo.User;
 
-public class UserDao extends AbstractDao<User> {
+public class UserDao extends AbstractDAO<User> {
 	
 	public UserDao() {
 		super(User.class);

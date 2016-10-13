@@ -2,13 +2,9 @@ package demo.model.dao.impl;
 
 import java.util.List;
 
-import org.hibernate.Session;
-
-import demo.model.db.DBHelper;
-import demo.model.db.TransactionWork;
 import demo.model.vo.Message;
 
-public class MessageDao extends AbstractDao<Message> {
+public class MessageDao extends AbstractDAO<Message> {
 	
 	public MessageDao() {
 		super(Message.class);

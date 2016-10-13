@@ -2,7 +2,7 @@ package demo.model.dao.impl;
 
 import demo.model.vo.MyEntity;
 
-public class MyEntityDao extends AbstractDao<MyEntity>{
+public class MyEntityDao extends AbstractDAO<MyEntity>{
 
 	public MyEntityDao() {
 		super(MyEntity.class);

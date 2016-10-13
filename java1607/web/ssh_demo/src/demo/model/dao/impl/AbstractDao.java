@@ -6,15 +6,15 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import demo.model.dao.Dao;
+import demo.model.dao.DAO;
 import demo.model.db.DBHelper;
 import demo.model.db.TransactionWork;
 
-public class AbstractDao<T> implements Dao<T> {
+public class AbstractDAO<T> implements DAO<T> {
 
-	public Class<?> voClass;
+	public Class<T> voClass;
 
-	public AbstractDao(Class<?> voClass) {
+	public AbstractDAO(Class<T> voClass) {
 		super();
 		this.voClass = voClass;
 	}
@@ -55,6 +55,11 @@ public class AbstractDao<T> implements Dao<T> {
 			}
 
 		});
+	}
+
+	@Override
+	public List<T> findAll() {
+		return findAll("FROM " + voClass.getName());
 	}
 
 	@Override
