@@ -9,7 +9,7 @@ public class AuthenticaitonInterceptor extends MethodFilterInterceptor{
 
 	@Override
 	protected String doIntercept(ActionInvocation invocation) throws Exception {
-		String userId = (String) ServletActionContext.getRequest().getSession().getAttribute("userId");
+		Integer userId = (Integer) ServletActionContext.getRequest().getSession().getAttribute("userId");
 		if (null != userId) {
 			return invocation.invoke();
 		}
