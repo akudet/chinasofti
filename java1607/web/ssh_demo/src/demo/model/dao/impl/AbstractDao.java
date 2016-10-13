@@ -55,7 +55,7 @@ public class AbstractDao<T> implements Dao<T> {
 
 		});
 	}
-	
+
 	@Override
 	public List<T> findAll(final String query) {
 		return DBHelper.execute(new TransactionWork<List<T>>() {
@@ -67,6 +67,15 @@ public class AbstractDao<T> implements Dao<T> {
 			}
 
 		});
+	}
+
+	@Override
+	public T findOne(final String query) {
+		List<T> ts = findAll(query);
+		if (ts.size() == 0) {
+			return null;
+		}
+		return ts.get(0);
 	}
 
 	@Override
