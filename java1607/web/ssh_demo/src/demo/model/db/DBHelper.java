@@ -47,6 +47,7 @@ public class DBHelper {
 			if (tx != null) {
 				tx.rollback();
 			}
+			e.printStackTrace();
 		} finally {
 			if (session != null) {
 				session.close();

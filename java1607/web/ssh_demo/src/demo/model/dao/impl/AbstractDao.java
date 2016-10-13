@@ -73,7 +73,7 @@ public class AbstractDAO<T> implements DAO<T> {
 
 				if (null != params) {
 					for (int i = 0; i < params.length; i++) {
-						q.setEntity(i, params[i]);
+						q.setParameter(i, params[i]);
 					}
 				}
 
