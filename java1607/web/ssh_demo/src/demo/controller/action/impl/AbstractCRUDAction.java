@@ -1,6 +1,8 @@
 package demo.controller.action.impl;
 
 import java.util.Collection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -81,6 +83,15 @@ public class AbstractCRUDAction<T extends ValueObject> implements CRUDAction<T> 
 		
 		System.out.println(method + " : " + req.getRequestURI());
 		String uri = req.getRequestURI();
+		
+		// match user/:id.action where id is pure number to get a model who's id is :id
+		String model = mModel.getClass().getSimpleName().toLowerCase();
+		Matcher maId = Pattern.compile("^.*" + model + "/([\\d]+).*").matcher(uri);
+		if (maId.matches()) {
+			String id = maId.group(1);
+			mModel.setId(Integer.parseInt(id));
+			return get();
+		}
 		
 		// dispatch by action
 		// TODO : improve this logic
