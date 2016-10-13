@@ -3,6 +3,7 @@ package demo.model.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import demo.model.dao.Dao;
@@ -70,12 +71,45 @@ public class AbstractDao<T> implements Dao<T> {
 	}
 
 	@Override
+	public List<T> findAll(final String query, final Object... params) {
+		if (null == params || params.length == 0) {
+			return findAll(query);
+		}
+
+		List<T> result = DBHelper.execute(new TransactionWork<List<T>>() {
+
+			@SuppressWarnings("unchecked")
+			@Override
+			public List<T> execute(Session session) {
+				Query q = session.createQuery(query);
+
+				for (int i = 0; i < params.length; i++) {
+					q.setEntity(i, params[i]);
+				}
+
+				return q.list();
+			}
+		});
+
+		return result;
+	}
+
+	@Override
 	public T findOne(final String query) {
 		List<T> ts = findAll(query);
 		if (ts.size() == 0) {
 			return null;
 		}
 		return ts.get(0);
+	}
+
+	@Override
+	public T findOne(String query, Object... params) {
+		List<T> result = findAll(query, params);
+		if (result.size() == 0) {
+			return null;
+		}
+		return result.get(0);
 	}
 
 	@Override
