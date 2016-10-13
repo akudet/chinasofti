@@ -1,4 +1,4 @@
-package demo.controller.user;
+package demo.controller;
 
 import java.util.*;
 
@@ -7,9 +7,11 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import demo.model.vo.User;
+
 public class UserAction extends ActionSupport implements ModelDriven<User> {
 
-	private User user = new User("ASD");
+	private User user = new User("1", "ASD");
 
 	private String mErrMsg;
 
@@ -42,7 +44,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	public String login() {
 		System.out.println(user);
-		if ("admin".equals(user.getUsername())) {
+		if ("admin".equals(user.getName())) {
 			ServletActionContext.getRequest().getSession()
 					.setAttribute("userId", "12321");
 			return "index";
@@ -69,7 +71,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 
 	public String put() {
-		mUsersMap.put(user.getId(), user);
+		mUsersMap.put("" + user.getId(), user);
 		return index();
 	}
 

@@ -1,13 +1,13 @@
-package demo.model.dao;
+package demo.model.dao.impl;
 
 import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
 
+import demo.model.dao.Dao;
 import demo.model.db.DBHelper;
 import demo.model.db.TransactionWork;
-import demo.model.vo.User;
 
 public class AbstractDao<T> implements Dao<T> {
 

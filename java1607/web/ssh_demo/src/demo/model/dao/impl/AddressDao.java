@@ -1,4 +1,4 @@
-package demo.model.dao;
+package demo.model.dao.impl;
 
 import demo.model.vo.Address;
 

@@ -52,6 +52,10 @@ public class User {
 		this.age = age;
 	}
 
+	public User(String id, String name) {
+		this.name = name;
+	}
+
 	public Message getMessage() {
 		return message;
 	}

@@ -1,6 +1,6 @@
-package demo.model.vo;
+package demo.model.dao.impl;
 
-import demo.model.dao.AbstractDao;
+import demo.model.vo.MyEntity;
 
 public class MyEntityDao extends AbstractDao<MyEntity>{
 

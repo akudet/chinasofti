@@ -1,10 +1,14 @@
-package demo.model.dao;
+package demo.model.dao.test;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import demo.model.dao.impl.AddressDao;
+import demo.model.dao.impl.MessageDao;
+import demo.model.dao.impl.RoomDao;
+import demo.model.dao.impl.UserDao;
 import demo.model.vo.Address;
 import demo.model.vo.Message;
 import demo.model.vo.Room;
