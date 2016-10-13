@@ -1,8 +1,7 @@
-package demo.controller;
+package demo.controller.action.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,37 +11,18 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class TestFileUpload extends ActionSupport {
+public class UploadAction extends ActionSupport {
 
 	File file;
 	String fileFileName;
 	String fileContentType;
-	
-	List<String> files;
-
-	public List<String> getFiles() {
-		return files;
-	}
-
-
-	public File getFile() {
-		return file;
-	}
 
 	public void setFile(File file) {
 		this.file = file;
 	}
 
-	public String getFileFileName() {
-		return fileFileName;
-	}
-
 	public void setFileFileName(String fileFileName) {
 		this.fileFileName = fileFileName;
-	}
-
-	public String getFileContentType() {
-		return fileContentType;
 	}
 
 	public void setFileContentType(String fileContentType) {
@@ -62,6 +42,12 @@ public class TestFileUpload extends ActionSupport {
 		copy(file, dest);
 
 		return "sc";
+	}
+	
+	List<String> files;
+
+	public List<String> getFiles() {
+		return files;
 	}
 	
 	public String index() {

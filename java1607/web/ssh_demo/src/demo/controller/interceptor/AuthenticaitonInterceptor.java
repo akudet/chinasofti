@@ -1,4 +1,4 @@
-package demo.controller;
+package demo.controller.interceptor;
 
 import org.apache.struts2.ServletActionContext;
 

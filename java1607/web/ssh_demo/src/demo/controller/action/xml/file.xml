@@ -6,27 +6,27 @@
 
 	<constant name="struts.multipart.maxSize" value="30000000000" />
 
-	<package name="upload" namespace="/" extends="struts-default">
-		<action name="upload" class="demo.controller.TestFileUpload"
+	<package name="file" namespace="/" extends="struts-default">
+		<action name="upload" class="demo.controller.action.impl.UploadAction"
 			method="upload">
 			<result name="sc">/succ.jsp</result>
 		</action>
 		
-		<action name="index" class="demo.controller.TestFileUpload" method="index">
+		<action name="index" class="demo.controller.action.impl.UploadAction" method="index">
 			<result name="index">/index.jsp</result>
 		</action>
 
-		<action name="download" class="demo.controller.DownloadAction"
+		<action name="download" class="demo.controller.action.impl.DownloadAction"
 			method="download">
 			<result name="success" type="stream">
 				<param name="bufferSize">
 					4096
 				</param>
 
-				<param name="inputName">downloadFile</param>
+				<param name="inputName">stream</param>
 
 				<param name="contentDisposition">
-					attachment;filename="${encodedFilename}"
+					attachment;filename="${filename}"
 				</param>
 
 				<param name="contentType">

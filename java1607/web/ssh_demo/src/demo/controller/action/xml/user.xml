@@ -6,7 +6,7 @@
 	
 		<interceptors>
 			<interceptor name="authenticatitonInterceptor"
-				class="demo.controller.AuthenticaitonInterceptor">
+				class="demo.controller.interceptor.AuthenticaitonInterceptor">
 			</interceptor>
 			<interceptor-stack name="authenticationStack">
 				<interceptor-ref name="authenticatitonInterceptor">
