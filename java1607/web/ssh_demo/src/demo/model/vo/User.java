@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class User {
+public class User implements ValueObject {
 	int id;
 	String name;
 	int age;

@@ -3,6 +3,7 @@
 <struts>
 
 	<package name="user" namespace="/user" extends="struts-default">
+	
 		<interceptors>
 			<interceptor name="authenticatitonInterceptor"
 				class="demo.controller.AuthenticaitonInterceptor">
@@ -14,27 +15,34 @@
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
+		
 		<default-interceptor-ref name="authenticationStack"></default-interceptor-ref>
-
+		<default-action-ref name="user"></default-action-ref>
+		
 		<global-results>
 			<result name="login">login.jsp</result>
 			<result name="index">index.jsp</result>
+			<result name="models">index.jsp</result>
 		</global-results>
-		
-		<action name="login" class="demo.controller.UserAction"
+
+
+		<action name="user" class="demo.controller.action.impl.UserAction">
+		</action>
+
+		<action name="login" class="demo.controller.action.impl.UserAction"
 			method="login">
 		</action>
-		
-		<action name="put" class="demo.controller.UserAction"
+
+		<action name="put" class="demo.controller.action.impl.UserAction"
 			method="put">
 		</action>
 
-		<action name="edit" class="demo.controller.UserAction"
+		<action name="edit" class="demo.controller.action.impl.UserAction"
 			method="edit">
 			<result name="edit">edit.jsp</result>
 		</action>
 
-		<action name="delete" class="demo.controller.UserAction"
+		<action name="delete" class="demo.controller.action.impl.UserAction"
 			method="delete">
 		</action>
 	</package>

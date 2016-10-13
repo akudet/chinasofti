@@ -1,77 +1,81 @@
 package demo.controller.action.impl;
 
-import com.opensymphony.xwork2.ModelDriven;
+import java.util.Collection;
+
+import org.apache.struts2.ServletActionContext;
 
 import demo.controller.action.CRUDAction;
 import demo.controller.service.CRUDService;
 import demo.controller.service.impl.AbstractCRUDService;
+import demo.model.vo.ValueObject;
 
-public class AbstractCRUDAction<T> implements CRUDAction<T>, ModelDriven<T> {
-	// this should use annotation
-	private final String INPUT_PAGE = "input";
-	private final String EDIT_PAGE = "edit";
-	private final String INDEX_PAGE = "index";
-	
-	private final String MODEL_PAGE = "model";
+public class AbstractCRUDAction<T extends ValueObject> implements CRUDAction<T> {
 
-	private CRUDService<T> service;
-	private Class<T> voClass;
-	private T model;
+	private CRUDService<T> mService;
+	private T mModel;
 
 	public AbstractCRUDAction(Class<T> voClass) {
 		super();
-		this.voClass = voClass;
-		this.service = new AbstractCRUDService<T>(voClass);
-	}
-	
-	@Override
-	public T getModel() {
+
 		try {
-			return voClass.newInstance();
+			mModel = voClass.newInstance();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		return null;
+
+		this.mService = new AbstractCRUDService<T>(voClass);
 	}
 
 	@Override
+	public T getModel() {
+		return mModel;
+	}
+
+	@Override
+	public Collection<T> getModels() {
+		return mService.findAll();
+	}
+
 	public String input() {
+		mModel = mService.find(mModel.getId());
 		return INPUT_PAGE;
 	}
 
-	@Override
 	public String edit() {
+		mModel = mService.find(mModel.getId());
 		return EDIT_PAGE;
 	}
 
-	@Override
-	public String index() {
-		return INDEX_PAGE;
-	}
-
-	@Override
 	public String get() {
+		System.out.println("GET : " + mModel);
+		mModel = mService.find(mModel.getId());
 		return MODEL_PAGE;
 	}
 
-	@Override
 	public String put() {
-		service.update(model);
-		return index();
+		System.out.println("PUT : " + mModel);
+		mService.update(mModel);
+		return MODELS_PAGE;
 	}
 
-	@Override
 	public String post() {
-		service.create(model);
-		return index();
+		System.out.println("POST : " + mModel);
+		mService.add(mModel);
+		return MODELS_PAGE;
+	}
+
+	public String delete() {
+		System.out.println("DELETE : " + mModel);
+		mService.delete(mModel);
+		return MODELS_PAGE;
 	}
 
 	@Override
-	public String delete() {
-		service.delete(model);
-		return index();
+	public String execute() {
+		System.out.println(ServletActionContext.getRequest().getMethod());
+		return MODELS_PAGE;
 	}
 
 }

@@ -5,8 +5,7 @@
 <constant name="struts.action.extension" value="action"></constant>
 <constant name="struts.devMode" value="true">http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-windows-x86-msvc2013-5.7.0.exe</constant>
 
-<include file="./demo/controller/strutsxml/admin.xml"></include>
-<include file="./demo/controller/strutsxml/user.xml"></include>
-<include file="./demo/controller/strutsxml/upload.xml"></include>
+<include file="./demo/controller/action/xml/user.xml"></include>
+<include file="./demo/controller/action/xml/upload.xml"></include>
 
 </struts>    
