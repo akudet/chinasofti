@@ -14,4 +14,9 @@ public interface CRUDAction<T> extends ModelDriven<T> {
 	public Collection<T> getModels();
 	
 	public String execute();
+	
+	public String get();
+	public String post();
+	public String put();
+	public String delete();
 }

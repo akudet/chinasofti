@@ -47,6 +47,10 @@ public class AbstractCRUDAction<T extends ValueObject> implements CRUDAction<T> 
 		mModel = mService.find(mModel.getId());
 		return EDIT_PAGE;
 	}
+	
+	public String index() {
+		return MODELS_PAGE;
+	}
 
 	public String get() {
 		System.out.println("GET : " + mModel);

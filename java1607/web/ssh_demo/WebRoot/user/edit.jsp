@@ -27,10 +27,7 @@
 <body>
 编辑用户
 	<form action="user/put.action" method="get">
-		<input type="hidden" name="id" value="${param.id }">
-		NAME:<input type="text" name="name" value="${user.name}">
-		Age:<input type="number"  name="age" value="${user.age }"> 
-		<input type="submit" value="提交">
+		<%@ include file="form_user.jsp" %>
 	</form>
 </body>
 </html>
