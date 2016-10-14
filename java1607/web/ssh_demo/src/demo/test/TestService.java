@@ -15,6 +15,11 @@ public class TestService {
 	public String test() {
 		return dao.test();
 	}
+
+	public TestService(TestDAO dao) {
+		super();
+		this.dao = dao;
+	}
 	
 	
 

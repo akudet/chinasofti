@@ -16,7 +16,11 @@ public class Test {
 		Message message = context.getBean(Message.class);
 		System.out.println(message);
 		
-		TestService ts = context.getBean(TestService.class);
-		System.out.println(ts.test());
+//		TestService ts = context.getBean(TestService.class);
+//		System.out.println(ts.test());
+		
+		TestService ts1 = context.getBean("tsByCons", TestService.class);
+		System.out.println(ts1.test());
+		
 	}
 }

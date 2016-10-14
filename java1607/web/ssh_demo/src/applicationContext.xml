@@ -18,6 +18,12 @@
 		</property>
 	</bean>
 
+	<bean name="tsByCons" class="demo.test.TestService">
+		<constructor-arg>
+			<ref bean="testDaoBean"></ref>
+		</constructor-arg>
+	</bean>
+
 	<bean name="testDaoBean" class="demo.test.TestDAO">
 	</bean>
 </beans>
