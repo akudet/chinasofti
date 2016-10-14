@@ -28,5 +28,8 @@ public class Test {
 		TestService ts3 = context.getBean("tsfb", TestService.class);
 		System.out.println(ts3.getList());
 		
+		System.out.println(ts3.getMap());
+		System.out.println(ts3.getSet());
+		
 	}
 }

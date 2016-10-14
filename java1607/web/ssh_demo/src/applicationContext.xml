@@ -46,6 +46,35 @@
 				</property>
 			</bean>
 		</property>
+		<property name="set">
+			<util:set>
+				<value>1dsa</value>
+				<value>sdad</value>
+				<value>da</value>
+			</util:set>
+		</property>
+		<property name="map">
+			<util:map map-class="java.util.HashMap">
+				<entry>
+					<key>
+						<value>age</value>
+					</key>
+					<value>21</value>
+				</entry>
+				<entry>
+					<key>
+						<value>count</value>
+					</key>
+					<value>21</value>
+				</entry>
+				<entry>
+					<key>
+						<value>money</value>
+					</key>
+					<value>21</value>
+				</entry>
+			</util:map>
+		</property>
 	</bean>
 
 	<bean name="tsByCons" class="demo.test.TestService">
