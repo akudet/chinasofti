@@ -28,7 +28,21 @@
 		</property>
 	</bean>
 
+	<bean name="dateFormater" class="java.text.SimpleDateFormat">
+		<constructor-arg>
+			<value>yyyy-MM-dd</value>
+		</constructor-arg>
+	</bean>
+
 	<bean name="tsfb" class="demo.test.TestService">
+		<property name="date">
+			<bean factory-bean="dateFormater" factory-method="parse">
+				<constructor-arg>
+					<value>2012-12-13</value>
+				</constructor-arg>
+			</bean>
+		</property>
+
 		<property name="dao">
 			<ref bean="testDaoBean" />
 		</property>

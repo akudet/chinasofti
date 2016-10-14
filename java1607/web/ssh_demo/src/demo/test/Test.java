@@ -9,7 +9,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		
+
 		User user = context.getBean(User.class);
 		System.out.println(user.getPass());
 		
@@ -27,9 +27,10 @@ public class Test {
 		
 		TestService ts3 = context.getBean("tsfb", TestService.class);
 		System.out.println(ts3.getList());
-		
+
 		System.out.println(ts3.getMap());
 		System.out.println(ts3.getSet());
+		System.out.println(ts3.getDate());
 		
 	}
 }
