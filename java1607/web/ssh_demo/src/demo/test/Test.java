@@ -22,5 +22,11 @@ public class Test {
 		TestService ts1 = context.getBean("tsByCons", TestService.class);
 		System.out.println(ts1.test());
 		
+		TestService ts2 = context.getBean("testServiceBean", TestService.class);
+		System.out.println(ts2.getList());
+		
+		TestService ts3 = context.getBean("tsfb", TestService.class);
+		System.out.println(ts3.getList());
+		
 	}
 }
