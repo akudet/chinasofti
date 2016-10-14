@@ -6,9 +6,18 @@
 	<bean name="userBean" class="demo.test.User">
 		<property name="pass" value="123"></property>
 	</bean>
-	
+
 	<bean name="messageBean" class="demo.model.vo.Message">
-	<property name="id" value="1"></property>
-	<property name="text" value="I love spring"></property>
+		<property name="id" value="1"></property>
+		<property name="text" value="I love spring"></property>
+	</bean>
+
+	<bean name="testServiceBean" class="demo.test.TestService">
+		<property name="dao">
+			<ref bean="testDaoBean" />
+		</property>
+	</bean>
+
+	<bean name="testDaoBean" class="demo.test.TestDAO">
 	</bean>
 </beans>

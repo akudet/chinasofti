@@ -15,5 +15,8 @@ public class Test {
 		
 		Message message = context.getBean(Message.class);
 		System.out.println(message);
+		
+		TestService ts = context.getBean(TestService.class);
+		System.out.println(ts.test());
 	}
 }
