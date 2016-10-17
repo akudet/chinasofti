@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class Test {
@@ -13,6 +14,8 @@ public class Test {
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				DBConfig.class);
+		
+		context = new ClassPathXmlApplicationContext("demo/test/db/dbconfig.xml");
 
 		DriverManagerDataSource ds = context.getBean("ds",
 				DriverManagerDataSource.class);
