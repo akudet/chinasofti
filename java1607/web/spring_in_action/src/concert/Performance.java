@@ -7,7 +7,6 @@ public class Performance {
 	
 	public void perform() {
 		System.out.println(Performance.class);
-		throw new RuntimeException("SDFS");
 	}
 
 	public void perform(String string) {
