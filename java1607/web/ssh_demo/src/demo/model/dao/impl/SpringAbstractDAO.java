@@ -32,17 +32,33 @@ public class SpringAbstractDAO<T> implements DAO<T> {
 
 	@Override
 	public Serializable add(final T t) {
-		return getSession().save(t);
+		Session session = getSession();
+		Serializable id = session.save(t);
+		session.close();
+		return id;
 	}
 
 	@Override
 	public void delete(final T t) {
-		getSession().delete(t);
+		Session session = getSession();
+		session.delete(t);
+		try {
+			session.flush();
+		} catch (Exception ignored) {
+			// TODO : a better way
+			// without this it terminated the program when delete an instance not exists
+		}
+		
+		session.close();
 	}
 
 	@Override
 	public T find(final Serializable id) {
-		return (T) getSession().get(voClass, id);
+		Session session = getSession();
+		@SuppressWarnings("unchecked")
+		T t = (T) session.get(voClass, id);
+		session.close();
+		return t;
 	}
 
 	@Override
@@ -52,7 +68,8 @@ public class SpringAbstractDAO<T> implements DAO<T> {
 
 	@Override
 	public List<T> findAll(final String query, final Object... params) {
-		Query q = getSession().createQuery(query);
+		Session session = getSession();
+		Query q = session.createQuery(query);
 		
 		if (null != params) {
 			for (int i = 0; i < params.length; i++) {
@@ -60,7 +77,11 @@ public class SpringAbstractDAO<T> implements DAO<T> {
 			}
 		}
 
-		return q.list();
+		@SuppressWarnings("unchecked")
+		List<T> result = q.list();
+		session.close();
+		
+		return result;
 	}
 
 	@Override
@@ -74,6 +95,9 @@ public class SpringAbstractDAO<T> implements DAO<T> {
 
 	@Override
 	public void update(final T t) {
-		getSession().update(t);
+		Session session = getSession();
+		session.update(t);
+		session.flush();
+		session.close();
 	}
 }

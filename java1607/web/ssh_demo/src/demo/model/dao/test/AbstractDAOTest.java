@@ -1,25 +1,15 @@
 package demo.model.dao.test;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-import demo.model.dao.impl.AddressDao;
-import demo.model.dao.impl.MessageDao;
-import demo.model.dao.impl.RoomDao;
-import demo.model.dao.impl.UserDao;
-import demo.model.vo.Address;
-import demo.model.vo.Message;
-import demo.model.vo.Room;
-import demo.model.vo.User;
+import demo.model.dao.impl.*;
+import demo.model.vo.*;
 
 public class AbstractDAOTest {
 	public static void main(String[] args) {
 
-		UserDao ud = new UserDao();
+		UserDAO ud = new UserDAO();
 		MessageDao md = new MessageDao();
-		AddressDao ad = new AddressDao();
 		
 		int id = (Integer) md.add(new Message("ASDASDAS"));
 		
@@ -59,7 +49,7 @@ public class AbstractDAOTest {
 	}
 
 	private static void addUsers(Message m) {
-		UserDao ud = new UserDao();
+		UserDAO ud = new UserDAO();
 		
 		User u1 = new User();
 		User u2 = new User();
