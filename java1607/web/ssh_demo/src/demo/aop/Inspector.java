@@ -4,7 +4,6 @@ import java.lang.reflect.Method;
 
 import ognl.MethodAccessor;
 
-import org.hibernate.action.spi.AfterTransactionCompletionProcess;
 import org.springframework.aop.AfterAdvice;
 import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.aop.MethodBeforeAdvice;

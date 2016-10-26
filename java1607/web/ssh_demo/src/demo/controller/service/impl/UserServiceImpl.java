@@ -1,15 +1,15 @@
 package demo.controller.service.impl;
 
-import demo.model.dao.impl.UserDao;
+import demo.model.dao.impl.UserDAO;
 import demo.model.vo.User;
 
 public class UserServiceImpl extends AbstractCRUDService<User> {
 	
-	public UserDao mUserDao;
+	public UserDAO mUserDao;
 
 	public UserServiceImpl() {
 		super(User.class);
-		mUserDao = new UserDao();
+		mUserDao = new UserDAO();
 	}
 	
 	public User login(String name, String password) {
