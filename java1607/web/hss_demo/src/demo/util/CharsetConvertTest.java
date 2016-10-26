@@ -2,7 +2,7 @@ package demo.util;
 
 import java.io.UnsupportedEncodingException;
 
-public class Test {
+public class CharsetConvertTest {
 
 	// encoding converting like this only work when the bytes is encoded in iso-8859-1
 	public static void main(String[] args) throws UnsupportedEncodingException {

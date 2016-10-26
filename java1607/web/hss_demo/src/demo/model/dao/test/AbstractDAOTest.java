@@ -9,7 +9,7 @@ public class AbstractDAOTest {
 	public static void main(String[] args) {
 
 		UserDAO ud = new UserDAO();
-		MessageDao md = new MessageDao();
+		MessageDAO md = new MessageDAO();
 		
 		int id = (Integer) md.add(new Message("ASDASDAS"));
 		
@@ -23,7 +23,7 @@ public class AbstractDAOTest {
 		
 		User ub = ud.find(1);
 		
-		RoomDao rd = new RoomDao();
+		RoomDAO rd = new RoomDAO();
 		
 		Room r1 = new Room();
 		r1.setName("SADA");

@@ -2,17 +2,18 @@ package demo.model.dao.impl;
 
 import java.util.List;
 
+import demo.model.dao.abst.AbstractDAO;
 import demo.model.vo.Message;
 
-public class MessageDao extends AbstractDAO<Message> {
+public class MessageDAO extends AbstractDAO<Message> {
 	
-	public MessageDao() {
+	public MessageDAO() {
 		super(Message.class);
 	}
 
 	public static void main(String[] args) {
 		
-		MessageDao dao = new MessageDao();
+		MessageDAO dao = new MessageDAO();
 		dao.add(new Message(1, "DSFS"));
 		dao.add(new Message(1, "SDFS"));
 		

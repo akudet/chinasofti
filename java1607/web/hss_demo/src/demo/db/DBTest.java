@@ -1,4 +1,4 @@
-package demo.test.db;
+package demo.db;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,13 +9,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-public class Test {
+public class DBTest {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(
 				DBConfig.class);
 		
-		context = new ClassPathXmlApplicationContext("demo/test/db/dbconfig.xml");
+		context = new ClassPathXmlApplicationContext("demo/db/dbconfig.xml");
 
 		DriverManagerDataSource ds = context.getBean("ds",
 				DriverManagerDataSource.class);

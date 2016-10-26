@@ -1,4 +1,4 @@
-package demo.model.dao.impl;
+package demo.model.dao.abst;
 
 import demo.model.dao.DAO;
 

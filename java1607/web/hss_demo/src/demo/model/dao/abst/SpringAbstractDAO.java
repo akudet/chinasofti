@@ -1,4 +1,4 @@
-package demo.model.dao.impl;
+package demo.model.dao.abst;
 
 import java.io.Serializable;
 import java.util.List;

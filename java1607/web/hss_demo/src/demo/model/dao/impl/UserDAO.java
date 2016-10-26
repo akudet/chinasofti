@@ -2,6 +2,7 @@ package demo.model.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
+import demo.model.dao.abst.AbstractDAO;
 import demo.model.vo.User;
 
 @Repository
