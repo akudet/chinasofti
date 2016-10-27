@@ -14,6 +14,11 @@ public class UserDAO {
 	
 	public UserDAO() {
 		super();
+		User u = new User();
+		u.setId(1);
+		u.setName("jtwu");
+		u.setAge(27);
+		users.put(u.getId(), u);
 	}
 
 	public User get(int id) {
