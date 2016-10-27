@@ -14,12 +14,17 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileuploadController {
 
 	@RequestMapping("/upload")
-	public String upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IllegalStateException,
+	public String upload(@RequestParam("file") MultipartFile[] files, HttpServletRequest request) throws IllegalStateException,
 			IOException {
 
 		System.out.println("AJSDASDASDasDASDAS");
-
-		file.transferTo(new File("D:/tmp/" + file.getOriginalFilename()));
+		
+		for (MultipartFile file : files) {
+			System.out.println(file);
+			if (!file.getOriginalFilename().equals("")) {
+				file.transferTo(new File("D:/tmp/" + file.getOriginalFilename()));
+			}
+		}
 
 		return "redirect:index.jsp";
 	}
