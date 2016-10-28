@@ -6,6 +6,7 @@
 	
 	<typeAliases>
 		<typeAlias alias="Message" type="demo.vo.Message" />
+		<typeAlias alias="Book" type="demo.vo.Book" />
 	</typeAliases>
 	<!-- 数据源配置 -->
 	<environments default="development">

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import demo.dao.MessageDAO;
+import demo.vo.Book;
 import demo.vo.Message;
 
 public class Test {
@@ -30,6 +31,11 @@ public class Test {
 		
 		System.out.println(md.findOne(1));
 		System.out.println(md.findOneMapped(1));
+		
+		for (Book book : md.findAllBooks()) {
+			System.out.println(book);
+		}
+		
 		
 	}
 

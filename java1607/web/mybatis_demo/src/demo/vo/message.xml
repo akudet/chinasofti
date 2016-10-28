@@ -13,4 +13,15 @@
 	<select id="findOneMapped" resultMap="messageMap">
 		select * from m WHERE m_id = #{id}
 	</select>
+	
+	<resultMap type="Book" id="bookMap">
+		<id property="id" column="id"></id>
+		<result property="title" column="title"/>
+		<association property="message" resultMap="messageMap"></association>
+	</resultMap>
+	
+	<select id="findAllBooks" resultMap="bookMap">
+		SELECT * FROM book, m
+		WHERE book.m_id = m.m_id
+	</select>
 </mapper>
