@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import demo.dao.MessageDAO;
+import demo.dao.UserDAO;
 
 public class SpringTest {
 	
@@ -20,6 +21,9 @@ public class SpringTest {
 		
 		MessageDAO md = context.getBean(MessageDAO.class);
 		System.out.println(md.findOne(1));
+		
+		UserDAO ud = context.getBean(UserDAO.class);
+		System.out.println(ud.findAll());
 	}
 
 }

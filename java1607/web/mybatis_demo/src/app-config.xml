@@ -28,6 +28,11 @@
 		<property name="mapperInterface" value="demo.dao.MessageDAO"></property>
 	</bean>
 	
+	<bean id="userDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+		<property name="mapperInterface" value="demo.dao.UserDAO"></property>
+	</bean>
+
 	<!--	
 	<bean class="demo.config.AppConfig"></bean>
 	
