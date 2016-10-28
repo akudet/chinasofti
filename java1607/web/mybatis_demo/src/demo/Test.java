@@ -29,6 +29,7 @@ public class Test {
 		MessageDAO md = ss.getMapper(MessageDAO.class);
 		
 		System.out.println(md.findOne(1));
+		System.out.println(md.findOneMapped(1));
 		
 	}
 

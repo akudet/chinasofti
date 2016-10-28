@@ -4,4 +4,13 @@
 	<select id="findOne" parameterType="int" resultType="Message">
 		select * from message WHERE id = #{id};
 	</select>
+	
+	<resultMap type="Message" id="messageMap">
+		<id property="id" column="m_id"/>
+		<result property="text" column="m_text"/>
+	</resultMap>
+	
+	<select id="findOneMapped" resultMap="messageMap">
+		select * from m WHERE m_id = #{id}
+	</select>
 </mapper>
