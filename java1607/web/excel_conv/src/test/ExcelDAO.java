@@ -18,6 +18,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.RichTextString;
 
+import test.vo.Student;
+
 public class ExcelDAO {
 	Class<?> voClass;
 	
