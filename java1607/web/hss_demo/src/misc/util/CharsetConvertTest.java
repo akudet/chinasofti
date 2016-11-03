@@ -1,4 +1,4 @@
-package demo.util;
+package misc.util;
 
 import java.io.UnsupportedEncodingException;
 

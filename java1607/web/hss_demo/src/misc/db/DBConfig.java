@@ -1,4 +1,4 @@
-package demo.db;
+package misc.db;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

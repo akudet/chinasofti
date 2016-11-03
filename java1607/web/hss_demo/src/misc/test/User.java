@@ -1,4 +1,4 @@
-package demo.test;
+package misc.test;
 
 public class User {
 	

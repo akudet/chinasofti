@@ -1,4 +1,4 @@
-package demo.test;
+package misc.test;
 
 import java.util.Date;
 import java.util.List;

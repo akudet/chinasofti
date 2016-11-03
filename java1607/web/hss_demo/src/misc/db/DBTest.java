@@ -1,4 +1,4 @@
-package demo.db;
+package misc.db;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
