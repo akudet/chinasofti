@@ -5,6 +5,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import test.dao.StudentDAO;
+import test.vo.Student;
+
 public class Test {
 
 	public void readTest() throws FileNotFoundException, IOException {
@@ -20,9 +26,18 @@ public class Test {
 		}
 	}
 	
+	public void DBTest() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("app-config.xml");
+		StudentDAO sd = context.getBean(StudentDAO.class);
+		for (Student s : sd.findAll()) {
+			System.out.println(s);
+		}
+	}
+	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		Test test = new Test();
 		test.readTest();
+		test.DBTest();
 	}
 	
 }

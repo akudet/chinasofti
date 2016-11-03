@@ -9,6 +9,10 @@ public class Student {
 	private int age;
 	private Date birth;
 
+	public Student() {
+		super();
+	}
+
 	public Student(long stu_id, String name, int age, Date birth) {
 		super();
 		this.stu_id = stu_id;
@@ -47,6 +51,12 @@ public class Student {
 
 	public void setStu_id(long stu_id) {
 		this.stu_id = stu_id;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [stu_id=" + stu_id + ", name=" + name + ", age=" + age
+				+ ", birth=" + birth + "]";
 	}
 
 }
