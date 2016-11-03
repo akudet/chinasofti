@@ -6,16 +6,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import demo.model.dao.impl.UserDAO;
+import demo.model.dao.test.context.SessionFactoryConfig;
 import demo.model.vo.User;
 
 public class UserDAOTest {
-	public static void main(String[] args) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
-//		SessionFactory sf = context.getBean(SessionFactory.class);
-//		sf.openSession().save(new User(1, "ASDAS", 12));
-//		UserDAO ud = new UserDAO();
-		
-		UserDAO dao = context.getBean(UserDAO.class);
+	public static void main(String[] args) {	
+		UserDAO dao = new UserDAO();
 		
 		dao.add(new User(1, "Akjkjksjdf", 12));
 		dao.add(new User(1, "SADAS", 33));

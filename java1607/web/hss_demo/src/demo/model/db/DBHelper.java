@@ -6,13 +6,12 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
-
-import demo.model.vo.User;
 
 public class DBHelper {
 	
-	public static SessionFactory mSF = new Configuration().configure().buildSessionFactory();
+	public static SessionFactory mSF = new AnnotationConfiguration().configure().buildSessionFactory();
 	
 	public static Session newSession() {
 		return mSF.openSession();
