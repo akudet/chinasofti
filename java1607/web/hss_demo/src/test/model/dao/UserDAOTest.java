@@ -1,12 +1,8 @@
-package demo.model.dao.test;
+package test.model.dao;
 
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import demo.model.dao.impl.UserDAO;
-import demo.model.dao.test.context.SessionFactoryConfig;
 import demo.model.vo.User;
 
 public class UserDAOTest {
@@ -26,7 +22,7 @@ public class UserDAOTest {
 		
 		dao.update(u1);
 		
-		List<User> users = dao.findAll("FROM User");
+		List<User> users = dao.findAll();
 		for (User u : users) {
 			System.out.println(u);
 		}

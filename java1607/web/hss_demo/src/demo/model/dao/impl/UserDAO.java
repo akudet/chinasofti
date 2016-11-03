@@ -13,7 +13,7 @@ public class UserDAO extends AbstractDAO<User> {
 	}
 	
 	public User findOneByName(String name) {
-		return findOne("FROM User where name = ?", name);
+		return findOne("FROM User WHERE name = ?", name);
 	}
 
 }

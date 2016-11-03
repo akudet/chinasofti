@@ -1,4 +1,4 @@
-package demo.model.dao.test.context;
+package misc;
 
 import java.util.Properties;
 
