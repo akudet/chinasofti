@@ -14,7 +14,8 @@ public class AuthenticaitonInterceptor extends MethodFilterInterceptor{
 			return invocation.invoke();
 		}
 		
-		return "login";
+		return invocation.invoke();
+//		return "login";
 	}
 
 }
