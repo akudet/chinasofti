@@ -17,19 +17,10 @@ public class AbstractCRUDAction<T extends ValueObject> implements CRUDAction<T> 
 
 	private CRUDService<T> mService;
 	private T mModel;
-
-	public AbstractCRUDAction(Class<T> voClass) {
-		super();
-
-		try {
-			mModel = voClass.newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
-
-		this.mService = new AbstractCRUDService<T>(voClass);
+	
+	public void init(T model, CRUDService<T> service) {
+		mModel = model;
+		mService = service;
 	}
 
 	@Override

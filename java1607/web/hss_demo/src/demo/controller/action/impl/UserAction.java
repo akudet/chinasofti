@@ -13,8 +13,8 @@ public class UserAction extends AbstractCRUDAction<User> {
 	private UserServiceImpl service;
 
 	public UserAction() {
-		super(User.class);
 		service = new UserServiceImpl();
+		init(new User(), service);
 	}
 
 	public String getErrMsg() {
