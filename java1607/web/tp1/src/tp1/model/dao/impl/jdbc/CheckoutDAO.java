@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import tp1.model.dao.AbstractDAO;
+import tp1.model.dao.JDBCAbstractDAO;
 import tp1.model.dao.impl.jdbc.db.DBConnection;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.check.Checkout;
@@ -19,7 +19,7 @@ import tp1.model.vo.check.Checkout;
  * @author 田霞光
  * 
  */
-public class CheckoutDAO extends AbstractDAO<Checkout> {
+public class CheckoutDAO extends JDBCAbstractDAO<Checkout> {
 
 	private static final int PAGE = 5;
 

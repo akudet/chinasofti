@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import tp1.model.dao.AbstractDAO;
+import tp1.model.dao.JDBCAbstractDAO;
 import tp1.model.dao.impl.jdbc.db.DBConnection;
 import tp1.model.vo.cus.Vip;
 import tp1.model.vo.room.Room;
@@ -19,7 +19,7 @@ import tp1.model.vo.room.RoomType;
  * @author 张科林
  * 
  */
-public class RoomDAO extends AbstractDAO<Room>{
+public class RoomDAO extends JDBCAbstractDAO<Room>{
 	
 	private static final int DATE_PAGE=5;
 	@Override

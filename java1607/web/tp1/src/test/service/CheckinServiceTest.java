@@ -41,8 +41,6 @@ public class CheckinServiceTest {
 		Room room = new RoomDAO().findById("1000");
 		CheckinService service = new CheckinService();
 		
-		new CheckinDAO().deleteAll();
-		
 		room.setStatusFree();
 		
 		RoomDAO roomDao = new RoomDAO();

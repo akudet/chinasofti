@@ -20,6 +20,10 @@ public class Vip extends CusInfo {
 		this.setVipNo(vipNo);
 	}
 
+	public Vip() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toXML() {
 		String xml = "<vip>" + "<vip_no>" + getVipNo() + "</vip_no>" + "<name>"

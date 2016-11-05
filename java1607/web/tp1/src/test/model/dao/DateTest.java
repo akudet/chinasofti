@@ -1,4 +1,4 @@
-package test.model.test;
+package test.model.dao;
 
 import java.text.DateFormat;
 import java.text.ParseException;

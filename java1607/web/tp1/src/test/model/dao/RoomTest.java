@@ -1,4 +1,4 @@
-package test.model.test;
+package test.model.dao;
 
 import tp1.model.dao.impl.jdbc.RoomDAO;
 import tp1.model.vo.room.Room;

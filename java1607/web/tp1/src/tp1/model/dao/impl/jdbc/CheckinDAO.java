@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import tp1.model.dao.AbstractDAO;
+import tp1.model.dao.JDBCAbstractDAO;
 import tp1.model.dao.impl.jdbc.db.DBConnection;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.cus.CusInfo;
@@ -18,7 +18,7 @@ import tp1.model.vo.room.Room;
  * @author 田霞光
  * 
  */
-public class CheckinDAO extends AbstractDAO<Checkin> {
+public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 	
 	// checkin表的添加
 	public int add(Checkin checkin) {
