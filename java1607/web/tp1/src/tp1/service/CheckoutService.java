@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import tp1.model.dao.impl.jdbc.ChargeTypeDAO;
 import tp1.model.dao.impl.jdbc.CheckinDAO;
 import tp1.model.dao.impl.jdbc.CheckoutDAO;
 import tp1.model.dao.impl.jdbc.RoomDAO;
