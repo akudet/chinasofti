@@ -1,4 +1,4 @@
-package tp1.service.test;
+package test.service;
 
 import static org.junit.Assert.*;
 

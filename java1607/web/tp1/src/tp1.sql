@@ -22,7 +22,7 @@ CREATE TABLE `checkin` (
   `checkin_id` varchar(32) NOT NULL,
   `room_id` varchar(64) NOT NULL,
   `cus_info_id` varchar(64) NOT NULL,
-  `checkin_time` timestamp NOT NULL default '0000-00-00 00:00:00',
+  `checkin_time` timestamp NOT NULL,
   `checkin_type` varchar(16) NOT NULL,
   `price` float NOT NULL,
   `num_of_days` int(11) NOT NULL,

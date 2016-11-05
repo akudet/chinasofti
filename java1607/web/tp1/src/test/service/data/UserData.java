@@ -1,4 +1,4 @@
-package tp1.service.data;
+package test.service.data;
 
 import tp1.service.UserService;
 

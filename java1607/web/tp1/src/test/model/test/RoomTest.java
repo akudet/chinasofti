@@ -1,4 +1,4 @@
-package tp1.model.test;
+package test.model.test;
 
 import tp1.model.dao.RoomDAO;
 import tp1.model.vo.Room;

@@ -11,7 +11,7 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 
-<link href="/TP4/css/styles.css" type="text/css" rel="stylesheet">
+<link href="/tp1/css/styles.css" type="text/css" rel="stylesheet">
 
 <%@ include file="/tmpl/include.jsp"%>
 </head>

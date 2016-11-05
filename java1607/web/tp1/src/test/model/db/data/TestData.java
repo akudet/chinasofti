@@ -1,4 +1,4 @@
-package tp1.model.db.data;
+package test.model.db.data;
 
 import java.sql.Connection;
 import java.sql.SQLException;

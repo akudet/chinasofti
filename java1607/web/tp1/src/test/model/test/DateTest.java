@@ -1,4 +1,4 @@
-package tp1.model.test;
+package test.model.test;
 
 import java.text.DateFormat;
 import java.text.ParseException;

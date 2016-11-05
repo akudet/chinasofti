@@ -1,4 +1,4 @@
-package tp1.service.data;
+package test.service.data;
 
 public class Data {
 	public void addData() {

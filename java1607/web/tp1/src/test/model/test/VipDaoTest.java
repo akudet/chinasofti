@@ -1,4 +1,4 @@
-package tp1.model.test;
+package test.model.test;
 
 import tp1.model.dao.VipDAO;
 import tp1.model.vo.Vip;
