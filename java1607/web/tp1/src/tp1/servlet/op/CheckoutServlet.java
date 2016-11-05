@@ -1,17 +1,12 @@
 package tp1.servlet.op;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.impl.jdbc.ChargeTypeDAO;
-import tp1.model.dao.impl.jdbc.CheckinDAO;
-import tp1.model.dao.impl.jdbc.RoomStatusDAO;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.check.Checkout;
 import tp1.service.CheckinService;
