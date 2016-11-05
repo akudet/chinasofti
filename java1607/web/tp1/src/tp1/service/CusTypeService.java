@@ -2,8 +2,8 @@ package tp1.service;
 
 import java.util.*;
 
-import tp1.model.dao.CusTypeDAO;
-import tp1.model.vo.CusType;
+import tp1.model.dao.impl.jdbc.CusTypeDAO;
+import tp1.model.vo.cus.CusType;
 
 /**
  * 

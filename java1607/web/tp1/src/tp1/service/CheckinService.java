@@ -5,18 +5,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import tp1.model.dao.CheckinDAO;
-import tp1.model.dao.CusInfoDAO;
-import tp1.model.dao.CusTypeDAO;
-import tp1.model.dao.RoomDAO;
-import tp1.model.dao.VipDAO;
-import tp1.model.vo.Checkin;
-import tp1.model.vo.Checkout;
-import tp1.model.vo.CusInfo;
-import tp1.model.vo.CusType;
-import tp1.model.vo.Room;
-import tp1.model.vo.RoomType;
-import tp1.model.vo.Vip;
+import tp1.model.dao.impl.jdbc.CheckinDAO;
+import tp1.model.dao.impl.jdbc.CusInfoDAO;
+import tp1.model.dao.impl.jdbc.CusTypeDAO;
+import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.vo.check.Checkin;
+import tp1.model.vo.check.Checkout;
+import tp1.model.vo.cus.CusInfo;
+import tp1.model.vo.cus.CusType;
+import tp1.model.vo.cus.Vip;
+import tp1.model.vo.room.Room;
+import tp1.model.vo.room.RoomType;
 
 /**
  * 

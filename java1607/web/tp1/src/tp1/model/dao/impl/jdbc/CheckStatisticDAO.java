@@ -1,4 +1,4 @@
-package tp1.model.dao;
+package tp1.model.dao.impl.jdbc;
 
 import java.sql.*;
 import java.text.DateFormat;
@@ -6,8 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
-import tp1.model.db.DBConnection;
-import tp1.model.vo.CheckStatistic;
+import tp1.model.dao.impl.jdbc.db.DBConnection;
+import tp1.model.vo.check.CheckStatistic;
 
 /**
  * 

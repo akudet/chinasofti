@@ -1,15 +1,17 @@
-package tp1.model.vo;
+package tp1.model.vo.cus;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
+
+import tp1.model.vo.ValueObject;
 
 /**
  * 
  * @author 项双江
  * 
  */
-public class CusInfo extends VirtualObject {
+public class CusInfo extends ValueObject {
 	protected String cusInfoId;
 	protected String certType;
 	protected String certNumber;

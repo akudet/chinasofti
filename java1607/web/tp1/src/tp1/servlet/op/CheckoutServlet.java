@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.ChargeTypeDAO;
-import tp1.model.dao.CheckinDAO;
-import tp1.model.dao.RoomStatusDAO;
-import tp1.model.vo.Checkin;
-import tp1.model.vo.Checkout;
+import tp1.model.dao.impl.jdbc.ChargeTypeDAO;
+import tp1.model.dao.impl.jdbc.CheckinDAO;
+import tp1.model.dao.impl.jdbc.RoomStatusDAO;
+import tp1.model.vo.check.Checkin;
+import tp1.model.vo.check.Checkout;
 import tp1.service.CheckinService;
 import tp1.service.CheckoutService;
 import tp1.service.CusTypeService;

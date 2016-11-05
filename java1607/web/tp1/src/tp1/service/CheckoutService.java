@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import tp1.model.dao.ChargeTypeDAO;
-import tp1.model.dao.CheckinDAO;
-import tp1.model.dao.CheckoutDAO;
-import tp1.model.dao.RoomDAO;
-import tp1.model.vo.Checkin;
-import tp1.model.vo.Checkout;
-import tp1.model.vo.Room;
+import tp1.model.dao.impl.jdbc.ChargeTypeDAO;
+import tp1.model.dao.impl.jdbc.CheckinDAO;
+import tp1.model.dao.impl.jdbc.CheckoutDAO;
+import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.vo.check.Checkin;
+import tp1.model.vo.check.Checkout;
+import tp1.model.vo.room.Room;
 
 /**
  * 

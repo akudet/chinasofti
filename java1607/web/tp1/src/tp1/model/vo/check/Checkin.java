@@ -1,17 +1,19 @@
-package tp1.model.vo;
+package tp1.model.vo.check;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 
-import tp1.model.dao.ChargeTypeDAO;
+import tp1.model.vo.ValueObject;
+import tp1.model.vo.cus.CusInfo;
+import tp1.model.vo.room.Room;
+import tp1.model.vo.room.RoomType;
 
 /**
  * 
  * @author 田霞光
  * 
  */
-public class Checkin extends VirtualObject {
+public class Checkin extends ValueObject {
 
 	protected String checkinId;
 	protected Room room;

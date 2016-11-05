@@ -1,8 +1,8 @@
 package test.model.test;
 
-import tp1.model.dao.RoomDAO;
-import tp1.model.vo.Room;
-import tp1.model.vo.RoomType;
+import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.vo.room.Room;
+import tp1.model.vo.room.RoomType;
 
 public class RoomTest {
 	public static void main(String[] args) {

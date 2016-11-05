@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import tp1.model.vo.User;
+import tp1.model.vo.admin.User;
 import tp1.service.AuthenticationService;
 
 public class LoginServlet extends HttpServlet {

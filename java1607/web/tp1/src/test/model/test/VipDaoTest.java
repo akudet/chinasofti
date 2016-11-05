@@ -1,7 +1,7 @@
 package test.model.test;
 
-import tp1.model.dao.VipDAO;
-import tp1.model.vo.Vip;
+import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.vo.cus.Vip;
 
 /**
  *

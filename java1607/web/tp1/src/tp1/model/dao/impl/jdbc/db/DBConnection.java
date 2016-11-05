@@ -1,4 +1,4 @@
-package tp1.model.db;
+package tp1.model.dao.impl.jdbc.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

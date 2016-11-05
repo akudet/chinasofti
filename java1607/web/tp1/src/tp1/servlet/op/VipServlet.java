@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.VipDAO;
-import tp1.model.vo.Vip;
+import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.vo.cus.Vip;
 import tp1.service.VipService;
 import tp1.servlet.CRUDServlet;
 

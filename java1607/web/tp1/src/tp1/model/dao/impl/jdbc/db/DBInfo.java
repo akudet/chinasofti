@@ -1,4 +1,4 @@
-package tp1.model.db;
+package tp1.model.dao.impl.jdbc.db;
 
 // hold connection info
 public class DBInfo {

@@ -1,6 +1,5 @@
 package tp1.model.vo;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -12,15 +11,12 @@ import java.util.UUID;
 /**
  * 
  * I think the the proper name is DBObject<br>
- * I don't know why it's called vo in Java<br>
- * So the name is derived from the package name<br>
- * em vo = VirtualObject
  * 
  * @author 巫金桐
- * @version 1.0
+ * @versiosn 1.0
  * 
  */
-public abstract class VirtualObject {
+public abstract class ValueObject {
 	
 	final protected String parseDateTime(Timestamp date) {
 		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date(date.getTime()));

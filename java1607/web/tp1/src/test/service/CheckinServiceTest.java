@@ -8,12 +8,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import tp1.model.dao.CheckinDAO;
-import tp1.model.dao.CusInfoDAO;
-import tp1.model.dao.RoomDAO;
-import tp1.model.vo.CusInfo;
-import tp1.model.vo.Room;
-import tp1.model.vo.RoomType;
+import tp1.model.dao.impl.jdbc.CheckinDAO;
+import tp1.model.dao.impl.jdbc.CusInfoDAO;
+import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.vo.cus.CusInfo;
+import tp1.model.vo.room.Room;
+import tp1.model.vo.room.RoomType;
 import tp1.service.CheckinService;
 
 public class CheckinServiceTest {

@@ -1,4 +1,4 @@
-package tp1.model.dao;
+package tp1.model.dao.impl.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import tp1.model.db.DBConnection;
-import tp1.model.vo.CusInfo;
+import tp1.model.dao.DAO;
+import tp1.model.dao.impl.jdbc.db.DBConnection;
+import tp1.model.vo.cus.CusInfo;
 
 /**
  * 

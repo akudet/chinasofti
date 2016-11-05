@@ -1,4 +1,4 @@
-package tp1.model.dao;
+package tp1.model.dao.impl.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import tp1.model.db.DBConnection;
-import tp1.model.vo.Room;
-import tp1.model.vo.RoomType;
-import tp1.model.vo.Vip;
+import tp1.model.dao.DAO;
+import tp1.model.dao.impl.jdbc.db.DBConnection;
+import tp1.model.vo.cus.Vip;
+import tp1.model.vo.room.Room;
+import tp1.model.vo.room.RoomType;
 
 /**
  * 

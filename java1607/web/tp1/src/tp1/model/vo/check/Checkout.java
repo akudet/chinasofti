@@ -1,14 +1,16 @@
-package tp1.model.vo;
+package tp1.model.vo.check;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import tp1.model.vo.ValueObject;
 
 /**
  * 
  * @author 田霞光
  * 
  */
-public class Checkout extends VirtualObject {
+public class Checkout extends ValueObject {
 	
 	protected String checkoutId;
 	protected float checkoutAmount;

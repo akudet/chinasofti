@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.vo.RoomType;
+import tp1.model.vo.room.RoomType;
 import tp1.service.RoomTypeService;
 import tp1.servlet.CRUDServlet;
 

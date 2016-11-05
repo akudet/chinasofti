@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.ReservationDAO;
-import tp1.model.dao.RoomTypeDAO;
-import tp1.model.vo.Reservation;
-import tp1.model.vo.RoomType;
+import tp1.model.dao.impl.jdbc.ReservationDAO;
+import tp1.model.dao.impl.jdbc.RoomTypeDAO;
+import tp1.model.vo.check.Reservation;
+import tp1.model.vo.room.RoomType;
 import tp1.service.ReservationService;
 import tp1.servlet.CRUDServlet;
 

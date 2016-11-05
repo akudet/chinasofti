@@ -1,9 +1,11 @@
-package tp1.model.vo;
+package tp1.model.vo.check;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CheckStatistic extends VirtualObject {
+import tp1.model.vo.ValueObject;
+
+public class CheckStatistic extends ValueObject {
 
 	private int count;
 	private String date;

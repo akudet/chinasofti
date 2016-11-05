@@ -1,9 +1,11 @@
-package tp1.model.vo;
+package tp1.model.vo.check;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ChargeType extends VirtualObject {
+import tp1.model.vo.ValueObject;
+
+public class ChargeType extends ValueObject {
 	
 	private int chargeTypeNo;
 	private String chargeTypeDesc;

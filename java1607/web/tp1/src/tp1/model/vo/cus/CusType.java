@@ -1,14 +1,16 @@
-package tp1.model.vo;
+package tp1.model.vo.cus;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import tp1.model.vo.ValueObject;
 
 /**
  * 
  * @author 项双江
  * 
  */
-public class CusType extends VirtualObject {
+public class CusType extends ValueObject {
 	protected int cusTypeNo;
 	protected String cusTypeDesc;
 	protected int discount;

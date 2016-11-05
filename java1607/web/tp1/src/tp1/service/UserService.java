@@ -2,8 +2,8 @@ package tp1.service;
 
 import java.util.*;
 
-import tp1.model.dao.UserDAO;
-import tp1.model.vo.User;
+import tp1.model.dao.impl.jdbc.UserDAO;
+import tp1.model.vo.admin.User;
 
 /**
  * 

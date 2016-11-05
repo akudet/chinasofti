@@ -2,14 +2,14 @@ package tp1.service;
 
 import java.util.*;
 
-import tp1.model.dao.CusInfoDAO;
-import tp1.model.dao.CusTypeDAO;
-import tp1.model.dao.VipDAO;
-import tp1.model.vo.Checkin;
-import tp1.model.vo.CusInfo;
-import tp1.model.vo.CusType;
-import tp1.model.vo.Room;
-import tp1.model.vo.Vip;
+import tp1.model.dao.impl.jdbc.CusInfoDAO;
+import tp1.model.dao.impl.jdbc.CusTypeDAO;
+import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.vo.check.Checkin;
+import tp1.model.vo.cus.CusInfo;
+import tp1.model.vo.cus.CusType;
+import tp1.model.vo.cus.Vip;
+import tp1.model.vo.room.Room;
 
 /**
  * 

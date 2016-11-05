@@ -1,4 +1,4 @@
-package tp1.model.dao;
+package tp1.model.dao.impl.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import tp1.model.db.DBConnection;
-import tp1.model.vo.RoomType;
+import tp1.model.dao.impl.jdbc.db.DBConnection;
+import tp1.model.vo.room.RoomType;
 
 /**
  * 

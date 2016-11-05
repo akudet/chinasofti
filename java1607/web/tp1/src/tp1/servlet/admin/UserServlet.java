@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.RoomDAO;
-import tp1.model.dao.UserDAO;
-import tp1.model.vo.Room;
-import tp1.model.vo.User;
+import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.UserDAO;
+import tp1.model.vo.admin.User;
+import tp1.model.vo.room.Room;
 import tp1.service.RoomService;
 import tp1.service.UserService;
 import tp1.servlet.CRUDServlet;

@@ -1,9 +1,11 @@
-package tp1.model.vo;
+package tp1.model.vo.room;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RoomStatus extends VirtualObject {
+import tp1.model.vo.ValueObject;
+
+public class RoomStatus extends ValueObject {
 	
 	private int roomStatusNo;
 	private String roomStatusDesc;

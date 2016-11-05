@@ -1,14 +1,16 @@
-package tp1.model.vo;
+package tp1.model.vo.admin;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import tp1.model.vo.ValueObject;
 
 /**
  * 
  * @author 马厦伟
  * 
  */
-public class User extends VirtualObject {
+public class User extends ValueObject {
 	protected String userId;
 	protected String userName;
 	protected String userPass;

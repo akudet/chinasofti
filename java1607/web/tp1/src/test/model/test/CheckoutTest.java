@@ -2,8 +2,8 @@ package test.model.test;
 
 import java.util.ArrayList;
 
-import tp1.model.dao.CheckoutDAO;
-import tp1.model.vo.Checkout;
+import tp1.model.dao.impl.jdbc.CheckoutDAO;
+import tp1.model.vo.check.Checkout;
 
 /**
  *

@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.RoomDAO;
-import tp1.model.dao.VipDAO;
-import tp1.model.vo.Room;
+import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.vo.room.Room;
 import tp1.service.CheckStatisticService;
 import tp1.service.CheckinService;
 import tp1.service.CheckoutService;

@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import tp1.model.dao.ReservationDAO;
-import tp1.model.dao.RoomDAO;
-import tp1.model.vo.Reservation;
-import tp1.model.vo.Room;
+import tp1.model.dao.impl.jdbc.ReservationDAO;
+import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.vo.check.Reservation;
+import tp1.model.vo.room.Room;
 
 /**
  * 

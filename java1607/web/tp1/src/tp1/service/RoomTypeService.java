@@ -2,9 +2,9 @@ package tp1.service;
 
 import java.util.List;
 
-import tp1.model.dao.RoomDAO;
-import tp1.model.dao.RoomTypeDAO;
-import tp1.model.vo.RoomType;
+import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.RoomTypeDAO;
+import tp1.model.vo.room.RoomType;
 
 /**
  * 

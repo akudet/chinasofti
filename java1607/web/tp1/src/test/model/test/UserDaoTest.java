@@ -6,8 +6,8 @@ import java.util.*;
 
 import org.junit.Test;
 
-import tp1.model.dao.UserDAO;
-import tp1.model.vo.User;
+import tp1.model.dao.impl.jdbc.UserDAO;
+import tp1.model.vo.admin.User;
 
 /**
  * 

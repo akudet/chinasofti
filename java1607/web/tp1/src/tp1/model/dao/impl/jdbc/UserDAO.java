@@ -1,4 +1,4 @@
-package tp1.model.dao;
+package tp1.model.dao.impl.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +9,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-import tp1.model.db.DBConnection;
-import tp1.model.vo.User;
+import tp1.model.dao.DAO;
+import tp1.model.dao.impl.jdbc.db.DBConnection;
+import tp1.model.vo.admin.User;
 
 /**
  * 

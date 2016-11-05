@@ -1,4 +1,4 @@
-package tp1.model.dao;
+package tp1.model.dao.impl.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import tp1.model.db.DBConnection;
-import tp1.model.vo.Checkin;
-import tp1.model.vo.Checkout;
-import tp1.model.vo.CusInfo;
-import tp1.model.vo.Room;
-import tp1.model.vo.RoomType;
+import tp1.model.dao.DAO;
+import tp1.model.dao.impl.jdbc.db.DBConnection;
+import tp1.model.vo.check.Checkin;
+import tp1.model.vo.check.Checkout;
+import tp1.model.vo.cus.CusInfo;
+import tp1.model.vo.room.Room;
+import tp1.model.vo.room.RoomType;
 
 /**
  * 

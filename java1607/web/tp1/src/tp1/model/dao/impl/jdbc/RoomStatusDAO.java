@@ -1,8 +1,9 @@
-package tp1.model.dao;
+package tp1.model.dao.impl.jdbc;
 
 import java.util.*;
 
-import tp1.model.vo.RoomStatus;
+import tp1.model.dao.DAO;
+import tp1.model.vo.room.RoomStatus;
 
 public class RoomStatusDAO extends DAO<RoomStatus> {
 

@@ -1,21 +1,17 @@
-package tp1.model.vo;
+package tp1.model.vo.check;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.UUID;
 
-import tp1.model.db.DBConnection;
+import tp1.model.vo.ValueObject;
+import tp1.model.vo.room.Room;
 
 /**
  * 
  * @author 范中兴
  * 
  */
-public class Reservation extends VirtualObject {
+public class Reservation extends ValueObject {
 
 	protected String reservationId;
 	protected String name;

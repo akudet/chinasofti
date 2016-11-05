@@ -1,15 +1,17 @@
-package tp1.model.vo;
+package tp1.model.vo.room;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
+
+import tp1.model.vo.ValueObject;
 
 /**
  * 
  * @author 张科林
  * 
  */
-public class Room extends VirtualObject {
+public class Room extends ValueObject {
 
 	protected String roomId;
 	protected RoomType roomType;
