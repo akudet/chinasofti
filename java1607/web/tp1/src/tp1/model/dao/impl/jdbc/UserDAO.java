@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-import tp1.model.dao.DAO;
+import tp1.model.dao.AbstractDAO;
 import tp1.model.dao.impl.jdbc.db.DBConnection;
 import tp1.model.vo.admin.User;
 
@@ -18,7 +18,7 @@ import tp1.model.vo.admin.User;
  * @author 马厦伟
  * 
  */
-public class UserDAO extends DAO<User>{
+public class UserDAO extends AbstractDAO<User>{
 	private static final int DATE_PAGE = 5;
 	Connection con = null;
 	PreparedStatement pre = null;

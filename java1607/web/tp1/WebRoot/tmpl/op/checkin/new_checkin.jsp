@@ -1,4 +1,4 @@
-<%@ page language="java" import="tp1.model.vo.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="tp1.model.vo.cus.*,tp1.model.vo.room.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <script type="text/javascript">

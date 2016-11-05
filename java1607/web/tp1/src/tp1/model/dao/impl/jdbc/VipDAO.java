@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import tp1.model.dao.DAO;
+import tp1.model.dao.AbstractDAO;
 import tp1.model.dao.impl.jdbc.db.DBConnection;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.cus.CusInfo;
@@ -19,7 +19,7 @@ import tp1.model.vo.cus.Vip;
  * @author 马厦伟
  * 
  */
-public class VipDAO extends DAO<Vip>{
+public class VipDAO extends AbstractDAO<Vip>{
 	private static final int DATE_PAGE = 5;
 	Connection con = null;
 	PreparedStatement pre = null;

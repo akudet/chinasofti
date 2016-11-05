@@ -2,41 +2,43 @@ package tp1.model.dao;
 
 import java.util.List;
 
-public abstract class DAO<T> {
+public interface DAO<T> {
 
-	public abstract int add(T t);
+	/**
+	 * add a resource to db
+	 * @param vo the resource to add
+	 * @return
+	 *   0 for success, other for failure
+	 */
+	public int add(T vo);
 
-	public abstract int deleteAll();
+	/**
+	 * delete a resource from db
+	 * @param vo
+	 * @return
+	 *   0 for success, other for failure
+	 */
+	public int delete(T vo);
 
-	public abstract int deleteById(String id);
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 *   null for not find
+	 */
+	public T find(int id);
 
-	public abstract List<T> findAll();
+	/**
+	 * find all resources in the database
+	 * @return
+	 */
+	public List<T> findAll();
 
-	public abstract T findById(String id);
+	/**
+	 * update the db version of the resource
+	 * @param vo
+	 * @return
+	 */
+	public int update(T vo);
 
-	public abstract int update(T t);
-	
-	public List<T> findAll(int pageNo) {
-		return null;
-	}
-	
-	public int getTotalPage() {
-		return 0;
-	}
-	
-	//查询预订信息调用方法
-	public String join(List<String> args, String conn) {
-		StringBuilder result = new StringBuilder();
-		if (args.size() == 0) {
-			return result.toString();
-		}
-		
-		result.append(args.get(0));
-		
-		for (int i = 1; i < args.size(); i++) {
-			result.append(conn);
-			result.append(args.get(i));
-		}
-		return result.toString();
-	}
 }

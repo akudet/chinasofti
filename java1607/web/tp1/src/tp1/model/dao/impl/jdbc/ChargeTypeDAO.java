@@ -2,11 +2,11 @@ package tp1.model.dao.impl.jdbc;
 
 import java.util.*;
 
-import tp1.model.dao.DAO;
+import tp1.model.dao.AbstractDAO;
 import tp1.model.vo.check.ChargeType;
 import tp1.model.vo.room.RoomType;
 
-public class ChargeTypeDAO extends DAO<ChargeType> {
+public class ChargeTypeDAO extends AbstractDAO<ChargeType> {
 
 	private static final List<ChargeType> mChargeTypes;
 

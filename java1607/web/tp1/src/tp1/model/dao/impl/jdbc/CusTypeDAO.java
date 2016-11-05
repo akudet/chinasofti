@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import tp1.model.dao.DAO;
+import tp1.model.dao.AbstractDAO;
 import tp1.model.dao.impl.jdbc.db.DBConnection;
 import tp1.model.vo.cus.CusType;
 
@@ -16,7 +16,7 @@ import tp1.model.vo.cus.CusType;
  * @author 项双江
  * 
  */
-public class CusTypeDAO extends DAO<CusType>{
+public class CusTypeDAO extends AbstractDAO<CusType>{
 	private static final int DATA_PRE_PAGE = 5;
 	Connection con = null;
 	PreparedStatement pre = null;

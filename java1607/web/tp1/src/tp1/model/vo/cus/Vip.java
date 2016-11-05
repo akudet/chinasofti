@@ -10,6 +10,7 @@ import tp1.model.vo.ValueObject;
  * @author 马厦伟
  * 
  */
+//TODO : should extends CusInfo
 public class Vip extends ValueObject {
 	protected int vipNo;
 	protected CusInfo cusInfo;

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import tp1.model.dao.DAO;
+import tp1.model.dao.AbstractDAO;
 import tp1.model.dao.impl.jdbc.db.DBConnection;
 import tp1.model.vo.cus.CusInfo;
 
@@ -16,7 +16,7 @@ import tp1.model.vo.cus.CusInfo;
  * @author 项双江
  * 
  */
-public class CusInfoDAO extends DAO<CusInfo>{
+public class CusInfoDAO extends AbstractDAO<CusInfo>{
 	Connection con = null;
 	PreparedStatement pre = null;
 	ResultSet res = null;
