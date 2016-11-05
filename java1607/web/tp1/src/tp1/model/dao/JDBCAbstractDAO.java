@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import tp1.model.dao.impl.jdbc.db.JDBCHelper;
+import tp1.model.dao.impl.jdbc.mapper.Mapper;
 
 public class JDBCAbstractDAO<T> implements DAO<T> {
 
@@ -81,16 +82,26 @@ public class JDBCAbstractDAO<T> implements DAO<T> {
 		}
 		return result.toString();
 	}
+	
+	protected int update(String query, Object... params) {
+		int res = JDBCHelper.executeUpdate(query, params);
+		if (res > 0) {
+			return 0;
+		}
+		return -1;
+	}
 
 	@Override
 	public int add(T vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		// can't update foreign key
+		// require write the mapping in some form
+		throw new RuntimeException("not implemented");
 	}
 
 	@Override
 	public int update(T vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		// can't update foreign key
+		// require write the mapping in some form
+		throw new RuntimeException("not implemented");
 	}
 }

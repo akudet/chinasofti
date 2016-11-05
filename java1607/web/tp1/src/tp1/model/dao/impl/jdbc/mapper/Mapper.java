@@ -1,4 +1,4 @@
-package tp1.model.dao;
+package tp1.model.dao.impl.jdbc.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

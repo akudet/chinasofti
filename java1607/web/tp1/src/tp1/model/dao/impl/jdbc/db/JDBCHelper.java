@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import tp1.model.dao.Mapper;
+import tp1.model.dao.impl.jdbc.mapper.Mapper;
 
 public class JDBCHelper {
 
@@ -22,8 +22,8 @@ public class JDBCHelper {
 
 			if (null != params) {
 				// setObject index start from 1
-				for (int i = 1; i <= params.length; i++) {
-					pre.setObject(i, params[i]);
+				for (int i = 0; i < params.length; i++) {
+					pre.setObject(i + 1, params[i]);
 				}
 			}
 
