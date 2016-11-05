@@ -286,12 +286,6 @@ public class CheckoutDAO extends AbstractDAO<Checkout> {
 		return 0;
 	}
 
-	@Override
-	public int deleteAll() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	// 分页查询
 	@Override
 	public List<Checkout> findAll(int pageNo) {

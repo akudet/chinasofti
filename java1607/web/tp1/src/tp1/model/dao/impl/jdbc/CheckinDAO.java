@@ -265,12 +265,6 @@ public class CheckinDAO extends AbstractDAO<Checkin> {
 		}
 		return null;
 	}
-	
-	@Override
-	public int deleteAll() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	public List<Checkin> findUncheckByCus(String name, String roomId, String cusTypeNo) {
 		Connection con = DBConnection.getConnection();

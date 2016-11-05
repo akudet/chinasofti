@@ -21,11 +21,17 @@ public class CusInfo extends ValueObject {
 	protected String sex;
 	protected CusType cusType;
 	protected String comment;
+	
+	protected int vipNo;
+	
+	public String getCertNo() {
+		return getCertNumber();
+	}
 
 	public CusInfo() {
 		super();
 		cusInfoId = randomId();
-		
+
 	}
 
 	public CusInfo(String certType, String certNumber, String name,
@@ -91,6 +97,14 @@ public class CusInfo extends ValueObject {
 		return sex;
 	}
 
+	public int getVipNo() {
+		return vipNo;
+	}
+
+	public boolean isVip() {
+		return cusType.isVip();
+	}
+
 	@Override
 	public void map(ResultSet rs) throws SQLException {
 		cusInfoId = rs.getString("cus_info_id");
@@ -140,8 +154,17 @@ public class CusInfo extends ValueObject {
 		this.sex = sex;
 	}
 
-	public boolean isVip() {
-		return cusType.isVip();
+	public void setVipNo(int vipNo) {
+		this.vipNo = vipNo;
+	}
+
+	@Override
+	public String toString() {
+		return "CusInfo [cusInfoId=" + cusInfoId + ", certType=" + certType
+				+ ", certNumber=" + certNumber + ", name=" + name + ", phone="
+				+ phone + ", address=" + address + ", sex=" + sex
+				+ ", cusType=" + cusType + ", comment=" + comment + ", vipNo="
+				+ vipNo + "]";
 	}
 
 }

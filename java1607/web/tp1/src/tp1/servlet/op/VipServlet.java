@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.cus.Vip;
 import tp1.service.VipService;
 import tp1.servlet.CRUDServlet;
@@ -30,7 +30,7 @@ public class VipServlet extends CRUDServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		new VipDAO().deleteById(Integer.parseInt(req.getParameter("vipNo")));
+		new VipDAOImpl().deleteByVipNo(Integer.parseInt(req.getParameter("vipNo")));
 		resp.sendRedirect(req.getContextPath() + SERVLET_URL);
 	}
 
@@ -57,7 +57,7 @@ public class VipServlet extends CRUDServlet {
 				request.setAttribute("vips", vips);
 			}
 		}else{
-			VipDAO dao = new VipDAO();
+			VipDAOImpl dao = new VipDAOImpl();
 			request.setAttribute("vips", dao.findAll());
 		}
 		
@@ -125,9 +125,9 @@ public class VipServlet extends CRUDServlet {
 	@Override
 	public void getEdit(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		VipDAO dao = new VipDAO();
+		VipDAOImpl dao = new VipDAOImpl();
 		System.out.println(req.getParameter("vipNo"));
-		req.setAttribute("vip", dao.findById(req.getParameter("vipNo")));
+		req.setAttribute("vip", dao.findOneByVipNo(req.getParameter("vipNo")));
 		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
 				.forward(req, resp);
 	}

@@ -140,28 +140,6 @@ public class CusTypeDAO extends AbstractDAO<CusType>{
 		return -1;
 	}
 
-	
-	@Override
-	public int deleteAll() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
-	@Override
-	public int deleteById(String id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
-	@Override
-	public CusType findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 	//分页查询
 	@Override
 	public List<CusType> findAll(int pageNo) {
@@ -211,6 +189,5 @@ public class CusTypeDAO extends AbstractDAO<CusType>{
 		}
 		return super.getTotalPage();
 	}
-
 	
 }

@@ -4,22 +4,7 @@ import java.util.List;
 
 public abstract class AbstractDAO<T> implements DAO<T> {
 
-	public abstract int add(T t);
-
-	@Override
-	public int delete(T t) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public abstract int deleteAll();
-
-	public abstract int deleteById(String id);
-
-	@Override
-	public T find(int id) {
-		return findById("" + id);
-	}
+	private static final int PAGE_COUNT = 10;
 
 	public abstract List<T> findAll();
 
@@ -32,8 +17,6 @@ public abstract class AbstractDAO<T> implements DAO<T> {
 		return null;
 	}
 
-	public abstract T findById(String id);
-
 	public T findOne(String query, Object... params) {
 		List<T> result = findAll(query, params);
 		if (0 == result.size()) {
@@ -42,7 +25,14 @@ public abstract class AbstractDAO<T> implements DAO<T> {
 		return result.get(0);
 	}
 
+	@Override
+	public int getPageCount() {
+		return PAGE_COUNT;
+	}
+
+	@Override
 	public int getTotalPage() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -61,6 +51,4 @@ public abstract class AbstractDAO<T> implements DAO<T> {
 		}
 		return result.toString();
 	}
-
-	public abstract int update(T t);
 }

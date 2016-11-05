@@ -215,12 +215,6 @@ public class CusInfoDAO extends AbstractDAO<CusInfo>{
 		}
 		return 1;
 	}
-
-	@Override
-	public int deleteAll() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	//分页查询
 	@Override

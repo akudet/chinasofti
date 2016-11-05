@@ -9,7 +9,7 @@ import tp1.model.dao.impl.jdbc.CheckinDAO;
 import tp1.model.dao.impl.jdbc.CusInfoDAO;
 import tp1.model.dao.impl.jdbc.CusTypeDAO;
 import tp1.model.dao.impl.jdbc.RoomDAO;
-import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.check.Checkout;
 import tp1.model.vo.cus.CusInfo;
@@ -29,7 +29,7 @@ public class CheckinService {
 	private final CusInfoDAO mCusInfoDao;
 	private final RoomDAO mRoomDao;
 	final float EPSILON = 0.005f;
-	private final VipDAO mVipDao;
+	private final VipDAOImpl mVipDao;
 
 
 	// 参考 2.3 开设房间
@@ -39,7 +39,7 @@ public class CheckinService {
 		this.mCheckinDao = new CheckinDAO();
 		this.mCusInfoDao = new CusInfoDAO();
 		this.mRoomDao = new RoomDAO();
-		this.mVipDao = new VipDAO();
+		this.mVipDao = new VipDAOImpl();
 	}
 	
 	private float getPrice(RoomType roomType, CusType cusType, int chargeType) {
@@ -73,11 +73,11 @@ public class CheckinService {
 		Date now = new Date();
 		
 		if (cusInfo.isVip() && vip_no != null && !vip_no.equals("")) {
-			Vip vip = mVipDao.findById(vip_no);
+			Vip vip = mVipDao.findOneByVipNo(vip_no);
 			if (null == vip) {
 				throw new CheckinServiceException("会员编号：" + vip_no + "不存在");
 			}
-			cusInfo = vip.getCusInfo();
+			cusInfo = vip;
 		}
 		
 		checkin.setCheckinId("in" + new SimpleDateFormat("yyyyMMddHHmmss").format(now));

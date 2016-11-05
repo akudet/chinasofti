@@ -15,7 +15,7 @@ import tp1.model.dao.impl.jdbc.CusInfoDAO;
 import tp1.model.dao.impl.jdbc.CusTypeDAO;
 import tp1.model.dao.impl.jdbc.RoomDAO;
 import tp1.model.dao.impl.jdbc.RoomTypeDAO;
-import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.cus.CusInfo;
 import tp1.model.vo.cus.CusType;

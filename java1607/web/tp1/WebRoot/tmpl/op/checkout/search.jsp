@@ -1,4 +1,4 @@
-<%@page import="tp1.model.vo.*" pageEncoding="UTF-8"%>
+<%@page import="tp1.model.vo.room.*, tp1.model.vo.cus.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <ul class="nav nav-tabs">

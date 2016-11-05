@@ -4,7 +4,7 @@ import java.util.*;
 
 import tp1.model.dao.impl.jdbc.CusInfoDAO;
 import tp1.model.dao.impl.jdbc.CusTypeDAO;
-import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.cus.CusInfo;
 import tp1.model.vo.cus.CusType;
@@ -20,19 +20,19 @@ public class VipService {
 
 	// 参考 2.7 会员管理
 
-	private VipDAO mVipDao = new VipDAO();
+	private VipDAOImpl mVipDao = new VipDAOImpl();
 	private CusInfoDAO mCusInfoDao = new CusInfoDAO();
 	
 	//按会员名字查询
 	public Vip findVipByName(String name){
-		return mVipDao.findByName(name);
+		return mVipDao.findOneByName(name);
 	}
 	
 	//通过会员编号查询
 	public Vip findVipByVipNo(int vipNo){
 		Vip vip = null;
 		try {
-			vip = mVipDao.findById("" + vipNo);
+			vip = mVipDao.findOneByVipNo("" + vipNo);
 		} catch(NumberFormatException e) {
 			return vip;
 		}
@@ -55,18 +55,18 @@ public class VipService {
 
 	public int deleteById(int vipNumber) {
 
-		return mVipDao.deleteById(vipNumber);
+		return mVipDao.deleteByVipNo(vipNumber);
 	}
 
 	public Vip findById(String vipNumber) {
-		return mVipDao.findById(vipNumber);
+		return mVipDao.findOneByVipNo(vipNumber);
 	}
 
 	// 根据提供的信息对信息进行修改
 	public int updateById(int vipNumber, String name, String sex,
 			String certNumber, String phone, String address, String comment) {
-		Vip vip = mVipDao.findById("" + vipNumber);
-		CusInfo cusInfo = vip.getCusInfo();
+		Vip vip = mVipDao.findOneByVipNo("" + vipNumber);
+		CusInfo cusInfo = vip;
 		cusInfo.setName(name);
 		cusInfo.setSex(sex);
 		cusInfo.setCertNumber(certNumber);

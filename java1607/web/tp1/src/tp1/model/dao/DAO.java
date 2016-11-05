@@ -13,22 +13,6 @@ public interface DAO<T> {
 	public int add(T vo);
 
 	/**
-	 * delete a resource from db
-	 * @param vo
-	 * @return
-	 *   0 for success, other for failure
-	 */
-	public int delete(T vo);
-
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 *   null for not find
-	 */
-	public T find(int id);
-
-	/**
 	 * find all resources in the database
 	 * @return
 	 */
@@ -40,5 +24,25 @@ public interface DAO<T> {
 	 * @return
 	 */
 	public int update(T vo);
+	
+	/**
+	 * 
+	 * @return how many entry per page
+	 */
+	public int getPageCount();
+	
+	/**
+	 * 
+	 * @return total number of page
+	 */
+	public int getTotalPage();
+	
+	/**
+	 * 
+	 * @param pageNo
+	 * @return
+	 *   all resource at pageNo
+	 */
+	public List<T> findAll(int pageNo);
 
 }

@@ -1,89 +1,34 @@
 package tp1.model.vo.cus;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import tp1.model.vo.ValueObject;
-
 /**
  * 
  * @author 马厦伟
  * 
  */
-//TODO : should extends CusInfo
-public class Vip extends ValueObject {
-	protected int vipNo;
-	protected CusInfo cusInfo;
-
-	public Vip() {
-
-	}
-
-	public Vip(int vipNumber, CusInfo cusInformation) {
-		super();
-		this.vipNo = vipNumber;
-		this.cusInfo = cusInformation;
-	}
-
-	public String getAddress() {
-		return cusInfo.getAddress();
-	}
-
-	public String getCertNo() {
-		return cusInfo.getCertNumber();
-	}
-
-	public String getComment() {
-		return cusInfo.getComment();
-	}
-
-	public CusInfo getCusInfo() {
-		return cusInfo;
-	}
-
-	public String getName() {
-		return cusInfo.getName();
-	}
-
-	public String getPhone() {
-		return cusInfo.getPhone();
-	}
-
-	public String getSex() {
-		return cusInfo.getSex();
-	}
-
-	public int getVipNo() {
-		return vipNo;
-	}
-
-	@Override
-	public void map(ResultSet rs) throws SQLException {
-		vipNo = rs.getInt("vip_no");
-	}
-
-	public void setCusInfo(CusInfo cusInformation) {
-		this.cusInfo = cusInformation;
-	}
-
-	public void setVipNo(int vipNumber) {
-		this.vipNo = vipNumber;
+public class Vip extends CusInfo {
+	
+	public Vip(int vipNo, CusInfo cusInfo) {
+		this.setAddress(cusInfo.getAddress());
+		this.setCertNumber(cusInfo.getCertNumber());
+		this.setCertType(cusInfo.getCertType());
+		this.setComment(cusInfo.getComment());
+		this.setCusInfoId(cusInfo.getCusInfoId());
+		this.setCusType(cusInfo.getCusType());
+		this.setName(cusInfo.getName());
+		this.setPhone(cusInfo.getPhone());
+		this.setSex(cusInfo.getSex());
+		this.setVipNo(vipNo);
 	}
 
 	@Override
 	public String toXML() {
 		String xml = "<vip>" + "<vip_no>" + getVipNo() + "</vip_no>" + "<name>"
 				+ getName() + "</name>" + "<sex>" + getSex() + "</sex>"
-				+ "<cert_number>" + getCertNo() + "</cert_number>"
+				+ "<cert_number>" + getCertNumber() + "</cert_number>"
 				+ "<address>" + getAddress() + "</address>" + "<comment>"
 				+ getComment() + "</comment>" + "</vip>";
 		return xml;
 
-	}
-
-	@Override
-	public String toString() {
-		return "Vip [vipNumber=" + vipNo + ", cusInformation=" + cusInfo + "]";
 	}
 
 }

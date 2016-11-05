@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tp1.model.dao.impl.jdbc.RoomDAO;
-import tp1.model.dao.impl.jdbc.VipDAO;
+import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.room.Room;
 import tp1.service.CheckStatisticService;
 import tp1.service.CheckinService;
