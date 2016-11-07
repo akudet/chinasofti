@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.dao.impl.jdbc.RoomTypeDAO;
 import tp1.model.vo.room.Room;
 import tp1.model.vo.room.RoomType;
@@ -115,8 +115,8 @@ public class RoomServlet extends CRUDServlet {
 	public void getEdit(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String roomID = request.getParameter("roomId");
-		RoomDAO rd = new RoomDAO();
-		Room room = rd.findById(roomID);
+		RoomDAOImpl rd = new RoomDAOImpl();
+		Room room = rd.findOneByRoomId(roomID);
 		request.setAttribute("room", room);
 		request.setAttribute("roomTypes", new RoomTypeDAO().findAll());
 		request.getRequestDispatcher(

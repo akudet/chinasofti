@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import tp1.model.dao.impl.jdbc.ReservationDAO;
-import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.vo.check.Reservation;
 import tp1.model.vo.room.Room;
 
@@ -21,11 +21,11 @@ import tp1.model.vo.room.Room;
 public class ReservationService {
 	
 	private final ReservationDAO mReservationDao;
-	private final RoomDAO mRoomDao;
+	private final RoomDAOImpl mRoomDao;
 
 	public ReservationService() {
 		super();
-		this.mRoomDao = new RoomDAO();
+		this.mRoomDao = new RoomDAOImpl();
 		this.mReservationDao = new ReservationDAO();
 	}
 	
@@ -51,7 +51,7 @@ public class ReservationService {
 	}
 
 	private Room findFreeRoom(String roomTypeNo) {
-		List<Room> rooms = mRoomDao.findFreeRoom(roomTypeNo);
+		List<Room> rooms = mRoomDao.findAllFreeRoomByRoomTypeNo(roomTypeNo);
 		if (null == rooms || rooms.size() == 0) {
 			return null;
 		}

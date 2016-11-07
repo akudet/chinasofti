@@ -8,7 +8,7 @@ import java.util.UUID;
 import tp1.model.dao.impl.jdbc.CheckinDAO;
 import tp1.model.dao.impl.jdbc.CusInfoDAO;
 import tp1.model.dao.impl.jdbc.CusTypeDAO;
-import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.check.Checkout;
@@ -27,7 +27,7 @@ public class CheckinService {
 
 	private final CheckinDAO mCheckinDao;
 	private final CusInfoDAO mCusInfoDao;
-	private final RoomDAO mRoomDao;
+	private final RoomDAOImpl mRoomDao;
 	final float EPSILON = 0.005f;
 	private final VipDAOImpl mVipDao;
 
@@ -38,7 +38,7 @@ public class CheckinService {
 		super();
 		this.mCheckinDao = new CheckinDAO();
 		this.mCusInfoDao = new CusInfoDAO();
-		this.mRoomDao = new RoomDAO();
+		this.mRoomDao = new RoomDAOImpl();
 		this.mVipDao = new VipDAOImpl();
 	}
 	
@@ -62,7 +62,7 @@ public class CheckinService {
 	public Checkin checkin(String roomId, CusInfo cusInfo, String vip_no, 
 			String checkin_type_no, String num_of_days, String deposit) {
 		
-		Room room = mRoomDao.findById(roomId);
+		Room room = mRoomDao.findOneByRoomId(roomId);
 		if (null == room) {
 			throw new CheckinServiceException("房间未找到");
 		}
@@ -167,7 +167,7 @@ public class CheckinService {
 	}
 
 	public List<Room> findFreeRooms(String roomTypeNo) {
-		return mRoomDao.findFreeRoom(roomTypeNo);
+		return mRoomDao.findAllFreeRoomByRoomTypeNo(roomTypeNo);
 	}
 
 	public List<Checkin> findAllUncheck() {

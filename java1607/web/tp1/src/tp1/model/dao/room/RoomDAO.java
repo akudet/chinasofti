@@ -11,11 +11,17 @@ import tp1.model.vo.room.Room;
  * 
  */
 public interface RoomDAO extends DAO<Room> {
-
-	// 根据房间类型查询所有房间
-	public List<Room> findAllByRoomTypeNo(int roomTypeNo);
-
+	
+	public int deleteByRoomId(String roomId);
+	
 	// 根据房间状态查询所有房间
 	public List<Room> findAllByRoomStatus(int status);
+
+	// 根据房间类型查询所有房间
+	public List<Room> findAllByRoomTypeNo(String roomTypeNo);
+
+	public List<Room> findAllFreeRoomByRoomTypeNo(String roomTypeNo);
+
+	public Room findOneByRoomId(String roomId);
 
 }

@@ -26,21 +26,30 @@ public class JDBCAbstractDAO<T> implements DAO<T> {
 		this.TABLE_NAME = table;
 	}
 
+	@Override
+	public int add(T vo) {
+		// can't update foreign key
+		// require write the mapping in some form
+		throw new RuntimeException("not implemented");
+	}
+
+	@Override
 	public List<T> findAll() {
 		return findAll("SELECT * FROM " + TABLE_NAME);
 	}
 
+	@Override
 	public List<T> findAll(int pageNo) {
-		String query = "SELECT * FROM " + TABLE_NAME + " LIMITE ?, ?";
+		String query = "SELECT * FROM " + TABLE_NAME + " LIMIT ?, ?";
 		int start = (pageNo - 1) * getPageCount();
 		return findAll(query, start, getPageCount());
 	}
 
-	public List<T> findAll(String query, Object... params) {
+	protected List<T> findAll(String query, Object... params) {
 		return JDBCHelper.executeQuery(mMapper, query, params);
 	}
 
-	public T findOne(String query, Object... params) {
+	protected T findOne(String query, Object... params) {
 		List<T> result = findAll(query, params);
 		if (0 == result.size()) {
 			return null;
@@ -62,13 +71,13 @@ public class JDBCAbstractDAO<T> implements DAO<T> {
 			public Integer map(ResultSet rs) throws SQLException {
 				return rs.getInt(1);
 			}
-			
+
 		}, sql);
 		return count.get(0);
 	}
 
 	// 查询预订信息调用方法
-	public String join(List<String> args, String conn) {
+	protected String join(List<String> args, String conn) {
 		StringBuilder result = new StringBuilder();
 		if (args.size() == 0) {
 			return result.toString();
@@ -82,20 +91,13 @@ public class JDBCAbstractDAO<T> implements DAO<T> {
 		}
 		return result.toString();
 	}
-	
+
 	protected int update(String query, Object... params) {
 		int res = JDBCHelper.executeUpdate(query, params);
 		if (res > 0) {
 			return 0;
 		}
 		return -1;
-	}
-
-	@Override
-	public int add(T vo) {
-		// can't update foreign key
-		// require write the mapping in some form
-		throw new RuntimeException("not implemented");
 	}
 
 	@Override

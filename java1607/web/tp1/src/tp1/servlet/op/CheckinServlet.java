@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import tp1.model.dao.impl.jdbc.CheckinDAO;
 import tp1.model.dao.impl.jdbc.CusInfoDAO;
 import tp1.model.dao.impl.jdbc.CusTypeDAO;
-import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.dao.impl.jdbc.RoomTypeDAO;
 import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.check.Checkin;
@@ -162,7 +162,7 @@ public class CheckinServlet extends CRUDServlet {
 
 		request.setAttribute("roomTypes", new RoomTypeDAO().findAll());
 		
-		request.setAttribute("room", new RoomDAO().findById(request.getParameter("roomId")));
+		request.setAttribute("room", new RoomDAOImpl().findOneByRoomId(request.getParameter("roomId")));
 		request.setAttribute("cusTypes", new CusTypeDAO().findAll());
 
 		String findRooms = request.getParameter("findRooms");

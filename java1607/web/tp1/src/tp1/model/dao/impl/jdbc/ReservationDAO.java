@@ -126,7 +126,7 @@ public class ReservationDAO extends JDBCAbstractDAO<Reservation>{
 						res.getString("reservation_time"),
 						res.getString("comment"));
 
-				reservation.setRoom(new RoomDAO().findById(res
+				reservation.setRoom(new RoomDAOImpl().findOneByRoomId(res
 						.getString("room_id")));
 
 				list.add(reservation);
@@ -153,7 +153,7 @@ public class ReservationDAO extends JDBCAbstractDAO<Reservation>{
 			if (res.next()) {
 				Reservation reservation = new Reservation();
 				reservation.map(res);
-				reservation.setRoom(new RoomDAO().findById(res
+				reservation.setRoom(new RoomDAOImpl().findOneByRoomId(res
 						.getString("room_id")));
 				return reservation;
 			}
@@ -265,7 +265,7 @@ public class ReservationDAO extends JDBCAbstractDAO<Reservation>{
 			pre = con.prepareStatement(sql);
 			res = pre.executeQuery();
 			while(res.next()){
-				Room room = new RoomDAO().findById(res.getString("room_id"));
+				Room room = new RoomDAOImpl().findOneByRoomId(res.getString("room_id"));
 				Reservation reservation = new Reservation();
 				reservation.map(res);
 				reservation.setRoom(room);

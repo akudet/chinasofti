@@ -3,7 +3,7 @@ package tp1.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.dao.impl.jdbc.RoomTypeDAO;
 import tp1.model.vo.room.Room;
 import tp1.model.vo.room.RoomType;
@@ -17,7 +17,7 @@ public class RoomService {
 
 	// 参考 2.9 房间信息管理
 
-	private RoomDAO mRoomDao;
+	private RoomDAOImpl mRoomDao;
 	private RoomTypeDAO mRoomTypeDao;
 
 	public static final int ERR_ROOM_INUSE = 1;
@@ -30,7 +30,7 @@ public class RoomService {
 
 	public RoomService() {
 		super();
-		mRoomDao = new RoomDAO();
+		mRoomDao = new RoomDAOImpl();
 		mRoomTypeDao = new RoomTypeDAO();
 	}
 
@@ -51,24 +51,24 @@ public class RoomService {
 	// 删除
 	public int deleteById(String roomId) {
 		// TODO : thread safety
-		Room room = mRoomDao.findById(roomId);
+		Room room = mRoomDao.findOneByRoomId(roomId);
 		// TODO : remove magic number
 		if (room.getStatus() == 1) {
 			return ERR_ROOM_INUSE;
 		}
-		return mRoomDao.deleteById(roomId);
+		return mRoomDao.deleteByRoomId(roomId);
 	}
 
 	//根据房间类型查找
 	public List<Room> findAllByTypeNo(String roomtypeNo)
 	{
-		return mRoomDao.findAllByTypeNo(roomtypeNo);
+		return mRoomDao.findAllByRoomTypeNo(roomtypeNo);
 	}
 
 	// 修改
 	public int updateById(String roomId, int roomTypeId, String floor,
 			String phone, int status, String comment) {
-		Room room = mRoomDao.findById(roomId);
+		Room room = mRoomDao.findOneByRoomId(roomId);
 		if (null == room) {
 			return ERR_WRONG_ROOM_ID;
 		}
@@ -92,11 +92,11 @@ public class RoomService {
 	}
 
 	public Room findById(String roomId) {
-		return mRoomDao.findById(roomId);
+		return mRoomDao.findOneByRoomId(roomId);
 	}
 
 	public List<Room> findAllFreeRooms() {
-		List<Room> rooms = mRoomDao.findByRoomStatus(Room.ROOM_STATUS_FREE);
+		List<Room> rooms = mRoomDao.findAllByRoomStatus(Room.ROOM_STATUS_FREE);
 		return rooms;
 	}
 

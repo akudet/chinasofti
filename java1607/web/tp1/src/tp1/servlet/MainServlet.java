@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.room.Room;
 import tp1.service.CheckStatisticService;
@@ -44,12 +44,12 @@ public class MainServlet extends HttpServlet {
 		
 		int checkCount = checkinCount + checkoutCount;
 		
-		RoomDAO rd = new RoomDAO();
+		RoomDAOImpl rd = new RoomDAOImpl();
 		
-		int freeCount = rd.findByRoomStatus(Room.ROOM_STATUS_FREE).size();
-		int inuseCount = rd.findByRoomStatus(Room.ROOM_STATUS_INUSE).size();
-		int reservedCount = rd.findByRoomStatus(Room.ROOM_STATUS_RESERVED).size();
-		int blockedCount = rd.findByRoomStatus(Room.ROOM_STATUS_BLOCKED).size();
+		int freeCount = rd.findAllByRoomStatus(Room.ROOM_STATUS_FREE).size();
+		int inuseCount = rd.findAllByRoomStatus(Room.ROOM_STATUS_INUSE).size();
+		int reservedCount = rd.findAllByRoomStatus(Room.ROOM_STATUS_RESERVED).size();
+		int blockedCount = rd.findAllByRoomStatus(Room.ROOM_STATUS_BLOCKED).size();
 		int totalCount = freeCount + inuseCount + reservedCount + blockedCount;
 		
 		request.setAttribute("freeCount", freeCount);

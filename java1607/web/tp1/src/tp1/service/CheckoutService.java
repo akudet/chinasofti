@@ -9,7 +9,7 @@ import java.util.List;
 
 import tp1.model.dao.impl.jdbc.CheckinDAO;
 import tp1.model.dao.impl.jdbc.CheckoutDAO;
-import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.check.Checkout;
 import tp1.model.vo.room.Room;
@@ -24,13 +24,13 @@ public class CheckoutService {
 
 	private final CheckinDAO mCheckinDao;
 	private final CheckoutDAO mCheckoutDao;
-	private final RoomDAO mRoomDao;
+	private final RoomDAOImpl mRoomDao;
 
 	public CheckoutService() {
 		super();
 		this.mCheckinDao = new CheckinDAO();
 		this.mCheckoutDao = new CheckoutDAO();
-		this.mRoomDao = new RoomDAO();
+		this.mRoomDao = new RoomDAOImpl();
 	}
 
 	// em , pretty bad consider with diffInHours

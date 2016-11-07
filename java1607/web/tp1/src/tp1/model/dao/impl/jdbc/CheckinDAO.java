@@ -88,9 +88,9 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 			ArrayList<Checkin> list = new ArrayList<Checkin>();
 			while (res.next()) {
 				CusInfoDAO dao = new CusInfoDAO();
-				RoomDAO dao1 = new RoomDAO();
+				RoomDAOImpl dao1 = new RoomDAOImpl();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
-				Room room = dao1.findById(res.getString("room_id"));
+				Room room = dao1.findOneByRoomId(res.getString("room_id"));
 				
 				Checkin checkin = new Checkin();
 				checkin.map(res);
@@ -121,9 +121,9 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 			res = pre.executeQuery();
 			if (res.next()) {
 				CusInfoDAO dao = new CusInfoDAO();
-				RoomDAO dao1 = new RoomDAO();
+				RoomDAOImpl dao1 = new RoomDAOImpl();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
-				Room room = dao1.findById(res.getString("room_id"));
+				Room room = dao1.findOneByRoomId(res.getString("room_id"));
 
 				Checkin user = new Checkin();
 				
@@ -155,7 +155,7 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 				
 				checkin.map(rs);
 				
-				Room room = new RoomDAO().findById(rs.getString("room_id"));
+				Room room = new RoomDAOImpl().findOneByRoomId(rs.getString("room_id"));
 				CusInfo cusinfo = new CusInfoDAO().findById(rs.getString("cus_info_id"));
 				
 				checkin.setRoom(room);
@@ -189,9 +189,9 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 			res = pre.executeQuery();
 			if (res.next()) {
 				CusInfoDAO dao = new CusInfoDAO();
-				RoomDAO dao1 = new RoomDAO();
+				RoomDAOImpl dao1 = new RoomDAOImpl();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
-				Room room = dao1.findById(res.getString("room_id"));
+				Room room = dao1.findOneByRoomId(res.getString("room_id"));
 				Checkin user = new Checkin();
 				
 				user.map(res);
@@ -247,9 +247,9 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 			res = pre.executeQuery();
 			while(res.next()){
 				CusInfoDAO dao = new CusInfoDAO();
-				RoomDAO dao1 = new RoomDAO();
+				RoomDAOImpl dao1 = new RoomDAOImpl();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
-				Room room = dao1.findById(res.getString("room_id"));
+				Room room = dao1.findOneByRoomId(res.getString("room_id"));
 				
 				Checkin checkin = new Checkin();
 				checkin.map(res);
@@ -298,7 +298,7 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 				Checkin ci = new Checkin();
 				ci.map(res);
 				ci.setCusInfo(new CusInfoDAO().findById(res.getString("cus_info_id")));
-				ci.setRoom(new RoomDAO().findById(res.getString("room_id")));
+				ci.setRoom(new RoomDAOImpl().findOneByRoomId(res.getString("room_id")));
 				list.add(ci);
 			}
 			return list;
@@ -323,9 +323,9 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 			res = pre.executeQuery();
 			while(res.next()){
 				CusInfoDAO dao = new CusInfoDAO();
-				RoomDAO dao1 = new RoomDAO();
+				RoomDAOImpl dao1 = new RoomDAOImpl();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
-				Room room = dao1.findById(res.getString("room_id"));
+				Room room = dao1.findOneByRoomId(res.getString("room_id"));
 				
 				Checkin checkin = new Checkin();
 				checkin.map(res);

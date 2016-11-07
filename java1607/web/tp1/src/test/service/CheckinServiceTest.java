@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import tp1.model.dao.impl.jdbc.CheckinDAO;
 import tp1.model.dao.impl.jdbc.CusInfoDAO;
-import tp1.model.dao.impl.jdbc.RoomDAO;
+import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.vo.cus.CusInfo;
 import tp1.model.vo.room.Room;
 import tp1.model.vo.room.RoomType;
@@ -38,12 +38,12 @@ public class CheckinServiceTest {
 
 	@Test
 	public void checkinTest() {
-		Room room = new RoomDAO().findById("1000");
+		Room room = new RoomDAOImpl().findOneByRoomId("1000");
 		CheckinService service = new CheckinService();
 		
 		room.setStatusFree();
 		
-		RoomDAO roomDao = new RoomDAO();
+		RoomDAOImpl roomDao = new RoomDAOImpl();
 		roomDao.update(room);
 		
 		CusInfoDAO cusInfoDao = new CusInfoDAO();

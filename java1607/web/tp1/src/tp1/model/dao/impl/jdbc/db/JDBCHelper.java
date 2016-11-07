@@ -64,7 +64,6 @@ public class JDBCHelper {
 			}
 
 		};
-
 		return execute(queryWork, query, params);
 	}
 
