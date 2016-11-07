@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
-import tp1.model.dao.impl.jdbc.db.DBConnection;
+import tp1.model.dao.abst.jdbc.db.DBConnection;
 
 public class TestData {
 	private Connection conn;

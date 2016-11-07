@@ -1,7 +1,7 @@
 package test.model.dao;
 
 import tp1.model.dao.impl.jdbc.RoomDAOImpl;
-import tp1.model.dao.room.RoomDAO;
+import tp1.model.dao.include.room.RoomDAO;
 import tp1.model.vo.room.Room;
 import tp1.model.vo.room.RoomType;
 

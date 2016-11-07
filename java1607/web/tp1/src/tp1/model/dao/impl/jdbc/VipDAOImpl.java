@@ -1,8 +1,8 @@
 package tp1.model.dao.impl.jdbc;
 
-import tp1.model.dao.JDBCAbstractDAO;
-import tp1.model.dao.cus.VipDAO;
-import tp1.model.dao.impl.jdbc.mapper.impl.VipMapper;
+import tp1.model.dao.abst.AbstractDAO;
+import tp1.model.dao.impl.jdbc.mapper.VipMapper;
+import tp1.model.dao.include.cus.VipDAO;
 import tp1.model.vo.cus.Vip;
 
 /**
@@ -10,7 +10,7 @@ import tp1.model.vo.cus.Vip;
  * @author 马厦伟
  * 
  */
-public class VipDAOImpl extends JDBCAbstractDAO<Vip> implements VipDAO {
+public class VipDAOImpl extends AbstractDAO<Vip> implements VipDAO {
 
 	private static final String TABLE_NAME = "vip";
 
