@@ -3,7 +3,7 @@ package test.model.dao.hb;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import tp1.model.dao.impl.hb.config.HibernateConfig;
+import tp1.model.dao.impl.hb.abst.db.HibernateConfig;
 import tp1.model.dao.include.cus.VipDAO;
 import tp1.model.vo.cus.Vip;
 

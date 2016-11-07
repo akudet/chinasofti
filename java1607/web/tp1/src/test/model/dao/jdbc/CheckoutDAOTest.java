@@ -10,7 +10,7 @@ import tp1.model.vo.check.Checkout;
  * @author 田霞光
  *
  */
-public class CheckoutTest {
+public class CheckoutDAOTest {
 	public static void main(String[] args) {
 		
 	

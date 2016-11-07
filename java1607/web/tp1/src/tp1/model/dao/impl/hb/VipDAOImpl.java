@@ -2,7 +2,7 @@ package tp1.model.dao.impl.hb;
 
 import org.springframework.stereotype.Repository;
 
-import tp1.model.dao.abst.hb.SpringAbstractDAO;
+import tp1.model.dao.impl.hb.abst.SpringAbstractDAO;
 import tp1.model.dao.include.cus.VipDAO;
 import tp1.model.vo.cus.Vip;
 

@@ -1,4 +1,4 @@
-package tp1.model.dao.impl.hb.config;
+package tp1.model.dao.impl.hb.abst.db;
 
 import java.util.Properties;
 
@@ -15,15 +15,7 @@ public class HibernateConfig {
 	@Bean
 	public LocalSessionFactoryBean getSessionFactory() {
 		LocalSessionFactoryBean lsfb = new LocalSessionFactoryBean();
-
-		// setup datasource
-		DriverManagerDataSource dmds = new DriverManagerDataSource();
-		dmds.setDriverClassName("com.mysql.jdbc.Driver");
-		dmds.setUrl("jdbc:mysql://localhost:3306/te");
-		dmds.setUsername("root");
-		dmds.setPassword("root");
-		lsfb.setDataSource(dmds);
-
+		
 		// setup dialect
 		Properties pros = new Properties();
 		pros.setProperty("hibernate.dialect",
@@ -31,6 +23,14 @@ public class HibernateConfig {
 		pros.setProperty("hibernate.show_sql", "true");
 		pros.setProperty("hibernate.hbm2ddl.auto", "create");
 		lsfb.setHibernateProperties(pros);
+
+		// setup datasource
+		DriverManagerDataSource dmds = new DriverManagerDataSource();
+		dmds.setDriverClassName("com.mysql.jdbc.Driver");
+		dmds.setUrl("jdbc:mysql://localhost:3306/ssh");
+		dmds.setUsername("root");
+		dmds.setPassword("root");
+		lsfb.setDataSource(dmds);
 
 		// setup mapping
 		String[] mres = { "tp1/model/dao/impl/hb/mapping/Vip.hbm.xml" };

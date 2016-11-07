@@ -1,4 +1,4 @@
-package tp1.model.dao.abst.jdbc.db;
+package tp1.model.dao.impl.jdbc.abst.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

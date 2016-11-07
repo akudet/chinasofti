@@ -13,7 +13,7 @@ public class RoomDAOTest {
 
 	// 添加方法测试
 	public void addTest() {
-		RoomDAOImpl dao = new RoomDAOImpl();
+		RoomDAO dao = new RoomDAOImpl();
 		Room room = new Room("fas", "fds", "s", 2, "dfs");
 		RoomType roomType = new RoomType(2, "双人房", 2, 16.8f, 2, 52.0f, "还不错");
 		room.setRoomType(roomType);
@@ -24,7 +24,7 @@ public class RoomDAOTest {
 	// 删除方法测试
 	public void deleteTest() {
 		String roomId = "fas";
-		RoomDAOImpl dao = new RoomDAOImpl();
+		RoomDAO dao = new RoomDAOImpl();
 		dao.deleteByRoomId(roomId);
 	}
 
@@ -38,13 +38,13 @@ public class RoomDAOTest {
 	}
 
 	public void queryAllTest() {
-		RoomDAOImpl dao = new RoomDAOImpl();
+		RoomDAO dao = new RoomDAOImpl();
 		System.out.println(dao.findAll());
 	}
 
 	// 查询单个的测试方法
 	public void queryTest() {
-		RoomDAOImpl dao = new RoomDAOImpl();
+		RoomDAO dao = new RoomDAOImpl();
 		String roomid = "f8cb8ee4457f4081923aeaa1c890e398";
 		Room a = dao.findOneByRoomId(roomid);
 		System.out.println(a.getRoomId() + '\n' + a.getComment() + a.getFloor()
@@ -53,7 +53,7 @@ public class RoomDAOTest {
 
 	// 修改测试方法
 	public void updateTest() {
-		RoomDAOImpl dao = new RoomDAOImpl();
+		RoomDAO dao = new RoomDAOImpl();
 		Room room = new Room();
 		RoomType roomType = new RoomType(2, "双人房", 2, 16.8f, 2, 52.0f, "还不错");
 		room.setRoomId("f8cb8ee4457f4081923aeaa1c890e398");

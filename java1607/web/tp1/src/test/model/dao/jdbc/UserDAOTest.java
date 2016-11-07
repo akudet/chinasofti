@@ -14,7 +14,7 @@ import tp1.model.vo.admin.User;
  * @author 巫金桐
  *
  */
-public class UserDaoTest {
+public class UserDAOTest {
 
 	@Test
 	public void addTest() {

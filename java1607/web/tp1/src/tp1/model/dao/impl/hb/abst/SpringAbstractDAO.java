@@ -1,4 +1,4 @@
-package tp1.model.dao.abst.hb;
+package tp1.model.dao.impl.hb.abst;
 
 import java.io.Serializable;
 import java.util.List;

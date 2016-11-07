@@ -1,12 +1,11 @@
-package tp1.model.dao.abst.jdbc;
+package tp1.model.dao.impl.jdbc.abst;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import tp1.model.dao.abst.jdbc.db.JDBCHelper;
-import tp1.model.dao.abst.jdbc.mapper.Mapper;
+import tp1.model.dao.impl.jdbc.abst.db.JDBCHelper;
 import tp1.model.dao.include.DAO;
 
 public class JDBCAbstractDAO<T> implements DAO<T> {

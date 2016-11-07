@@ -1,4 +1,4 @@
-package tp1.model.dao.abst.jdbc.db;
+package tp1.model.dao.impl.jdbc.abst.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import tp1.model.dao.abst.jdbc.mapper.Mapper;
+import tp1.model.dao.impl.jdbc.abst.Mapper;
 
 public class JDBCHelper {
 

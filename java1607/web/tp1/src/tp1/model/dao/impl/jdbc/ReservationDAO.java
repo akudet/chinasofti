@@ -13,8 +13,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import tp1.model.dao.abst.AbstractDAO;
-import tp1.model.dao.abst.jdbc.db.DBConnection;
+import tp1.model.dao.impl.jdbc.abst.JDBCAbstractDAO;
+import tp1.model.dao.impl.jdbc.abst.db.DBConnection;
 import tp1.model.vo.admin.User;
 import tp1.model.vo.check.Reservation;
 import tp1.model.vo.room.Room;
@@ -24,7 +24,7 @@ import tp1.model.vo.room.Room;
  * @author 范中兴
  * 
  */
-public class ReservationDAO extends AbstractDAO<Reservation>{
+public class ReservationDAO extends JDBCAbstractDAO<Reservation>{
 	Connection con = null;
 	PreparedStatement pre = null;
 	ResultSet res = null;

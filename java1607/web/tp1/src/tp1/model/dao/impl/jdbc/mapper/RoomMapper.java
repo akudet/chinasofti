@@ -3,8 +3,8 @@ package tp1.model.dao.impl.jdbc.mapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import tp1.model.dao.abst.jdbc.mapper.Mapper;
 import tp1.model.dao.impl.jdbc.RoomTypeDAO;
+import tp1.model.dao.impl.jdbc.abst.Mapper;
 import tp1.model.vo.room.Room;
 
 public class RoomMapper implements Mapper<Room> {

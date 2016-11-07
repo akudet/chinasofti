@@ -2,7 +2,7 @@ package tp1.model.dao.impl.jdbc;
 
 import java.util.List;
 
-import tp1.model.dao.abst.AbstractDAO;
+import tp1.model.dao.impl.jdbc.abst.JDBCAbstractDAO;
 import tp1.model.dao.impl.jdbc.mapper.RoomMapper;
 import tp1.model.dao.include.room.RoomDAO;
 import tp1.model.vo.room.Room;
@@ -12,7 +12,7 @@ import tp1.model.vo.room.Room;
  * @author 张科林
  * 
  */
-public class RoomDAOImpl extends AbstractDAO<Room> implements RoomDAO {
+public class RoomDAOImpl extends JDBCAbstractDAO<Room> implements RoomDAO {
 
 	public RoomDAOImpl() {
 		super(new RoomMapper(), "room");

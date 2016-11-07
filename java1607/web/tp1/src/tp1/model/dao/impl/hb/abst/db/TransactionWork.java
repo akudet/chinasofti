@@ -1,4 +1,4 @@
-package tp1.model.dao.abst.hb.db;
+package tp1.model.dao.impl.hb.abst.db;
 
 import org.hibernate.Session;
 

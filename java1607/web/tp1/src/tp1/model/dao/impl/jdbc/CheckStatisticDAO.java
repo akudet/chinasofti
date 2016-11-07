@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
-import tp1.model.dao.abst.jdbc.db.DBConnection;
+import tp1.model.dao.impl.jdbc.abst.db.DBConnection;
 import tp1.model.vo.check.CheckStatistic;
 
 /**
