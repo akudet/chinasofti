@@ -1,4 +1,4 @@
-package test.hb.dao;
+package test.model.dao.hb;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

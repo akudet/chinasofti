@@ -1,4 +1,4 @@
-package test.model.dao;
+package test.model.dao.jdbc;
 
 import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.cus.Vip;

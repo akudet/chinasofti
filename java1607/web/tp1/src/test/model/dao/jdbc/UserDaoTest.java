@@ -1,4 +1,4 @@
-package test.model.dao;
+package test.model.dao.jdbc;
 
 import static org.junit.Assert.*;
 
