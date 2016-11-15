@@ -5,11 +5,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import tp1.model.dao.impl.jdbc.CheckinDAO;
 import tp1.model.dao.impl.jdbc.CusInfoDAO;
 import tp1.model.dao.impl.jdbc.CusTypeDAO;
 import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.dao.impl.jdbc.VipDAOImpl;
+import tp1.model.dao.impl.jdbc.check.CheckinDAOImpl;
+import tp1.model.dao.include.check.CheckinDAO;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.check.Checkout;
 import tp1.model.vo.cus.CusInfo;
@@ -36,7 +37,7 @@ public class CheckinService {
 
 	public CheckinService() {
 		super();
-		this.mCheckinDao = new CheckinDAO();
+		this.mCheckinDao = new CheckinDAOImpl();
 		this.mCusInfoDao = new CusInfoDAO();
 		this.mRoomDao = new RoomDAOImpl();
 		this.mVipDao = new VipDAOImpl();
@@ -163,7 +164,7 @@ public class CheckinService {
 
 	public List<Checkin> findUncheckByCus(String name, String roomId,
 			String cusTypeNo) {
-		 return mCheckinDao.findUncheckByCus(name, roomId, cusTypeNo);
+		 return mCheckinDao.findAllByCus(name, roomId, cusTypeNo);
 	}
 
 	public List<Room> findFreeRooms(String roomTypeNo) {
@@ -171,10 +172,10 @@ public class CheckinService {
 	}
 
 	public List<Checkin> findAllUncheck() {
-		return mCheckinDao.findByStatus(Checkin.UNCHECK);
+		return mCheckinDao.findAllByCheckinStatus(Checkin.UNCHECK);
 	}
 	
 	public List<Checkin> findAllChecked() {
-		return mCheckinDao.findByStatus(Checkin.CHECKED);
+		return mCheckinDao.findAllByCheckinStatus(Checkin.CHECKED);
 	}
 }

@@ -1,4 +1,4 @@
-package tp1.model.dao.impl.jdbc;
+package tp1.model.dao.impl.jdbc.check;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import tp1.model.dao.impl.jdbc.CusInfoDAO;
+import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.dao.impl.jdbc.abst.JDBCAbstractDAO;
 import tp1.model.dao.impl.jdbc.abst.db.DBConnection;
+import tp1.model.dao.include.check.CheckinDAO;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.cus.CusInfo;
 import tp1.model.vo.room.Room;
@@ -18,7 +21,7 @@ import tp1.model.vo.room.Room;
  * @author 田霞光
  * 
  */
-public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
+public class CheckinDAOImpl extends JDBCAbstractDAO<Checkin> implements CheckinDAO {
 	
 	// checkin表的添加
 	public int add(Checkin checkin) {
@@ -177,7 +180,7 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 	}
 
 	// checkin表根据roomId查询
-	public Checkin findByRoomId(String roomId) {
+	public Checkin findUncheckByRoomId(String roomId) {
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
@@ -266,7 +269,7 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 		return null;
 	}
 
-	public List<Checkin> findUncheckByCus(String name, String roomId, String cusTypeNo) {
+	public List<Checkin> findAllByCus(String name, String roomId, String cusTypeNo) {
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
 		ResultSet res = null;
@@ -307,37 +310,6 @@ public class CheckinDAO extends JDBCAbstractDAO<Checkin> {
 			e.printStackTrace();
 		}finally{
 			DBConnection.close(con, pre, res);
-		}
-		return null;
-	}
-
-	public List<Checkin> findByStatus(int status) {
-		Connection con = DBConnection.getConnection();
-		String sql = "select * from checkin where status = ?";
-		PreparedStatement pre = null;
-		ResultSet res = null;
-		List<Checkin> list = new ArrayList<Checkin>();
-		try {
-			pre = con.prepareStatement(sql);
-			pre.setInt(1, status);
-			res = pre.executeQuery();
-			while(res.next()){
-				CusInfoDAO dao = new CusInfoDAO();
-				RoomDAOImpl dao1 = new RoomDAOImpl();
-				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
-				Room room = dao1.findOneByRoomId(res.getString("room_id"));
-				
-				Checkin checkin = new Checkin();
-				checkin.map(res);
-				checkin.setCusInfo(cusinfo);
-				checkin.setRoom(room);
-				
-				list.add(checkin);
-			}
-			return list;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		return null;
 	}

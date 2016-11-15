@@ -1,4 +1,4 @@
-package tp1.model.dao.impl.jdbc;
+package tp1.model.dao.impl.jdbc.check;
 
 import java.sql.*;
 import java.text.DateFormat;

@@ -6,11 +6,18 @@ import tp1.model.dao.include.DAO;
 import tp1.model.vo.check.Checkin;
 
 public interface CheckinDAO extends DAO<Checkin> {
-	
-	public Checkin findOneByRoomId(String roomId);
-	
-	public List<Checkin> findAllByCus(String name, String roomId, String cusTypeNo);
-	
+
+	public int deleteById(String checkinid);
+
+	public List<Checkin> findAll(int checkinType, int status);
+
 	public List<Checkin> findAllByCheckinStatus(int checkinStatus);
+
+	public List<Checkin> findAllByCus(String name, String roomId,
+			String cusTypeNo);
+
+	public Checkin findById(String checkin);
+
+	public Checkin findUncheckByRoomId(String roomId);
 
 }

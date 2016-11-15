@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import tp1.model.dao.impl.jdbc.CheckinDAO;
-import tp1.model.dao.impl.jdbc.CheckoutDAO;
 import tp1.model.dao.impl.jdbc.RoomDAOImpl;
+import tp1.model.dao.impl.jdbc.check.CheckinDAOImpl;
+import tp1.model.dao.impl.jdbc.check.CheckoutDAO;
+import tp1.model.dao.include.check.CheckinDAO;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.check.Checkout;
 import tp1.model.vo.room.Room;
@@ -28,7 +29,7 @@ public class CheckoutService {
 
 	public CheckoutService() {
 		super();
-		this.mCheckinDao = new CheckinDAO();
+		this.mCheckinDao = new CheckinDAOImpl();
 		this.mCheckoutDao = new CheckoutDAO();
 		this.mRoomDao = new RoomDAOImpl();
 	}
@@ -164,7 +165,7 @@ public class CheckoutService {
 
 	// 通过房间号查找未结账的登记信息
 	public Checkin findByRoomId(String roomId) {
-		Checkin checkin = mCheckinDao.findByRoomId(roomId);
+		Checkin checkin = mCheckinDao.findUncheckByRoomId(roomId);
 		return checkin;
 	}
 

@@ -6,22 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tp1.model.dao.impl.jdbc.CheckinDAO;
-import tp1.model.dao.impl.jdbc.CusInfoDAO;
 import tp1.model.dao.impl.jdbc.CusTypeDAO;
 import tp1.model.dao.impl.jdbc.RoomDAOImpl;
 import tp1.model.dao.impl.jdbc.RoomTypeDAO;
-import tp1.model.dao.impl.jdbc.VipDAOImpl;
 import tp1.model.vo.check.Checkin;
 import tp1.model.vo.cus.CusInfo;
 import tp1.model.vo.cus.CusType;
-import tp1.model.vo.room.Room;
 import tp1.service.CheckinService;
-import tp1.service.RoomService;
 import tp1.servlet.CRUDServlet;
 
 /**

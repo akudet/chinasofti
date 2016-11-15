@@ -1,4 +1,4 @@
-package tp1.model.dao.impl.jdbc;
+package tp1.model.dao.impl.jdbc.check;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -86,7 +86,7 @@ public class CheckoutDAO extends JDBCAbstractDAO<Checkout> {
 						res.getFloat("checkout_amount"),
 						res.getString("checkout_time"),
 						res.getString("comment"));
-				user.setCheckin(new CheckinDAO().findById(res
+				user.setCheckin(new CheckinDAOImpl().findById(res
 						.getString("checkin_id")));
 				list.add(user);
 			}
@@ -141,7 +141,7 @@ public class CheckoutDAO extends JDBCAbstractDAO<Checkout> {
 			pre.setString(1, end_date);
 			res = pre.executeQuery();
 			while (res.next()) {
-				CheckinDAO dao = new CheckinDAO();
+				CheckinDAOImpl dao = new CheckinDAOImpl();
 				Checkin checkin = dao.findById(res.getString("checkin_id"));
 				Checkout checkOut = new Checkout(res.getString("checkout_id"),
 						res.getFloat("checkout_amount"),
@@ -201,7 +201,7 @@ public class CheckoutDAO extends JDBCAbstractDAO<Checkout> {
 				Checkout co = new Checkout();
 				co.map(res);
 				String checkinId = res.getString("checkin_id");
-				Checkin checkin = new CheckinDAO().findById(checkinId);
+				Checkin checkin = new CheckinDAOImpl().findById(checkinId);
 				co.setCheckin(checkin);
 				list.add(co);
 			}
@@ -250,7 +250,7 @@ public class CheckoutDAO extends JDBCAbstractDAO<Checkout> {
 						res.getString("checkout_time"),
 						res.getString("comment"));
 				String checkinId = res.getString("checkin_id");
-				Checkin checkin = new CheckinDAO().findById(checkinId);
+				Checkin checkin = new CheckinDAOImpl().findById(checkinId);
 				co.setCheckin(checkin);
 				list.add(co);
 			}
@@ -303,7 +303,7 @@ public class CheckoutDAO extends JDBCAbstractDAO<Checkout> {
 			res = pre.executeQuery();
 			while (res.next()) {
 				Checkout checkout = new Checkout();
-				Checkin checkin = new CheckinDAO().findById(res
+				Checkin checkin = new CheckinDAOImpl().findById(res
 						.getString("check_id"));
 				checkout.map(res);
 				checkout.setCheckin(checkin);

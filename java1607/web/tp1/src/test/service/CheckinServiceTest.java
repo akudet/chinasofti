@@ -8,9 +8,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import tp1.model.dao.impl.jdbc.CheckinDAO;
 import tp1.model.dao.impl.jdbc.CusInfoDAO;
 import tp1.model.dao.impl.jdbc.RoomDAOImpl;
+import tp1.model.dao.impl.jdbc.check.CheckinDAOImpl;
 import tp1.model.vo.cus.CusInfo;
 import tp1.model.vo.room.Room;
 import tp1.model.vo.room.RoomType;

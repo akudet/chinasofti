@@ -4,7 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import tp1.model.dao.impl.jdbc.CheckStatisticDAO;
+import tp1.model.dao.impl.jdbc.check.CheckStatisticDAO;
 import tp1.model.vo.check.CheckStatistic;
 
 public class CheckStatisticService {
