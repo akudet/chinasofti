@@ -1,16 +1,14 @@
-# Workspace
+# Eclipse Workspace
 .metadata
-.settings
 
-# Java Project
-bin
-*.class
-.project
+# Eclipse Project
+.settings
 .classpath
-.mymetadata
+.project
+
+# Eclipse build dir
+bin
+classes
 
 # Subversion Repo
 .svn
-
-# Tomcat
-classes
