@@ -1,4 +1,4 @@
-package soundsystem;
+package demo.aop.soundsystem;
 
 import org.springframework.stereotype.Component;
 

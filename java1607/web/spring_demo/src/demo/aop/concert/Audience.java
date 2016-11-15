@@ -1,4 +1,4 @@
-package concert;
+package demo.aop.concert;
 
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -9,7 +9,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class Audience {
 	private static final String POINT_CUT = "performance()";
-	private static final String POINT_CUT_EXPRESSION = "execution(** concert.Performance.perform(..))";
+	private static final String POINT_CUT_EXPRESSION = "execution(** demo.aop.concert.Performance.perform(..))";
 	
 	@AfterReturning("performance()")
 	public void applause() {

@@ -1,11 +1,11 @@
-package soundsystem.test;
+package demo.aop.soundsystem.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-import soundsystem.CDPlayer;
+import demo.aop.soundsystem.CDPlayer;
 
 @Component
 public class CDPlayerTest {

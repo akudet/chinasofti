@@ -1,4 +1,4 @@
-package soundsystem;
+package demo.aop.soundsystem;
 
 public interface CompactDisc {
 
