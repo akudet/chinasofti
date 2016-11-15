@@ -1,43 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name></display-name>
-  
   <listener>
-  	<listener-class>jtwu.listener.CountListener</listener-class>
+    <listener-class>jtwu.listener.CountListener</listener-class>
   </listener>
-<!--
-<filter>
-	<filter-name>TimeFilter</filter-name>
-	<filter-class>jtwu.filter.TimeFilter</filter-class>
-	<init-param>
-		<param-name>start</param-name>
-		<param-value>9</param-value>
-	</init-param>
-	<init-param>
-		<param-name>end</param-name>
-		<param-value>18</param-value>
-	</init-param>
-</filter>
-
-<filter-mapping>
-	<filter-name>TimeFilter</filter-name>
-	<url-pattern>/users/*</url-pattern>
-</filter-mapping>
-
-<filter>
-	<filter-name>LoginFilter</filter-name>
-	<filter-class>jtwu.filter.LoginFilter</filter-class>
-</filter>
-
-<filter-mapping>
-	<filter-name>LoginFilter</filter-name>
-	<url-pattern>/users/*</url-pattern>
-</filter-mapping>
--->
   <servlet>
     <description>a ReSTful service</description>
     <display-name>This is the display name of my J2EE component</display-name>
@@ -68,12 +34,11 @@
     <servlet-name>ValidateServlet</servlet-name>
     <servlet-class>jtwu.controller.servlet.ValidateServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-  	<servlet-name>UsersServlet</servlet-name>
-  	<url-pattern>/users</url-pattern>
+    <servlet-name>UsersServlet</servlet-name>
+    <url-pattern>/users</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/users/login</url-pattern>
   </servlet-mapping>
@@ -81,13 +46,12 @@
     <servlet-name>RegistryServlet</servlet-name>
     <url-pattern>/users/registry</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/users/logout</url-pattern>
   </servlet-mapping>
-     <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ValidateServlet</servlet-name>
     <url-pattern>/users/exists</url-pattern>
   </servlet-mapping>
-
 </web-app>
