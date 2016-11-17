@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
-import team4.proj1.model.dao.impl.jdbc.UserDAO;
+import team4.proj1.model.dao.impl.jdbc.UserDAOImpl;
 import team4.proj1.model.vo.admin.User;
 import team4.proj1.model.vo.room.Room;
 import team4.proj1.service.RoomService;
@@ -51,7 +51,7 @@ public class UserServlet extends CRUDServlet {
 		request.setAttribute("deleteUrl", request.getContextPath() + SERVLET_URL + "?DELETE=&userId=");
 		
 		if (userName != null) {
-			UserDAO mUserDao = new UserDAO();
+			UserDAOImpl mUserDao = new UserDAOImpl();
 			User user = mUserDao.findByName(userName);
 			
 			List<User> users = new ArrayList<User>();
@@ -128,7 +128,7 @@ public class UserServlet extends CRUDServlet {
 			throws ServletException, IOException {
 
 		String userId = req.getParameter("userId");
-		UserDAO mUserDao = new UserDAO();
+		UserDAOImpl mUserDao = new UserDAOImpl();
 		User user = mUserDao.findById(userId);
 		req.setAttribute("user", user);
 		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")

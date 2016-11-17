@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
-import team4.proj1.model.dao.impl.jdbc.RoomTypeDAO;
+import team4.proj1.model.dao.impl.jdbc.RoomTypeDAOImpl;
 import team4.proj1.model.vo.room.Room;
 import team4.proj1.model.vo.room.RoomType;
 
@@ -18,7 +18,7 @@ public class RoomService {
 	// 参考 2.9 房间信息管理
 
 	private RoomDAOImpl mRoomDao;
-	private RoomTypeDAO mRoomTypeDao;
+	private RoomTypeDAOImpl mRoomTypeDao;
 
 	public static final int ERR_ROOM_INUSE = 1;
 
@@ -31,7 +31,7 @@ public class RoomService {
 	public RoomService() {
 		super();
 		mRoomDao = new RoomDAOImpl();
-		mRoomTypeDao = new RoomTypeDAO();
+		mRoomTypeDao = new RoomTypeDAOImpl();
 	}
 
 	// 添加

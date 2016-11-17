@@ -2,7 +2,7 @@ package team4.proj1.service;
 
 import java.util.*;
 
-import team4.proj1.model.dao.impl.jdbc.UserDAO;
+import team4.proj1.model.dao.impl.jdbc.UserDAOImpl;
 import team4.proj1.model.vo.admin.User;
 
 /**
@@ -14,7 +14,7 @@ public class UserService {
 
 	// 参考 2.11 操作员管理
 
-	private UserDAO dao = new UserDAO();
+	private UserDAOImpl dao = new UserDAOImpl();
 	public static final int ERR_USER_NOT_FOUND = 1;
 
 	public int add(String username, String userpass, int privilege) {

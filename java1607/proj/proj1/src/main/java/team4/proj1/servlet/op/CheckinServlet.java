@@ -9,9 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import team4.proj1.model.dao.impl.jdbc.CusTypeDAO;
+import team4.proj1.model.dao.impl.jdbc.CusTypeDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
-import team4.proj1.model.dao.impl.jdbc.RoomTypeDAO;
+import team4.proj1.model.dao.impl.jdbc.RoomTypeDAOImpl;
 import team4.proj1.model.vo.check.Checkin;
 import team4.proj1.model.vo.cus.CusInfo;
 import team4.proj1.model.vo.cus.CusType;
@@ -86,7 +86,7 @@ public class CheckinServlet extends CRUDServlet {
 			throws ServletException, IOException {
 		CheckinService service = new CheckinService();
 
-		CusType cusType = new CusTypeDAO().findById(Integer.parseInt(request
+		CusType cusType = new CusTypeDAOImpl().findById(Integer.parseInt(request
 				.getParameter("cusTypeNo")));
 		CusInfo cusInfo = new CusInfo();
 		cusInfo.setName(request.getParameter("name"));
@@ -154,10 +154,10 @@ public class CheckinServlet extends CRUDServlet {
 
 		CheckinService cis = new CheckinService();
 
-		request.setAttribute("roomTypes", new RoomTypeDAO().findAll());
+		request.setAttribute("roomTypes", new RoomTypeDAOImpl().findAll());
 		
 		request.setAttribute("room", new RoomDAOImpl().findOneByRoomId(request.getParameter("roomId")));
-		request.setAttribute("cusTypes", new CusTypeDAO().findAll());
+		request.setAttribute("cusTypes", new CusTypeDAOImpl().findAll());
 
 		String findRooms = request.getParameter("findRooms");
 		if (findRooms != null) {

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import team4.proj1.model.dao.impl.jdbc.CusInfoDAO;
+import team4.proj1.model.dao.impl.jdbc.CusInfoDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.abst.JDBCAbstractDAO;
 import team4.proj1.model.dao.impl.jdbc.abst.db.DBConnection;
@@ -90,7 +90,7 @@ public class CheckinDAOImpl extends JDBCAbstractDAO<Checkin> implements CheckinD
 			res = pre.executeQuery();
 			ArrayList<Checkin> list = new ArrayList<Checkin>();
 			while (res.next()) {
-				CusInfoDAO dao = new CusInfoDAO();
+				CusInfoDAOImpl dao = new CusInfoDAOImpl();
 				RoomDAOImpl dao1 = new RoomDAOImpl();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
 				Room room = dao1.findOneByRoomId(res.getString("room_id"));
@@ -123,7 +123,7 @@ public class CheckinDAOImpl extends JDBCAbstractDAO<Checkin> implements CheckinD
 			pre.setString(1, checkin);
 			res = pre.executeQuery();
 			if (res.next()) {
-				CusInfoDAO dao = new CusInfoDAO();
+				CusInfoDAOImpl dao = new CusInfoDAOImpl();
 				RoomDAOImpl dao1 = new RoomDAOImpl();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
 				Room room = dao1.findOneByRoomId(res.getString("room_id"));
@@ -159,7 +159,7 @@ public class CheckinDAOImpl extends JDBCAbstractDAO<Checkin> implements CheckinD
 				checkin.map(rs);
 				
 				Room room = new RoomDAOImpl().findOneByRoomId(rs.getString("room_id"));
-				CusInfo cusinfo = new CusInfoDAO().findById(rs.getString("cus_info_id"));
+				CusInfo cusinfo = new CusInfoDAOImpl().findById(rs.getString("cus_info_id"));
 				
 				checkin.setRoom(room);
 				checkin.setCusInfo(cusinfo);
@@ -191,7 +191,7 @@ public class CheckinDAOImpl extends JDBCAbstractDAO<Checkin> implements CheckinD
 			pre.setInt(2, Checkin.UNCHECK);
 			res = pre.executeQuery();
 			if (res.next()) {
-				CusInfoDAO dao = new CusInfoDAO();
+				CusInfoDAOImpl dao = new CusInfoDAOImpl();
 				RoomDAOImpl dao1 = new RoomDAOImpl();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
 				Room room = dao1.findOneByRoomId(res.getString("room_id"));
@@ -249,7 +249,7 @@ public class CheckinDAOImpl extends JDBCAbstractDAO<Checkin> implements CheckinD
 			pre.setInt(2, status);
 			res = pre.executeQuery();
 			while(res.next()){
-				CusInfoDAO dao = new CusInfoDAO();
+				CusInfoDAOImpl dao = new CusInfoDAOImpl();
 				RoomDAOImpl dao1 = new RoomDAOImpl();
 				CusInfo cusinfo = dao.findById(res.getString("cus_info_id"));
 				Room room = dao1.findOneByRoomId(res.getString("room_id"));
@@ -300,7 +300,7 @@ public class CheckinDAOImpl extends JDBCAbstractDAO<Checkin> implements CheckinD
 			while(res.next()){
 				Checkin ci = new Checkin();
 				ci.map(res);
-				ci.setCusInfo(new CusInfoDAO().findById(res.getString("cus_info_id")));
+				ci.setCusInfo(new CusInfoDAOImpl().findById(res.getString("cus_info_id")));
 				ci.setRoom(new RoomDAOImpl().findOneByRoomId(res.getString("room_id")));
 				list.add(ci);
 			}

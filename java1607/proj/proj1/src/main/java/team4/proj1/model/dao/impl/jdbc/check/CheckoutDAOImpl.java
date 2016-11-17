@@ -19,7 +19,7 @@ import team4.proj1.model.vo.check.Checkout;
  * @author 田霞光
  * 
  */
-public class CheckoutDAO extends JDBCAbstractDAO<Checkout> {
+public class CheckoutDAOImpl extends JDBCAbstractDAO<Checkout> {
 
 	private static final int PAGE = 5;
 

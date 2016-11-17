@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
-import team4.proj1.model.dao.impl.jdbc.RoomTypeDAO;
+import team4.proj1.model.dao.impl.jdbc.RoomTypeDAOImpl;
 import team4.proj1.model.vo.room.Room;
 import team4.proj1.model.vo.room.RoomType;
 import team4.proj1.service.RoomService;
@@ -118,7 +118,7 @@ public class RoomServlet extends CRUDServlet {
 		RoomDAOImpl rd = new RoomDAOImpl();
 		Room room = rd.findOneByRoomId(roomID);
 		request.setAttribute("room", room);
-		request.setAttribute("roomTypes", new RoomTypeDAO().findAll());
+		request.setAttribute("roomTypes", new RoomTypeDAOImpl().findAll());
 		request.getRequestDispatcher(
 				TEMPLATE_URL + request.getPathInfo() + ".jsp").forward(request,
 				response);

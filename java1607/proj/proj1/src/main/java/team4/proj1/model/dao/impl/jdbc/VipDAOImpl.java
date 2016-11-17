@@ -21,7 +21,7 @@ public class VipDAOImpl extends JDBCAbstractDAO<Vip> implements VipDAO {
 	@Override
 	public int add(Vip vip) {
 		String sql = "insert into vip values(?,?)";
-		new CusInfoDAO().add(vip);
+		new CusInfoDAOImpl().add(vip);
 		return update(sql, vip.getVipNo(), vip.getCusInfoId());
 	}
 
@@ -48,7 +48,7 @@ public class VipDAOImpl extends JDBCAbstractDAO<Vip> implements VipDAO {
 		// vip only contains vip_no, and cus_info_id
 		// vip_no can't change, and cus_info_id also can't change
 		// so i't just update the CusInfo
-		return new CusInfoDAO().update(vip);
+		return new CusInfoDAOImpl().update(vip);
 	}
 
 }

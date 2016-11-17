@@ -2,7 +2,7 @@ package team4.proj1.model.dao.jdbc;
 
 import java.util.ArrayList;
 
-import team4.proj1.model.dao.impl.jdbc.check.CheckoutDAO;
+import team4.proj1.model.dao.impl.jdbc.check.CheckoutDAOImpl;
 import team4.proj1.model.vo.check.Checkout;
 
 /**
@@ -14,7 +14,7 @@ public class CheckoutDAOTest {
 	public static void main(String[] args) {
 		
 	
-	  CheckoutDAO dao = new CheckoutDAO();
+	  CheckoutDAOImpl dao = new CheckoutDAOImpl();
 	  float amount = 120;
 	  String comment = "qwqwqw"; 
 	  Checkout checkout1 = new Checkout(amount,comment);

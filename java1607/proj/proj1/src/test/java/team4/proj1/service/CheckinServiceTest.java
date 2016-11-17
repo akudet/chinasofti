@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import team4.proj1.model.dao.impl.jdbc.CusInfoDAO;
+import team4.proj1.model.dao.impl.jdbc.CusInfoDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.check.CheckinDAOImpl;
 import team4.proj1.model.vo.cus.CusInfo;
@@ -46,7 +46,7 @@ public class CheckinServiceTest {
 		RoomDAOImpl roomDao = new RoomDAOImpl();
 		roomDao.update(room);
 		
-		CusInfoDAO cusInfoDao = new CusInfoDAO();
+		CusInfoDAOImpl cusInfoDao = new CusInfoDAOImpl();
 		CusInfo cusInfo = cusInfoDao.findById("1000");
 		cusInfoDao.deleteById("1000");
 

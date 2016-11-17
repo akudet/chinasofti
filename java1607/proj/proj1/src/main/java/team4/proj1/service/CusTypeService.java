@@ -2,7 +2,7 @@ package team4.proj1.service;
 
 import java.util.*;
 
-import team4.proj1.model.dao.impl.jdbc.CusTypeDAO;
+import team4.proj1.model.dao.impl.jdbc.CusTypeDAOImpl;
 import team4.proj1.model.vo.cus.CusType;
 
 /**
@@ -13,7 +13,7 @@ import team4.proj1.model.vo.cus.CusType;
 public class CusTypeService {
 
 	// 参考 2.10 客户类型折扣
-	CusTypeDAO cusTypeDao = new CusTypeDAO();
+	CusTypeDAOImpl cusTypeDao = new CusTypeDAOImpl();
 	
 	//分页查询
 	public List<CusType> findAll(int pageNo){

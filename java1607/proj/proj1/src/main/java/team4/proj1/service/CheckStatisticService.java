@@ -4,12 +4,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import team4.proj1.model.dao.impl.jdbc.check.CheckStatisticDAO;
+import team4.proj1.model.dao.impl.jdbc.check.CheckStatisticDAOImpl;
 import team4.proj1.model.vo.check.CheckStatistic;
 
 public class CheckStatisticService {
 	
-	private final CheckStatisticDAO mCSD = new CheckStatisticDAO();
+	private final CheckStatisticDAOImpl mCSD = new CheckStatisticDAOImpl();
 
 	public List<Integer> getCheckinStatistics() {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");

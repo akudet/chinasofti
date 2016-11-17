@@ -16,7 +16,7 @@ import team4.proj1.model.vo.cus.CusType;
  * @author 项双江
  * 
  */
-public class CusTypeDAO extends JDBCAbstractDAO<CusType>{
+public class CusTypeDAOImpl extends JDBCAbstractDAO<CusType>{
 	private static final int DATA_PRE_PAGE = 5;
 	Connection con = null;
 	PreparedStatement pre = null;

@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import team4.proj1.model.dao.impl.jdbc.CusInfoDAO;
-import team4.proj1.model.dao.impl.jdbc.CusTypeDAO;
+import team4.proj1.model.dao.impl.jdbc.CusInfoDAOImpl;
+import team4.proj1.model.dao.impl.jdbc.CusTypeDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.VipDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.check.CheckinDAOImpl;
@@ -27,7 +27,7 @@ import team4.proj1.model.vo.room.RoomType;
 public class CheckinService {
 
 	private final CheckinDAO mCheckinDao;
-	private final CusInfoDAO mCusInfoDao;
+	private final CusInfoDAOImpl mCusInfoDao;
 	private final RoomDAOImpl mRoomDao;
 	final float EPSILON = 0.005f;
 	private final VipDAOImpl mVipDao;
@@ -38,7 +38,7 @@ public class CheckinService {
 	public CheckinService() {
 		super();
 		this.mCheckinDao = new CheckinDAOImpl();
-		this.mCusInfoDao = new CusInfoDAO();
+		this.mCusInfoDao = new CusInfoDAOImpl();
 		this.mRoomDao = new RoomDAOImpl();
 		this.mVipDao = new VipDAOImpl();
 	}

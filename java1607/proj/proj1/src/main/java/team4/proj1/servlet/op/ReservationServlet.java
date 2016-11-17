@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import team4.proj1.model.dao.impl.jdbc.ReservationDAO;
-import team4.proj1.model.dao.impl.jdbc.RoomTypeDAO;
+import team4.proj1.model.dao.impl.jdbc.ReservationDAOImpl;
+import team4.proj1.model.dao.impl.jdbc.RoomTypeDAOImpl;
 import team4.proj1.model.vo.check.Reservation;
 import team4.proj1.model.vo.room.RoomType;
 import team4.proj1.service.ReservationService;
@@ -123,12 +123,12 @@ public class ReservationServlet extends CRUDServlet {
 	public void getEdit(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String reservationId = req.getParameter("reservationId");
-		ReservationDAO reservationDao = new ReservationDAO();
+		ReservationDAOImpl reservationDao = new ReservationDAOImpl();
 		Reservation reservation = reservationDao.findById(reservationId);
 		
 		System.out.println(reservation);
 		
-		req.setAttribute("roomTypes", new RoomTypeDAO().findAll());
+		req.setAttribute("roomTypes", new RoomTypeDAOImpl().findAll());
 		req.setAttribute("reservation", reservation);
 		
 		req.getRequestDispatcher(TEMPLATE_URL + "/edit.jsp")
@@ -138,7 +138,7 @@ public class ReservationServlet extends CRUDServlet {
 	@Override
 	public void getNew(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.setAttribute("roomTypes", new RoomTypeDAO().findAll());
+		req.setAttribute("roomTypes", new RoomTypeDAOImpl().findAll());
 		req.getRequestDispatcher(TEMPLATE_URL + req.getPathInfo() + ".jsp")
 				.forward(req, resp);
 	}

@@ -16,7 +16,7 @@ import team4.proj1.model.vo.cus.CusInfo;
  * @author 项双江
  * 
  */
-public class CusInfoDAO extends JDBCAbstractDAO<CusInfo>{
+public class CusInfoDAOImpl extends JDBCAbstractDAO<CusInfo>{
 	Connection con = null;
 	PreparedStatement pre = null;
 	ResultSet res = null;
@@ -114,7 +114,7 @@ public class CusInfoDAO extends JDBCAbstractDAO<CusInfo>{
 						res.getString("cert_number"), res.getString("name"),
 						res.getString("phone"), res.getString("address"),
 						res.getString("sex"), res.getString("comment"));
-				CusTypeDAO dao = new CusTypeDAO();
+				CusTypeDAOImpl dao = new CusTypeDAOImpl();
 				cusInfo.setCusType(dao.findById(cusTypeNo));
 				list.add(cusInfo);
 			}
@@ -145,7 +145,7 @@ public class CusInfoDAO extends JDBCAbstractDAO<CusInfo>{
 						res.getString("cert_number"), res.getString("name"),
 						res.getString("phone"), res.getString("address"),
 						res.getString("sex"), res.getString("comment"));
-				CusTypeDAO dao = new CusTypeDAO();
+				CusTypeDAOImpl dao = new CusTypeDAOImpl();
 				cusInfo.setCusType(dao.findById(cusTypeNo));
 				return cusInfo;
 			}
@@ -235,7 +235,7 @@ public class CusInfoDAO extends JDBCAbstractDAO<CusInfo>{
 						res.getString("cert_number"), res.getString("name"),
 						res.getString("phone"), res.getString("address"),
 						res.getString("sex"), res.getString("comment"));
-				CusTypeDAO dao = new CusTypeDAO();
+				CusTypeDAOImpl dao = new CusTypeDAOImpl();
 				cusInfo.setCusType(dao.findById(cusTypeNo));
 				list.add(cusInfo);
 			}

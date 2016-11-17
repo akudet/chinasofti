@@ -9,7 +9,7 @@ import java.util.List;
 
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.check.CheckinDAOImpl;
-import team4.proj1.model.dao.impl.jdbc.check.CheckoutDAO;
+import team4.proj1.model.dao.impl.jdbc.check.CheckoutDAOImpl;
 import team4.proj1.model.dao.include.check.CheckinDAO;
 import team4.proj1.model.vo.check.Checkin;
 import team4.proj1.model.vo.check.Checkout;
@@ -24,13 +24,13 @@ public class CheckoutService {
 	// 参考 2.4 客户结账, 2.6 营业查询
 
 	private final CheckinDAO mCheckinDao;
-	private final CheckoutDAO mCheckoutDao;
+	private final CheckoutDAOImpl mCheckoutDao;
 	private final RoomDAOImpl mRoomDao;
 
 	public CheckoutService() {
 		super();
 		this.mCheckinDao = new CheckinDAOImpl();
-		this.mCheckoutDao = new CheckoutDAO();
+		this.mCheckoutDao = new CheckoutDAOImpl();
 		this.mRoomDao = new RoomDAOImpl();
 	}
 

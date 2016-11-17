@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import team4.proj1.model.dao.include.DAO;
@@ -33,7 +34,9 @@ public class SpringAbstractDAO<T> implements DAO<T> {
 	@Override
 	public int add(final T t) {
 		Session session = getSession();
+		Transaction ts = session.beginTransaction();
 		Serializable id = session.save(t);
+		ts.commit();
 		session.close();
 		return 0;
 	}

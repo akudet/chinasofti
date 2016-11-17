@@ -3,7 +3,7 @@ package team4.proj1.service;
 import java.util.List;
 
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
-import team4.proj1.model.dao.impl.jdbc.RoomTypeDAO;
+import team4.proj1.model.dao.impl.jdbc.RoomTypeDAOImpl;
 import team4.proj1.model.vo.room.RoomType;
 
 /**
@@ -14,7 +14,7 @@ import team4.proj1.model.vo.room.RoomType;
 public class RoomTypeService {
 
 	// 参考 2.8 房间类型管理
-	RoomTypeDAO roomTypeDao = new RoomTypeDAO();
+	RoomTypeDAOImpl roomTypeDao = new RoomTypeDAOImpl();
 
 	// 添加房间类型
 	public int add(int roomTypeNo, String roomTypeDesc, int beds, float price,

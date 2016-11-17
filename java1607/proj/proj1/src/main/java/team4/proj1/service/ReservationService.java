@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import team4.proj1.model.dao.impl.jdbc.ReservationDAO;
+import team4.proj1.model.dao.impl.jdbc.ReservationDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.RoomDAOImpl;
 import team4.proj1.model.vo.check.Reservation;
 import team4.proj1.model.vo.room.Room;
@@ -20,17 +20,17 @@ import team4.proj1.model.vo.room.Room;
  */
 public class ReservationService {
 	
-	private final ReservationDAO mReservationDao;
+	private final ReservationDAOImpl mReservationDao;
 	private final RoomDAOImpl mRoomDao;
 
 	public ReservationService() {
 		super();
 		this.mRoomDao = new RoomDAOImpl();
-		this.mReservationDao = new ReservationDAO();
+		this.mReservationDao = new ReservationDAOImpl();
 	}
 	
 	public int deleteById(String reservationId) {
-		ReservationDAO Res = new ReservationDAO();
+		ReservationDAOImpl Res = new ReservationDAOImpl();
 		Reservation reservation = Res.findById(reservationId);
 		if (reservation == null) {
 			return -1;
@@ -156,7 +156,7 @@ public class ReservationService {
 
 	//查询预订信息
 	public List<Reservation> findAllReservation(String name, String phone,String arriveTime){
-		ReservationDAO reservation = new ReservationDAO();
+		ReservationDAOImpl reservation = new ReservationDAOImpl();
 		return reservation.findAllReservation(name, phone, arriveTime);
 	}
 

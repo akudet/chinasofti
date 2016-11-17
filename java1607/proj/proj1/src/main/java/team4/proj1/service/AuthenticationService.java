@@ -1,6 +1,6 @@
 package team4.proj1.service;
 
-import team4.proj1.model.dao.impl.jdbc.UserDAO;
+import team4.proj1.model.dao.impl.jdbc.UserDAOImpl;
 import team4.proj1.model.vo.admin.User;
 
 public class AuthenticationService {
@@ -8,7 +8,7 @@ public class AuthenticationService {
 	public static final int ADMIN_ACCESS = 0;
 	public static final int OP_ACESS = 1;
 	
-	private final UserDAO mUserDao = new UserDAO();
+	private final UserDAOImpl mUserDao = new UserDAOImpl();
 
 	public User login(String username, String userpass) {
 		User user = mUserDao.findByName(username);

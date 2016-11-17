@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="team4.proj1.model.vo.cus.CusInfo" table="cus_info">
+		<id name="cusInfoId" column="cus_info_id" type="string">
+			<generator class="uuid" />
+		</id>
+		<property name="name" column="name" type="string"></property>
+		<property name="phone" column="phone" type="string"></property>
+		<property name="address" column="address" type="string"></property>
+		<property name="sex" column="sex" type="string"></property>
+		<property name="comment" column="comment" type="string"></property>
+		<property name="certType" column="certType" type="string"></property>
+		<property name="certNumber" column="certNumber" type="string"></property>
+	</class>
+</hibernate-mapping>

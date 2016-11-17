@@ -14,7 +14,7 @@ import team4.proj1.model.vo.check.CheckStatistic;
  * @author 巫金桐
  *
  */
-public class CheckStatisticDAO {
+public class CheckStatisticDAOImpl {
 	private List<CheckStatistic> queryAll(String sql) {
 		Connection con = DBConnection.getConnection();
 		PreparedStatement pre = null;
@@ -53,7 +53,7 @@ public class CheckStatisticDAO {
 	}
 	
 	public static void main(String[] args) {
-		CheckStatisticDAO mCSD = new CheckStatisticDAO();
+		CheckStatisticDAOImpl mCSD = new CheckStatisticDAOImpl();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date now = new Date();
 		String end = df.format(now);

@@ -2,8 +2,8 @@ package team4.proj1.service;
 
 import java.util.*;
 
-import team4.proj1.model.dao.impl.jdbc.CusInfoDAO;
-import team4.proj1.model.dao.impl.jdbc.CusTypeDAO;
+import team4.proj1.model.dao.impl.jdbc.CusInfoDAOImpl;
+import team4.proj1.model.dao.impl.jdbc.CusTypeDAOImpl;
 import team4.proj1.model.dao.impl.jdbc.VipDAOImpl;
 import team4.proj1.model.vo.check.Checkin;
 import team4.proj1.model.vo.cus.CusInfo;
@@ -21,7 +21,7 @@ public class VipService {
 	// 参考 2.7 会员管理
 
 	private VipDAOImpl mVipDao = new VipDAOImpl();
-	private CusInfoDAO mCusInfoDao = new CusInfoDAO();
+	private CusInfoDAOImpl mCusInfoDao = new CusInfoDAOImpl();
 	
 	//按会员名字查询
 	public Vip findVipByName(String name){
@@ -43,7 +43,7 @@ public class VipService {
 			String phone, String address, String comment) {
 		CusInfo user = new CusInfo("身份证", certNumber, name, phone, address,
 				sex, comment);
-		CusTypeDAO dao = new CusTypeDAO();
+		CusTypeDAOImpl dao = new CusTypeDAOImpl();
 		CusType cusType = dao.findById(CusType.VIP_CUS_TYPE_NO);
 		user.setCusType(cusType);
 

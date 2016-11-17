@@ -14,7 +14,7 @@ import team4.proj1.model.vo.room.RoomType;
  * @author 张科林
  * 
  */
-public class RoomTypeDAO {
+public class RoomTypeDAOImpl {
 
 	Connection con = DBConnection.getConnection();
 

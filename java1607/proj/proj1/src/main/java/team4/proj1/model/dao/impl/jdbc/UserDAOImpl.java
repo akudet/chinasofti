@@ -18,7 +18,7 @@ import team4.proj1.model.vo.admin.User;
  * @author 马厦伟
  * 
  */
-public class UserDAO extends JDBCAbstractDAO<User>{
+public class UserDAOImpl extends JDBCAbstractDAO<User>{
 	private static final int DATE_PAGE = 5;
 	Connection con = null;
 	PreparedStatement pre = null;

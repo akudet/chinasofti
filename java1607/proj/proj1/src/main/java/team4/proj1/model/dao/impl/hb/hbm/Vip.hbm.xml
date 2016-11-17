@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="tp1.model.vo.cus.Vip" table="vip">
+	<class name="team4.proj1.model.vo.cus.Vip" table="vip">
 		<id name="vipNo" type="int" column="vip_no">
 			<generator class="native" />
 		</id>

@@ -6,7 +6,7 @@ import java.util.*;
 
 import org.junit.Test;
 
-import team4.proj1.model.dao.impl.jdbc.UserDAO;
+import team4.proj1.model.dao.impl.jdbc.UserDAOImpl;
 import team4.proj1.model.vo.admin.User;
 
 /**
@@ -18,7 +18,7 @@ public class UserDAOTest {
 
 	@Test
 	public void addTest() {
-		UserDAO dao = new UserDAO();
+		UserDAOImpl dao = new UserDAOImpl();
 		User user = new User("1006", "jtwu", "jtwu", 0);
 		dao.add(user);
 		assertNotNull(dao.findById(user.getUserId()));
@@ -26,7 +26,7 @@ public class UserDAOTest {
 
 	@Test
 	public void deleteAllTest() {
-		UserDAO dao = new UserDAO();
+		UserDAOImpl dao = new UserDAOImpl();
 		User user = new User("1006", "jtwu", "jtwu", 0);
 		dao.add(user);
 		dao.deleteAll();
@@ -35,7 +35,7 @@ public class UserDAOTest {
 
 	@Test
 	public void deleteByIdTest() {
-		UserDAO dao = new UserDAO();
+		UserDAOImpl dao = new UserDAOImpl();
 		User user = new User("1006", "jtwu", "jtwu", 0);
 		dao.add(user);
 		dao.deleteById(user.getUserId());
@@ -44,7 +44,7 @@ public class UserDAOTest {
 
 	@Test
 	public void duplicateIdTest() {
-		UserDAO dao = new UserDAO();
+		UserDAOImpl dao = new UserDAOImpl();
 		dao.deleteAll();
 
 		List<User> users = new ArrayList<User>();
@@ -65,7 +65,7 @@ public class UserDAOTest {
 
 	@Test
 	public void findByIdTest() {
-		UserDAO dao = new UserDAO();
+		UserDAOImpl dao = new UserDAOImpl();
 		User user = new User("1006", "jtwu", "jtwu", 0);
 		dao.add(user);
 		assertNotNull(dao.findById(user.getUserId()));
@@ -87,7 +87,7 @@ public class UserDAOTest {
 
 	@Test
 	public void uniqueIdTest() {
-		UserDAO dao = new UserDAO();
+		UserDAOImpl dao = new UserDAOImpl();
 		List<User> users = getSampleUsers();
 		for (User user : getSampleUsers()) {
 			dao.add(user);

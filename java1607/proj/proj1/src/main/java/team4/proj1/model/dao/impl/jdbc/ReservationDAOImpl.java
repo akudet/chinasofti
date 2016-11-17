@@ -24,7 +24,7 @@ import team4.proj1.model.vo.room.Room;
  * @author 范中兴
  * 
  */
-public class ReservationDAO extends JDBCAbstractDAO<Reservation>{
+public class ReservationDAOImpl extends JDBCAbstractDAO<Reservation>{
 	Connection con = null;
 	PreparedStatement pre = null;
 	ResultSet res = null;
