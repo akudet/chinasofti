@@ -8,6 +8,9 @@
 		<id name="cusInfoId" column="cus_info_id" type="string">
 			<generator class="uuid" />
 		</id>
+		<many-to-one name="cusType" column="cus_type_no"
+			class="team4.proj1.model.vo.cus.CusType" lazy="false">
+		</many-to-one>
 		<property name="name" column="name" type="string"></property>
 		<property name="phone" column="phone" type="string"></property>
 		<property name="address" column="address" type="string"></property>

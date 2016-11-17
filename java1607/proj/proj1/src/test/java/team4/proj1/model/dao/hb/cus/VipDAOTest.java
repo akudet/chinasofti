@@ -1,4 +1,4 @@
-package team4.proj1.model.dao.hb;
+package team4.proj1.model.dao.hb.cus;
 
 import org.springframework.context.ApplicationContext;
 

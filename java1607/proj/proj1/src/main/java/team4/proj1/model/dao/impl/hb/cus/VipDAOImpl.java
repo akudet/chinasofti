@@ -1,4 +1,4 @@
-package team4.proj1.model.dao.impl.hb;
+package team4.proj1.model.dao.impl.hb.cus;
 
 import org.springframework.stereotype.Repository;
 

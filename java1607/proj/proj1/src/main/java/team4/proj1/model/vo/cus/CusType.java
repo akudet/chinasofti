@@ -16,7 +16,7 @@ public class CusType extends ValueObject {
 	protected int discount;
 
 	public static final int VIP_CUS_TYPE_NO = 1;
-	
+
 	public CusType() {
 		super();
 	}
@@ -40,6 +40,10 @@ public class CusType extends ValueObject {
 		return discount;
 	}
 
+	public boolean isVip() {
+		return cusTypeNo == VIP_CUS_TYPE_NO;
+	}
+
 	@Override
 	public void map(ResultSet rs) throws SQLException {
 		cusTypeNo = rs.getInt("cus_type_no");
@@ -60,8 +64,10 @@ public class CusType extends ValueObject {
 		this.discount = discount;
 	}
 
-	public boolean isVip() {
-		return cusTypeNo == VIP_CUS_TYPE_NO;
+	@Override
+	public String toString() {
+		return "CusType [cusTypeNo=" + cusTypeNo + ", cusTypeDesc="
+				+ cusTypeDesc + ", discount=" + discount + "]";
 	}
 
 }

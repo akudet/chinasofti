@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="team4.proj1.model.vo.cus.CusType" table="cus_type">
+		<id name="cusTypeNo" column="cus_type_no" type="int">
+			<generator class="increment" />
+		</id>
+		<property name="cusTypeDesc" column="cusTypeDesc" type="string"></property>
+		<property name="discount" column="discount" type="int"></property>
+	</class>
+</hibernate-mapping>
