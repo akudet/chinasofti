@@ -11,6 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import team4.proj2.model.dao.DAO;
 
+// TODO : the logic here really need improving
+// I don't the the correct way for db operating when using spring
+// From what I learned from class,
+// this way is how they write the db access part
+// open a session, and it should work, (though it's not)
+// but I think it's not right. So i'm not sure.
 public class SpringAbstractDAO<T> implements DAO<T> {
 	public Class<T> voClass;
 
