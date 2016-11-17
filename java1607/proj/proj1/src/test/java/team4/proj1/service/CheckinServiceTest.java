@@ -14,7 +14,7 @@ import team4.proj1.model.dao.impl.jdbc.check.CheckinDAOImpl;
 import team4.proj1.model.vo.cus.CusInfo;
 import team4.proj1.model.vo.room.Room;
 import team4.proj1.model.vo.room.RoomType;
-import team4.proj1.service.CheckinService;
+import team4.proj1.service.impl.check.CheckinServiceImpl;
 
 public class CheckinServiceTest {
 	
@@ -39,7 +39,7 @@ public class CheckinServiceTest {
 	@Test
 	public void checkinTest() {
 		Room room = new RoomDAOImpl().findOneByRoomId("1000");
-		CheckinService service = new CheckinService();
+		CheckinServiceImpl service = new CheckinServiceImpl();
 		
 		room.setStatusFree();
 		

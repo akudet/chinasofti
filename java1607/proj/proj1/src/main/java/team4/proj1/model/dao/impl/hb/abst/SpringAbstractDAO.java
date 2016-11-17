@@ -35,7 +35,7 @@ public class SpringAbstractDAO<T> implements DAO<T> {
 	public int add(final T t) {
 		Session session = getSession();
 		Transaction ts = session.beginTransaction();
-		Serializable id = session.save(t);
+		session.save(t);
 		ts.commit();
 		session.close();
 		return 0;

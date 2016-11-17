@@ -1,9 +1,9 @@
 package team4.proj1.service.data;
 
-import team4.proj1.service.RoomTypeService;
+import team4.proj1.service.impl.admin.RoomTypeServiceImpl;
 
 public class RoomTypeData extends Data {
-	RoomTypeService service = new RoomTypeService();
+	RoomTypeServiceImpl service = new RoomTypeServiceImpl();
 	
 	
 	public void addData() {

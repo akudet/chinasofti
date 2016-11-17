@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,team4.proj1.servlet.admin.*"
+<%@ page language="java" import="java.util.*,team4.proj1.control.servlet.admin.*"
 	pageEncoding="UTF-8"%>
 
 <%

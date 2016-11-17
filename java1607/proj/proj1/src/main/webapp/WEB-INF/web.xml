@@ -10,7 +10,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>TestServlet</servlet-name>
-		<servlet-class>tp1.servlet.TestServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.mid.TestServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>TestServlet</servlet-name>
@@ -22,7 +22,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>tp1.servlet.LoginServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.auth.LoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
@@ -34,7 +34,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>LogoutServlet</servlet-name>
-		<servlet-class>tp1.servlet.LogoutServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.auth.LogoutServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
@@ -46,7 +46,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>RoomServlet</servlet-name>
-		<servlet-class>tp1.servlet.admin.RoomServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.admin.RoomServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>This is the description of my J2EE component
@@ -54,7 +54,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>RoomTypeServlet</servlet-name>
-		<servlet-class>tp1.servlet.admin.RoomTypeServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.admin.RoomTypeServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>This is the description of my J2EE component
@@ -62,7 +62,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>CusTypeServlet</servlet-name>
-		<servlet-class>tp1.servlet.admin.CusTypeServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.admin.CusTypeServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>This is the description of my J2EE component
@@ -70,7 +70,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>UserServlet</servlet-name>
-		<servlet-class>tp1.servlet.admin.UserServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.admin.UserServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RoomServlet</servlet-name>
@@ -98,7 +98,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>VipServlet</servlet-name>
-		<servlet-class>tp1.servlet.op.VipServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.op.VipServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>This is the description of my J2EE component
@@ -106,7 +106,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>CheckinServlet</servlet-name>
-		<servlet-class>tp1.servlet.op.CheckinServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.op.CheckinServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>This is the description of my J2EE component
@@ -114,7 +114,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>CheckoutServlet</servlet-name>
-		<servlet-class>tp1.servlet.op.CheckoutServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.op.CheckoutServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>This is the description of my J2EE component
@@ -122,7 +122,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>ReservationServlet</servlet-name>
-		<servlet-class>tp1.servlet.op.ReservationServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.op.ReservationServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>This is the description of my J2EE component
@@ -130,7 +130,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>OperatorServlet</servlet-name>
-		<servlet-class>tp1.servlet.op.OpServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.op.OpServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>This is the description of my J2EE component
@@ -138,7 +138,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>AdminServlet</servlet-name>
-		<servlet-class>tp1.servlet.admin.AdminServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.admin.AdminServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>This is the description of my J2EE component
@@ -146,7 +146,7 @@
 		<display-name>This is the display name of my J2EE component
 		</display-name>
 		<servlet-name>MainServlet</servlet-name>
-		<servlet-class>tp1.servlet.MainServlet</servlet-class>
+		<servlet-class>team4.proj1.control.servlet.MainServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>VipServlet</servlet-name>
