@@ -15,6 +15,15 @@ import team4.proj1.model.vo.room.RoomType;
  */
 public class Check extends ValueObject {
 
+	@Override
+	public String toString() {
+		return "Check [checkinId=" + checkinId + ", room=" + room
+				+ ", cusInfo=" + cusInfo + ", checkinTime=" + checkinTime
+				+ ", price=" + price + ", numOfDays=" + numOfDays
+				+ ", deposit=" + deposit + ", status=" + status
+				+ ", checkinType=" + checkinType + "]";
+	}
+
 	protected String checkinId;
 	protected Room room;
 	protected CusInfo cusInfo;

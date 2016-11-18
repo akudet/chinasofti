@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="team4.proj1.model.vo.check.Checkin" table="checkin">
+		<id name="checkinId" column="checkin_id" type="string">
+			<generator class="uuid" />
+		</id>
+		<many-to-one name="cusInfo" column="cus_info_id"
+			class="team4.proj1.model.vo.cus.CusInfo" lazy="false">
+		</many-to-one>
+		<property name="checkinTime" column="checkin_time" type="string"></property>
+		<property name="numOfDays" column="num_of_days" type="integer"></property>
+		<property name="deposit" column="deposit" type="float"></property>
+		<property name="status" column="status" type="integer"></property>
+	</class>
+</hibernate-mapping>
