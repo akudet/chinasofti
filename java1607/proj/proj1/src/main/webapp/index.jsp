@@ -1,2 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%response.sendRedirect("/tp1/main");%>
+<%
+	response.sendRedirect("/proj1/main");
+%>
