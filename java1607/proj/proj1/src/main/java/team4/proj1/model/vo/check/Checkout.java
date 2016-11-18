@@ -3,6 +3,17 @@ package team4.proj1.model.vo.check;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import team4.proj1.model.vo.ValueObject;
 
 /**
@@ -10,33 +21,45 @@ import team4.proj1.model.vo.ValueObject;
  * @author 田霞光
  * 
  */
+@Entity
+@Table(name = "checkout")
 public class Checkout extends ValueObject {
-	
+
+	@Id
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid")
+	@Column(name = "checkout_id")
 	protected String checkoutId;
+	@Column(name = "checkout_amount")
 	protected float checkoutAmount;
+	@Column(name = "checkout_time")
 	protected String checkoutTime;
+	@Column(name = "comment")
 	protected String comment;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "checkin_id")
 	protected Checkin checkin;
+
 	public Checkout() {
 		super();
 	}
-	
+
 	public String getRoomTypeDesc() {
 		return checkin.getRoomTypeDesc();
 	}
-	
+
 	public String getRoomId() {
 		return checkin.getRoomId();
 	}
-	
+
 	public int getCheckinType() {
 		return checkin.getCheckinType();
 	}
-	
+
 	public String getCheckinTypeDesc() {
 		return checkin.getCheckinTypeDesc();
 	}
-	
+
 	public String getName() {
 		return checkin.getName();
 	}
@@ -55,7 +78,7 @@ public class Checkout extends ValueObject {
 		this.checkoutTime = checkoutTime;
 		this.comment = comment;
 	}
-	
+
 	public Checkout(String checkoutId, float checkoutAmount,
 			String checkoutTime, String comment, Checkin checkin) {
 		super();
@@ -110,16 +133,16 @@ public class Checkout extends ValueObject {
 	public String toString() {
 		return "Checkout [checkoutId=" + checkoutId + ", checkoutAmount="
 				+ checkoutAmount + ", checkoutTime=" + checkoutTime
-				+ ", comment=" + comment + "]";
+				+ ", comment=" + comment + ", checkin=" + checkin + "]";
 	}
 
 	@Override
 	public void map(ResultSet rs) throws SQLException {
-		checkoutId=rs.getString("checkout_id");
-		checkoutAmount=rs.getFloat("checkout_amount");
-		checkoutTime=rs.getString("checkout_time");
-		comment=rs.getString("comment");
-		
+		checkoutId = rs.getString("checkout_id");
+		checkoutAmount = rs.getFloat("checkout_amount");
+		checkoutTime = rs.getString("checkout_time");
+		comment = rs.getString("comment");
+
 	}
 
 }

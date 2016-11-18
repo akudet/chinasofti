@@ -16,23 +16,24 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
  * if you already set up a session factory this class is useless
  * 
  * @author Jintong Wu
- *
+ * 
  */
 @Configuration
-@ComponentScan(basePackages={HibernateConfig.ROOT_DIR})
+@ComponentScan(basePackages = { HibernateConfig.ROOT_DIR })
 public class HibernateConfig {
-	
+
 	public static final String DB_URL = "jdbc:mysql://localhost:3306/test";
 	public static final String DB_USERNAME = "root";
 	public static final String DB_PASSWORD = "root";
 
 	public static final String ROOT_DIR = "team4/proj1/model/dao/impl/hb";
 	public static final String HBM_DIR = ROOT_DIR + "/hbm";
-	
+	public static final String ENTITY_PACKAGE = "team4.proj1.model.vo";
+
 	@Bean
 	public LocalSessionFactoryBean getSessionFactory() {
 		LocalSessionFactoryBean lsfb = new LocalSessionFactoryBean();
-		
+
 		// setup dialect
 		Properties pros = new Properties();
 		pros.setProperty("hibernate.dialect",
@@ -51,6 +52,8 @@ public class HibernateConfig {
 
 		// setup mapping
 		lsfb.setMappingDirectoryLocations(new ClassPathResource(HBM_DIR));
+
+		lsfb.setPackagesToScan(ENTITY_PACKAGE);
 
 		return lsfb;
 	}
