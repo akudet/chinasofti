@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<%@ include file="/tmpl/include.jsp" %>
+	
   </head>
   
   <body>
@@ -27,19 +28,19 @@
 			<div class="panel-body">
     <form action="/TP4/admin/cus_type/" method="post">
     <input type="hidden" name="PUT">
-		<div class="form-group">
-			<label for="exampleInputEmail1">客户类型编号:</label>
-			<input style="font-size:large;" class="form-control" type="number" id="cus_type_no" name="cusTypeNo" value="${cusType.cusTypeNo}" readonly="readonly"/><br>
+		<div>
+			<label for="cus_type_no">客户类型编号:</label>
+			<input type="number" id="cus_type_no" name="cusTypeNo" value="${cusType.cusTypeNo}" readonly="readonly"/><br>
 		</div>
-		<div class="form-group">
-			<label for="exampleInputEmail1">客户类型:</label>
-			<input style="font-size:large;" class="form-control" type="text" id="cus_type_desc" name="cusTypeDesc" value="${cusType.cusTypeDesc }" readonly="readonly"/><br>
+		<div>
+			<label for="cus_type_desc">客户类型:</label>
+			<input type="text" id="cus_type_desc" name="cusTypeDesc" value="${cusType.cusTypeDesc }" readonly="readonly"/><br>
 		</div>
-		<div class="form-group">
-			<label for="exampleInputEmail1">折扣类型:</label>
-			<input style="font-size:large;" class="form-control" type="number" id="discount" name="discount" value="${cusType.discount}"/><br>
+		<div>
+			<label for="discount">折扣类型:</label>
+			<input type="number" id="discount" name="discount" value="${cusType.discount}"/><br>
 		</div>
-		<input type="submit" value="修改" style="height: 30px;width: 100px;text-align: center;">
+		<button type="submit">修改</button>
 	</form>
     </div></div></div>
   </body>
