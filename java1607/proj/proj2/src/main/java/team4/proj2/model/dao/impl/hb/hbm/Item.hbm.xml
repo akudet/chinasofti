@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="team4.proj2.model.vo.Item" table="item">
+		<id name="id" column="item_id" type="int">
+			<generator class="increment" />
+		</id>
+		<property name="name" column="item_name" type="string"></property>
+	</class>
+</hibernate-mapping>
