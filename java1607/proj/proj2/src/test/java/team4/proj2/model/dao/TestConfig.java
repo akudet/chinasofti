@@ -40,7 +40,7 @@ public class TestConfig {
 		// setup datasource
 		DriverManagerDataSource dmds = new DriverManagerDataSource();
 		dmds.setDriverClassName("com.mysql.jdbc.Driver");
-		dmds.setUrl("jdbc:mysql://localhost:3306/test");
+		dmds.setUrl("jdbc:mysql://localhost:3306/proj2_test");
 		dmds.setUsername("root");
 		dmds.setPassword("root");
 		lsfb.setDataSource(dmds);

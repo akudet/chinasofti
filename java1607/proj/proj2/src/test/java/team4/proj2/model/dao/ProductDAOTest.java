@@ -9,22 +9,35 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import team4.proj2.model.vo.Product;
+import team4.proj2.model.dao.prod.ProductDAO;
+import team4.proj2.model.dao.prod.SellerDAO;
+import team4.proj2.model.dao.prod.StockInfoDAO;
+import team4.proj2.model.vo.prod.Product;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={TestConfig.class})
+@ContextConfiguration(classes = { TestConfig.class })
 public class ProductDAOTest {
-	
+
 	@Resource
 	private ProductDAO pd;
+	@Resource
+	private StockInfoDAO sid;
+	@Resource
+	private SellerDAO sd;
+
+	@Test
+	public void stockInfoTest() {
+		sid.findAll();
+	}
 
 	@Test
 	public void test() {
 		Product p = new Product();
 		p.setName("hihi");
-		p.setVersion(1);;
+
 		pd.add(p);
-		System.out.println(pd.findAll());
+		assertEquals(pd.findAll().size(), 1);
+		
 	}
 
 }
