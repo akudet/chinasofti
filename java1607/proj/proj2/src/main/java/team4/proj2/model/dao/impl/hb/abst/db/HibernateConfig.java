@@ -48,7 +48,8 @@ public class HibernateConfig {
 		// setup mapping
 		lsfb.setMappingDirectoryLocations(new ClassPathResource(HBM_DIR));
 		
-		lsfb.setPackagesToScan("team4.model.vo");
+		lsfb.setAnnotatedPackages("team4.proj2.model.vo");
+		lsfb.setPackagesToScan("team4.proj2.model.vo");
 
 		return lsfb;
 	}
