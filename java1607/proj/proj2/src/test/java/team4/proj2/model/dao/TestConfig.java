@@ -1,4 +1,4 @@
-package team4.proj2.model.dao.impl.hb.abst.db;
+package team4.proj2.model.dao;
 
 import java.util.Properties;
 
@@ -19,8 +19,8 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
  *
  */
 @Configuration
-@ComponentScan(basePackages={HibernateConfig.ROOT_DIR})
-public class HibernateConfig {
+@ComponentScan(basePackages={TestConfig.ROOT_DIR})
+public class TestConfig {
 
 	public static final String ROOT_DIR = "team4/proj2/model/dao/impl/hb";
 	public static final String HBM_DIR = ROOT_DIR + "/hbm";
@@ -48,7 +48,8 @@ public class HibernateConfig {
 		// setup mapping
 		lsfb.setMappingDirectoryLocations(new ClassPathResource(HBM_DIR));
 		
-		lsfb.setPackagesToScan("team4.model.vo");
+		lsfb.setAnnotatedPackages("team4.proj2.model.vo");
+		lsfb.setPackagesToScan("team4.proj2.model.vo");
 
 		return lsfb;
 	}
