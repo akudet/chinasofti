@@ -1,8 +1,38 @@
-## Photo Share App
+# 电子商务平台
+# Team Contract
+## Team Member
+* Jintong Wu(巫金桐)
 
-## 案例名称：图友网
-### [案例功能描述](http://www.zker.com.cn/course/coursePlay.do?specId=66&scId=856)：
-* 图友网是一个社交网站， 网站的实际用户为UI设计师，网站编辑等
-  经常需要制作或下载精美图片的职业人群。
-* 通过图友网， 各使用用户可以分享自己制作的精美图片。
-* 用户可以通过评论和回复的方式与图片作品的作者沟通，达到以图汇友的目的。
+### Personal Goal
+* Jintong Wu : be fluent about e-comm platform, another project which can be as an instruction of the ability to use java main framework to develop java web project.
+
+### How quality of work will be maintained
+* follow the design spec, and don't look more.
+* using git branch to develop a feature
+* code style, follow [the java standard guide](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html)
+* work assignment : every 3 days I will revisit what have done as
+a whole and plan the next phase work
+* work/day : ~3hrs
+
+# Design Doc
+## Overview
+### Motivation
+
+## Design Essence
+### Concepts
+
+### Data Model
+
+## Security Concerns
+
+## User Interface
+
+# Teamwork Plan
+## Stakeholders
+## Tasks
+## User Interface
+## Server
+## Database
+## Calendar
+## Risks
+## Minimum Viable Product
