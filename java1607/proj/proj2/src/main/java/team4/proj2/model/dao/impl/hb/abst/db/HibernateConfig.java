@@ -43,6 +43,10 @@ public class HibernateConfig {
 		dmds.setUrl("jdbc:mysql://localhost:3306/proj2_test");
 		dmds.setUsername("root");
 		dmds.setPassword("root");
+		Properties connProties = new Properties();
+		connProties.setProperty("useUnicode", "true");
+		connProties.setProperty("characterEncoding", "UTF-8");
+		dmds.setConnectionProperties(connProties);
 		lsfb.setDataSource(dmds);
 
 		// setup mapping
