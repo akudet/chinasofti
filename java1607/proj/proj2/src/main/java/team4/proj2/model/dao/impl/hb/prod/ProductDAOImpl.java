@@ -16,13 +16,18 @@ public class ProductDAOImpl extends SpringAbstractDAO<Product> implements Produc
 
 	@Override
 	public List<Product> latestProducts(String type) {
-		return findAll("FROM Product WHERE type=? ORDER BY onSaleTime", type);
+		if (null == type || type.equals("")) {
+			type="%";
+		}
+		return findAll("FROM Product WHERE type like ? ORDER BY onSaleTime DESC", type);
 	}
 
 	@Override
 	public List<Product> popularProducts(String type) {
-		// TODO Auto-generated method stub
-		return null;
+		if (null == type || type.equals("")) {
+			type="%";
+		}
+		return findAll("FROM Product WHERE type like ? ORDER BY sells DESC", type);
 	}
 
 	@Override

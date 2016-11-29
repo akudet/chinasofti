@@ -22,13 +22,35 @@ import team4.proj2.model.vo.prod.Product;
 public class ProductController extends BasicController<Product> {
 
 	@Autowired
+	private ProductDAO pd;
+
+	@Autowired
 	public ProductController(ProductDAO pd) {
 		submodule("prod");
 	}
 
+	@RequestMapping(path = "/latest", method = RequestMethod.GET)
+	public ModelAndView latestProducts(
+			@RequestParam(defaultValue = "") String type) {
+		return render("index", pd.latestProducts(type));
+	}
+
+	@RequestMapping(path = "/popular", method = RequestMethod.GET)
+	public ModelAndView popularProducts(
+			@RequestParam(defaultValue = "") String type) {
+		return render("index", pd.popularProducts(type));
+	}
+
+	@RequestMapping(path = "/discount", method = RequestMethod.GET)
+	public ModelAndView discountProducts(
+			@RequestParam(defaultValue = "") String type) {
+		return render("index", pd.discountProducts(type));
+	}
+
 	@RequestMapping(path = "/upload", method = RequestMethod.POST)
 	public ModelAndView upload(HttpServletRequest req,
-			@RequestParam MultipartFile file) throws IllegalStateException, IOException {
+			@RequestParam MultipartFile file) throws IllegalStateException,
+			IOException {
 
 		File dest = new File(req.getServletContext().getRealPath("/files")
 				+ "/" + file.getOriginalFilename());

@@ -95,7 +95,7 @@ public class ProductDAOTest {
 		Date onSaleTime = prods.get(0).getOnSaleTime();
 		for (Product prod : prods) {
 			assertEquals(prod.getType(), ("书"));
-			assertTrue(onSaleTime.compareTo(prod.getOnSaleTime()) <= 0);
+			assertTrue(onSaleTime.compareTo(prod.getOnSaleTime()) >= 0);
 			onSaleTime = prod.getOnSaleTime();
 		}
 	}
