@@ -34,7 +34,6 @@ public class BasicController<T extends ValueObject> {
 
 	@RequestMapping(path = { "/", "" })
 	public ModelAndView index(HttpServletRequest req) {
-		log(req);
 		System.out.println(dao.findAll());
 		return render("index", dao.findAll());
 	}
@@ -42,15 +41,11 @@ public class BasicController<T extends ValueObject> {
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
 	public ModelAndView get(@PathVariable("id") String id,
 			HttpServletRequest req) {
-		log(req);
-
 		return render("show", dao.find(id));
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.POST)
 	public ModelAndView post(T model, HttpServletRequest req) {
-		log(req);
-
 		return render("show", dao.find(dao.add(model)));
 	}
 
@@ -58,8 +53,6 @@ public class BasicController<T extends ValueObject> {
 	@RequestMapping(path = "/{id}", method = RequestMethod.POST)
 	public ModelAndView fakedPost(@PathVariable("id") String id, T model,
 			HttpServletRequest req) {
-		log(req);
-
 		if (null != req.getParameter("PUT")) {
 			return put(id, model, req);
 		} else if (null != req.getParameter("DELETE")) {
@@ -73,8 +66,6 @@ public class BasicController<T extends ValueObject> {
 	@RequestMapping(path = "/{id}", method = RequestMethod.PUT)
 	public ModelAndView put(@PathVariable("id") String id, T model,
 			HttpServletRequest req) {
-		log(req);
-
 		model.setId(id);
 		dao.update(model);
 		return render("show", dao.find(id));
@@ -83,8 +74,6 @@ public class BasicController<T extends ValueObject> {
 	@RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
 	public ModelAndView delete(@PathVariable("id") String id,
 			HttpServletRequest req) {
-		log(req);
-
 		dao.delete(dao.find(id));
 
 		return index(req);
@@ -133,10 +122,6 @@ public class BasicController<T extends ValueObject> {
 
 	private String getViewName(String viewName) {
 		return mViewsPath + viewName;
-	}
-
-	private void log(HttpServletRequest req) {
-		System.out.println(req.getMethod() + " : " + req.getRequestURI());
 	}
 
 }

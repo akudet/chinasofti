@@ -3,6 +3,7 @@ package team4.proj2.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -12,7 +13,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import team4.proj2.model.dao.impl.hb.abst.db.HibernateConfig;
 
 @Configuration
-@ComponentScan("team4.proj2.control")
+@EnableAspectJAutoProxy
+@ComponentScan({"team4.proj2.control", "team4.proj2.service"})
 @Import(HibernateConfig.class)
 public class AppConfig {
 
