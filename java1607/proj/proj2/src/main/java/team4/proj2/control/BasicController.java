@@ -46,7 +46,7 @@ public class BasicController<T extends ValueObject> {
 
 	@RequestMapping(path = "/", method = RequestMethod.POST)
 	public ModelAndView post(T model, HttpServletRequest req) {
-		return render("show", dao.find(dao.add(model)));
+		return render("show", dao.find(dao.insert(model)));
 	}
 
 	// simulated put and delete

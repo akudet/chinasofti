@@ -1,8 +1,10 @@
 package team4.proj2.model.vo;
 
-public class User {
+import javax.persistence.Entity;
 
-	int id;
+@Entity
+public class User extends ValueObject {
+
 	private String name;
 	private int age;
 
@@ -14,20 +16,12 @@ public class User {
 		return age;
 	}
 
-	public int getId() {
-		return id;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public void setAge(int age) {
 		this.age = age;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public void setName(String name) {

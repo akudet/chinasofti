@@ -1,27 +1,19 @@
 package team4.proj2.model.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
-public interface DAO<T> {
+import team4.proj2.model.vo.ValueObject;
+
+public interface DAO<T extends ValueObject> {
 
 	/**
 	 * add a resource to db
 	 * 
 	 * @param vo
 	 *            the resource to add
-	 * @return 0 for success, other for failure
+	 * @return the id of the inserted ValueObject
 	 */
-	public int add(T vo);
-
-	/**
-	 * delete one resource from database where it's primary key is equals t's
-	 * primary key
-	 * 
-	 * @param t
-	 * @return
-	 */
-	public int delete(T t);
+	public String insert(T vo);
 
 	/**
 	 * find a resource by it's primary key, the key def is depends on hibernate
@@ -30,7 +22,24 @@ public interface DAO<T> {
 	 * @param id
 	 * @return
 	 */
-	public T find(Serializable id);
+	public T find(String id);
+
+	/**
+	 * update the db version of the resource
+	 * 
+	 * @param vo
+	 * @return 0 for success other for failure
+	 */
+	public int update(T vo);
+
+	/**
+	 * delete one resource from database where it's primary key is equals t's
+	 * primary key
+	 * 
+	 * @param t
+	 * @return 0 for success other for failure
+	 */
+	public int delete(T t);
 
 	/**
 	 * find all resources in the database
@@ -57,13 +66,5 @@ public interface DAO<T> {
 	 * @return total number of page
 	 */
 	public int getTotalPage();
-
-	/**
-	 * update the db version of the resource
-	 * 
-	 * @param vo
-	 * @return
-	 */
-	public int update(T vo);
 
 }

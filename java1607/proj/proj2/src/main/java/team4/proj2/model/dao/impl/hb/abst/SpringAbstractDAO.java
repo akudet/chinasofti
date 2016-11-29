@@ -1,6 +1,5 @@
 package team4.proj2.model.dao.impl.hb.abst;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -10,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import team4.proj2.model.dao.DAO;
+import team4.proj2.model.vo.ValueObject;
 
 // TODO : the logic here really need improving
 // I don't the the correct way for db operating when using spring
@@ -17,7 +17,7 @@ import team4.proj2.model.dao.DAO;
 // this way is how they write the db access part
 // open a session, and it should work, (though it's not)
 // but I think it's not right. So i'm not sure.
-public class SpringAbstractDAO<T> implements DAO<T> {
+public class SpringAbstractDAO<T extends ValueObject> implements DAO<T> {
 	public Class<T> voClass;
 
 	@Autowired
@@ -34,14 +34,15 @@ public class SpringAbstractDAO<T> implements DAO<T> {
 	}
 
 	@Override
-	public int add(final T t) {
+	public String insert(final T t) {
 		Session session = getSession();
 		// need a transaction to wrap it
 		Transaction ts = session.beginTransaction();
-		session.save(t);
+		// ValueObject using string as id, and this should work
+		String id = session.save(t).toString();
 		ts.commit();
 		session.close();
-		return 0;
+		return id;
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class SpringAbstractDAO<T> implements DAO<T> {
 	}
 
 	@Override
-	public T find(final Serializable id) {
+	public T find(final String id) {
 		Session session = getSession();
 		@SuppressWarnings("unchecked")
 		T t = (T) session.get(voClass, id);

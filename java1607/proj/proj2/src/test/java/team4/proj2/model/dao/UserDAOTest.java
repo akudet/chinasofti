@@ -1,32 +1,37 @@
 package team4.proj2.model.dao;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import static org.junit.Assert.*;
 
-import team4.proj2.model.dao.impl.hb.abst.db.HibernateConfig;
+import javax.annotation.Resource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import team4.proj2.config.AppConfig;
 import team4.proj2.model.vo.User;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { AppConfig.class })
 public class UserDAOTest {
-	
-	public static void main(String[] args) {
-		ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
-		UserDAO ud = context.getBean(UserDAO.class);
-		
+
+	@Resource
+	UserDAO ud;
+
+	@Test
+	public void test() {
 		User u = new User();
 		u.setName("jtwu");
 		u.setAge(10);
-		ud.add(u);
-		
+		ud.insert(u);
+		assertEquals(ud.findAll().size(), 1);
+
 		u = ud.findOneByName("jtwu");
-		System.out.println(u);
+		assertEquals(u.getName(), "jtwu");
+
 		ud.delete(u);
-		
-		User u2 = ud.find(1000);
-		
-		u2.setName("helloworld");
-		ud.update(u2);
-		
-		System.out.println(ud.findAll());
+		assertEquals(ud.findAll().size(), 0);
 	}
 
 }
