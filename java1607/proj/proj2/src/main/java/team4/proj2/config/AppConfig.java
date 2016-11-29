@@ -28,7 +28,7 @@ public class AppConfig {
 		return vr;
 	}
 	
-	/*
+
 	@Bean(name="multipartResolver")
 	public MultipartResolver getMultipartResolver() {
 		CommonsMultipartResolver cmr = new CommonsMultipartResolver();
@@ -38,5 +38,5 @@ public class AppConfig {
 		
 		return cmr;
 	}
-	*/
+
 }

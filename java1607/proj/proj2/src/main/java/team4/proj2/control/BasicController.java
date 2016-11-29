@@ -51,7 +51,7 @@ public class BasicController<T extends ValueObject> {
 
 	// simulated put and delete
 	@RequestMapping(path = "/{id}", method = RequestMethod.POST)
-	public ModelAndView fakedPost(@PathVariable("id") String id, T model,
+	public ModelAndView update(@PathVariable("id") String id, T model,
 			HttpServletRequest req) {
 		if (null != req.getParameter("PUT")) {
 			return put(id, model, req);
