@@ -34,7 +34,7 @@ public class HibernateConfig {
 		pros.setProperty("hibernate.dialect",
 				"org.hibernate.dialect.MySQLDialect");
 		pros.setProperty("hibernate.show_sql", "true");
-		pros.setProperty("hibernate.hbm2ddl.auto", "update");
+		pros.setProperty("hibernate.hbm2ddl.auto", "create");
 		lsfb.setHibernateProperties(pros);
 
 		// setup datasource

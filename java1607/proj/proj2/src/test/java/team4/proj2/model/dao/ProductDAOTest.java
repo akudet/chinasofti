@@ -22,6 +22,8 @@ import team4.proj2.model.dao.prod.ProductDAO;
 import team4.proj2.model.dao.prod.SellerDAO;
 import team4.proj2.model.dao.prod.StockInfoDAO;
 import team4.proj2.model.vo.prod.Product;
+import team4.proj2.model.vo.prod.Seller;
+import team4.proj2.model.vo.prod.StockInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AppConfig.class })
@@ -36,13 +38,23 @@ public class ProductDAOTest {
 
 	@Test
 	public void stockInfoTest() {
-		sid.findAll();
+		System.out.println(pd.discountProducts(""));
 	}
 
 	public void insertAll(List<Product> prods) {
 		for (Product prod : prods) {
 			pd.insert(prod);
 		}
+		Seller seller = new Seller();
+		seller.setName("IBM");
+		StockInfo si = new  StockInfo();
+		seller = sd.find(sd.insert(seller));
+		si.setSeller(seller);
+		si.setProduct(pd.findAll().get(0));
+		si.setDiscount(0.3f);
+		si.setStock(1000);
+		si.setPrice(10f);
+		sid.insert(si);
 	}
 
 	@Before

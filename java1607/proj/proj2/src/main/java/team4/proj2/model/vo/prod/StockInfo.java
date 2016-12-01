@@ -1,6 +1,8 @@
 package team4.proj2.model.vo.prod;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -13,25 +15,37 @@ public class StockInfo extends ValueObject {
 	float price;
 	Product product;
 	Seller seller;
+	private float discount;
 
+	@Column(name = "stock_discount")
+	public float getDiscount() {
+		return discount;
+	}
+
+	@Column(name = "stock_price")
 	public float getPrice() {
 		return price;
 	}
 
-	@ManyToOne
-	@JoinColumn(name="prod_id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "prod_id")
 	public Product getProduct() {
 		return product;
 	}
 
-	@ManyToOne
-	@JoinColumn(name="sell_by")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "sell_by")
 	public Seller getSeller() {
 		return seller;
 	}
 
+	@Column(name = "stock_amount")
 	public int getStock() {
 		return stock;
+	}
+
+	public void setDiscount(float discount) {
+		this.discount = discount;
 	}
 
 	public void setPrice(float price) {
@@ -52,8 +66,8 @@ public class StockInfo extends ValueObject {
 
 	@Override
 	public String toString() {
-		return "StockInfo [stock=" + stock + ", price=" + price + ", product="
-				+ product + ", seller=" + seller + "]";
+		return "StockInfo [stock=" + stock + ", price=" + price + ", discount="
+				+ discount + "]";
 	}
 
 }

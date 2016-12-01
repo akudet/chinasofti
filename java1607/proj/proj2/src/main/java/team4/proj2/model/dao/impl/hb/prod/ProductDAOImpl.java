@@ -32,7 +32,10 @@ public class ProductDAOImpl extends SpringAbstractDAO<Product> implements Produc
 
 	@Override
 	public List<Product> discountProducts(String type) {
-		// TODO Auto-generated method stub
-		return null;
+		if (null == type || type.equals("")) {
+			type="%";
+		}
+		// it took me 3 hrs to figure it out, I should write sth like this
+		return findAll("SELECT DISTINCT product FROM StockInfo");
 	}
 }
